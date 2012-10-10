@@ -2,7 +2,9 @@ bin_PROGRAMS = indicator-bluetooth
 
 indicator_bluetooth_SOURCES = 	\
 	config.vapi \
-	indicator-bluetooth.vala
+	bluez.vala \
+	indicator-bluetooth.vala \
+	rfkill.vala
 
 indicator_bluetooth_VALAFLAGS = \
 	--pkg posix \

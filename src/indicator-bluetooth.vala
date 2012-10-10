@@ -1,36 +1,185 @@
-[DBus (name = "org.bluez.Manager")]
-interface BluezManager : Object
+/*
+ * Copyright (C) 2012 Canonical Ltd.
+ * Author: Robert Ancell <robert.ancell@canonical.com>
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
+ * license.
+ */
+
+public class BluetoothIndicator : AppIndicator.Indicator
 {
-    public abstract string default_adapter () throws IOError;
+    private RFKillManager rfkill;
+    private Gtk.MenuItem status_item;
+    private Gtk.MenuItem enable_item;
+    private bool enable_value = false;
+    private Gtk.CheckMenuItem visible_item;
+    private Gtk.SeparatorMenuItem devices_separator;
+    private Gtk.MenuItem devices_item;
+    private List<Gtk.MenuItem> device_items;
+    private Gtk.MenuItem settings_item;
+
+    public BluetoothIndicator ()
+    {
+        Object (id: "indicator-bluetooth", icon_name: "bluetooth-active", category: "Hardware");
+
+        /* Monitor killswitch status */
+        rfkill = new RFKillManager ();
+        rfkill.open ();
+        rfkill.device_added.connect (update_rfkill);
+        rfkill.device_changed.connect (update_rfkill);
+        rfkill.device_deleted.connect (update_rfkill);
+
+        /* Get/control bluetooth status from Bluez */
+        BluezAdapter adapter = null;
+        try
+        {
+            var manager = Bus.get_proxy_sync<BluezManager> (BusType.SYSTEM, "org.bluez", "/");
+            var path = manager.default_adapter ();
+            adapter = Bus.get_proxy_sync<BluezAdapter> (BusType.SYSTEM, "org.bluez", path);
+        }
+        catch (IOError e)
+        {
+            stderr.printf ("Failed to connect to Bluez: %s", e.message);
+        }
+
+        set_status (AppIndicator.IndicatorStatus.ACTIVE);
+
+        var menu = new Gtk.Menu ();
+        set_menu (menu);
+
+        status_item = new Gtk.MenuItem ();
+        status_item.sensitive = false;
+        status_item.visible = true;
+        menu.append (status_item);
+
+        enable_item = new Gtk.MenuItem ();
+        enable_item.activate.connect (toggle_enabled);
+        menu.append (enable_item);
+
+        visible_item = new Gtk.CheckMenuItem.with_label (_("Visible"));
+        visible_item.activate.connect (() => { adapter.set_property ("Discoverable", new Variant.boolean (true)); }); // FIXME: Make rw
+        menu.append (visible_item);
+    
+        devices_separator = new Gtk.SeparatorMenuItem ();
+        menu.append (devices_separator);
+
+        devices_item = new Gtk.MenuItem.with_label (_("Devices"));
+        devices_item.sensitive = false;
+        devices_item.visible = true;
+        menu.append (devices_item);
+
+        device_items = new List<Gtk.MenuItem> ();
+
+        try
+        {
+            var devices = adapter.list_devices ();
+            foreach (var path in devices)
+            {
+                var device = Bus.get_proxy_sync<BluezDevice> (BusType.SYSTEM, "org.bluez", path);
+                var properties = device.get_properties ();
+                var iter = HashTableIter<string, Variant> (properties);
+                string name;
+                Variant value;
+                //stderr.printf ("%s\n", path);
+                while (iter.next (out name, out value))
+                {
+                    //stderr.printf ("  %s=%s\n", name, value.print (false));
+                    if (name == "Name" && value.is_of_type (VariantType.STRING))
+                    {
+                        var item = new Gtk.MenuItem.with_label (value.get_string ());
+                        device_items.append (item);
+                        menu.append (item);
+
+                        item.submenu = new Gtk.Menu ();
+                        var i = new Gtk.MenuItem.with_label (_("Send files..."));
+                        i.visible = true;
+                        i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); });
+                        item.submenu.append (i);
+
+                        //var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
+                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
+                        //var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
+                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
+                        //var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
+                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
+                    }
+                }
+            }
+        }
+        catch (IOError e)
+        {
+            stderr.printf ("%s\n", e.message);
+        }
+
+        var sep = new Gtk.SeparatorMenuItem ();
+        sep.visible = true;
+        menu.append (sep);
+
+        settings_item = new Gtk.MenuItem.with_label (_("Bluetooth Settings..."));
+        settings_item.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center bluetooth"); });
+        settings_item.visible = true;
+        menu.append (settings_item);
+
+        update_rfkill ();
+    }
+
+    private void update_rfkill ()
+    {
+        var have_lock = false;
+        var software_locked = false;
+        var hardware_locked = false;
+
+        foreach (var device in rfkill.get_devices ())
+        {
+            if (device.device_type != RFKillDeviceType.BLUETOOTH)
+                continue;
+
+            have_lock = true;
+            if (device.software_lock)
+                software_locked = true;
+            if (device.hardware_lock)
+                hardware_locked = true;
+        }
+        var locked = hardware_locked || software_locked;
+
+        if (hardware_locked)
+        {
+            status_item.label = _("Bluetooth: Disabled");
+            enable_item.visible = false;
+        }
+        else if (software_locked)
+        {
+            status_item.label = _("Bluetooth: Off");
+            enable_item.label = _("Turn on Bluetooth");
+            enable_item.visible = true;
+            enable_value = false;
+        }
+        else
+        {
+            status_item.label = _("Bluetooth: On");
+            enable_item.label = _("Turn off Bluetooth");
+            enable_item.visible = true;
+            enable_value = true;
+        }
+
+        /* Disable devices when locked */
+        visible_item.visible = !locked;
+        devices_separator.visible = !locked;
+        devices_item.visible = !locked;
+        foreach (var item in device_items)
+            item.visible = !locked;
+    }
+
+    private void toggle_enabled ()
+    {
+        rfkill.set_software_lock (RFKillDeviceType.BLUETOOTH, enable_value);
+    }
 }
 
-[DBus (name = "org.bluez.Adapter")]
-interface BluezAdapter : Object
-{
-    public abstract string[] list_devices () throws IOError;
-    public abstract HashTable<string, Variant> get_properties () throws IOError;
-    public abstract void set_property (string name, Variant value) throws IOError;
-}
-
-[DBus (name = "org.bluez.Device")]
-interface BluezDevice : Object
-{
-    public abstract HashTable<string, Variant> get_properties () throws IOError;
-}
-
-[DBus (name = "org.bluez.Audio")]
-interface BluezAudio : Object
-{
-    public abstract void connect () throws IOError;
-}
-
-[DBus (name = "org.bluez.Input")]
-interface BluezInput : Object
-{
-    public abstract void connect () throws IOError;
-}
-
-int main (string[] args)
+public static int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "");
     Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
@@ -39,99 +188,11 @@ int main (string[] args)
 
     Gtk.init (ref args);
 
-    BluezAdapter adapter;
-    try
-    {
-        var manager = Bus.get_proxy_sync<BluezManager> (BusType.SYSTEM, "org.bluez", "/");
-        var path = manager.default_adapter ();
-        adapter = Bus.get_proxy_sync<BluezAdapter> (BusType.SYSTEM, "org.bluez", path);
-    }
-    catch (IOError e)
-    {
-        return Posix.EXIT_FAILURE;
-    }
-
-    var indicator = new AppIndicator.Indicator ("indicator-bluetooth", "bluetooth-active", AppIndicator.IndicatorCategory.HARDWARE);
-    indicator.set_status (AppIndicator.IndicatorStatus.ACTIVE);
-
-    var menu = new Gtk.Menu ();
-    indicator.set_menu (menu);
-
-    var item = new Gtk.MenuItem.with_label ("Bluetooth: On");
-    item.sensitive = false;
-    item.show ();
-    menu.append (item);
-
-    item = new Gtk.MenuItem.with_label ("Turn off Bluetooth");
-    item.show ();
-    menu.append (item);
-
-    item = new Gtk.CheckMenuItem.with_label (_("Visible"));
-    item.activate.connect (() => { adapter.set_property ("Discoverable", new Variant.boolean (true)); });
-    item.show ();
-    menu.append (item);
+    var indicator = new BluetoothIndicator ();
     
-    var sep = new Gtk.SeparatorMenuItem ();
-    sep.show ();
-    menu.append (sep);
-
-    item = new Gtk.MenuItem.with_label (_("Devices"));
-    item.sensitive = false;
-    item.show ();
-    menu.append (item);
-
-    try
-    {
-        var devices = adapter.list_devices ();
-        foreach (var path in devices)
-        {
-            var device = Bus.get_proxy_sync<BluezDevice> (BusType.SYSTEM, "org.bluez", path);
-            var properties = device.get_properties ();
-            var iter = HashTableIter<string, Variant> (properties);
-            string name;
-            Variant value;
-            //stderr.printf ("%s\n", path);
-            while (iter.next (out name, out value))
-            {
-                //stderr.printf ("  %s=%s\n", name, value.print (false));
-                if (name == "Name" && value.is_of_type (VariantType.STRING))
-                {
-                    item = new Gtk.MenuItem.with_label (value.get_string ());
-                    item.show ();
-                    menu.append (item);
-
-                    item.submenu = new Gtk.Menu ();
-                    var i = new Gtk.MenuItem.with_label (_("Send files..."));
-                    i.show ();
-                    i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); });
-                    item.submenu.append (i);
-
-                    //var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-                    //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
-                    //var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-                    //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
-                    //var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-                    //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
-                }
-            }
-        }
-    }
-    catch (IOError e)
-    {
-        stderr.printf ("%s\n", e.message);
-        return Posix.EXIT_FAILURE;
-    }
-
-    sep = new Gtk.SeparatorMenuItem ();
-    sep.show ();
-    menu.append (sep);
-
-    item = new Gtk.MenuItem.with_label (_("Bluetooth Settings..."));
-    item.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center bluetooth"); });
-    item.show ();
-    menu.append (item);
-
     Gtk.main ();
+    
+    indicator = null;
 
-    return 0;
+    return Posix.EXIT_SUCCESS;
 }
