@@ -102,6 +102,9 @@ public class BluezDevice : Object
     private string _name = null;
     public string name { get { return _name; } }
 
+    private uint32 _class = 0;
+    public uint32 class { get { return _class; } }
+
     internal string path;
     private BluezDeviceInterface proxy;
 
@@ -127,6 +130,8 @@ public class BluezDevice : Object
         stderr.printf ("%s %s=%s\n", path, name, value.print (false));
         if (name == "Name" && value.is_of_type (VariantType.STRING))
             _name = value.get_string ();
+        if (name == "Class" && value.is_of_type (VariantType.UINT32))
+            _class = value.get_uint32 ();
     }
 
     private void input_property_changed_cb (string name, Variant value)

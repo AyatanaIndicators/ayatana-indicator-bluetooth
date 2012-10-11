@@ -74,18 +74,84 @@ public class BluetoothIndicator : AppIndicator.Indicator
             menu.append (item);
 
             item.submenu = new Gtk.Menu ();
-            var i = new Gtk.MenuItem.with_label (_("Send files..."));
-            i.visible = true;
-            i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); }); // FIXME
-            item.submenu.append (i);
 
-            //FIXME
-            //var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
-            //var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
-            //var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
+            /* Scan class mask to determine what type of device it is */
+            var is_keyboard = false;
+            var is_pointer = false;
+            var is_audio = false;
+            switch ((device.class & 0x1f00) >> 8)
+            {
+            case 0x04:
+                switch ((device.class & 0xfc) >> 2)
+                {
+                case 0x0b:
+                case 0x0c:
+                case 0x0d:
+                    /* (video devices) */
+                    break;
+                default:
+                    is_audio = true;
+                    break;
+                }
+                break;
+            case 0x05:
+                switch ((device.class & 0xc0) >> 6)
+                {
+                case 0x00:
+                    /* (joypads) */
+                    break;
+                case 0x01:
+                    is_keyboard = true;
+                    break;
+                case 0x02:
+                    is_pointer = true;
+                    break;
+                }
+                break;
+            }
+
+            // FIXME: Check by looking at the UUIDs
+            var can_receive_files = true;
+            var can_browse_files = true;
+
+            if (can_receive_files)
+            {
+                var i = new Gtk.MenuItem.with_label (_("Send files..."));
+                i.visible = true;
+                i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); }); // FIXME
+                item.submenu.append (i);
+            }
+            if (can_browse_files)
+            {
+                var i = new Gtk.MenuItem.with_label (_("Browse files..."));
+                i.visible = true;
+                i.activate.connect (() => { Process.spawn_command_line_async ("gnome-open obex://[%s]/"); }); // FIXME
+                item.submenu.append (i);
+            }
+
+            if (is_keyboard)
+            {
+                var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
+                i.visible = true;
+                i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
+                item.submenu.append (i);
+            }
+
+            if (is_pointer)
+            {
+                var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
+                i.visible = true;
+                i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
+                item.submenu.append (i);
+            }
+
+            if (is_audio)
+            {
+                var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
+                i.visible = true;
+                i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
+                item.submenu.append (i);
+            }
         }
 
         var sep = new Gtk.SeparatorMenuItem ();
