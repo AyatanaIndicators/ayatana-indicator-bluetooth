@@ -48,6 +48,7 @@ public class BluezAdapter : Object
         get { return _discoverable; }
         set
         {
+            _discoverable = value;
             proxy.set_property ("Discoverable", new Variant.boolean (value));
         }
     }
@@ -79,7 +80,10 @@ public class BluezAdapter : Object
     {
         stderr.printf ("%s %s=%s\n", path, name, value.print (false));
         if (name == "Discoverable" && value.is_of_type (VariantType.BOOLEAN))
+        {
             _discoverable = value.get_boolean ();
+            notify_property ("discoverable");
+        }
     }
 
     private void device_created_cb (string path)

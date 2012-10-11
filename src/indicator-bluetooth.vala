@@ -51,7 +51,9 @@ public class BluetoothIndicator : AppIndicator.Indicator
         menu.append (enable_item);
 
         visible_item = new Gtk.CheckMenuItem.with_label (_("Visible"));
-        visible_item.activate.connect (() => { bluez.default_adapter.discoverable = true; }); // FIXME: Make rw
+        visible_item.active = bluez.default_adapter.discoverable;
+        bluez.default_adapter.notify["discoverable"].connect (() => { visible_item.active = bluez.default_adapter.discoverable; });
+        visible_item.activate.connect (() => { bluez.default_adapter.discoverable = visible_item.active; });
         menu.append (visible_item);
     
         devices_separator = new Gtk.SeparatorMenuItem ();
