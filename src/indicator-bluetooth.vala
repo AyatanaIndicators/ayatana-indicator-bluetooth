@@ -33,17 +33,8 @@ public class BluetoothIndicator : AppIndicator.Indicator
         rfkill.device_deleted.connect (update_rfkill);
 
         /* Get/control bluetooth status from Bluez */
-        BluezAdapter adapter = null;
-        try
-        {
-            var manager = Bus.get_proxy_sync<BluezManager> (BusType.SYSTEM, "org.bluez", "/");
-            var path = manager.default_adapter ();
-            adapter = Bus.get_proxy_sync<BluezAdapter> (BusType.SYSTEM, "org.bluez", path);
-        }
-        catch (IOError e)
-        {
-            stderr.printf ("Failed to connect to Bluez: %s", e.message);
-        }
+        var bluez = new BluezManager ();
+        bluez.start ();
 
         set_status (AppIndicator.IndicatorStatus.ACTIVE);
 
@@ -60,7 +51,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
         menu.append (enable_item);
 
         visible_item = new Gtk.CheckMenuItem.with_label (_("Visible"));
-        visible_item.activate.connect (() => { adapter.set_property ("Discoverable", new Variant.boolean (true)); }); // FIXME: Make rw
+        visible_item.activate.connect (() => { bluez.default_adapter.discoverable = true; }); // FIXME: Make rw
         menu.append (visible_item);
     
         devices_separator = new Gtk.SeparatorMenuItem ();
@@ -73,45 +64,26 @@ public class BluetoothIndicator : AppIndicator.Indicator
 
         device_items = new List<Gtk.MenuItem> ();
 
-        try
+        var devices = bluez.default_adapter.get_devices ();
+        foreach (var device in devices)
         {
-            var devices = adapter.list_devices ();
-            foreach (var path in devices)
-            {
-                var device = Bus.get_proxy_sync<BluezDevice> (BusType.SYSTEM, "org.bluez", path);
-                var properties = device.get_properties ();
-                var iter = HashTableIter<string, Variant> (properties);
-                string name;
-                Variant value;
-                //stderr.printf ("%s\n", path);
-                while (iter.next (out name, out value))
-                {
-                    //stderr.printf ("  %s=%s\n", name, value.print (false));
-                    if (name == "Name" && value.is_of_type (VariantType.STRING))
-                    {
-                        var item = new Gtk.MenuItem.with_label (value.get_string ());
-                        device_items.append (item);
-                        menu.append (item);
+            var item = new Gtk.MenuItem.with_label (device.name);
+            device_items.append (item);
+            menu.append (item);
 
-                        item.submenu = new Gtk.Menu ();
-                        var i = new Gtk.MenuItem.with_label (_("Send files..."));
-                        i.visible = true;
-                        i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); });
-                        item.submenu.append (i);
+            item.submenu = new Gtk.Menu ();
+            var i = new Gtk.MenuItem.with_label (_("Send files..."));
+            i.visible = true;
+            i.activate.connect (() => { Process.spawn_command_line_async ("bluetooth-sendto --device=DEVICE --name=NAME"); }); // FIXME
+            item.submenu.append (i);
 
-                        //var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
-                        //var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
-                        //var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-                        //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
-                    }
-                }
-            }
-        }
-        catch (IOError e)
-        {
-            stderr.printf ("%s\n", e.message);
+            //FIXME
+            //var i = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
+            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center keyboard"); });
+            //var i = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
+            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center mouse"); });
+            //var i = new Gtk.MenuItem.with_label (_("Sound Settings..."));
+            //i.activate.connect (() => { Process.spawn_command_line_async ("gnome-control-center sound"); });
         }
 
         var sep = new Gtk.SeparatorMenuItem ();
