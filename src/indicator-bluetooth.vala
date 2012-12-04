@@ -256,6 +256,7 @@ private class BluetoothMenuItem : Gtk.MenuItem
     public BluetoothMenuItem (DBusProxy proxy)
     {
         this.proxy = proxy;
+        label = ""; /* Workaround for libappindicator3 - without a label it thinks this is a separator */
         submenu = new Gtk.Menu ();
 
         send_item = new Gtk.MenuItem.with_label (_("Send files..."));
