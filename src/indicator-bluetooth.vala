@@ -160,27 +160,68 @@ public class BluetoothIndicator : AppIndicator.Indicator
             menu.insert (item, menu.get_children ().index (last_item) + 1);
         }
 
-        var can_send = false;
-        var can_browse = false;
-        if (uuids != null)
+        item.label = alias;
+
+        if (item.submenu == null)
         {
-            for (var i = 0; uuids[i] != null; i++)
+            item.submenu = new Gtk.Menu ();
+
+            var can_send = false;
+            var can_browse = false;
+            if (uuids != null)
             {
-                if (uuids[i] == "OBEXObjectPush")
-                    can_send = true;
-                if (uuids[i] == "OBEXFileTransfer")
-                    can_browse = true;
+                for (var i = 0; uuids[i] != null; i++)
+                {
+                    if (uuids[i] == "OBEXObjectPush")
+                        can_send = true;
+                    if (uuids[i] == "OBEXFileTransfer")
+                        can_browse = true;
+                }
+            }
+
+            if (can_send)
+            {
+                var send_item = new Gtk.MenuItem.with_label (_("Send files..."));
+                send_item.visible = true;
+                send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
+                item.submenu.append (send_item);
+            }
+
+            if (can_browse)
+            {
+                var browse_item = new Gtk.MenuItem.with_label (_("Browse files..."));
+                browse_item.visible = true;
+                browse_item.activate.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
+                item.submenu.append (browse_item);
+            }
+
+            switch (type)
+            {
+            case GnomeBluetooth.Type.KEYBOARD:
+                var keyboard_item = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
+                keyboard_item.visible = true;
+                keyboard_item.activate.connect (() => { show_control_center ("keyboard"); });
+                item.submenu.append (keyboard_item);
+                break;
+
+            case GnomeBluetooth.Type.MOUSE:
+            case GnomeBluetooth.Type.TABLET:
+                var mouse_item = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
+                mouse_item.visible = true;
+                mouse_item.activate.connect (() => { show_control_center ("mouse"); });
+                item.submenu.append (mouse_item);
+                break;
+
+            case GnomeBluetooth.Type.HEADSET:
+            case GnomeBluetooth.Type.HEADPHONES:
+            case GnomeBluetooth.Type.OTHER_AUDIO:
+                var sound_item = new Gtk.MenuItem.with_label (_("Sound Settings..."));
+                sound_item.visible = true;
+                sound_item.activate.connect (() => { show_control_center ("sound"); });
+                item.submenu.append (sound_item);
+                break;
             }
         }
-
-        item.label = alias;
-        item.alias = alias;
-        item.address = address;
-        item.send_item.visible = can_send;
-        item.browse_item.visible = can_browse;
-        item.keyboard_item.visible = type == GnomeBluetooth.Type.KEYBOARD;
-        item.mouse_item.visible = type == GnomeBluetooth.Type.MOUSE || type == GnomeBluetooth.Type.TABLET;
-        item.sound_item.visible = type == GnomeBluetooth.Type.HEADSET || type == GnomeBluetooth.Type.HEADPHONES || type == GnomeBluetooth.Type.OTHER_AUDIO;
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -245,40 +286,12 @@ public class BluetoothIndicator : AppIndicator.Indicator
 private class BluetoothMenuItem : Gtk.MenuItem
 {
     public DBusProxy proxy;
-    public string alias;
-    public string address;
-    public Gtk.MenuItem send_item;
-    public Gtk.MenuItem browse_item;
-    public Gtk.MenuItem keyboard_item;
-    public Gtk.MenuItem mouse_item;
-    public Gtk.MenuItem sound_item;
 
     public BluetoothMenuItem (DBusProxy proxy)
     {
         this.proxy = proxy;
         label = ""; /* Workaround for https://bugs.launchpad.net/bugs/1086563 - without a label it thinks this is a separator */
-        submenu = new Gtk.Menu ();
-
-        send_item = new Gtk.MenuItem.with_label (_("Send files..."));
-        send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
-        submenu.append (send_item);
-
-        browse_item = new Gtk.MenuItem.with_label (_("Browse files..."));
-        browse_item.activate.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
-        submenu.append (browse_item);
-
-        keyboard_item = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-        keyboard_item.activate.connect (() => { show_control_center ("keyboard"); });
-        submenu.append (keyboard_item);
-
-        mouse_item = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-        mouse_item.activate.connect (() => { show_control_center ("mouse"); });
-        submenu.append (mouse_item);
-
-        sound_item = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-        sound_item.activate.connect (() => { show_control_center ("sound"); });
-        submenu.append (sound_item);
-    }    
+    }
 }
 
 private void show_control_center (string panel)
