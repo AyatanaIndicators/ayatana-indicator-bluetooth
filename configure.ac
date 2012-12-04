@@ -13,6 +13,7 @@ dnl ###########################################################################
 PKG_CHECK_MODULES(INDICATOR_BLUETOOTH, [
   glib-2.0
   gtk+-3.0
+  gnome-bluetooth-1.0
   appindicator3-0.1
 ])
 
