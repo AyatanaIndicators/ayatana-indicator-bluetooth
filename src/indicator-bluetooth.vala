@@ -18,6 +18,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
     private Gtk.MenuItem enable_item;
     private bool enable_value = false;
     private Gtk.CheckMenuItem visible_item;
+    private bool updating_visible = false;
     private Gtk.SeparatorMenuItem devices_separator;
     private Gtk.MenuItem devices_item;
     private List<BluetoothMenuItem> device_items;
@@ -61,11 +62,18 @@ public class BluetoothIndicator : AppIndicator.Indicator
         visible_item.active = discoverable;
         client.notify["default-adapter-discoverable"].connect (() =>
         {
+            updating_visible = true;
             bool is_discoverable;
             client.get ("default-adapter-discoverable", out is_discoverable);
             visible_item.active = is_discoverable;
+            updating_visible = false;
         });
-        visible_item.activate.connect (() => { client.set ("default-adapter-discoverable", visible_item.active); });
+        visible_item.activate.connect (() =>
+        {
+            if (updating_visible)
+                return;
+            client.set ("default-adapter-discoverable", visible_item.active);
+        });
         menu.append (visible_item);
     
         devices_separator = new Gtk.SeparatorMenuItem ();
