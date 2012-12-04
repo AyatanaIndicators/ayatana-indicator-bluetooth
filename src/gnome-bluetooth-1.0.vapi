@@ -7,6 +7,8 @@ public class Client : GLib.Object
 {
     public Client ();
     public Gtk.TreeModel model { get; }
+    public Gtk.TreeModel adapter_model { get; }
+    public Gtk.TreeModel device_model { get; }
 }
 
 [CCode (cheader_filename = "bluetooth-enums.h", cprefix = "BLUETOOTH_COLUMN_")]
@@ -71,10 +73,8 @@ public class Killswitch : GLib.Object
     public Killswitch ();
     public signal void state_changed (KillswitchState state);
     public bool has_killswitches ();
-    public void set_state (KillswitchState state);
-    public KillswitchState get_state ();
-    public unowned string state_to_string ();
     public KillswitchState state { get; set; }
+    public unowned string state_to_string ();
 }
 
 }
