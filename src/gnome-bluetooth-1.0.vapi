@@ -56,4 +56,25 @@ public void browse_address (GLib.Object? object, string address, uint timestamp,
 [CCode (cheader_filename = "bluetooth-utils.h")]
 public void send_to_address (string address, string alias);
 
+[CCode (cheader_filename = "bluetooth-killswitch.h", cprefix = "BLUETOOTH_KILLSWITCH_STATE_")]
+public enum KillswitchState
+{
+    NO_ADAPTER,
+    SOFT_BLOCKED,
+    UNBLOCKED,
+    HARD_BLOCKED
+}
+
+[CCode (cheader_filename = "bluetooth-killswitch.h")]
+public class Killswitch : GLib.Object
+{
+    public Killswitch ();
+    public signal void state_changed (KillswitchState state);
+    public bool has_killswitches ();
+    public void set_state (KillswitchState state);
+    public KillswitchState get_state ();
+    public unowned string state_to_string ();
+    public KillswitchState state { get; set; }
+}
+
 }

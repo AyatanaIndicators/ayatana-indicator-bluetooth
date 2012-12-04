@@ -3,8 +3,7 @@ bin_PROGRAMS = indicator-bluetooth
 indicator_bluetooth_SOURCES = 	\
 	config.vapi \
 	gnome-bluetooth-1.0.vapi \
-	indicator-bluetooth.vala \
-	rfkill.vala
+	indicator-bluetooth.vala
 
 indicator_bluetooth_VALAFLAGS = \
 	--pkg posix \

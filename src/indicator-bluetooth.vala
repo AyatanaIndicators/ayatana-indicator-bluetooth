@@ -12,7 +12,8 @@
 public class BluetoothIndicator : AppIndicator.Indicator
 {
     private GnomeBluetooth.Client client;
-    private RFKillManager rfkill;
+    private GnomeBluetooth.Killswitch killswitch;
+    private bool updating_killswitch = false;
     private Gtk.MenuItem status_item;
     private Gtk.MenuItem enable_item;
     private bool enable_value = false;
@@ -27,12 +28,8 @@ public class BluetoothIndicator : AppIndicator.Indicator
     {
         Object (id: "indicator-bluetooth", icon_name: "bluetooth-active", category: "Hardware");
 
-        /* Monitor killswitch status */
-        rfkill = new RFKillManager ();
-        rfkill.open ();
-        rfkill.device_added.connect (update_rfkill);
-        rfkill.device_changed.connect (update_rfkill);
-        rfkill.device_deleted.connect (update_rfkill);
+        killswitch = new GnomeBluetooth.Killswitch ();
+        killswitch.state_changed.connect (killswitch_state_changed_cb);
 
         client = new GnomeBluetooth.Client ();
 
@@ -47,7 +44,15 @@ public class BluetoothIndicator : AppIndicator.Indicator
         menu.append (status_item);
 
         enable_item = new Gtk.MenuItem ();
-        enable_item.activate.connect (toggle_enabled);
+        enable_item.activate.connect (() =>
+        {
+            if (updating_killswitch)
+                return;
+            if (killswitch.state == GnomeBluetooth.KillswitchState.UNBLOCKED)
+                killswitch.state = GnomeBluetooth.KillswitchState.SOFT_BLOCKED;
+            else
+                killswitch.state = GnomeBluetooth.KillswitchState.UNBLOCKED;
+        });
         menu.append (enable_item);
 
         visible_item = new Gtk.CheckMenuItem.with_label (_("Visible"));
@@ -94,7 +99,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
         settings_item.visible = true;
         menu.append (settings_item);
 
-        update_rfkill ();
+        killswitch_state_changed_cb (killswitch.state);
     }
 
     private BluetoothMenuItem? find_menu_item (DBusProxy proxy)
@@ -179,31 +184,16 @@ public class BluetoothIndicator : AppIndicator.Indicator
         menu.remove (item);
     }
 
-    private void update_rfkill ()
+    private void killswitch_state_changed_cb (GnomeBluetooth.KillswitchState state)
     {
-        var have_lock = false;
-        var software_locked = false;
-        var hardware_locked = false;
+        updating_killswitch = true;
 
-        foreach (var device in rfkill.get_devices ())
-        {
-            if (device.device_type != RFKillDeviceType.BLUETOOTH)
-                continue;
-
-            have_lock = true;
-            if (device.software_lock)
-                software_locked = true;
-            if (device.hardware_lock)
-                hardware_locked = true;
-        }
-        var locked = hardware_locked || software_locked;
-
-        if (hardware_locked)
+        if (state == GnomeBluetooth.KillswitchState.HARD_BLOCKED)
         {
             status_item.label = _("Bluetooth: Disabled");
             enable_item.visible = false;
         }
-        else if (software_locked)
+        if (state == GnomeBluetooth.KillswitchState.SOFT_BLOCKED)
         {
             status_item.label = _("Bluetooth: Off");
             enable_item.label = _("Turn on Bluetooth");
@@ -219,16 +209,13 @@ public class BluetoothIndicator : AppIndicator.Indicator
         }
 
         /* Disable devices when locked */
-        visible_item.visible = !locked;
-        devices_separator.visible = !locked;
-        devices_item.visible = !locked;
+        visible_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
+        devices_separator.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
+        devices_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
         foreach (var item in device_items)
-            item.visible = !locked;
-    }
+            item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
 
-    private void toggle_enabled ()
-    {
-        rfkill.set_software_lock (RFKillDeviceType.BLUETOOTH, enable_value);
+        updating_killswitch = false;
     }
 }
 
@@ -247,10 +234,8 @@ private class BluetoothMenuItem : Gtk.MenuItem
     {
         this.proxy = proxy;
         submenu = new Gtk.Menu ();
-        submenu.visible = true;
 
         send_item = new Gtk.MenuItem.with_label (_("Send files..."));
-        send_item.visible = true;
         send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
         submenu.append (send_item);
 
