@@ -190,11 +190,13 @@ public class BluetoothIndicator : AppIndicator.Indicator
 
         if (state == GnomeBluetooth.KillswitchState.HARD_BLOCKED)
         {
+            icon_name = "bluetooth-inactive";
             status_item.label = _("Bluetooth: Disabled");
             enable_item.visible = false;
         }
         if (state == GnomeBluetooth.KillswitchState.SOFT_BLOCKED)
         {
+            icon_name = "bluetooth-inactive";
             status_item.label = _("Bluetooth: Off");
             enable_item.label = _("Turn on Bluetooth");
             enable_item.visible = true;
@@ -207,6 +209,11 @@ public class BluetoothIndicator : AppIndicator.Indicator
             enable_item.visible = true;
             enable_value = true;
         }
+
+        if (state == GnomeBluetooth.KillswitchState.UNBLOCKED)
+            icon_name = "bluetooth-active";
+        else
+            icon_name = "bluetooth-disabled";
 
         /* Disable devices when locked */
         visible_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
