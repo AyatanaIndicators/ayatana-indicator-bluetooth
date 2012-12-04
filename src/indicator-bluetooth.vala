@@ -82,12 +82,17 @@ public class BluetoothIndicator : AppIndicator.Indicator
         client.model.row_changed.connect (device_changed_cb);
         client.model.row_deleted.connect (device_removed_cb);
         Gtk.TreeIter iter;
-        if (client.model.get_iter_first (out iter))
+        var have_iter = client.model.get_iter_first (out iter);
+        while (have_iter)
         {
-            do
+            Gtk.TreeIter child_iter;
+            var have_child_iter = client.model.iter_children (out child_iter, iter);
+            while (have_child_iter)
             {
-                device_changed_cb (null, iter);
-            } while (client.model.iter_next (ref iter));
+                device_changed_cb (null, child_iter);
+                have_child_iter = client.model.iter_next (ref child_iter);
+            }
+            have_iter = client.model.iter_next (ref iter);
         }
 
         var sep = new Gtk.SeparatorMenuItem ();
@@ -113,17 +118,20 @@ public class BluetoothIndicator : AppIndicator.Indicator
 
     private void device_changed_cb (Gtk.TreePath? path, Gtk.TreeIter iter)
     {
+        /* Ignore adapters */
+        Gtk.TreeIter parent_iter;
+        if (!client.model.iter_parent (out parent_iter, iter))
+            return;
+
         DBusProxy proxy;
         string address;
         string alias;
-        string name;
         GnomeBluetooth.Type type;
         string[] uuids;
         client.model.get (iter,
                           GnomeBluetooth.Column.PROXY, out proxy,
                           GnomeBluetooth.Column.ADDRESS, out address,
                           GnomeBluetooth.Column.ALIAS, out alias,
-                          GnomeBluetooth.Column.NAME, out name,
                           GnomeBluetooth.Column.TYPE, out type,
                           GnomeBluetooth.Column.UUIDS, out uuids);
 
@@ -157,7 +165,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
             }
         }
 
-        item.label = name;
+        item.label = alias;
         item.alias = alias;
         item.address = address;
         item.send_item.visible = can_send;
