@@ -135,23 +135,27 @@ public class BluetoothIndicator : AppIndicator.Indicator
         string address;
         string alias;
         GnomeBluetooth.Type type;
+        bool connected;
+        HashTable services;
         string[] uuids;
         client.model.get (iter,
                           GnomeBluetooth.Column.PROXY, out proxy,
                           GnomeBluetooth.Column.ADDRESS, out address,
                           GnomeBluetooth.Column.ALIAS, out alias,
                           GnomeBluetooth.Column.TYPE, out type,
+                          GnomeBluetooth.Column.CONNECTED, out connected,
+                          GnomeBluetooth.Column.SERVICES, out services,
                           GnomeBluetooth.Column.UUIDS, out uuids);
 
         /* Skip if haven't actually got any information yet */
         if (proxy == null)
             return;
-
+            
         /* Find or create menu item */
         var item = find_menu_item (proxy);
         if (item == null)
         {
-            item = new BluetoothMenuItem (proxy);
+            item = new BluetoothMenuItem (client, proxy);
             item.visible = true;
             var last_item = devices_item;
             if (device_items != null)
@@ -160,68 +164,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
             menu.insert (item, menu.get_children ().index (last_item) + 1);
         }
 
-        item.label = alias;
-
-        if (item.submenu == null)
-        {
-            item.submenu = new Gtk.Menu ();
-
-            var can_send = false;
-            var can_browse = false;
-            if (uuids != null)
-            {
-                for (var i = 0; uuids[i] != null; i++)
-                {
-                    if (uuids[i] == "OBEXObjectPush")
-                        can_send = true;
-                    if (uuids[i] == "OBEXFileTransfer")
-                        can_browse = true;
-                }
-            }
-
-            if (can_send)
-            {
-                var send_item = new Gtk.MenuItem.with_label (_("Send files..."));
-                send_item.visible = true;
-                send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
-                item.submenu.append (send_item);
-            }
-
-            if (can_browse)
-            {
-                var browse_item = new Gtk.MenuItem.with_label (_("Browse files..."));
-                browse_item.visible = true;
-                browse_item.activate.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
-                item.submenu.append (browse_item);
-            }
-
-            switch (type)
-            {
-            case GnomeBluetooth.Type.KEYBOARD:
-                var keyboard_item = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-                keyboard_item.visible = true;
-                keyboard_item.activate.connect (() => { show_control_center ("keyboard"); });
-                item.submenu.append (keyboard_item);
-                break;
-
-            case GnomeBluetooth.Type.MOUSE:
-            case GnomeBluetooth.Type.TABLET:
-                var mouse_item = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-                mouse_item.visible = true;
-                mouse_item.activate.connect (() => { show_control_center ("mouse"); });
-                item.submenu.append (mouse_item);
-                break;
-
-            case GnomeBluetooth.Type.HEADSET:
-            case GnomeBluetooth.Type.HEADPHONES:
-            case GnomeBluetooth.Type.OTHER_AUDIO:
-                var sound_item = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-                sound_item.visible = true;
-                sound_item.activate.connect (() => { show_control_center ("sound"); });
-                item.submenu.append (sound_item);
-                break;
-            }
-        }
+        item.update (type, address, alias, connected, services, uuids);
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -285,12 +228,130 @@ public class BluetoothIndicator : AppIndicator.Indicator
 
 private class BluetoothMenuItem : Gtk.MenuItem
 {
+    private GnomeBluetooth.Client client;
     public DBusProxy proxy;
+    private Gtk.MenuItem? status_item = null;
+    private Gtk.MenuItem? connect_item = null;
 
-    public BluetoothMenuItem (DBusProxy proxy)
+    public BluetoothMenuItem (GnomeBluetooth.Client client, DBusProxy proxy)
     {
+        this.client = client;
         this.proxy = proxy;
         label = ""; /* Workaround for https://bugs.launchpad.net/bugs/1086563 - without a label it thinks this is a separator */
+    }
+
+    public void update (GnomeBluetooth.Type type, string address, string alias, bool connected, HashTable? services, string[] uuids)
+    {
+        label = alias;
+
+        submenu = new Gtk.Menu ();
+
+        if (services != null)
+        {
+            status_item = new Gtk.MenuItem ();
+            status_item.visible = true;
+            status_item.sensitive = false;
+            submenu.append (status_item);
+
+            connect_item = new Gtk.MenuItem ();
+            connect_item.visible = true;
+            connect_item.activate.connect (() => { connect_service (proxy.get_object_path (), true); });
+            submenu.append (connect_item);
+        }
+
+        update_connect_items (connected);
+        
+        var can_send = false;
+        var can_browse = false;
+        if (uuids != null)
+        {
+            for (var i = 0; uuids[i] != null; i++)
+            {
+                if (uuids[i] == "OBEXObjectPush")
+                    can_send = true;
+                if (uuids[i] == "OBEXFileTransfer")
+                    can_browse = true;
+            }
+        }
+
+        if (can_send)
+        {
+            var send_item = new Gtk.MenuItem.with_label (_("Send files..."));
+            send_item.visible = true;
+            send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
+            submenu.append (send_item);
+        }
+
+        if (can_browse)
+        {
+            var browse_item = new Gtk.MenuItem.with_label (_("Browse files..."));
+            browse_item.visible = true;
+            browse_item.activate.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
+            submenu.append (browse_item);
+        }
+
+        switch (type)
+        {
+        case GnomeBluetooth.Type.KEYBOARD:
+            var keyboard_item = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
+            keyboard_item.visible = true;
+            keyboard_item.activate.connect (() => { show_control_center ("keyboard"); });
+            submenu.append (keyboard_item);
+            break;
+
+        case GnomeBluetooth.Type.MOUSE:
+        case GnomeBluetooth.Type.TABLET:
+            var mouse_item = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
+            mouse_item.visible = true;
+            mouse_item.activate.connect (() => { show_control_center ("mouse"); });
+            submenu.append (mouse_item);
+            break;
+
+        case GnomeBluetooth.Type.HEADSET:
+        case GnomeBluetooth.Type.HEADPHONES:
+        case GnomeBluetooth.Type.OTHER_AUDIO:
+            var sound_item = new Gtk.MenuItem.with_label (_("Sound Settings..."));
+            sound_item.visible = true;
+            sound_item.activate.connect (() => { show_control_center ("sound"); });
+            submenu.append (sound_item);
+            break;
+        }
+    }
+
+    private void connect_service (string device, bool connect)
+    {
+        status_item.label = _("Connecting...");
+        client.connect_service.begin (device, connect, null, (object, result) =>
+        {
+            var connected = false;
+            try
+            {
+                connected = client.connect_service.end (result);
+            }
+            catch (Error e)
+            {
+                warning ("Failed to connect service: %s", e.message);
+            }
+            update_connect_items (connected);
+        });
+    }
+
+    private void update_connect_items (bool connected)
+    {
+        if (status_item != null)
+        {
+            if (connected)
+                status_item.label = _("Connected");
+            else
+                status_item.label = _("Disconnected");
+        }
+        if (connect_item != null)
+        {
+            if (connected)
+                connect_item.label = _("Disconnect");
+            else
+                connect_item.label = _("Connect");
+        }
     }
 }
 

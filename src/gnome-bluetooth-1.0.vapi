@@ -9,6 +9,8 @@ public class Client : GLib.Object
     public Gtk.TreeModel model { get; }
     public Gtk.TreeModel adapter_model { get; }
     public Gtk.TreeModel device_model { get; }
+    [CCode (finish_function = "bluetooth_client_connect_service_finish")]
+    public async bool connect_service (string device, bool connect, GLib.Cancellable? cancellable = null) throws GLib.Error;
 }
 
 [CCode (cheader_filename = "bluetooth-enums.h", cprefix = "BLUETOOTH_COLUMN_")]
