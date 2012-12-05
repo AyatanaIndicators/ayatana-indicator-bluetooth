@@ -20,7 +20,6 @@ public class BluetoothIndicator : AppIndicator.Indicator
     private Gtk.CheckMenuItem visible_item;
     private bool updating_visible = false;
     private Gtk.SeparatorMenuItem devices_separator;
-    private Gtk.MenuItem devices_item;
     private List<BluetoothMenuItem> device_items;
     private Gtk.MenuItem settings_item;
     private Gtk.Menu menu;
@@ -79,11 +78,6 @@ public class BluetoothIndicator : AppIndicator.Indicator
         devices_separator = new Gtk.SeparatorMenuItem ();
         menu.append (devices_separator);
 
-        devices_item = new Gtk.MenuItem.with_label (_("Devices"));
-        devices_item.sensitive = false;
-        devices_item.visible = true;
-        menu.append (devices_item);
-
         device_items = new List<BluetoothMenuItem> ();
 
         client.model.row_inserted.connect (device_changed_cb);
@@ -135,6 +129,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
         string address;
         string alias;
         GnomeBluetooth.Type type;
+        string icon;
         bool connected;
         HashTable services;
         string[] uuids;
@@ -143,6 +138,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
                           GnomeBluetooth.Column.ADDRESS, out address,
                           GnomeBluetooth.Column.ALIAS, out alias,
                           GnomeBluetooth.Column.TYPE, out type,
+                          GnomeBluetooth.Column.ICON, out icon,
                           GnomeBluetooth.Column.CONNECTED, out connected,
                           GnomeBluetooth.Column.SERVICES, out services,
                           GnomeBluetooth.Column.UUIDS, out uuids);
@@ -157,14 +153,14 @@ public class BluetoothIndicator : AppIndicator.Indicator
         {
             item = new BluetoothMenuItem (client, proxy);
             item.visible = true;
-            var last_item = devices_item;
+            var last_item = devices_separator as Gtk.MenuItem;
             if (device_items != null)
                 last_item = device_items.last ().data;
             device_items.append (item);
             menu.insert (item, menu.get_children ().index (last_item) + 1);
         }
 
-        item.update (type, address, alias, connected, services, uuids);
+        item.update (type, address, alias, icon, connected, services, uuids);
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -218,7 +214,6 @@ public class BluetoothIndicator : AppIndicator.Indicator
         /* Disable devices when locked */
         visible_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
         devices_separator.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
-        devices_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
         foreach (var item in device_items)
             item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
 
@@ -226,7 +221,7 @@ public class BluetoothIndicator : AppIndicator.Indicator
     }
 }
 
-private class BluetoothMenuItem : Gtk.MenuItem
+private class BluetoothMenuItem : Gtk.ImageMenuItem
 {
     private GnomeBluetooth.Client client;
     public DBusProxy proxy;
@@ -238,11 +233,14 @@ private class BluetoothMenuItem : Gtk.MenuItem
         this.client = client;
         this.proxy = proxy;
         label = ""; /* Workaround for https://bugs.launchpad.net/bugs/1086563 - without a label it thinks this is a separator */
+        image = new Gtk.Image ();
+        always_show_image = true;
     }
 
-    public void update (GnomeBluetooth.Type type, string address, string alias, bool connected, HashTable? services, string[] uuids)
+    public void update (GnomeBluetooth.Type type, string address, string alias, string icon, bool connected, HashTable? services, string[] uuids)
     {
         label = alias;
+        (image as Gtk.Image).icon_name = icon;
 
         submenu = new Gtk.Menu ();
 
