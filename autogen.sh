@@ -1,9 +1,12 @@
 #!/bin/sh
-# Run this to generate all the initial makefiles, etc.
 
-libtoolize
-intltoolize --force
-aclocal
-automake --add-missing --copy --foreign
-autoconf
-./configure $@
+PKG_NAME="indicator-bluetooth"
+
+which gnome-autogen.sh || {
+	echo "You need gnome-common"
+	exit 1
+}
+
+USE_GNOME2_MACROS=1 \
+. gnome-autogen.sh
+
