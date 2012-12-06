@@ -45,7 +45,7 @@ public class BluetoothIndicator
         menu_server.set_root (menu);
 
         enable_item = new Dbusmenu.Menuitem ();
-        enable_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Enabled"));
+        enable_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth"));
         enable_item.property_set (Dbusmenu.MENUITEM_PROP_TYPE, "x-canonical-switch");
         enable_item.item_activated.connect (() =>
         {
