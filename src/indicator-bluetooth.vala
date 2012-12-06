@@ -9,376 +9,97 @@
  * license.
  */
 
-public class BluetoothIndicator : AppIndicator.Indicator
+public class BluetoothIndicator : Indicator.Object
 {
-    private GnomeBluetooth.Client client;
-    private GnomeBluetooth.Killswitch killswitch;
-    private bool updating_killswitch = false;
-    private Gtk.MenuItem status_item;
-    private Gtk.MenuItem enable_item;
-    private bool enable_value = false;
-    private Gtk.CheckMenuItem visible_item;
-    private bool updating_visible = false;
-    private Gtk.SeparatorMenuItem devices_separator;
-    private List<BluetoothMenuItem> device_items;
-    private Gtk.MenuItem settings_item;
-    private Gtk.Menu menu;
+    private Indicator.ServiceManager service;
+    private Gtk.Image image;
+    private DbusmenuGtk.Menu menu;
+    private BluetoothService proxy;
 
-    public BluetoothIndicator ()
+    construct
     {
-        Object (id: "indicator-bluetooth", icon_name: "bluetooth-active", category: "Hardware");
+        service = new Indicator.ServiceManager ("com.canonical.indicator.bluetooth");
+        service.connection_change.connect (connection_change_cb);
+        menu = new DbusmenuGtk.Menu ("com.canonical.indicator.bluetooth", "/com/canonical/indicator/bluetooth/menu");
+        image = Indicator.image_helper ("bluetooth-active");
+        image.visible = true;
 
-        killswitch = new GnomeBluetooth.Killswitch ();
-        killswitch.state_changed.connect (killswitch_state_changed_cb);
-
-        client = new GnomeBluetooth.Client ();
-
-        set_status (AppIndicator.IndicatorStatus.ACTIVE);
-
-        menu = new Gtk.Menu ();
-        set_menu (menu);
-
-        status_item = new Gtk.MenuItem ();
-        status_item.sensitive = false;
-        status_item.visible = true;
-        menu.append (status_item);
-
-        enable_item = new Gtk.MenuItem ();
-        enable_item.activate.connect (() =>
-        {
-            if (updating_killswitch)
-                return;
-            if (killswitch.state == GnomeBluetooth.KillswitchState.UNBLOCKED)
-                killswitch.state = GnomeBluetooth.KillswitchState.SOFT_BLOCKED;
-            else
-                killswitch.state = GnomeBluetooth.KillswitchState.UNBLOCKED;
-        });
-        menu.append (enable_item);
-
-        visible_item = new Gtk.CheckMenuItem.with_label (_("Visible"));
-        bool discoverable;
-        client.get ("default-adapter-discoverable", out discoverable);
-        visible_item.active = discoverable;
-        client.notify["default-adapter-discoverable"].connect (() =>
-        {
-            updating_visible = true;
-            bool is_discoverable;
-            client.get ("default-adapter-discoverable", out is_discoverable);
-            visible_item.active = is_discoverable;
-            updating_visible = false;
-        });
-        visible_item.activate.connect (() =>
-        {
-            if (updating_visible)
-                return;
-            client.set ("default-adapter-discoverable", visible_item.active);
-        });
-        menu.append (visible_item);
-    
-        devices_separator = new Gtk.SeparatorMenuItem ();
-        menu.append (devices_separator);
-
-        device_items = new List<BluetoothMenuItem> ();
-
-        client.model.row_inserted.connect (device_changed_cb);
-        client.model.row_changed.connect (device_changed_cb);
-        client.model.row_deleted.connect (device_removed_cb);
-        Gtk.TreeIter iter;
-        var have_iter = client.model.get_iter_first (out iter);
-        while (have_iter)
-        {
-            Gtk.TreeIter child_iter;
-            var have_child_iter = client.model.iter_children (out child_iter, iter);
-            while (have_child_iter)
-            {
-                device_changed_cb (null, child_iter);
-                have_child_iter = client.model.iter_next (ref child_iter);
-            }
-            have_iter = client.model.iter_next (ref iter);
-        }
-
-        var sep = new Gtk.SeparatorMenuItem ();
-        sep.visible = true;
-        menu.append (sep);
-
-        settings_item = new Gtk.MenuItem.with_label (_("Bluetooth Settings..."));
-        settings_item.activate.connect (() => { show_control_center ("bluetooth"); });
-        settings_item.visible = true;
-        menu.append (settings_item);
-
-        killswitch_state_changed_cb (killswitch.state);
+        var menu_client = menu.get_client ();
+        menu_client.add_type_handler_full ("x-canonical-switch", new_switch_cb);
     }
 
-    private BluetoothMenuItem? find_menu_item (DBusProxy proxy)
+    private bool new_switch_cb (Dbusmenu.Menuitem newitem, Dbusmenu.Menuitem parent, Dbusmenu.Client client)
     {
-        foreach (var item in device_items)
-            if (item.proxy == proxy)
-                return item;
-
-        return null;
+        var item = new Ido.SwitchMenuItem ();
+        item.active = newitem.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED;
+        var label = new Gtk.Label (newitem.property_get (Dbusmenu.MENUITEM_PROP_LABEL));
+        label.visible = true;
+        item.content_area.add (label);
+        newitem.property_changed.connect ((mi, prop, value) =>
+        {
+            label.label = mi.property_get (Dbusmenu.MENUITEM_PROP_LABEL);
+            item.active = mi.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED;
+        });
+        (client as DbusmenuGtk.Client).newitem_base (newitem, item, parent);
+        return true;
     }
 
-    private void device_changed_cb (Gtk.TreePath? path, Gtk.TreeIter iter)
+    public override unowned Gtk.Image get_image ()
     {
-        /* Ignore adapters */
-        Gtk.TreeIter parent_iter;
-        if (!client.model.iter_parent (out parent_iter, iter))
+        return image;
+    }
+
+    public override unowned Gtk.Menu get_menu ()
+    {
+        return menu;
+    }
+
+    private void connection_change_cb (bool connected)
+    {
+        if (!connected)
             return;
 
-        DBusProxy proxy;
-        string address;
-        string alias;
-        GnomeBluetooth.Type type;
-        string icon;
-        bool connected;
-        HashTable services;
-        string[] uuids;
-        client.model.get (iter,
-                          GnomeBluetooth.Column.PROXY, out proxy,
-                          GnomeBluetooth.Column.ADDRESS, out address,
-                          GnomeBluetooth.Column.ALIAS, out alias,
-                          GnomeBluetooth.Column.TYPE, out type,
-                          GnomeBluetooth.Column.ICON, out icon,
-                          GnomeBluetooth.Column.CONNECTED, out connected,
-                          GnomeBluetooth.Column.SERVICES, out services,
-                          GnomeBluetooth.Column.UUIDS, out uuids);
-
-        /* Skip if haven't actually got any information yet */
+        // FIXME: Set proxy to null on disconnect?
+        // FIXME: Use Cancellable to cancel existing connection
         if (proxy == null)
-            return;
-            
-        /* Find or create menu item */
-        var item = find_menu_item (proxy);
-        if (item == null)
         {
-            item = new BluetoothMenuItem (client, proxy);
-            item.visible = true;
-            var last_item = devices_separator as Gtk.MenuItem;
-            if (device_items != null)
-                last_item = device_items.last ().data;
-            device_items.append (item);
-            menu.insert (item, menu.get_children ().index (last_item) + 1);
+            Bus.get_proxy.begin<BluetoothService> (BusType.SESSION,
+                                                   "com.canonical.indicator.bluetooth",
+                                                   "/com/canonical/indicator/bluetooth/service",
+                                                   DBusProxyFlags.NONE, null, (object, result) =>
+                                                   {
+                                                       try
+                                                       {
+                                                           proxy = Bus.get_proxy.end (result);
+                                                           proxy.g_properties_changed.connect (update_icon_cb);
+                                                           update_icon_cb ();
+                                                       }
+                                                       catch (IOError e)
+                                                       {
+                                                           warning ("Failed to connect to bluetooth service: %s", e.message);
+                                                       }
+                                                   });
         }
+    }    
 
-        item.update (type, address, alias, icon, connected, services, uuids);
-    }
-
-    private void device_removed_cb (Gtk.TreePath path)
+    private void update_icon_cb ()
     {
-        Gtk.TreeIter iter;
-        if (!client.model.get_iter (out iter, path))
-            return;
-
-        DBusProxy proxy;
-        client.model.get (iter, GnomeBluetooth.Column.PROXY, out proxy);
-
-        var item = find_menu_item (proxy);
-        if (item == null)
-            return;
-
-        device_items.remove (item);
-        menu.remove (item);
-    }
-
-    private void killswitch_state_changed_cb (GnomeBluetooth.KillswitchState state)
-    {
-        updating_killswitch = true;
-
-        if (state == GnomeBluetooth.KillswitchState.HARD_BLOCKED)
-        {
-            icon_name = "bluetooth-inactive";
-            status_item.label = _("Bluetooth: Disabled");
-            enable_item.visible = false;
-        }
-        if (state == GnomeBluetooth.KillswitchState.SOFT_BLOCKED)
-        {
-            icon_name = "bluetooth-inactive";
-            status_item.label = _("Bluetooth: Off");
-            enable_item.label = _("Turn on Bluetooth");
-            enable_item.visible = true;
-            enable_value = false;
-        }
-        else
-        {
-            status_item.label = _("Bluetooth: On");
-            enable_item.label = _("Turn off Bluetooth");
-            enable_item.visible = true;
-            enable_value = true;
-        }
-
-        if (state == GnomeBluetooth.KillswitchState.UNBLOCKED)
-            icon_name = "bluetooth-active";
-        else
-            icon_name = "bluetooth-disabled";
-
-        /* Disable devices when locked */
-        visible_item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
-        devices_separator.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
-        foreach (var item in device_items)
-            item.visible = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
-
-        updating_killswitch = false;
+        Indicator.image_helper_update (image, proxy.icon_name);
     }
 }
 
-private class BluetoothMenuItem : Gtk.ImageMenuItem
+[DBus (name = "com.canonical.indicator.bluetooth.service")]
+public interface BluetoothService : DBusProxy
 {
-    private GnomeBluetooth.Client client;
-    public DBusProxy proxy;
-    private Gtk.MenuItem? status_item = null;
-    private Gtk.MenuItem? connect_item = null;
-
-    public BluetoothMenuItem (GnomeBluetooth.Client client, DBusProxy proxy)
-    {
-        this.client = client;
-        this.proxy = proxy;
-        label = ""; /* Workaround for https://bugs.launchpad.net/bugs/1086563 - without a label it thinks this is a separator */
-        image = new Gtk.Image ();
-        always_show_image = true;
-    }
-
-    public void update (GnomeBluetooth.Type type, string address, string alias, string icon, bool connected, HashTable? services, string[] uuids)
-    {
-        label = alias;
-        (image as Gtk.Image).icon_name = icon;
-
-        submenu = new Gtk.Menu ();
-
-        if (services != null)
-        {
-            status_item = new Gtk.MenuItem ();
-            status_item.visible = true;
-            status_item.sensitive = false;
-            submenu.append (status_item);
-
-            connect_item = new Gtk.MenuItem ();
-            connect_item.visible = true;
-            connect_item.activate.connect (() => { connect_service (proxy.get_object_path (), true); });
-            submenu.append (connect_item);
-        }
-
-        update_connect_items (connected);
-        
-        var can_send = false;
-        var can_browse = false;
-        if (uuids != null)
-        {
-            for (var i = 0; uuids[i] != null; i++)
-            {
-                if (uuids[i] == "OBEXObjectPush")
-                    can_send = true;
-                if (uuids[i] == "OBEXFileTransfer")
-                    can_browse = true;
-            }
-        }
-
-        if (can_send)
-        {
-            var send_item = new Gtk.MenuItem.with_label (_("Send files..."));
-            send_item.visible = true;
-            send_item.activate.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
-            submenu.append (send_item);
-        }
-
-        if (can_browse)
-        {
-            var browse_item = new Gtk.MenuItem.with_label (_("Browse files..."));
-            browse_item.visible = true;
-            browse_item.activate.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
-            submenu.append (browse_item);
-        }
-
-        switch (type)
-        {
-        case GnomeBluetooth.Type.KEYBOARD:
-            var keyboard_item = new Gtk.MenuItem.with_label (_("Keyboard Settings..."));
-            keyboard_item.visible = true;
-            keyboard_item.activate.connect (() => { show_control_center ("keyboard"); });
-            submenu.append (keyboard_item);
-            break;
-
-        case GnomeBluetooth.Type.MOUSE:
-        case GnomeBluetooth.Type.TABLET:
-            var mouse_item = new Gtk.MenuItem.with_label (_("Mouse and Touchpad Settings..."));
-            mouse_item.visible = true;
-            mouse_item.activate.connect (() => { show_control_center ("mouse"); });
-            submenu.append (mouse_item);
-            break;
-
-        case GnomeBluetooth.Type.HEADSET:
-        case GnomeBluetooth.Type.HEADPHONES:
-        case GnomeBluetooth.Type.OTHER_AUDIO:
-            var sound_item = new Gtk.MenuItem.with_label (_("Sound Settings..."));
-            sound_item.visible = true;
-            sound_item.activate.connect (() => { show_control_center ("sound"); });
-            submenu.append (sound_item);
-            break;
-        }
-    }
-
-    private void connect_service (string device, bool connect)
-    {
-        status_item.label = _("Connecting...");
-        client.connect_service.begin (device, connect, null, (object, result) =>
-        {
-            var connected = false;
-            try
-            {
-                connected = client.connect_service.end (result);
-            }
-            catch (Error e)
-            {
-                warning ("Failed to connect service: %s", e.message);
-            }
-            update_connect_items (connected);
-        });
-    }
-
-    private void update_connect_items (bool connected)
-    {
-        if (status_item != null)
-        {
-            if (connected)
-                status_item.label = _("Connected");
-            else
-                status_item.label = _("Disconnected");
-        }
-        if (connect_item != null)
-        {
-            if (connected)
-                connect_item.label = _("Disconnect");
-            else
-                connect_item.label = _("Connect");
-        }
-    }
+    public abstract string icon_name { owned get; }
 }
 
-private void show_control_center (string panel)
+public static string get_version ()
 {
-    try
-    {
-        Process.spawn_command_line_async ("gnome-control-center %s".printf (panel));
-    }
-    catch (GLib.SpawnError e)
-    {
-        warning ("Failed to open control center: %s", e.message);
-    }
+    return Indicator.VERSION;
 }
 
-public static int main (string[] args)
+public static GLib.Type get_type ()
 {
-    Intl.setlocale (LocaleCategory.ALL, "");
-    Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
-    Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (GETTEXT_PACKAGE);
-
-    Gtk.init (ref args);
-
-    var indicator = new BluetoothIndicator ();
-    
-    Gtk.main ();
-    
-    indicator = null;
-
-    return Posix.EXIT_SUCCESS;
+    return typeof (BluetoothIndicator);
 }
