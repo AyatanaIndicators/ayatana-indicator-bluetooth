@@ -25,7 +25,6 @@ public class BluetoothIndicator
     private List<BluetoothMenuItem> device_items;
     private Dbusmenu.Menuitem settings_item;
     private Dbusmenu.Menuitem menu;
-    private string icon_name = "bluetooth-active";
 
     public BluetoothIndicator () throws Error
     {
@@ -159,6 +158,7 @@ public class BluetoothIndicator
         if (item == null)
         {
             item = new BluetoothMenuItem (client, proxy);
+            item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, killswitch.state == GnomeBluetooth.KillswitchState.UNBLOCKED);
             var last_item = devices_separator as Dbusmenu.Menuitem;
             if (device_items != null)
                 last_item = device_items.last ().data;
@@ -190,15 +190,17 @@ public class BluetoothIndicator
     {
         updating_killswitch = true;
 
-        icon_name = state == GnomeBluetooth.KillswitchState.UNBLOCKED ? "bluetooth-active" : "bluetooth-disabled";
+        var enabled = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
 
-        /*var builder = new VariantBuilder (VariantType.ARRAY);
-        builder.add ("{sv}", "IconName", new Variant.string (icon_name));
+        bluetooth_service._icon_name = enabled ? "bluetooth-active" : "bluetooth-disabled";
+
+        var builder = new VariantBuilder (VariantType.ARRAY);
+        builder.add ("{sv}", "IconName", new Variant.string (bluetooth_service._icon_name));
         try
         {
-            var properties = new Variant ("(sa{sv}as)", "com.canonical.indicator.vala.service", builder, null);
+            var properties = new Variant ("(sa{sv}as)", "com.canonical.indicator.bluetooth.service", builder, null);
             bus.emit_signal (null,
-                             "/com/canonical/indicator/vala/service",
+                             "/com/canonical/indicator/bluetooth/service",
                              "org.freedesktop.DBus.Properties",
                              "PropertiesChanged",
                              properties);
@@ -206,15 +208,15 @@ public class BluetoothIndicator
         catch (Error e)
         {
             warning ("Failed to emit signal: %s", e.message);
-        }*/
+        }
 
-        enable_item.property_set_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, state == GnomeBluetooth.KillswitchState.UNBLOCKED ? Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED : Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED);
+        enable_item.property_set_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, enabled ? Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED : Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED);
 
         /* Disable devices when locked */
-        visible_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, state == GnomeBluetooth.KillswitchState.UNBLOCKED);
-        devices_separator.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, state == GnomeBluetooth.KillswitchState.UNBLOCKED);
+        visible_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
+        devices_separator.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
         foreach (var item in device_items)
-            item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, state == GnomeBluetooth.KillswitchState.UNBLOCKED);
+            item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
 
         updating_killswitch = false;
     }
@@ -372,8 +374,9 @@ public static int main (string[] args)
 [DBus (name = "com.canonical.indicator.bluetooth.service")]
 private class BluetoothService : Object
 {
+    internal string _icon_name = "bluetooth-active";
     public string icon_name
     {
-        get { return "bluetooth-active"; }
+        get { return _icon_name; }
     }
 }
