@@ -216,7 +216,7 @@ public class BluetoothIndicator
         visible_item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
         devices_separator.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
         foreach (var item in device_items)
-            item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled);
+            item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, enabled && item.get_children () != null);
 
         updating_killswitch = false;
     }
@@ -312,6 +312,8 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
             child_append (sound_item);
             break;
         }
+
+        property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, get_children () != null);
     }
 
     private void connect_service (string device, bool connect)
