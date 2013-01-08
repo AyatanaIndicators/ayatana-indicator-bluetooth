@@ -30,16 +30,7 @@ public class BluetoothIndicator : Indicator.Object
 
     private bool new_switch_cb (Dbusmenu.Menuitem newitem, Dbusmenu.Menuitem parent, Dbusmenu.Client client)
     {
-        var item = new Ido.SwitchMenuItem ();
-        item.active = newitem.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED;
-        var label = new Gtk.Label (newitem.property_get (Dbusmenu.MENUITEM_PROP_LABEL));
-        label.visible = true;
-        item.content_area.add (label);
-        newitem.property_changed.connect ((mi, prop, value) =>
-        {
-            label.label = mi.property_get (Dbusmenu.MENUITEM_PROP_LABEL);
-            item.active = mi.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED;
-        });
+        var item = new Switch (newitem);
         (client as DbusmenuGtk.Client).newitem_base (newitem, item, parent);
         return true;
     }
@@ -85,6 +76,40 @@ public class BluetoothIndicator : Indicator.Object
     private void update_icon_cb ()
     {
         Indicator.image_helper_update (image, proxy.icon_name);
+    }
+}
+
+public class Switch : Ido.SwitchMenuItem
+{
+    public Dbusmenu.Menuitem menuitem;
+    public new Gtk.Label label;
+    private bool updating_switch = false;
+    
+    public Switch (Dbusmenu.Menuitem menuitem)
+    {
+        this.menuitem = menuitem;
+        label = new Gtk.Label ("");
+        label.visible = true;
+        content_area.add (label);
+
+        /* Be the first listener to the activate signal so we can stop it
+         * emitting when we change the state. Without this you get feedback loops */
+        activate.connect (() => 
+        {
+            if (updating_switch)
+                Signal.stop_emission_by_name (this, "activate");
+        });
+
+        menuitem.property_changed.connect ((mi, prop, value) => { update (); });
+        update ();
+    }
+
+    private void update ()
+    {
+        updating_switch = true;
+        label.label = menuitem.property_get (Dbusmenu.MENUITEM_PROP_LABEL);
+        active = menuitem.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED;
+        updating_switch = false;
     }
 }
 
