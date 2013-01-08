@@ -26,7 +26,7 @@ msgid "Visible"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:111
-msgid "Bluetooth Settings..."
+msgid "Bluetooth Settings…"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:253
@@ -34,21 +34,21 @@ msgid "Connection"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:276
-msgid "Send files..."
+msgid "Send files…"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:284
-msgid "Browse files..."
+msgid "Browse files…"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:293
-msgid "Keyboard Settings..."
+msgid "Keyboard Settings…"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:301
-msgid "Mouse and Touchpad Settings..."
+msgid "Mouse and Touchpad Settings…"
 msgstr ""
 
 #: ../src/indicator-bluetooth-service.vala:310
-msgid "Sound Settings..."
+msgid "Sound Settings…"
 msgstr ""

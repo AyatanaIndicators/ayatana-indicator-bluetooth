@@ -108,7 +108,7 @@ public class BluetoothIndicator
         menu.child_append (sep);
 
         settings_item = new Dbusmenu.Menuitem ();
-        settings_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings..."));
+        settings_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings…"));
         settings_item.item_activated.connect (() => { show_control_center ("bluetooth"); });
         menu.child_append (settings_item);
 
@@ -273,7 +273,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         if (can_send)
         {
             var send_item = new Dbusmenu.Menuitem ();
-            send_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Send files..."));
+            send_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Send files…"));
             send_item.item_activated.connect (() => { GnomeBluetooth.send_to_address (address, alias); });
             child_append (send_item);
         }
@@ -281,7 +281,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         if (can_browse)
         {
             var browse_item = new Dbusmenu.Menuitem ();
-            browse_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Browse files..."));
+            browse_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Browse files…"));
             browse_item.item_activated.connect (() => { GnomeBluetooth.browse_address (null, address, Gdk.CURRENT_TIME, null); });
             child_append (browse_item);
         }
@@ -290,7 +290,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         {
         case GnomeBluetooth.Type.KEYBOARD:
             var keyboard_item = new Dbusmenu.Menuitem ();
-            keyboard_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Keyboard Settings..."));
+            keyboard_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Keyboard Settings…"));
             keyboard_item.item_activated.connect (() => { show_control_center ("keyboard"); });
             child_append (keyboard_item);
             break;
@@ -298,7 +298,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         case GnomeBluetooth.Type.MOUSE:
         case GnomeBluetooth.Type.TABLET:
             var mouse_item = new Dbusmenu.Menuitem ();
-            mouse_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Mouse and Touchpad Settings..."));
+            mouse_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Mouse and Touchpad Settings…"));
             mouse_item.item_activated.connect (() => { show_control_center ("mouse"); });
             child_append (mouse_item);
             break;
@@ -307,7 +307,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         case GnomeBluetooth.Type.HEADPHONES:
         case GnomeBluetooth.Type.OTHER_AUDIO:
             var sound_item = new Dbusmenu.Menuitem ();
-            sound_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Sound Settings..."));
+            sound_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Sound Settings…"));
             sound_item.item_activated.connect (() => { show_control_center ("sound"); });
             child_append (sound_item);
             break;
