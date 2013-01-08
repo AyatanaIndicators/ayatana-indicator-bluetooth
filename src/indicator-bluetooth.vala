@@ -15,6 +15,7 @@ public class BluetoothIndicator : Indicator.Object
     private Gtk.Image image;
     private DbusmenuGtk.Menu menu;
     private BluetoothService proxy;
+    private string accessible_description = "Bluetooth";
 
     construct
     {
@@ -45,6 +46,11 @@ public class BluetoothIndicator : Indicator.Object
         return menu;
     }
 
+    public override unowned string get_accessible_desc ()
+    {
+        return accessible_description;
+    }
+
     private void connection_change_cb (bool connected)
     {
         if (!connected)
@@ -62,8 +68,8 @@ public class BluetoothIndicator : Indicator.Object
                                                        try
                                                        {
                                                            proxy = Bus.get_proxy.end (result);
-                                                           proxy.g_properties_changed.connect (update_icon_cb);
-                                                           update_icon_cb ();
+                                                           proxy.g_properties_changed.connect (server_properties_changed_cb);
+                                                           server_properties_changed_cb ();
                                                        }
                                                        catch (IOError e)
                                                        {
@@ -73,9 +79,10 @@ public class BluetoothIndicator : Indicator.Object
         }
     }    
 
-    private void update_icon_cb ()
+    private void server_properties_changed_cb ()
     {
         Indicator.image_helper_update (image, proxy.icon_name);
+        accessible_description = proxy.accessible_description;
     }
 }
 
@@ -117,6 +124,7 @@ public class Switch : Ido.SwitchMenuItem
 public interface BluetoothService : DBusProxy
 {
     public abstract string icon_name { owned get; }
+    public abstract string accessible_description { owned get; }
 }
 
 public static string get_version ()
