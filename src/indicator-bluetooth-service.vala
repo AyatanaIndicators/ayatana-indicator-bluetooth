@@ -253,7 +253,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
             connect_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Connection"));
             connect_item.property_set (Dbusmenu.MENUITEM_PROP_TYPE, "x-canonical-switch");
             connect_item.property_set_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE, connected ? Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED : Dbusmenu.MENUITEM_TOGGLE_STATE_UNCHECKED);
-            connect_item.item_activated.connect (() => { connect_service (proxy.get_object_path (), true); });
+            connect_item.item_activated.connect (() => { connect_service (proxy.get_object_path (), connect_item.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) != Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED); });
             child_append (connect_item);
         }
 
