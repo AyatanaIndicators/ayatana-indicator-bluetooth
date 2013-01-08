@@ -76,7 +76,7 @@ public class BluetoothIndicator
         {
             if (updating_visible)
                 return;
-            client.set ("default-adapter-discoverable", visible_item.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) == Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED);
+            client.set ("default-adapter-discoverable", visible_item.property_get_int (Dbusmenu.MENUITEM_PROP_TOGGLE_STATE) != Dbusmenu.MENUITEM_TOGGLE_STATE_CHECKED);
         });
         menu.child_append (visible_item);
 
