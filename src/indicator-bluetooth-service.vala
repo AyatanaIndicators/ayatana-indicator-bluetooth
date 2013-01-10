@@ -193,9 +193,11 @@ public class BluetoothIndicator
         var enabled = state == GnomeBluetooth.KillswitchState.UNBLOCKED;
 
         bluetooth_service._icon_name = enabled ? "bluetooth-active" : "bluetooth-disabled";
+        bluetooth_service._accessible_description = enabled ? _("Bluetooth: On") : _("Bluetooth: Off");
 
         var builder = new VariantBuilder (VariantType.ARRAY);
         builder.add ("{sv}", "IconName", new Variant.string (bluetooth_service._icon_name));
+        builder.add ("{sv}", "AccessibleDescription", new Variant.string (bluetooth_service._accessible_description));
         try
         {
             var properties = new Variant ("(sa{sv}as)", "com.canonical.indicator.bluetooth.service", builder, null);

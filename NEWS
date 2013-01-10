@@ -1,3 +1,7 @@
+Overview of changes in indicator-bluetooth 0.0.3
+
+    * Set useful values for accessible description
+
 Overview of changes in indicator-bluetooth 0.0.2
 
     * Stop feedback loop when settings changed outside of indicator
