@@ -1,5 +1,6 @@
 Overview of changes in indicator-bluetooth 0.0.3
 
+    * Fix service file having incorrect path
     * Set useful values for accessible description
 
 Overview of changes in indicator-bluetooth 0.0.2
