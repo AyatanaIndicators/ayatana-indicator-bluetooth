@@ -115,10 +115,10 @@ public class BluetoothIndicator
         killswitch_state_changed_cb (killswitch.state);
     }
 
-    private BluetoothMenuItem? find_menu_item (DBusProxy proxy)
+    private BluetoothMenuItem? find_menu_item (string address)
     {
         foreach (var item in device_items)
-            if (item.proxy == proxy)
+            if (item.address == address)
                 return item;
 
         return null;
@@ -152,12 +152,12 @@ public class BluetoothIndicator
         /* Skip if haven't actually got any information yet */
         if (proxy == null)
             return;
-            
+
         /* Find or create menu item */
-        var item = find_menu_item (proxy);
+        var item = find_menu_item (address);
         if (item == null)
         {
-            item = new BluetoothMenuItem (client, proxy);
+            item = new BluetoothMenuItem (client, address);
             item.property_set_bool (Dbusmenu.MENUITEM_PROP_VISIBLE, killswitch.state == GnomeBluetooth.KillswitchState.UNBLOCKED);
             var last_item = devices_separator as Dbusmenu.Menuitem;
             if (device_items != null)
@@ -166,7 +166,7 @@ public class BluetoothIndicator
             menu.child_add_position (item, last_item.get_position (menu) + 1);
         }
 
-        item.update (type, address, alias, icon, connected, services, uuids);
+        item.update (type, proxy, alias, icon, connected, services, uuids);
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -175,10 +175,10 @@ public class BluetoothIndicator
         if (!client.model.get_iter (out iter, path))
             return;
 
-        DBusProxy proxy;
-        client.model.get (iter, GnomeBluetooth.Column.PROXY, out proxy);
+        string address;
+        client.model.get (iter, GnomeBluetooth.Column.ADDRESS, out address);
 
-        var item = find_menu_item (proxy);
+        var item = find_menu_item (address);
         if (item == null)
             return;
 
@@ -227,17 +227,17 @@ public class BluetoothIndicator
 private class BluetoothMenuItem : Dbusmenu.Menuitem
 {
     private GnomeBluetooth.Client client;
-    public DBusProxy proxy;
+    public string address;
     private Dbusmenu.Menuitem? connect_item = null;
     private bool make_submenu = false;
 
-    public BluetoothMenuItem (GnomeBluetooth.Client client, DBusProxy proxy)
+    public BluetoothMenuItem (GnomeBluetooth.Client client, string address)
     {
         this.client = client;
-        this.proxy = proxy;
+        this.address = address;
     }
 
-    public void update (GnomeBluetooth.Type type, string address, string alias, string icon, bool connected, HashTable? services, string[] uuids)
+    public void update (GnomeBluetooth.Type type, DBusProxy proxy, string alias, string icon, bool connected, HashTable? services, string[] uuids)
     {
         property_set (Dbusmenu.MENUITEM_PROP_LABEL, alias);
         property_set (Dbusmenu.MENUITEM_PROP_ICON_NAME, icon);
