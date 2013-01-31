@@ -1,4 +1,4 @@
-libexec_PROGRAMS = indicator-bluetooth-service
+pkglibexec_PROGRAMS = indicator-bluetooth-service
 indicatordir = $(INDICATORDIR)
 indicator_LTLIBRARIES = libbluetooth.la
 
