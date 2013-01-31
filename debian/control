@@ -1,0 +1,32 @@
+Source: indicator-bluetooth
+Section: gnome
+Priority: extra
+Maintainer: Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>
+Build-Depends: debhelper (>= 9.0),
+               dh-autoreconf,
+               dh-translations,
+               gnome-common,
+               libdbusmenu-gtk3-dev,
+               libglib2.0-dev,
+               libgnome-bluetooth-dev,
+               libgtk-3-dev,
+               libido3-0.1-dev,
+               libindicator3-dev,
+               valac-0.18,
+Standards-Version: 3.9.4
+Homepage: https://launchpad.net/indicator-bluetooth
+# If you aren't a member of ~indicator-applet-developers but need to upload
+# packaging changes, just go ahead.  ~indicator-applet-developers will notice
+# and sync up the code again.
+Vcs-Bzr: https://code.launchpad.net/~indicator-applet-developers/indicator-bluetooth/trunk
+Vcs-Browser: https://bazaar.launchpad.net/~indicator-applet-developers/indicator-bluetooth/trunk/files
+
+Package: indicator-bluetooth
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         gnome-bluetooth,
+Description: System bluetooth indicator.
+ System bluetooth indicator which provides fast user controls for Bluetooth
+ devices.
+
