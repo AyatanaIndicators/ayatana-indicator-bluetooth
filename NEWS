@@ -1,3 +1,8 @@
+Overview of changes in indicator-bluetooth 0.0.5
+
+    * Add license file
+    * Update copyright date
+
 Overview of changes in indicator-bluetooth 0.0.4
 
     * Stop items being duplicated on resume from suspend
