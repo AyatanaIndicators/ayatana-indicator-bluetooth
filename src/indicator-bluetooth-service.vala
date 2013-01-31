@@ -382,7 +382,7 @@ private class BluetoothService : Object
     {
         get { return _icon_name; }
     }
-    internal string _accessible_description = "Bluetooth";
+    internal string _accessible_description = _("Bluetooth");
     public string accessible_description
     {
         get { return _accessible_description; }

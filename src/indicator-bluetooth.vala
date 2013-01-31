@@ -14,7 +14,7 @@ public class BluetoothIndicator : Indicator.Object
     private Gtk.Image image;
     private DbusmenuGtk.Menu menu;
     private BluetoothService proxy;
-    private string accessible_description = "Bluetooth: On";
+    private string accessible_description = _("Bluetooth: On");
 
     construct
     {

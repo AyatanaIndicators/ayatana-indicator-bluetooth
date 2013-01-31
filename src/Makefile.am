@@ -36,6 +36,7 @@ libbluetooth_la_VALAFLAGS = \
 	--pkg DbusmenuGtk3-0.4
 
 libbluetooth_la_CFLAGS = \
+	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(INDICATOR_BLUETOOTH_CFLAGS)
 
 libbluetooth_la_LIBADD = \
