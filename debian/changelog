@@ -1,0 +1,52 @@
+indicator-bluetooth (0.0.4-0ubuntu2) UNRELEASED; urgency=low
+
+  * debian/copyright:
+    - Note that code is GPL-3, not GPL-3+
+  * debian/control:
+    - Add Vcs-Bzr entries
+  * debian/source/format:
+    - Switch to format 1.0, to match rest of indicator stack and for our
+      daily landing support to work.
+
+ -- Michael Terry <mterry@ubuntu.com>  Thu, 31 Jan 2013 12:17:35 -0500
+
+indicator-bluetooth (0.0.4-0ubuntu1) raring; urgency=low
+
+  * New upstream release:
+    - Stop items being duplicated on resume from suspend
+  * debian/copyright:
+    - Fix lintian warnings
+  * debian/source/format:
+    - Use format 3.0
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 31 Jan 2013 11:12:42 +1300
+
+indicator-bluetooth (0.0.3-0ubuntu1) raring; urgency=low
+
+  * New upstream release:
+    - Fix service file having incorrect path
+    - Set useful values for accessible description
+  * debian/control:
+    - Use standards version 3.9.4
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 11 Jan 2013 14:09:33 +1300
+
+indicator-bluetooth (0.0.2-0ubuntu1) raring; urgency=low
+
+  * New upstream release:
+    - Stop feedback loop when settings changed outside of indicator
+    - Implement disconnecting from devices
+    - Add accessible description
+    - Hide devices without controls
+    - Change enable label to match design
+    - Added translations
+  * debian/watch:
+    - Update to use .xz
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 08 Jan 2013 16:55:27 +1300
+
+indicator-bluetooth (0.0.1-0ubuntu1) raring; urgency=low
+
+  * Initial release
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 06 Dec 2012 16:04:48 +1300
