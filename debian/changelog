@@ -7,8 +7,9 @@ indicator-bluetooth (0.0.6-0ubuntu1) UNRELEASED; urgency=low
   * debian/source/format:
     - Switch to format 1.0, to match rest of indicator stack and for our
       daily landing support to work.
+  * Automatic snapshot from revision 44 (bootstrap)
 
- -- Michael Terry <mterry@ubuntu.com>  Thu, 31 Jan 2013 12:17:35 -0500
+ -- Michael Terry <mterry@ubuntu.com>  Tue, 05 Feb 2013 11:14:32 -0500
 
 indicator-bluetooth (0.0.5-0ubuntu1) raring; urgency=low
 
