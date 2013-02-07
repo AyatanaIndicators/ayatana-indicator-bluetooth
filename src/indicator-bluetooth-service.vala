@@ -22,7 +22,6 @@ public class BluetoothIndicator
     private bool updating_visible = false;
     private Dbusmenu.Menuitem devices_separator;
     private List<BluetoothMenuItem> device_items;
-    private Dbusmenu.Menuitem settings_item;
     private Dbusmenu.Menuitem menu;
 
     public BluetoothIndicator () throws Error
@@ -106,10 +105,15 @@ public class BluetoothIndicator
         sep.property_set (Dbusmenu.MENUITEM_PROP_TYPE, Dbusmenu.CLIENT_TYPES_SEPARATOR);
         menu.child_append (sep);
 
-        settings_item = new Dbusmenu.Menuitem ();
-        settings_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings…"));
-        settings_item.item_activated.connect (() => { show_control_center ("bluetooth"); });
-        menu.child_append (settings_item);
+        var item = new Dbusmenu.Menuitem ();
+        item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Set Up New Device…"));
+        item.item_activated.connect (() => { set_up_new_device (); });
+        menu.child_append (item);
+
+        item = new Dbusmenu.Menuitem ();
+        item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings…"));
+        item.item_activated.connect (() => { show_control_center ("bluetooth"); });
+        menu.child_append (item);
 
         killswitch_state_changed_cb (killswitch.state);
     }
@@ -331,6 +335,18 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
                 warning ("Failed to connect service: %s", e.message);
             }
         });
+    }
+}
+
+private void set_up_new_device ()
+{
+    try
+    {
+        Process.spawn_command_line_async ("bluetooth-wizard");
+    }
+    catch (GLib.SpawnError e)
+    {
+        warning ("Failed to open bluetooth-wizard: %s", e.message);
     }
 }
 
