@@ -26,6 +26,9 @@ public class BluetoothIndicator : Indicator.Object
 
         var menu_client = menu.get_client ();
         menu_client.add_type_handler_full ("x-canonical-switch", new_switch_cb);
+
+        /* Hide until ready */
+        set_visible (false);
     }
 
     private bool new_switch_cb (Dbusmenu.Menuitem newitem, Dbusmenu.Menuitem parent, Dbusmenu.Client client)
@@ -80,6 +83,7 @@ public class BluetoothIndicator : Indicator.Object
 
     private void server_properties_changed_cb ()
     {
+        set_visible (proxy.visible);
         Indicator.image_helper_update (image, proxy.icon_name);
         accessible_description = proxy.accessible_description;
     }
@@ -122,6 +126,7 @@ public class Switch : Ido.SwitchMenuItem
 [DBus (name = "com.canonical.indicator.bluetooth.service")]
 public interface BluetoothService : DBusProxy
 {
+    public abstract bool visible { owned get; }
     public abstract string icon_name { owned get; }
     public abstract string accessible_description { owned get; }
 }

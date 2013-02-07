@@ -116,6 +116,10 @@ public class BluetoothIndicator
         menu.child_append (item);
 
         killswitch_state_changed_cb (killswitch.state);
+
+        client.adapter_model.row_inserted.connect (adapters_changed_cb);
+        client.adapter_model.row_deleted.connect (adapters_changed_cb);
+        adapters_changed_cb ();
     }
 
     private BluetoothMenuItem? find_menu_item (string address)
@@ -170,6 +174,26 @@ public class BluetoothIndicator
         }
 
         item.update (type, proxy, alias, icon, connected, services, uuids);
+    }
+
+    private void adapters_changed_cb ()
+    {
+        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0;
+        var builder = new VariantBuilder (VariantType.ARRAY);
+        builder.add ("{sv}", "Visible", new Variant.boolean (bluetooth_service._visible));
+        try
+        {
+            var properties = new Variant ("(sa{sv}as)", "com.canonical.indicator.bluetooth.service", builder, null);
+            bus.emit_signal (null,
+                             "/com/canonical/indicator/bluetooth/service",
+                             "org.freedesktop.DBus.Properties",
+                             "PropertiesChanged",
+                             properties);
+        }
+        catch (Error e)
+        {
+            warning ("Failed to emit signal: %s", e.message);
+        }
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -393,6 +417,11 @@ public static int main (string[] args)
 [DBus (name = "com.canonical.indicator.bluetooth.service")]
 private class BluetoothService : Object
 {
+    internal bool _visible = false;
+    public bool visible
+    {
+        get { return _visible; }
+    }
     internal string _icon_name = "bluetooth-active";
     public string icon_name
     {

@@ -1,6 +1,7 @@
 Overview of changes in indicator-bluetooth 0.0.6
 
     * Add "Set Up New Device" menu item
+    * Only show indicator if Bluetooth adapter present
 
 Overview of changes in indicator-bluetooth 0.0.5
 
