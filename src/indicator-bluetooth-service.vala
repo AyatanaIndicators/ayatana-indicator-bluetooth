@@ -10,6 +10,7 @@
 
 public class BluetoothIndicator
 {
+    private Settings settings;
     private DBusConnection bus;
     private Indicator.Service indicator_service;
     private Dbusmenu.Server menu_server;
@@ -26,6 +27,13 @@ public class BluetoothIndicator
 
     public BluetoothIndicator () throws Error
     {
+        settings = new Settings ("com.canonical.indicator.bluetooth");
+        settings.changed.connect ((key) =>
+        {
+            if (key == "visible")
+                update_visible ();
+        });
+
         bus = Bus.get_sync (BusType.SESSION);
 
         indicator_service = new Indicator.Service ("com.canonical.indicator.bluetooth");
@@ -117,9 +125,9 @@ public class BluetoothIndicator
 
         killswitch_state_changed_cb (killswitch.state);
 
-        client.adapter_model.row_inserted.connect (adapters_changed_cb);
-        client.adapter_model.row_deleted.connect (adapters_changed_cb);
-        adapters_changed_cb ();
+        client.adapter_model.row_inserted.connect (update_visible);
+        client.adapter_model.row_deleted.connect (update_visible);
+        update_visible ();
     }
 
     private BluetoothMenuItem? find_menu_item (string address)
@@ -176,9 +184,9 @@ public class BluetoothIndicator
         item.update (type, proxy, alias, icon, connected, services, uuids);
     }
 
-    private void adapters_changed_cb ()
+    private void update_visible ()
     {
-        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0;
+        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0 && settings.get_boolean ("visible");
         var builder = new VariantBuilder (VariantType.ARRAY);
         builder.add ("{sv}", "Visible", new Variant.boolean (bluetooth_service._visible));
         try
