@@ -1,4 +1,4 @@
-AC_INIT(indicator-bluetooth, 0.0.5)
+AC_INIT(indicator-bluetooth, 0.0.6)
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
