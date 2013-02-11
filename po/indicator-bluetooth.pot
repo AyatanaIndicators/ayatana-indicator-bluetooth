@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-31 12:34-0500\n"
+"POT-Creation-Date: 2013-02-08 11:56+1300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: ../data/com.canonical.indicator.bluetooth.gschema.xml.in.h:1
+msgid "Whether or not to show the bluetooth indicator in the menu bar."
+msgstr ""
+
 #: ../src/indicator-bluetooth.vala:17
-#: ../src/indicator-bluetooth-service.vala:195
+#: ../src/indicator-bluetooth-service.vala:231
 msgid "Bluetooth: On"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:47
-#: ../src/indicator-bluetooth-service.vala:385
+#: ../src/indicator-bluetooth-service.vala:54
+#: ../src/indicator-bluetooth-service.vala:438
 msgid "Bluetooth"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:61
+#: ../src/indicator-bluetooth-service.vala:68
 msgid "Visible"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:110
+#: ../src/indicator-bluetooth-service.vala:117
+msgid "Set Up New Device…"
+msgstr ""
+
+#: ../src/indicator-bluetooth-service.vala:122
 msgid "Bluetooth Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:195
+#: ../src/indicator-bluetooth-service.vala:231
 msgid "Bluetooth: Off"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:254
+#: ../src/indicator-bluetooth-service.vala:290
 msgid "Connection"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:277
+#: ../src/indicator-bluetooth-service.vala:313
 msgid "Send files…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:285
+#: ../src/indicator-bluetooth-service.vala:321
 msgid "Browse files…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:294
+#: ../src/indicator-bluetooth-service.vala:330
 msgid "Keyboard Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:302
+#: ../src/indicator-bluetooth-service.vala:338
 msgid "Mouse and Touchpad Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:311
+#: ../src/indicator-bluetooth-service.vala:347
 msgid "Sound Settings…"
 msgstr ""

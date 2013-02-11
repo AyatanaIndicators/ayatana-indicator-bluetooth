@@ -10,6 +10,7 @@
 
 public class BluetoothIndicator
 {
+    private Settings settings;
     private DBusConnection bus;
     private Indicator.Service indicator_service;
     private Dbusmenu.Server menu_server;
@@ -22,11 +23,17 @@ public class BluetoothIndicator
     private bool updating_visible = false;
     private Dbusmenu.Menuitem devices_separator;
     private List<BluetoothMenuItem> device_items;
-    private Dbusmenu.Menuitem settings_item;
     private Dbusmenu.Menuitem menu;
 
     public BluetoothIndicator () throws Error
     {
+        settings = new Settings ("com.canonical.indicator.bluetooth");
+        settings.changed.connect ((key) =>
+        {
+            if (key == "visible")
+                update_visible ();
+        });
+
         bus = Bus.get_sync (BusType.SESSION);
 
         indicator_service = new Indicator.Service ("com.canonical.indicator.bluetooth");
@@ -106,12 +113,21 @@ public class BluetoothIndicator
         sep.property_set (Dbusmenu.MENUITEM_PROP_TYPE, Dbusmenu.CLIENT_TYPES_SEPARATOR);
         menu.child_append (sep);
 
-        settings_item = new Dbusmenu.Menuitem ();
-        settings_item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings…"));
-        settings_item.item_activated.connect (() => { show_control_center ("bluetooth"); });
-        menu.child_append (settings_item);
+        var item = new Dbusmenu.Menuitem ();
+        item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Set Up New Device…"));
+        item.item_activated.connect (() => { set_up_new_device (); });
+        menu.child_append (item);
+
+        item = new Dbusmenu.Menuitem ();
+        item.property_set (Dbusmenu.MENUITEM_PROP_LABEL, _("Bluetooth Settings…"));
+        item.item_activated.connect (() => { show_control_center ("bluetooth"); });
+        menu.child_append (item);
 
         killswitch_state_changed_cb (killswitch.state);
+
+        client.adapter_model.row_inserted.connect (update_visible);
+        client.adapter_model.row_deleted.connect (update_visible);
+        update_visible ();
     }
 
     private BluetoothMenuItem? find_menu_item (string address)
@@ -166,6 +182,26 @@ public class BluetoothIndicator
         }
 
         item.update (type, proxy, alias, icon, connected, services, uuids);
+    }
+
+    private void update_visible ()
+    {
+        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0 && settings.get_boolean ("visible");
+        var builder = new VariantBuilder (VariantType.ARRAY);
+        builder.add ("{sv}", "Visible", new Variant.boolean (bluetooth_service._visible));
+        try
+        {
+            var properties = new Variant ("(sa{sv}as)", "com.canonical.indicator.bluetooth.service", builder, null);
+            bus.emit_signal (null,
+                             "/com/canonical/indicator/bluetooth/service",
+                             "org.freedesktop.DBus.Properties",
+                             "PropertiesChanged",
+                             properties);
+        }
+        catch (Error e)
+        {
+            warning ("Failed to emit signal: %s", e.message);
+        }
     }
 
     private void device_removed_cb (Gtk.TreePath path)
@@ -334,6 +370,18 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
     }
 }
 
+private void set_up_new_device ()
+{
+    try
+    {
+        Process.spawn_command_line_async ("bluetooth-wizard");
+    }
+    catch (GLib.SpawnError e)
+    {
+        warning ("Failed to open bluetooth-wizard: %s", e.message);
+    }
+}
+
 private void show_control_center (string panel)
 {
     try
@@ -377,6 +425,11 @@ public static int main (string[] args)
 [DBus (name = "com.canonical.indicator.bluetooth.service")]
 private class BluetoothService : Object
 {
+    internal bool _visible = false;
+    public bool visible
+    {
+        get { return _visible; }
+    }
     internal string _icon_name = "bluetooth-active";
     public string icon_name
     {

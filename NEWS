@@ -1,3 +1,9 @@
+Overview of changes in indicator-bluetooth 0.0.6
+
+    * Add "Set Up New Device" menu item
+    * Only show indicator if Bluetooth adapter present
+    * Support existing gsettings key to disable indicator
+
 Overview of changes in indicator-bluetooth 0.0.5
 
     * Add license file
