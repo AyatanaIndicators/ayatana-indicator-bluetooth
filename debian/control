@@ -26,6 +26,8 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          gnome-bluetooth,
+Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
+Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Description: System bluetooth indicator.
  System bluetooth indicator which provides fast user controls for Bluetooth
  devices.
