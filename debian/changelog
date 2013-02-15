@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6-0ubuntu2) UNRELEASED; urgency=low
+
+  * debian/control:
+    - breaks/replaces gnome-bluetooth (<< 3.6.1-0ubuntu2) (lp: #1123115)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 15 Feb 2013 12:13:40 +0100
+
 indicator-bluetooth (0.0.6-0ubuntu1) raring; urgency=low
 
   [ Michael Terry ]
