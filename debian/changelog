@@ -1,9 +1,19 @@
-indicator-bluetooth (0.0.6-0ubuntu2) UNRELEASED; urgency=low
+indicator-bluetooth (0.0.6daily13.02.19-0ubuntu1) raring; urgency=low
 
+  [ Sebastien Bacher ]
   * debian/control:
     - breaks/replaces gnome-bluetooth (<< 3.6.1-0ubuntu2) (lp: #1123115)
 
- -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 15 Feb 2013 12:13:40 +0100
+  [ Robert Ancell ]
+  * "Set Up New Device…" item is missing (LP: #1116292)
+  * Does not support 'visible' gsettings key (LP: #1115394)
+  * Bluetooth menu appears when there are no Bluetooth adapters (LP:
+    #1116289)
+
+  [ Automatic PS uploader ]
+  * Automatic snapshot from revision 49
+
+ -- Automatic PS uploader <ps-jenkins@lists.canonical.com>  Tue, 19 Feb 2013 02:01:49 +0000
 
 indicator-bluetooth (0.0.6-0ubuntu1) raring; urgency=low
 
