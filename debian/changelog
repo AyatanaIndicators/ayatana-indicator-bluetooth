@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6daily13.02.19-0ubuntu2) UNRELEASED; urgency=low
+
+  * debian/control:
+    - Build with valac (>= 0.18) instead of vala-0.18 for easier transitions 
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 06 Jun 2013 11:42:30 -0400
+
 indicator-bluetooth (0.0.6daily13.02.19-0ubuntu1) raring; urgency=low
 
   [ Sebastien Bacher ]
