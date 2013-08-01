@@ -17,37 +17,35 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
+/**
+ * Base class for the bluetooth backend.
+ */
 public class Bluetooth: Object
 {
-  /***
-  ****  Properties
-  ***/
-
+  /* whether or not our system can be seen by other bluetooth devices */
   public bool discoverable { get; protected set; default = false; }
   public virtual void try_set_discoverable (bool b) {}
 
+  /* whether or not there are any bluetooth adapters powered up on the system */
   public bool powered { get; protected set; default = false; }
 
+  /* whether or not bluetooth's been disabled,
+     either by a software setting or physical hardware switch */
   public bool blocked { get; protected set; default = true; }
   public virtual void try_set_blocked (bool b) {
-    kill_switch.try_set_blocked (b);
+    killswitch.try_set_blocked (b);
   }
 
   /***
   ****  Killswitch Implementation 
   ***/
 
-  protected KillSwitch kill_switch;
+  private KillSwitch killswitch;
 
-  public Bluetooth (KillSwitch kill_switch)
+  public Bluetooth (KillSwitch killswitch)
   {
-    this.kill_switch = kill_switch;
-
-    message ("changing blocked to %d", (int)!this.kill_switch.blocked);
-    blocked = this.kill_switch.blocked;
-    kill_switch.notify["blocked"].connect (() => {
-      message ("bluetooth changing blocked to %d", (int)kill_switch.blocked);
-      this.blocked = kill_switch.blocked;
-    });
+    this.killswitch = killswitch;
+    blocked = killswitch.blocked;
+    killswitch.notify["blocked"].connect (() => blocked = killswitch.blocked );
   }
 }

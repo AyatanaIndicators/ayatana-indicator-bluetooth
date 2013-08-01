@@ -17,16 +17,19 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
+/**
+ * Bluetooth implementaion which uses bluez over dbus 
+ */
 public class Bluez: Bluetooth
 {
   private org.bluez.Manager manager;
   private org.bluez.Adapter default_adapter;
 
-  public Bluez (KillSwitch kill_switch)
+  public Bluez (KillSwitch killswitch)
   {
     string default_adapter_object_path = null;
 
-    base (kill_switch);
+    base (killswitch);
 
     try
       {

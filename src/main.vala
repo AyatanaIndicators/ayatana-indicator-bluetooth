@@ -7,7 +7,7 @@ main (string[] args)
   Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
   Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-  var bluetooth = new Bluez (new KillSwitch ());
+  var bluetooth = new Bluez (new RfKillSwitch ());
   var service = new BluetoothIndicator (bluetooth);
  
   service.run ();

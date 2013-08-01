@@ -20,13 +20,24 @@
 /**
  * Monitors whether or not bluetooth is blocked,
  * either by software (e.g., a session configuration setting)
- * or by hardware (e.g., user disabled it via a physical switch on her laptop)
+ * or by hardware (e.g., user disabled it via a physical switch on her laptop).
+ *
+ * The Bluetooth class uses this as a backend for its 'blocked' property.
+ * Other code can't even see this, so use Bluetooth.blocked instead. :)
  */
 public class KillSwitch: Object
 {
   public bool blocked { get; protected set; default = false; }
 
-  public void try_set_blocked (bool blocked)
+  public virtual void try_set_blocked (bool blocked) {}
+}
+
+/**
+ * On Linux systems, monitors /dev/rfkill to watch for bluetooth blockage
+ */
+public class RfKillSwitch: KillSwitch
+{
+  public override void try_set_blocked (bool blocked)
   {
     return_if_fail (this.blocked != blocked);
 
@@ -41,10 +52,6 @@ public class KillSwitch: Object
     if (bwritten == -1)
       warning ("Could not write rfkill event: %s", strerror(errno));
   }
-
-  /***
-  ****  Past this point, it's all RfKill implementation details...
-  ***/
 
   private class Entry
   {
@@ -68,13 +75,13 @@ public class KillSwitch: Object
     return false;
   }
 
-  ~KillSwitch ()
+  ~RfKillSwitch ()
   {
     Source.remove (watch);
     Posix.close (fd);
   }
 
-  public KillSwitch ()
+  public RfKillSwitch ()
   {
     entries = new HashTable<uint32,Entry>(direct_hash, direct_equal);
 
