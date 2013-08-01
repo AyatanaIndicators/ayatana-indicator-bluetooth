@@ -5,6 +5,7 @@ indicator_LTLIBRARIES = libbluetooth.la
 indicator_bluetooth_service_SOURCES = 	\
 	indicator3-0.4.vapi \
 	gnome-bluetooth-1.0.vapi \
+	main.vala \
 	indicator-bluetooth-service.vala
 
 indicator_bluetooth_service_VALAFLAGS = \

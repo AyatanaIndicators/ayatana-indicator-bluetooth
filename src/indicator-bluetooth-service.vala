@@ -394,34 +394,6 @@ private void show_control_center (string panel)
     }
 }
 
-public static int main (string[] args)
-{
-    Intl.setlocale (LocaleCategory.ALL, "");
-    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
-    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (Config.GETTEXT_PACKAGE);
-
-    var loop = new MainLoop ();
-
-    BluetoothIndicator indicator;
-    try
-    {
-        indicator = new BluetoothIndicator ();
-    }
-    catch (Error e)
-    {
-        warning ("Failed to start bluetooth indicator service: %s", e.message);
-        return Posix.EXIT_FAILURE;
-    }
-    // FIXMEindicator.shutdown.connect (() => { loop.quit (); });
-
-    loop.run ();
-
-    indicator = null;
-
-    return Posix.EXIT_SUCCESS;
-}
-
 [DBus (name = "com.canonical.indicator.bluetooth.service")]
 private class BluetoothService : Object
 {
