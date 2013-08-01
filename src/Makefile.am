@@ -3,12 +3,15 @@ indicatordir = ${libdir}/indicators3/7
 indicator_LTLIBRARIES = libbluetooth.la
 
 indicator_bluetooth_service_SOURCES = 	\
-	config.vapi \
 	indicator3-0.4.vapi \
 	gnome-bluetooth-1.0.vapi \
 	indicator-bluetooth-service.vala
 
 indicator_bluetooth_service_VALAFLAGS = \
+	--ccode \
+	--vapidir=$(top_srcdir)/vapi/ \
+	--vapidir=./ \
+	--pkg config \
 	--pkg posix \
 	--pkg glib-2.0 \
 	--pkg gtk+-3.0 \
@@ -23,12 +26,14 @@ indicator_bluetooth_service_LDADD = \
 	$(INDICATOR_BLUETOOTH_SERVICE_LIBS)
 
 libbluetooth_la_SOURCES = 	\
-	config.vapi \
 	indicator3-0.4.vapi \
 	indicator-bluetooth.vala \
 	libido3-0.1.vapi
 
 libbluetooth_la_VALAFLAGS = \
+	--ccode \
+	--vapidir=$(top_srcdir)/vapi/ \
+	--vapidir=./ \
 	--pkg posix \
 	--pkg glib-2.0 \
 	--pkg gtk+-3.0 \

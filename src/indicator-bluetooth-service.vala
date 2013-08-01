@@ -397,9 +397,9 @@ private void show_control_center (string panel)
 public static int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "");
-    Intl.bindtextdomain (GETTEXT_PACKAGE, LOCALE_DIR);
-    Intl.bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-    Intl.textdomain (GETTEXT_PACKAGE);
+    Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+    Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
+    Intl.textdomain (Config.GETTEXT_PACKAGE);
 
     var loop = new MainLoop ();
 
