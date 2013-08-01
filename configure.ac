@@ -21,14 +21,6 @@ PKG_CHECK_MODULES(INDICATOR_BLUETOOTH_SERVICE, [
   dbusmenu-gtk3-0.4
 ])
 
-PKG_CHECK_MODULES(INDICATOR_BLUETOOTH, [
-  glib-2.0
-  gtk+-3.0
-  indicator3-0.4
-  dbusmenu-gtk3-0.4
-  libido3-0.1
-])
-
 dnl ##############################
 dnl # Custom Junk
 dnl ##############################

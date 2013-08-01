@@ -29,7 +29,7 @@ class PhoneMenu: BluetoothMenu
       group.insert (actions[i]);
   }
 
-  public PhoneMenu ()
+  public PhoneMenu (Bluetooth bluetooth)
   {
     base ("phone");
 

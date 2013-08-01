@@ -1,7 +1,7 @@
 
 # the indicator bus file
 indicatorsdir = $(prefix)/share/unity/indicators
-dist_indicators_DATA = com.canonical.indicator.datetime
+dist_indicators_DATA = com.canonical.indicator.bluetooth
 
 # the dbus service file
 dbus_servicesdir = $(datadir)/dbus-1/services

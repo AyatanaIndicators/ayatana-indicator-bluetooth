@@ -28,23 +28,26 @@ public class BluetoothIndicator
     private List<BluetoothMenuItem> device_items;
     private Dbusmenu.Menuitem menu;
 
-    public BluetoothIndicator () throws Error
+    public BluetoothIndicator (Bluetooth bluetooth)
     {
-        var phone = new PhoneMenu ();
-        var desktop = new DesktopMenu ();
+      var phone = new PhoneMenu (bluetooth);
+      var desktop = new DesktopMenu (bluetooth);
 
-        this.menus = new HashTable<string, BluetoothMenu> (str_hash, str_equal);
-        this.menus.insert ("phone", phone);
-        this.menus.insert ("desktop", desktop);
+      this.menus = new HashTable<string, BluetoothMenu> (str_hash, str_equal);
+      this.menus.insert ("phone", phone);
+      this.menus.insert ("desktop", desktop);
 
-        this.actions = new SimpleActionGroup ();
-        phone.add_actions_to_group (this.actions);
-        desktop.add_actions_to_group (this.actions);
+      this.actions = new SimpleActionGroup ();
+      phone.add_actions_to_group (this.actions);
+      desktop.add_actions_to_group (this.actions);
     }
 
     private void init_for_bus (DBusConnection bus)
     {
 	this.bus = bus;
+
+        ///
+        ///
 
         indicator_service = new Indicator.Service ("com.canonical.indicator.bluetooth.old");
         menu_server = new Dbusmenu.Server ("/com/canonical/indicator/bluetooth/menu");
