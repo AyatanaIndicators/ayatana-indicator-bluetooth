@@ -10,7 +10,10 @@
 
 public class BluetoothIndicator
 {
-    private Settings settings;
+    private MainLoop loop;
+    private SimpleActionGroup actions;
+    private HashTable<string, BluetoothMenu> menus;
+
     private DBusConnection bus;
     private Indicator.Service indicator_service;
     private Dbusmenu.Server menu_server;
@@ -27,16 +30,23 @@ public class BluetoothIndicator
 
     public BluetoothIndicator () throws Error
     {
-        settings = new Settings ("com.canonical.indicator.bluetooth");
-        settings.changed.connect ((key) =>
-        {
-            if (key == "visible")
-                update_visible ();
-        });
+        var phone = new PhoneMenu ();
+        var desktop = new DesktopMenu ();
 
-        bus = Bus.get_sync (BusType.SESSION);
+        this.menus = new HashTable<string, BluetoothMenu> (str_hash, str_equal);
+        this.menus.insert ("phone", phone);
+        this.menus.insert ("desktop", desktop);
 
-        indicator_service = new Indicator.Service ("com.canonical.indicator.bluetooth");
+        this.actions = new SimpleActionGroup ();
+        phone.add_actions_to_group (this.actions);
+        desktop.add_actions_to_group (this.actions);
+    }
+
+    private void init_for_bus (DBusConnection bus)
+    {
+	this.bus = bus;
+
+        indicator_service = new Indicator.Service ("com.canonical.indicator.bluetooth.old");
         menu_server = new Dbusmenu.Server ("/com/canonical/indicator/bluetooth/menu");
 
         bluetooth_service = new BluetoothService ();
@@ -130,6 +140,51 @@ public class BluetoothIndicator
         update_visible ();
     }
 
+    public int run ()
+    {
+      if (this.loop != null)
+        {
+          warning ("service is already running");
+          return 1;
+        }
+
+      Bus.own_name (BusType.SESSION,
+                    "com.canonical.indicator.bluetooth",
+                    BusNameOwnerFlags.NONE,
+                    this.on_bus_acquired,
+                    null,
+                    this.on_name_lost);
+
+      this.loop = new MainLoop (null, false);
+      this.loop.run ();
+      return 0;
+    }
+
+    void on_bus_acquired (DBusConnection connection, string name)
+    {
+      stdout.printf ("bus acquired: %s\n", name);
+    
+      init_for_bus (connection);
+
+      try
+        {
+          connection.export_action_group ("/com/canonical/indicator/bluetooth", this.actions);
+        }
+      catch (Error e)
+        {
+          critical ("%s", e.message);
+        }
+
+      this.menus.@foreach ( (profile, menu) => menu.export (connection, @"/com/canonical/indicator/bluetooth/$profile"));
+    }
+
+    void on_name_lost (DBusConnection connection, string name)
+    {
+      stdout.printf ("name lost: %s\n", name);
+      this.loop.quit ();
+    }
+
+
     private BluetoothMenuItem? find_menu_item (string address)
     {
         foreach (var item in device_items)
@@ -186,7 +241,7 @@ public class BluetoothIndicator
 
     private void update_visible ()
     {
-        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0 && settings.get_boolean ("visible");
+        bluetooth_service._visible = client.adapter_model.iter_n_children (null) > 0;// && settings.get_boolean ("visible");
         var builder = new VariantBuilder (VariantType.ARRAY);
         builder.add ("{sv}", "Visible", new Variant.boolean (bluetooth_service._visible));
         try

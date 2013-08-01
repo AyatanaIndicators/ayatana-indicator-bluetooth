@@ -1,3 +1,9 @@
+
+# the indicator bus file
+indicatorsdir = $(prefix)/share/unity/indicators
+dist_indicators_DATA = com.canonical.indicator.datetime
+
+# the dbus service file
 dbus_servicesdir = $(datadir)/dbus-1/services
 dbus_services_DATA = indicator-bluetooth.service
 

@@ -7,21 +7,8 @@ main (string[] args)
   Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
   Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-  var loop = new MainLoop ();
+  var service = new BluetoothIndicator ();
+  service.run ();
 
-  BluetoothIndicator indicator;
-  try
-    {
-      indicator = new BluetoothIndicator ();
-    }
-  catch (Error e)
-    {
-      warning ("Failed to start bluetooth indicator service: %s", e.message);
-      return Posix.EXIT_FAILURE;
-    }
-
-  loop.run ();
   return Posix.EXIT_SUCCESS;
 }
-  //var service = new IndicatorSound.Service ();
-  //return service.run ();
