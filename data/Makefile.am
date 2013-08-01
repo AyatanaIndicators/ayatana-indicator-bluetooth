@@ -1,4 +1,4 @@
-dbus_servicesdir = $(DBUSSERVICEDIR)
+dbus_servicesdir = $(datadir)/dbus-1/services
 dbus_services_DATA = indicator-bluetooth.service
 
 %.service: %.service.in

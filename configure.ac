@@ -35,33 +35,6 @@ dnl ###########################################################################
 IT_PROG_INTLTOOL([0.35.0])
 AC_SUBST(GETTEXT_PACKAGE, indicator-bluetooth)
 
-with_localinstall="no"
-AC_ARG_ENABLE(localinstall, AS_HELP_STRING([--enable-localinstall], [install all of the files localy instead of system directories (for distcheck)]), with_localinstall=$enableval, with_localinstall=no)
-
-dnl ###########################################################################
-dnl Indicator Info
-dnl ###########################################################################
-
-AS_IF([test "x$with_localinstall" = "xyes"],
-	[
-	INDICATORDIR="${libdir}/indicators3/7/"
-	],
-	[
-	INDICATORDIR=`$PKG_CONFIG --variable=indicatordir indicator3-0.4`
-	])
-AC_SUBST(INDICATORDIR)
-
-dnl ###########################################################################
-dnl DBus Service Info
-dnl ###########################################################################
-
-if test "x$with_localinstall" = "xyes"; then
-	DBUSSERVICEDIR="${datadir}/dbus-1/services/"
-else
-	DBUSSERVICEDIR=`$PKG_CONFIG --variable=session_bus_services_dir dbus-1`
-fi
-AC_SUBST(DBUSSERVICEDIR)
-
 dnl ###########################################################################
 dnl Files to generate
 dnl ###########################################################################
