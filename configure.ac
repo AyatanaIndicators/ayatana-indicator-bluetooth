@@ -28,12 +28,34 @@ PKG_CHECK_MODULES(INDICATOR_BLUETOOTH, [
   libido3-0.1
 ])
 
-dnl ###########################################################################
-dnl Internationalization
-dnl ###########################################################################
+dnl ##############################
+dnl # Custom Junk
+dnl ##############################
 
-IT_PROG_INTLTOOL([0.35.0])
-AC_SUBST(GETTEXT_PACKAGE, indicator-bluetooth)
+AC_DEFUN([AC_DEFINE_PATH], [
+        test "x$prefix" = xNONE && prefix="$ac_default_prefix"
+        test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+        ac_define_path=`eval echo [$]$2`
+        ac_define_path=`eval echo [$]ac_define_path`
+        $1="$ac_define_path"
+        AC_SUBST($1)
+        ifelse($3, ,
+                AC_DEFINE_UNQUOTED($1, "$ac_define_path"),
+                AC_DEFINE_UNQUOTED($1, "$ac_define_path", $3))
+])
+
+dnl ###########################
+dnl # Internationalization
+dnl ###########################
+
+IT_PROG_INTLTOOL([0.41.0])
+
+GETTEXT_PACKAGE=indicator-bluetooth
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the default get text domain])
+AC_DEFINE_PATH(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
+
+AM_GLIB_GNU_GETTEXT
 
 dnl ###########################################################################
 dnl Files to generate
