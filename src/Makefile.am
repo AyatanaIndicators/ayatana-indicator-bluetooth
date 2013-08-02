@@ -1,7 +1,6 @@
 pkglibexec_PROGRAMS = indicator-bluetooth-service
 
-indicator_bluetooth_service_SOURCES = 	\
-	indicator3-0.4.vapi \
+indicator_bluetooth_service_SOURCES = \
 	org-bluez.vala \
 	bluetooth.vala \
 	bluez.vala \
@@ -16,6 +15,7 @@ indicator_bluetooth_service_VALAFLAGS = \
 	--ccode \
 	--vapidir=$(top_srcdir)/vapi/ \
 	--vapidir=./ \
+	--pkg indicator3-0.4 \
 	--pkg gnome-bluetooth-1.0 \
 	--pkg config \
 	--pkg rfkill \
