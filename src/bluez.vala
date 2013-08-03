@@ -24,12 +24,15 @@ public class Bluez: Bluetooth
 {
   private org.bluez.Manager manager;
   private org.bluez.Adapter default_adapter;
+  private HashTable<string,Bluetooth.Device> devices;
 
   public Bluez (KillSwitch killswitch)
   {
+    base (killswitch);
+
     string default_adapter_object_path = null;
 
-    base (killswitch);
+    this.devices = new HashTable<string,Bluetooth.Device>(str_hash, str_equal);
 
     try
       {
@@ -51,15 +54,54 @@ public class Bluez: Bluetooth
     if (object_path != null) try
       {
         message ("using default adapter at %s", object_path);
-        this.default_adapter = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
-        this.default_adapter.property_changed.connect(() => this.on_default_adapter_properties_changed());
+        default_adapter = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
+        default_adapter.property_changed.connect(() => on_default_adapter_properties_changed());
+
+        default_adapter.device_created.connect((adapter, path) => add_device (path));
+        default_adapter.device_removed.connect((adapter, path) => devices.remove (path));
+        foreach (string device_path in default_adapter.list_devices())
+          add_device (device_path);
       }
     catch (Error e)
-      {
+     {
        critical ("%s", e.message);
-      }
+     }
 
     this.on_default_adapter_properties_changed ();
+  }
+
+  private void add_device (string object_path)
+  {
+    try
+      {
+        org.bluez.Device device = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
+        message ("got device proxy for %s", object_path);
+        var properties = device.get_properties ();
+
+        Variant v = properties.lookup ("Alias");
+        if (v == null)
+          v = properties.lookup ("Name");
+        string name = v == null ? _("Unknown") : v.get_string();
+
+        bool supports_browsing = false;
+        v = properties.lookup ("UUIDs");
+        message ("%s", v.print(true));
+
+        bool supports_file_transfer = false;
+
+        //protected static bool uuid_supports_file_transfer (string uuid)
+        //protected static bool uuid_supports_browsing (string uuid)
+
+        var dev = new Bluetooth.Device (name,
+                                        supports_browsing,
+                                        supports_file_transfer);
+        devices.insert (object_path, dev);
+        message ("devices.size() is %u", devices.size());
+      }
+    catch (Error e)
+     {
+       critical ("%s", e.message);
+     }
   }
 
   private void on_default_adapter_properties_changed ()
