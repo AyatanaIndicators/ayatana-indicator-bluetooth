@@ -17,7 +17,7 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
-class DesktopMenu: BluetoothMenu
+class Desktop: Profile
 {
   private Settings settings;
   private Bluetooth bluetooth;
@@ -27,31 +27,29 @@ class DesktopMenu: BluetoothMenu
 
   public override void add_actions_to_group (SimpleActionGroup group)
   {
-    base.add_actions_to_group (group);
-    
-    for (var i=0; i<this.all_actions.length; i++)
+    for (var i=0; i<all_actions.length; i++)
       group.insert (all_actions[i]);
   }
 
-  public DesktopMenu (Bluetooth bluetooth)
+  public Desktop (Bluetooth bluetooth)
   {
     base ("desktop");
 
     this.bluetooth = bluetooth;
 
-    this.settings = new Settings ("com.canonical.indicator.bluetooth");
+    settings = new Settings ("com.canonical.indicator.bluetooth");
 
-    this.root_action = new SimpleAction.stateful ("root-desktop", null, action_state_for_root());
+    root_action = new SimpleAction.stateful ("root-desktop", null, action_state_for_root());
 
-    this.all_actions = {};
-    this.all_actions += this.root_action;
-    this.all_actions += create_enabled_action (bluetooth);
-    this.all_actions += create_discoverable_action (bluetooth);
-    this.all_actions += create_settings_action ();
-    this.all_actions += create_wizard_action ();
+    all_actions = {};
+    all_actions += root_action;
+    all_actions += create_enabled_action (bluetooth);
+    all_actions += create_discoverable_action (bluetooth);
+    all_actions += create_settings_action ();
+    all_actions += create_wizard_action ();
 
-    bluetooth.notify.connect (() => this.update_root_action_state());
-    settings.changed["visible"].connect (()=> this.update_root_action_state());
+    bluetooth.notify.connect (() => update_root_action_state());
+    settings.changed["visible"].connect (()=> update_root_action_state());
 
     Menu section;
     MenuItem item;
@@ -63,12 +61,12 @@ class DesktopMenu: BluetoothMenu
     item = new MenuItem ("Visible", "indicator.desktop-discoverable");
     item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
     section.append_item (item);
-    this.menu.append_section (null, section);
+    menu.append_section (null, section);
 
     section = new Menu ();
     section.append (_("Set Up New Device…"), "indicator.desktop-wizard");
     section.append (_("Bluetooth Settings…"), "indicator.desktop-settings");
-    this.menu.append_section (null, section);
+    menu.append_section (null, section);
   }
 
   Action create_enabled_action (Bluetooth bluetooth)
@@ -119,7 +117,7 @@ class DesktopMenu: BluetoothMenu
     bool blocked = bluetooth.blocked;
     bool powered = bluetooth.powered;
 
-    settings.changed["visible"].connect (()=> this.update_root_action_state());
+    settings.changed["visible"].connect (()=> update_root_action_state());
 
     bool visible = powered && settings.get_boolean("visible");
 

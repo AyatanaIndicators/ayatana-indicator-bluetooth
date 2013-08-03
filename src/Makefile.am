@@ -6,8 +6,8 @@ indicator_bluetooth_service_SOURCES = \
 	bluez.vala \
 	desktop.vala \
 	main.vala \
-	menu.vala \
 	phone.vala \
+	profile.vala \
 	killswitch.vala \
 	service.vala
 

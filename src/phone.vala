@@ -17,29 +17,27 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
-class PhoneMenu: BluetoothMenu
+class Phone: Profile
 {
   private Action[] actions;
 
   public override void add_actions_to_group (SimpleActionGroup group)
   {
-    base.add_actions_to_group (group);
-
     for (var i=0; i<actions.length; i++)
       group.insert (actions[i]);
   }
 
-  public PhoneMenu (Bluetooth bluetooth)
+  public Phone (Bluetooth bluetooth)
   {
     base ("phone");
 
-    this.actions = {};
-    this.actions += new SimpleAction.stateful ("root-phone", null, action_state_for_root());
-    this.actions += create_settings_action ();
+    actions = {};
+    actions += new SimpleAction.stateful ("root-phone", null, action_state_for_root());
+    actions += create_settings_action ();
 
     var section = new Menu ();
     section.append (_("Sound settings…"), "indicator.phone-settings");
-    this.menu.append_section (null, section);
+    menu.append_section (null, section);
   }
 
   Action create_settings_action ()

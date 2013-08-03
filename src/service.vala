@@ -12,7 +12,7 @@ public class BluetoothIndicator
 {
     private MainLoop loop;
     private SimpleActionGroup actions;
-    private HashTable<string, BluetoothMenu> menus;
+    private HashTable<string,Profile> profiles;
 
     private DBusConnection bus;
     private Indicator.Service indicator_service;
@@ -30,16 +30,13 @@ public class BluetoothIndicator
 
     public BluetoothIndicator (Bluetooth bluetooth)
     {
-      var phone = new PhoneMenu (bluetooth);
-      var desktop = new DesktopMenu (bluetooth);
+      profiles = new HashTable<string,Profile> (str_hash, str_equal);
+      profiles.insert ("phone", new Phone (bluetooth));
+      profiles.insert ("desktop", new Desktop (bluetooth));
 
-      this.menus = new HashTable<string, BluetoothMenu> (str_hash, str_equal);
-      this.menus.insert ("phone", phone);
-      this.menus.insert ("desktop", desktop);
-
-      this.actions = new SimpleActionGroup ();
-      phone.add_actions_to_group (this.actions);
-      desktop.add_actions_to_group (this.actions);
+      actions = new SimpleActionGroup ();
+      foreach (Profile profile in profiles.get_values())
+        profile.add_actions_to_group (actions);
     }
 
     private void init_for_bus (DBusConnection bus)
@@ -178,7 +175,7 @@ public class BluetoothIndicator
           critical ("%s", e.message);
         }
 
-      this.menus.@foreach ( (profile, menu) => menu.export (connection, @"/com/canonical/indicator/bluetooth/$profile"));
+      this.profiles.@foreach ((name,profile) => profile.export_menu (connection, @"/com/canonical/indicator/bluetooth/$name"));
     }
 
     void on_name_lost (DBusConnection connection, string name)
@@ -358,6 +355,7 @@ private class BluetoothMenuItem : Dbusmenu.Menuitem
         {
             for (var i = 0; uuids[i] != null; i++)
             {
+message ("alias %s uuid #%d: %s", alias, i, uuids[i]);
                 if (uuids[i] == "OBEXObjectPush")
                     can_send = true;
                 if (uuids[i] == "OBEXFileTransfer")

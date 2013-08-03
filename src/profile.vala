@@ -17,32 +17,33 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
-class BluetoothMenu: Object
+class Profile: Object
 {
+  protected string name;
   protected Menu root;
   protected Menu menu;
 
-  public virtual void add_actions_to_group (SimpleActionGroup group)
-  {
-  }
+  public virtual void add_actions_to_group (SimpleActionGroup group) {}
 
-  public BluetoothMenu (string profile)
+  public Profile (string name)
   {
-    this.menu = new Menu ();
+    this.name = name;
 
-    var root_item = new MenuItem (null, "indicator.root-" + profile);
+    menu = new Menu ();
+
+    var root_item = new MenuItem (null, "indicator.root-" + name);
     root_item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.root");
-    root_item.set_submenu (this.menu);
+    root_item.set_submenu (menu);
 
-    this.root = new Menu ();
-    this.root.append_item (root_item);
+    root = new Menu ();
+    root.append_item (root_item);
   }
 
-  public void export (DBusConnection connection, string object_path)
+  public void export_menu (DBusConnection connection, string object_path)
   {
     try
       {
-        message ("exporting on %s", object_path);
+        message ("exporting '%s' on %s", name, object_path);
         connection.export_menu_model (object_path, this.root);
       }
     catch (Error e)
