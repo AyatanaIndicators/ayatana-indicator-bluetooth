@@ -56,7 +56,7 @@ class Phone: Profile
     return action;
   }
 
-  protected Variant action_state_for_root ()
+  private Variant action_state_for_root ()
   {
     var label = "Hello World"; // FIXME
     var a11y = "Hello World"; // FIXME

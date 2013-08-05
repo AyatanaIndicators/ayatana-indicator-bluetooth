@@ -88,7 +88,7 @@ class Desktop: Profile
   {
     var action_name = @"desktop-device-$(device.id)-connected";
 
-    var item = new MenuItem (_("Connection"), "indicator."+action_name);
+    var item = new MenuItem (_("Connection"), @"indicator.$action_name");
     item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
 
     // if this doesn't already have an action, create one
@@ -267,7 +267,7 @@ class Desktop: Profile
     return action;
   }
 
-  protected Variant action_state_for_root ()
+  private Variant action_state_for_root ()
   {
     bool blocked = bluetooth.blocked;
     bool powered = bluetooth.powered;
