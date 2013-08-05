@@ -22,25 +22,27 @@
  * either by software (e.g., a session configuration setting)
  * or by hardware (e.g., user disabled it via a physical switch on her laptop).
  *
- * KillswitchBluetooth uses this as a backend for its Bluetooth.blocked property.
+ * KillSwitchBluetooth uses this as a backend for its Bluetooth.blocked property.
  */
-public class KillSwitch: Object
+public interface KillSwitch: Object
 {
-  public bool blocked { get; protected set; default = false; }
+  public abstract bool blocked { get; protected set; }
 
-  public virtual void try_set_blocked (bool blocked) {}
+  public abstract void try_set_blocked (bool blocked);
 }
 
 /**
- * On Linux systems, monitors /dev/rfkill to watch for bluetooth blockage
+ * KillSwitch impementation for Linux using /dev/rfkill
  */
-public class RfKillSwitch: KillSwitch
+public class RfKillSwitch: KillSwitch, Object
 {
-  public override void try_set_blocked (bool blocked)
+  public bool blocked { get; protected set; default = false; }
+
+  public void try_set_blocked (bool blocked)
   {
     return_if_fail (this.blocked != blocked);
 
-    // write a 'soft kill' event to fkill
+    // try to soft-block all the bluetooth devices
     var event = Linux.RfKillEvent() {
       op    = Linux.RfKillOp.CHANGE_ALL,
       type  = Linux.RfKillType.BLUETOOTH,
@@ -52,6 +54,7 @@ public class RfKillSwitch: KillSwitch
       warning (@"Could not write rfkill event: $(strerror(errno))");
   }
 
+  /* represents an entry that we've read from the rfkill file */
   private class Entry
   {
     public uint32 idx;
@@ -61,23 +64,25 @@ public class RfKillSwitch: KillSwitch
   }
 
   private HashTable<uint32,Entry> entries;
-  private int fd;
+  private int fd = -1;
   private IOChannel channel;
   private uint watch;
 
-  private bool calculate_blocked ()
+  protected override void dispose ()
   {
-    foreach (Entry entry in entries.get_values())
-      if (entry.soft || entry.hard)
-        return true;
+    if (watch != 0)
+      {
+        Source.remove (watch);
+        watch = 0;
+      }
 
-    return false;
-  }
+    if (fd != -1)
+      {
+        Posix.close (fd);
+        fd = -1;
+      }
 
-  ~RfKillSwitch ()
-  {
-    Source.remove (watch);
-    Posix.close (fd);
+    base.dispose ();
   }
 
   public RfKillSwitch ()
@@ -147,7 +152,12 @@ public class RfKillSwitch: KillSwitch
           break;
       }
 
-    // update the 'blocked' property
-    blocked = calculate_blocked ();
+    /* update our blocked property.
+       it should be true if any bluetooth entry is hard- or soft-blocked */
+    var b = false;
+    foreach (Entry entry in entries.get_values())
+      if ((b = (entry.soft || entry.hard)))
+        break;
+    blocked = b;
   }
 }
