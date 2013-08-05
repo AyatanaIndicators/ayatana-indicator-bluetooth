@@ -5,6 +5,7 @@ indicator_bluetooth_service_SOURCES = \
 	bluetooth.vala \
 	bluez.vala \
 	desktop.vala \
+	device.vala \
 	main.vala \
 	phone.vala \
 	profile.vala \
@@ -15,18 +16,17 @@ indicator_bluetooth_service_VALAFLAGS = \
 	--ccode \
 	--vapidir=$(top_srcdir)/vapi/ \
 	--vapidir=./ \
-	--pkg indicator3-0.4 \
-	--pkg gnome-bluetooth-1.0 \
 	--pkg config \
 	--pkg rfkill \
 	--pkg posix \
 	--pkg glib-2.0 \
-	--pkg gtk+-3.0 \
-	--pkg Dbusmenu-0.4
+	--pkg gtk+-3.0
 
+# -w to disable warnings for vala-generated code
 indicator_bluetooth_service_CFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DLOCALE_DIR=\"$(datadir)/locale\" \
+        -w \
 	$(INDICATOR_BLUETOOTH_SERVICE_CFLAGS)
 
 indicator_bluetooth_service_LDADD = \

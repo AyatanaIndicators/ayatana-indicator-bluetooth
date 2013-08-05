@@ -48,7 +48,7 @@ class Phone: Profile
       try {
         Process.spawn_command_line_async ("system-settings bluetooth");
       } catch (Error e) {
-        warning ("unable to launch settings: %s", e.message);
+        warning (@"unable to launch settings: $(e.message)");
       }
     });
 

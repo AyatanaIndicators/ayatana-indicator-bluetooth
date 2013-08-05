@@ -12,7 +12,7 @@ main (string[] args)
   var bluetooth = new Bluez (new RfKillSwitch ());
  
   // start the service
-  var service = new BluetoothIndicator (bluetooth);
+  var service = new Service (bluetooth);
   service.run ();
 
   return Posix.EXIT_SUCCESS;

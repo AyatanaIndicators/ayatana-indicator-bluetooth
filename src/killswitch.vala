@@ -22,8 +22,7 @@
  * either by software (e.g., a session configuration setting)
  * or by hardware (e.g., user disabled it via a physical switch on her laptop).
  *
- * The Bluetooth class uses this as a backend for its 'blocked' property.
- * Other code can't even see this, so use Bluetooth.blocked instead. :)
+ * KillswitchBluetooth uses this as a backend for its Bluetooth.blocked property.
  */
 public class KillSwitch: Object
 {
@@ -50,7 +49,7 @@ public class RfKillSwitch: KillSwitch
 
     var bwritten = Posix.write (fd, &event, sizeof(Linux.RfKillEvent));
     if (bwritten == -1)
-      warning ("Could not write rfkill event: %s", strerror(errno));
+      warning (@"Could not write rfkill event: $(strerror(errno))");
   }
 
   private class Entry
@@ -90,7 +89,7 @@ public class RfKillSwitch: KillSwitch
     message ("fd is %d", fd);
     if (fd == -1)
       {
-        warning (@"Can't open $path: $(strerror(errno)); KillSwitch disable");
+        warning (@"Can't open $path for use as a killswitch backend: $(strerror(errno))");
       }
     else
       {

@@ -43,12 +43,12 @@ class Profile: Object
   {
     try
       {
-        message ("exporting '%s' on %s", name, object_path);
+        debug (@"exporting '$name' on $object_path");
         connection.export_menu_model (object_path, this.root);
       }
     catch (Error e)
       {
-        critical ("%s", e.message);
+        critical (@"Unable to export menu on $object_path: $(e.message)");
       }
   }
 }

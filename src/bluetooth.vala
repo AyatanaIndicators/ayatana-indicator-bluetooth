@@ -17,173 +17,64 @@
  *   Charles Kerr <charles.kerr@canonical.com>
  */
 
+
 /**
- * Base class for the bluetooth backend.
+ * Abstract interface for the Bluetooth backend.
  */
-public class Bluetooth: Object
+public interface Bluetooth: Object
 {
-  /* whether or not our system can be seen by other bluetooth devices */
-  public bool discoverable { get; protected set; default = false; }
-  public virtual void try_set_discoverable (bool b) {}
+  /* True if there are any bluetooth adapters powered up on the system.
+     In short, whether or not this system's bluetooth is "on". */
+  public abstract bool powered { get; protected set; }
 
-  /* whether or not there are any bluetooth adapters powered up on the system */
-  public bool powered { get; protected set; default = false; }
+  /* True if our system can be seen by other bluetooth devices */
+  public abstract bool discoverable { get; protected set; }
+  public abstract void try_set_discoverable (bool discoverable);
 
-  /* whether or not bluetooth's been disabled,
-     either by a software setting or physical hardware switch */
-  public bool blocked { get; protected set; default = true; }
-  public virtual void try_set_blocked (bool b) {
-    killswitch.try_set_blocked (b);
-  }
+  /* True if bluetooth's blocked. This can be soft-blocked by software and
+   * hard-blocked physically, eg by a laptop's network killswitch */
+  public abstract bool blocked { get; protected set; }
 
-  public class Device: Object {
-    public string name { get; construct; }
-    public bool supports_browsing { get; construct; }
-    public bool supports_file_transfer { get; construct; }
-    public Device (string name,
-                   bool supports_browsing,
-                   bool supports_file_transfer) {
-      Object (name: name,
-              supports_browsing: supports_browsing,
-              supports_file_transfer: supports_file_transfer);
-    }
-  }
+  /* Try to block/unblock bluetooth. This can fail if it's overridden
+     by the system, eg by a laptop's network killswitch */
+  public abstract void try_set_blocked (bool b);
 
-  private static uint16 get_uuid16_from_uuid (string uuid)
-  {
-    uint16 uuid16;
+  /* Get a list of the Device structs that we know about */
+  public abstract List<unowned Device> get_devices ();
 
-    string[] tokens = uuid.split ("-", 1);
-    if (tokens.length > 0)
-      uuid16 = (uint16) uint64.parse ("0x"+tokens[0]);
-    else
-      uuid16 = 0;
+  /* Emitted when one or more of the devices is added, removed, or changed */
+  public signal void devices_changed ();
 
-    return uuid16;
-  }
-        
-  protected static bool uuid_supports_file_transfer (string uuid)
-  {
-    return get_uuid16_from_uuid (uuid) == 0x1105; // OBEXObjectPush
-  }
-
-  protected static bool uuid_supports_browsing (string uuid)
-  {
-    return get_uuid16_from_uuid (uuid) == 0x1106; // OBEXFileTransfer
-  }
-
-  public enum DeviceType
-  {
-    COMPUTER,
-    PHONE,
-    MODEM,
-    NETWORK,
-    HEADSET,
-    HEADPHONES,
-    VIDEO,
-    OTHER_AUDIO,
-    JOYPAD,
-    KEYPAD,
-    KEYBOARD,
-    TABLET,
-    MOUSE,
-    PRINTER,
-    CAMERA
-  }
-
-  protected static DeviceType class_to_device_type (uint32 c)
-  {
-    switch ((c & 0x1f00) >> 8)
-      {
-        case 0x01:
-          return DeviceType.COMPUTER;
-
-        case 0x02:
-          switch ((c & 0xfc) >> 2)
-            {
-              case 0x01:
-              case 0x02:
-              case 0x03:
-              case 0x05:
-                return DeviceType.PHONE;
-
-              case 0x04:
-                return DeviceType.MODEM;
-            }
-          break;
-
-        case 0x03:
-          return DeviceType.NETWORK;
-
-        case 0x04:
-          switch ((c & 0xfc) >> 2)
-            {
-              case 0x01:
-              case 0x02:
-                return DeviceType.HEADSET;
-
-              case 0x06:
-                return DeviceType.HEADPHONES;
-
-              case 0x0b: // vcr
-              case 0x0c: // video camera
-              case 0x0d: // camcorder
-                return DeviceType.VIDEO;
-
-              default:
-                return DeviceType.OTHER_AUDIO;
-            }
-          //break;
-
-        case 0x05:
-          switch ((c & 0xc0) >> 6)
-            {
-              case 0x00:
-                switch ((c & 0x1e) >> 2)
-                  {
-                    case 0x01:
-                    case 0x02:
-                      return DeviceType.JOYPAD;
-                  }
-                break;
-
-              case 0x01:
-                return DeviceType.KEYBOARD;
-
-              case 0x02:
-                switch ((c & 0x1e) >> 2)
-                  {
-                    case 0x05:
-                      return DeviceType.TABLET;
-
-                    default:
-                      return DeviceType.MOUSE;
-                  }
-            }
-          break;
-
-        case 0x06:
-          if ((c & 0x80) != 0)
-            return DeviceType.PRINTER;
-          if ((c & 0x20) != 0)
-            return DeviceType.CAMERA;
-          break;
-      }
-
-    return 0;
-  }
+  /* Try to connect/disconnect a particular device.
+     The device_key argument comes from the Device struct */
+  public abstract void set_device_connected (uint device_key, bool connected);
+}
 
 
-  /***
-  ****  Killswitch Implementation 
-  ***/
 
+/**
+ * Base class for Bluetooth objects that use a killswitch to implement
+ * the 'discoverable' property.
+ */
+public abstract class KillswitchBluetooth: Object, Bluetooth
+{
   private KillSwitch killswitch;
 
-  public Bluetooth (KillSwitch killswitch)
+  public KillswitchBluetooth (KillSwitch killswitch)
   {
+    // always sync our 'blocked' property with the one in killswitch
     this.killswitch = killswitch;
     blocked = killswitch.blocked;
     killswitch.notify["blocked"].connect (() => blocked = killswitch.blocked );
   }
+
+  public bool powered { get; protected set; default = false; }
+  public bool discoverable { get; protected set; default = false; }
+  public bool blocked { get; protected set; default = true; }
+  public void try_set_blocked (bool b) { killswitch.try_set_blocked (b); }
+
+  // empty implementations
+  public abstract void try_set_discoverable (bool b);
+  public abstract List<unowned Device> get_devices ();
+  public abstract void set_device_connected (uint device_key, bool connected);
 }
