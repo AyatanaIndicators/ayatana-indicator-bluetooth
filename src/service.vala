@@ -16,13 +16,11 @@ public class Service: Object
 
     public Service (Bluetooth bluetooth)
     {
-      profiles = new HashTable<string,Profile> (str_hash, str_equal);
-      profiles.insert ("phone", new Phone (bluetooth));
-      profiles.insert ("desktop", new Desktop (bluetooth));
-
       actions = new SimpleActionGroup ();
-      foreach (Profile profile in profiles.get_values())
-        profile.add_actions_to_group (actions);
+
+      profiles = new HashTable<string,Profile> (str_hash, str_equal);
+      profiles.insert ("phone", new Phone (bluetooth, actions));
+      profiles.insert ("desktop", new Desktop (bluetooth, actions));
     }
 
     public int run ()
@@ -61,7 +59,7 @@ public class Service: Object
 
       this.profiles.for_each ((name,profile) => {
         var path = @"/com/canonical/indicator/bluetooth/$name";
-        message (@"exporting menu '$path'");
+        debug (@"exporting menu '$path'");
         profile.export_menu (connection, path);
       });
     }

@@ -23,8 +23,6 @@ class Profile: Object
   protected Menu root;
   protected Menu menu;
 
-  public virtual void add_actions_to_group (SimpleActionGroup group) {}
-
   public Profile (string name)
   {
     this.name = name;

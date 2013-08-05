@@ -19,21 +19,22 @@
 
 class Phone: Profile
 {
-  private Action[] actions;
+  Bluetooth bluetooth;
+  SimpleActionGroup action_group;
 
-  public override void add_actions_to_group (SimpleActionGroup group)
-  {
-    for (var i=0; i<actions.length; i++)
-      group.insert (actions[i]);
-  }
-
-  public Phone (Bluetooth bluetooth)
+  public Phone (Bluetooth bluetooth, SimpleActionGroup action_group)
   {
     base ("phone");
 
-    actions = {};
+    this.bluetooth = bluetooth;
+    this.action_group = action_group;
+
+    // build the static actions
+    Action[] actions = {};
     actions += new SimpleAction.stateful ("root-phone", null, action_state_for_root());
     actions += create_settings_action ();
+    foreach (var a in actions)
+      action_group.insert (a);
 
     var section = new Menu ();
     section.append (_("Sound settings…"), "indicator.phone-settings");

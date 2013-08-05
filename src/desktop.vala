@@ -22,17 +22,11 @@ class Desktop: Profile
   private uint idle_rebuild_id = 0;
   private Settings settings;
   private Bluetooth bluetooth;
+  private SimpleActionGroup action_group;
 
   private SimpleAction root_action;
-  private Action[] all_actions;
   private Menu device_section;
   private HashTable<uint,SimpleAction> connect_actions;
-
-  public override void add_actions_to_group (SimpleActionGroup group)
-  {
-    for (var i=0; i<all_actions.length; i++)
-      group.insert (all_actions[i]);
-  }
 
   protected override void dispose ()
   {
@@ -45,11 +39,12 @@ class Desktop: Profile
     base.dispose ();
   }
 
-  public Desktop (Bluetooth bluetooth)
+  public Desktop (Bluetooth bluetooth, SimpleActionGroup action_group)
   {
     base ("desktop");
 
     this.bluetooth = bluetooth;
+    this.action_group = action_group;
 
     connect_actions = new HashTable<uint,SimpleAction>(direct_hash, direct_equal);
 
@@ -57,19 +52,24 @@ class Desktop: Profile
 
     root_action = create_root_action ();
 
-    all_actions = {};
-    all_actions += root_action;
-    all_actions += create_enabled_action (bluetooth);
-    all_actions += create_discoverable_action (bluetooth);
-    all_actions += create_wizard_action ();
-    all_actions += create_browse_files_action ();
-    all_actions += create_send_file_action ();
-    all_actions += create_show_settings_action ();
+    // build the static actions
+    Action[] actions = {};
+    actions += root_action;
+    actions += create_enabled_action (bluetooth);
+    actions += create_discoverable_action (bluetooth);
+    actions += create_wizard_action ();
+    actions += create_browse_files_action ();
+    actions += create_send_file_action ();
+    actions += create_show_settings_action ();
+    foreach (var a in actions)
+      action_group.insert (a);
 
     build_menu ();
 
     settings.changed["visible"].connect (()=> update_root_action_state());
     bluetooth.notify.connect (() => update_root_action_state());
+
+    // when devices change, rebuild our device section
     bluetooth.devices_changed.connect (()=> {
       if (idle_rebuild_id == 0)
         idle_rebuild_id = Idle.add (() => {
@@ -99,7 +99,7 @@ class Desktop: Profile
         action.activate.connect (() => action.set_state (!action.get_state().get_boolean()));
         action.notify["state"].connect (() => bluetooth.set_device_connected (device.id, action.get_state().get_boolean()));
         connect_actions.insert (device.id, action);
-        all_actions += action;
+        action_group.insert (action);
       }
     else
       {
