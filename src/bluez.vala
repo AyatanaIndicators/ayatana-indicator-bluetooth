@@ -59,7 +59,7 @@ public class Bluez: KillswitchBluetooth
   {
     if (object_path != null) try
       {
-        message (@"using default adapter at $object_path");
+        debug (@"using default adapter at $object_path");
         default_adapter = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
         default_adapter.property_changed.connect(() => on_default_adapter_properties_changed());
 

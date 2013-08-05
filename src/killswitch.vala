@@ -91,7 +91,6 @@ public class RfKillSwitch: KillSwitch, Object
 
     var path = "/dev/rfkill";
     fd = Posix.open (path, Posix.O_RDWR | Posix.O_NONBLOCK );
-    message ("fd is %d", fd);
     if (fd == -1)
       {
         warning (@"Can't open $path for use as a killswitch backend: $(strerror(errno))");
