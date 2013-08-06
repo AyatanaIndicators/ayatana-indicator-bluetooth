@@ -15,7 +15,9 @@
  *
  * Authors:
  *   Charles Kerr <charles.kerr@canonical.com>
+ *   Robert Ancell <robert.ancell@canonical.com>
  */
+
 
 /**
  * Bluetooth implementaion which uses org.bluez on DBus 
