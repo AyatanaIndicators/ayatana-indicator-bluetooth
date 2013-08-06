@@ -22,12 +22,14 @@
  * either by software (e.g., a session configuration setting)
  * or by hardware (e.g., user disabled it via a physical switch on her laptop).
  *
- * KillSwitchBluetooth uses this as a backend for its Bluetooth.blocked property.
+ * KillSwitchBluetooth uses this as the impl for its Bluetooth.blocked property
  */
 public interface KillSwitch: Object
 {
   public abstract bool blocked { get; protected set; }
 
+  /* Try to block/unblock bluetooth.
+   * This can fail if the requested state is overruled by a hardware block. */
   public abstract void try_set_blocked (bool blocked);
 }
 
@@ -42,13 +44,16 @@ public class RfKillSwitch: KillSwitch, Object
   {
     return_if_fail (this.blocked != blocked);
 
-    // try to soft-block all the bluetooth devices
+    // Try to soft-block all the bluetooth devices
     var event = Linux.RfKillEvent() {
       op    = Linux.RfKillOp.CHANGE_ALL,
       type  = Linux.RfKillType.BLUETOOTH,
       soft  = (uint8)blocked
     };
 
+    /* Write this request to rfkill.
+     * Don't update this object's "blocked" property here --
+     * We'll get the update when on_channel_event() reads it below */
     var bwritten = Posix.write (fd, &event, sizeof(Linux.RfKillEvent));
     if (bwritten == -1)
       warning (@"Could not write rfkill event: $(strerror(errno))");
