@@ -45,7 +45,7 @@ class Profile: Object
     try
       {
         debug (@"exporting '$profile_name' on $object_path");
-        connection.export_menu_model (object_path, this.root);
+        connection.export_menu_model (object_path, root);
       }
     catch (Error e)
       {
@@ -101,7 +101,7 @@ class Profile: Object
       {
         root_action = new SimpleAction.stateful (@"root-$profile", null, action_state_for_root());
 
-        this.notify["visible"].connect (() => update_root_action_state());
+        notify["visible"].connect (() => update_root_action_state());
       }
 
     return root_action;

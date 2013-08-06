@@ -35,7 +35,7 @@ public class Service: Object
 
   public int run ()
   {
-    if (this.loop != null)
+    if (loop != null)
       {
         warning ("service is already running");
         return Posix.EXIT_FAILURE;
@@ -44,12 +44,12 @@ public class Service: Object
     Bus.own_name (BusType.SESSION,
                   "com.canonical.indicator.bluetooth",
                   BusNameOwnerFlags.NONE,
-                  this.on_bus_acquired,
+                  on_bus_acquired,
                   null,
-                  this.on_name_lost);
+                  on_name_lost);
 
-    this.loop = new MainLoop (null, false);
-    this.loop.run ();
+    loop = new MainLoop (null, false);
+    loop.run ();
     return Posix.EXIT_SUCCESS;
   }
 
@@ -60,14 +60,14 @@ public class Service: Object
     var object_path = "/com/canonical/indicator/bluetooth";
     try
       {
-        connection.export_action_group (object_path, this.actions);
+        connection.export_action_group (object_path, actions);
       }
     catch (Error e)
       {
         critical (@"Unable to export actions on $object_path: $(e.message)");
       }
 
-    this.profiles.for_each ((name,profile) => {
+    profiles.for_each ((name,profile) => {
       var path = @"$object_path/$name";
       debug (@"exporting menu '$path'");
       profile.export_menu (connection, path);
@@ -77,6 +77,6 @@ public class Service: Object
   void on_name_lost (DBusConnection connection, string name)
   {
     debug (@"name lost: $name");
-    this.loop.quit ();
+    loop.quit ();
   }
 }
