@@ -77,10 +77,10 @@ public class Bluez: KillswitchBluetooth
                                               "org.bluez",
                                               object_path);
 
-        default_adapter.property_changed.connect(()
-            => on_default_adapter_properties_changed());
+        default_adapter.property_changed.connect (()
+            => on_default_adapter_properties_changed ());
 
-        default_adapter.device_removed.connect((adapter, path) => {
+        default_adapter.device_removed.connect ((adapter, path) => {
           var id = path_to_id.lookup (path);
           path_to_id.remove (path);
           id_to_path.remove (id);
@@ -88,10 +88,10 @@ public class Bluez: KillswitchBluetooth
           devices_changed ();
         });
 
-        default_adapter.device_created.connect((adapter, path)
+        default_adapter.device_created.connect ((adapter, path)
             => add_device (path));
 
-        foreach (string device_path in default_adapter.list_devices())
+        foreach (var device_path in default_adapter.list_devices ())
           add_device (device_path);
       }
     catch (Error e)
@@ -109,12 +109,12 @@ public class Bluez: KillswitchBluetooth
 
     if (default_adapter != null) try
       {
-        var properties = default_adapter.get_properties();
+        var properties = default_adapter.get_properties ();
 
-        var v = properties.lookup("Discoverable");
+        var v = properties.lookup ("Discoverable");
         is_discoverable = (v != null) && v.get_boolean ();
 
-        v = properties.lookup("Powered");
+        v = properties.lookup ("Powered");
         is_powered = (v != null) && v.get_boolean ();
       }
     catch (Error e) 
@@ -146,7 +146,7 @@ public class Bluez: KillswitchBluetooth
   // A device supports file transfer if OBEXObjectPush is in its uuid list
   private bool device_supports_file_transfer (uint16[] uuids)
   {
-    foreach (uint16 uuid16 in uuids)
+    foreach (var uuid16 in uuids)
       if (uuid16 == 0x1105) // OBEXObjectPush
         return true;
 
@@ -156,7 +156,7 @@ public class Bluez: KillswitchBluetooth
   // A device supports browsing if OBEXFileTransfer is in its uuid list
   private bool device_supports_browsing (uint16[] uuids)
   {
-    foreach (uint16 uuid16 in uuids)
+    foreach (var uuid16 in uuids)
       if (uuid16 == 0x1106) // OBEXFileTransfer
         return true;
 
@@ -182,11 +182,11 @@ public class Bluez: KillswitchBluetooth
 
         if ((intro != null) && (intro.n_children() > 0))
           {
-            string xml = intro.get_child_value(0).get_string();
+            var xml = intro.get_child_value(0).get_string();
             var info = new DBusNodeInfo.for_xml (xml);
             if (info != null)
               {
-                foreach (DBusInterfaceInfo i in info.interfaces)
+                foreach (var i in info.interfaces)
                   {
                     if ((i.name == "org.bluez.AudioSink") ||
                         (i.name == "org.bluez.Headset") ||
@@ -317,32 +317,28 @@ public class Bluez: KillswitchBluetooth
     v = properties.lookup ("Alias");
     if (v == null)
       v = properties.lookup ("Name");
-    string name = v == null ? _("Unknown") : v.get_string ();
+    var name = v == null ? _("Unknown") : v.get_string ();
 
     // look up the device's bus address
     v = properties.lookup ("Address");
-    string address = v.get_string ();
+    var address = v.get_string ();
 
     // look up the device's bus address
-    Icon icon;
     v = properties.lookup ("Icon");
-    if (v == null)
-      icon = new ThemedIcon ("unknown");
-    else
-      icon = new ThemedIcon (v.get_string());
+    var icon = new ThemedIcon (v != null ? v.get_string() : "unknown");
 
     // derive a Connectable flag for this device
     var is_connectable = device_is_connectable (device_proxy as DBusProxy);
 
     // look up the device's Connected flag
     v = properties.lookup ("Connected");
-    bool is_connected = (v != null) && v.get_boolean ();
+    var is_connected = (v != null) && v.get_boolean ();
 
     // derive the uuid-related attributes we care about
     v = properties.lookup ("UUIDs");
     string[] uuid_strings = v.dup_strv ();
     uint16[] uuids = {};
-    foreach (string s in uuid_strings)
+    foreach (var s in uuid_strings)
       uuids += get_uuid16_from_uuid_string (s);
     var supports_browsing = device_supports_browsing (uuids);
     var supports_file_transfer = device_supports_file_transfer (uuids);
@@ -386,7 +382,7 @@ public class Bluez: KillswitchBluetooth
   {
     if (discoverable != b) try
       {
-        default_adapter.set_property ("Discoverable", new Variant.boolean(b));
+        default_adapter.set_property ("Discoverable", new Variant.boolean (b));
       }
     catch (Error e)
       {

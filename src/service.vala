@@ -71,7 +71,7 @@ public class Service: Object
         critical (@"Unable to export actions on $object_path: $(e.message)");
       }
 
-    profiles.for_each ((name,profile) => {
+    profiles.for_each ((name, profile) => {
       var path = @"$object_path/$name";
       debug (@"exporting menu '$path'");
       profile.export_menu (connection, path);

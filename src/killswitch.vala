@@ -159,7 +159,7 @@ public class RfKillSwitch: KillSwitch, Object
     /* update our blocked property.
        it should be true if any bluetooth entry is hard- or soft-blocked */
     var b = false;
-    foreach (Entry entry in entries.get_values())
+    foreach (var entry in entries.get_values ())
       if ((b = (entry.soft || entry.hard)))
         break;
     blocked = b;

@@ -72,7 +72,7 @@ class Desktop: Profile
     bluetooth.devices_changed.connect (()=> {
       if (idle_rebuild_id == 0)
         idle_rebuild_id = Idle.add (() => {
-          rebuild_device_section();
+          rebuild_device_section ();
           idle_rebuild_id = 0;
           return false;
         });
@@ -90,20 +90,29 @@ class Desktop: Profile
 
   MenuItem create_device_connection_menuitem (Device device)
   {
-    var action_name = @"desktop-device-$(device.id)-connected";
+    var id = device.id;
+    var action_name = @"desktop-device-$(id)-connected";
 
     var item = new MenuItem (_("Connection"), @"indicator.$action_name");
-    item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
+    item.set_attribute ("x-canonical-type",
+                        "s", "com.canonical.indicator.switch");
 
     // if this doesn't already have an action, create one
-    if (!connect_actions.contains (device.id))
+    if (!connect_actions.contains (id))
       {
         debug (@"creating action for $action_name");
-        var action = new SimpleAction.stateful (action_name, null, device.is_connected);
-        action.activate.connect (() => action.set_state (!action.get_state().get_boolean()));
-        action.notify["state"].connect (() => bluetooth.set_device_connected (device.id, action.get_state().get_boolean()));
-        connect_actions.insert (device.id, action);
-        action_group.insert (action);
+        var a = new SimpleAction.stateful (action_name,
+                                           null,
+                                           device.is_connected);
+
+        a.activate.connect (()
+          => a.set_state (!a.get_state().get_boolean()));
+
+        a.notify["state"].connect (()
+          => bluetooth.set_device_connected (id, a.get_state().get_boolean()));
+
+        connect_actions.insert (device.id, a);
+        action_group.insert (a);
       }
     else
       {

@@ -68,7 +68,7 @@ class Profile: Object
 
   protected MenuItem create_enabled_menuitem ()
   {
-    MenuItem item = new MenuItem ("Bluetooth", "indicator.bluetooth-enabled");
+    var item = new MenuItem ("Bluetooth", "indicator.bluetooth-enabled");
 
     item.set_attribute ("x-canonical-type", "s",
                         "com.canonical.indicator.switch");
@@ -131,8 +131,8 @@ class Profile: Object
 
   protected Variant action_state_for_root ()
   {
-    bool blocked = bluetooth.blocked;
-    bool powered = bluetooth.powered;
+    var blocked = bluetooth.blocked;
+    var powered = bluetooth.powered;
 
     string a11y;
     string icon_name;
