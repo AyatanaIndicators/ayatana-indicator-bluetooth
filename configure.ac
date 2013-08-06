@@ -1,4 +1,4 @@
-AC_INIT(indicator-bluetooth, 0.0.6)
+AC_INIT([indicator-bluetooth],[13.10.0])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AC_CONFIG_HEADERS([config.h])
 AM_SILENT_RULES([yes])
