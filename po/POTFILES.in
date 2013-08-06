@@ -3,12 +3,15 @@
 [encoding: UTF-8]
 data/com.canonical.indicator.bluetooth.gschema.xml.in
 src/bluetooth.vala
+src/bluez.c
 src/bluez.vala
+src/desktop.c
 src/desktop.vala
 src/device.vala
 src/killswitch.vala
 src/main.vala
 src/org-bluez.vala
+src/phone.c
 src/phone.vala
 src/profile.vala
 src/service.vala
