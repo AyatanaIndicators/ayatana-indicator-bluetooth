@@ -21,10 +21,8 @@ class Desktop: Profile
 {
   private uint idle_rebuild_id = 0;
   private Settings settings;
-  private Bluetooth bluetooth;
   private SimpleActionGroup action_group;
 
-  private SimpleAction root_action;
   private Menu device_section;
   private HashTable<uint,SimpleAction> connect_actions;
 
@@ -41,20 +39,19 @@ class Desktop: Profile
 
   public Desktop (Bluetooth bluetooth, SimpleActionGroup action_group)
   {
-    base ("desktop");
+    const string profile_name = "desktop";
 
-    this.bluetooth = bluetooth;
+    base (bluetooth, profile_name);
+
     this.action_group = action_group;
 
     connect_actions = new HashTable<uint,SimpleAction>(direct_hash, direct_equal);
 
     settings = new Settings ("com.canonical.indicator.bluetooth");
 
-    root_action = create_root_action ();
-
     // build the static actions
     Action[] actions = {};
-    actions += root_action;
+    actions += get_root_action (profile_name);
     actions += create_enabled_action (bluetooth);
     actions += create_discoverable_action (bluetooth);
     actions += create_wizard_action ();
@@ -66,8 +63,10 @@ class Desktop: Profile
 
     build_menu ();
 
-    settings.changed["visible"].connect (()=> update_root_action_state());
-    bluetooth.notify.connect (() => update_root_action_state());
+    // know when to show the indicator & when to hide it
+    settings.changed["visible"].connect (()=> update_visibility());
+    bluetooth.notify.connect (() => update_visibility());
+    update_visibility ();
 
     // when devices change, rebuild our device section
     bluetooth.devices_changed.connect (()=> {
@@ -78,6 +77,11 @@ class Desktop: Profile
           return false;
         });
     });
+  }
+
+  void update_visibility ()
+  {
+    visible = bluetooth.powered && !bluetooth.blocked && settings.get_boolean("visible");
   }
 
   ///
@@ -165,9 +169,7 @@ class Desktop: Profile
 
     // quick toggles section
     section = new Menu ();
-    item = new MenuItem ("Bluetooth", "indicator.desktop-enabled");
-    item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
-    section.append_item (item);
+    section.append_item (create_enabled_menuitem ());
     item = new MenuItem ("Visible", "indicator.desktop-discoverable");
     item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
     section.append_item (item);
@@ -186,34 +188,12 @@ class Desktop: Profile
   }
 
   ///
-  ///  Action Helpers
-  ///
-
-  void spawn_command_line_async (string command)
-  {
-    try {
-      Process.spawn_command_line_async (command);
-    } catch (Error e) {
-      warning ("unable to launch '$command': $(e.message)");
-    }
-  }
-
-  void show_control_center (string panel)
-  {
-    spawn_command_line_async ("gnome-control-center " + panel);
-  }
-
-  ///
   ///  Actions
   ///
 
-  Action create_enabled_action (Bluetooth bluetooth)
+  void show_settings (string panel)
   {
-    var action = new SimpleAction.stateful ("desktop-enabled", null, !bluetooth.blocked);
-    action.activate.connect (() => action.set_state (!action.get_state().get_boolean()));
-    action.notify["state"].connect (() => bluetooth.try_set_blocked (!action.get_state().get_boolean()));
-    bluetooth.notify["blocked"].connect (() => action.set_state (!bluetooth.blocked));
-    return action;
+    spawn_command_line_async ("gnome-control-center " + panel);
   }
 
   Action create_discoverable_action (Bluetooth bluetooth)
@@ -263,48 +243,7 @@ class Desktop: Profile
   Action create_show_settings_action ()
   {
     var action = new SimpleAction ("desktop-show-settings", VariantType.STRING);
-    action.activate.connect ((action, panel) => show_control_center (panel.get_string()));
+    action.activate.connect ((action, panel) => show_settings (panel.get_string()));
     return action;
-  }
-
-  private Variant action_state_for_root ()
-  {
-    bool blocked = bluetooth.blocked;
-    bool powered = bluetooth.powered;
-
-    settings.changed["visible"].connect (()=> update_root_action_state());
-
-    bool visible = powered && settings.get_boolean("visible");
-
-    string a11y;
-    string icon_name;
-    if (powered && !blocked)
-      {
-        a11y = "Bluetooth (on)";
-        icon_name = "bluetooth-active";
-      }
-    else
-      {
-        a11y = "Bluetooth (off)";
-        icon_name = "bluetooth-disabled";
-      }
-
-    var icon = new ThemedIcon.with_default_fallbacks (icon_name);
-
-    var builder = new VariantBuilder (new VariantType ("a{sv}"));
-    builder.add ("{sv}", "visible", new Variant ("b", visible));
-    builder.add ("{sv}", "accessible-desc", new Variant ("s", a11y));
-    builder.add ("{sv}", "icon", icon.serialize());
-    return builder.end ();
-  }
-
-  SimpleAction create_root_action ()
-  {
-    return new SimpleAction.stateful ("root-desktop", null, action_state_for_root());
-  }
-
-  void update_root_action_state ()
-  {
-    root_action.set_state (action_state_for_root ());
   }
 }

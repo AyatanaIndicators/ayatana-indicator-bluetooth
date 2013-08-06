@@ -19,57 +19,54 @@
 
 class Phone: Profile
 {
-  Bluetooth bluetooth;
   SimpleActionGroup action_group;
 
   public Phone (Bluetooth bluetooth, SimpleActionGroup action_group)
   {
-    base ("phone");
+    const string profile_name = "phone";
+    base (bluetooth, profile_name);
 
     this.bluetooth = bluetooth;
     this.action_group = action_group;
 
     // build the static actions
     Action[] actions = {};
-    actions += new SimpleAction.stateful ("root-phone", null, action_state_for_root());
+    actions += get_root_action (profile_name);
+    actions += create_enabled_action (bluetooth);
     actions += create_settings_action ();
     foreach (var a in actions)
       action_group.insert (a);
 
     var section = new Menu ();
-    section.append (_("Sound settings…"), "indicator.phone-settings");
+    section.append_item (create_enabled_menuitem ());
+    section.append (_("Bluetooth settings…"), "indicator.phone-show-settings::bluetooth");
     menu.append_section (null, section);
+
+    // know when to show the indicator & when to hide it
+    bluetooth.notify.connect (() => update_visibility());
+    update_visibility ();
+
+    bluetooth.notify.connect (() => update_root_action_state());
+  }
+
+  void update_visibility ()
+  {
+    visible = bluetooth.powered && !bluetooth.blocked;
+  }
+
+  ///
+  ///  Actions
+  ///
+
+  void show_settings (string panel)
+  {
+    spawn_command_line_async ("system-settings " + panel);
   }
 
   Action create_settings_action ()
   {
-    var action = new SimpleAction ("phone-settings", null);
-
-    action.activate.connect ((action, param) => {
-      try {
-        Process.spawn_command_line_async ("system-settings bluetooth");
-      } catch (Error e) {
-        warning (@"unable to launch settings: $(e.message)");
-      }
-    });
-
+    var action = new SimpleAction ("phone-show-settings", VariantType.STRING);
+    action.activate.connect ((action, panel) => show_settings (panel.get_string()));
     return action;
-  }
-
-  private Variant action_state_for_root ()
-  {
-    var label = "Hello World"; // FIXME
-    var a11y = "Hello World"; // FIXME
-    var visible = true; // FIXME
-
-    string icon_name = "bluetooth"; // FIXME: enabled, disabled, connected, etc.
-    var icon = new ThemedIcon.with_default_fallbacks (icon_name);
-
-    var builder = new VariantBuilder (new VariantType ("a{sv}"));
-    builder.add ("{sv}", "visible", new Variant ("b", visible));
-    builder.add ("{sv}", "label", new Variant ("s", label));
-    builder.add ("{sv}", "accessible-desc", new Variant ("s", a11y));
-    builder.add ("{sv}", "icon", icon.serialize());
-    return builder.end ();
   }
 }
