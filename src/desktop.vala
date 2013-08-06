@@ -128,30 +128,35 @@ class Desktop: Profile
           submenu.append_item (create_device_connection_menuitem (device));
 
         if (device.supports_browsing)
-          submenu.append (_("Browse files…"), @"indicator.desktop-browse-files::$(device.address)");
+          submenu.append (_("Browse files…"),
+                          @"indicator.desktop-browse-files::$(device.address)");
 
         if (device.supports_file_transfer)
-          submenu.append (_("Send files…"), @"indicator.desktop-send-file::$(device.address)");
+          submenu.append (_("Send files…"),
+                          @"indicator.desktop-send-file::$(device.address)");
 
         switch (device.device_type)
           {
             case Device.Type.KEYBOARD:
-              submenu.append (_("Keyboard Settings…"), "indicator.desktop-show-settings::keyboard");
+              submenu.append (_("Keyboard Settings…"),
+                              "indicator.desktop-show-settings::keyboard");
               break;
 
             case Device.Type.MOUSE:
             case Device.Type.TABLET:
-              submenu.append (_("Mouse and Touchpad Settings…"), "indicator.desktop-show-settings::mouse");
+              submenu.append (_("Mouse and Touchpad Settings…"),
+                              "indicator.desktop-show-settings::mouse");
               break;
 
             case Device.Type.HEADSET:
             case Device.Type.HEADPHONES:
             case Device.Type.OTHER_AUDIO:
-              submenu.append (_("Sound Settings…"), "indicator.desktop-show-settings::sound");
+              submenu.append (_("Sound Settings…"),
+                              "indicator.desktop-show-settings::sound");
               break;
           }
 
-        /* only show the device if it's got actions that we can perform on it */
+        // only show the device if it's got actions that we can perform on it
         if (submenu.get_n_items () > 0)
           {
             item = new MenuItem (device.name, null);
@@ -171,7 +176,8 @@ class Desktop: Profile
     section = new Menu ();
     section.append_item (create_enabled_menuitem ());
     item = new MenuItem ("Visible", "indicator.desktop-discoverable");
-    item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
+    item.set_attribute ("x-canonical-type", "s",
+                        "com.canonical.indicator.switch");
     section.append_item (item);
     menu.append_section (null, section);
 
@@ -182,8 +188,10 @@ class Desktop: Profile
 
     // settings section
     section = new Menu ();
-    section.append (_("Set Up New Device…"), "indicator.desktop-wizard");
-    section.append (_("Bluetooth Settings…"), "indicator.desktop-show-settings::bluetooth");
+    section.append (_("Set Up New Device…"),
+                    "indicator.desktop-wizard");
+    section.append (_("Bluetooth Settings…"),
+                    "indicator.desktop-show-settings::bluetooth");
     menu.append_section (null, section);
   }
 
@@ -198,19 +206,32 @@ class Desktop: Profile
 
   Action create_discoverable_action (Bluetooth bluetooth)
   {
-    var action = new SimpleAction.stateful ("desktop-discoverable", null, bluetooth.discoverable);
+    var action = new SimpleAction.stateful ("desktop-discoverable",
+                                            null,
+                                            bluetooth.discoverable);
+
+    action.activate.connect (()
+        => action.set_state (!action.get_state().get_boolean()));
+
+    action.notify["state"].connect (()
+        => bluetooth.try_set_discoverable (action.get_state().get_boolean()));
+
+    bluetooth.notify["discoverable"].connect (()
+        => action.set_state (bluetooth.discoverable));
+
     action.set_enabled (bluetooth.powered);
-    action.activate.connect (() => action.set_state (!action.get_state().get_boolean()));
-    action.notify["state"].connect (() => bluetooth.try_set_discoverable (action.get_state().get_boolean()));
-    bluetooth.notify["discoverable"].connect (() => action.set_state (bluetooth.discoverable));
-    bluetooth.notify["powered"].connect (() => action.set_enabled (bluetooth.powered));
+    bluetooth.notify["powered"].connect (()
+        => action.set_enabled (bluetooth.powered));
+
     return action;
   }
 
   Action create_wizard_action ()
   {
     var action = new SimpleAction ("desktop-wizard", null);
-    action.activate.connect (() => spawn_command_line_async ("bluetooth-wizard"));
+
+    action.activate.connect (()
+        => spawn_command_line_async ("bluetooth-wizard"));
     return action;
   }
 
@@ -220,7 +241,8 @@ class Desktop: Profile
     action.activate.connect ((action, address) => {
       var uri = @"obex://[$(address.get_string())]/";
       var file = File.new_for_uri (uri);
-      file.mount_enclosing_volume.begin (MountMountFlags.NONE, null, null, (obj, res) => {
+      file.mount_enclosing_volume.begin (MountMountFlags.NONE,
+                                         null, null, (obj, res) => {
         try {
           AppInfo.launch_default_for_uri (uri, null);
         } catch (Error e) {
@@ -234,16 +256,22 @@ class Desktop: Profile
   Action create_send_file_action ()
   {
     var action = new SimpleAction ("desktop-send-file", VariantType.STRING);
+
     action.activate.connect ((action, address) => {
-      spawn_command_line_async ("bluetooth-sendto --device=$(address.get_string())");
+      var cmd = @"bluetooth-sendto --device=$(address.get_string())";
+      spawn_command_line_async (cmd);
     });
+
     return action;
   }
 
   Action create_show_settings_action ()
   {
     var action = new SimpleAction ("desktop-show-settings", VariantType.STRING);
-    action.activate.connect ((action, panel) => show_settings (panel.get_string()));
+
+    action.activate.connect ((action, panel)
+        => show_settings (panel.get_string()));
+
     return action;
   }
 }

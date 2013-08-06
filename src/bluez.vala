@@ -55,9 +55,10 @@ public class Bluez: KillswitchBluetooth
       {
         manager = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", "/");
 
-        // get the current default adapter, and watch for future default adapters
+        // get the current default adapter & watch for future default adapters
         adapter_path = manager.default_adapter ();
-        manager.default_adapter_changed.connect ((object_path) => on_default_adapter_changed (object_path));
+        manager.default_adapter_changed.connect ((object_path)
+            => on_default_adapter_changed (object_path));
       }
     catch (Error e)
       {
@@ -72,8 +73,12 @@ public class Bluez: KillswitchBluetooth
     if (object_path != null) try
       {
         debug (@"using default adapter at $object_path");
-        default_adapter = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
-        default_adapter.property_changed.connect(() => on_default_adapter_properties_changed());
+        default_adapter = Bus.get_proxy_sync (BusType.SYSTEM,
+                                              "org.bluez",
+                                              object_path);
+
+        default_adapter.property_changed.connect(()
+            => on_default_adapter_properties_changed());
 
         default_adapter.device_removed.connect((adapter, path) => {
           var id = path_to_id.lookup (path);
@@ -83,7 +88,9 @@ public class Bluez: KillswitchBluetooth
           devices_changed ();
         });
 
-        default_adapter.device_created.connect((adapter, path) => add_device (path));
+        default_adapter.device_created.connect((adapter, path)
+            => add_device (path));
+
         foreach (string device_path in default_adapter.list_devices())
           add_device (device_path);
       }
@@ -136,7 +143,7 @@ public class Bluez: KillswitchBluetooth
     return uuid16;
   }
 
-  /* A device supports file transfer if OBEXObjectPush is in its uuid list */
+  // A device supports file transfer if OBEXObjectPush is in its uuid list
   private bool device_supports_file_transfer (uint16[] uuids)
   {
     foreach (uint16 uuid16 in uuids)
@@ -146,7 +153,7 @@ public class Bluez: KillswitchBluetooth
     return false;
   }
 
-  /* A device supports browsing if OBEXFileTransfer is in its uuid list */
+  // A device supports browsing if OBEXFileTransfer is in its uuid list
   private bool device_supports_browsing (uint16[] uuids)
   {
     foreach (uint16 uuid16 in uuids)
@@ -205,7 +212,8 @@ public class Bluez: KillswitchBluetooth
   }
 
   // call "Connect" on the specified interface
-  private void device_connect_on_interface (DBusProxy proxy, string interface_name)
+  private void device_connect_on_interface (DBusProxy proxy,
+                                            string interface_name)
   {
     var bus = proxy.get_connection ();
     var object_path = proxy.get_object_path ();
@@ -219,7 +227,7 @@ public class Bluez: KillswitchBluetooth
       }
     catch (Error e)
       {
-        debug (@"Unable to call $interface_name.Connect() on $object_path: $(e.message)");
+        debug (@"$object_path $interface_name.Connect() failed: $(e.message)");
       }
   }
 
@@ -255,7 +263,9 @@ public class Bluez: KillswitchBluetooth
       {
         try
           {
-            org.bluez.Device device = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", object_path);
+            org.bluez.Device device = Bus.get_proxy_sync (BusType.SYSTEM,
+                                                          "org.bluez",
+                                                          object_path);
             path_to_proxy.insert (object_path, device);
             device.property_changed.connect(() => update_device (device)); 
             update_device (device);
@@ -358,10 +368,12 @@ public class Bluez: KillswitchBluetooth
   public override void set_device_connected (uint id, bool connected)
   {
     var device = id_to_device.lookup (id);
-    var object_path = id_to_path.lookup (id);
-    var proxy = (object_path != null) ? path_to_proxy.lookup (object_path) : null;
+    var path = id_to_path.lookup (id);
+    var proxy = (path != null) ? path_to_proxy.lookup (path) : null;
 
-    if ((proxy != null) && (device != null) && (device.is_connected != connected))
+    if ((proxy != null)
+        && (device != null)
+        && (device.is_connected != connected))
       {
         if (connected)
           device_connect (proxy);

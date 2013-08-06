@@ -39,7 +39,8 @@ class Phone: Profile
 
     var section = new Menu ();
     section.append_item (create_enabled_menuitem ());
-    section.append (_("Bluetooth settings…"), "indicator.phone-show-settings::bluetooth");
+    section.append (_("Bluetooth settings…"),
+                    "indicator.phone-show-settings::bluetooth");
     menu.append_section (null, section);
 
     // know when to show the indicator & when to hide it
@@ -66,7 +67,10 @@ class Phone: Profile
   Action create_settings_action ()
   {
     var action = new SimpleAction ("phone-show-settings", VariantType.STRING);
-    action.activate.connect ((action, panel) => show_settings (panel.get_string()));
+
+    action.activate.connect ((action, panel)
+        => show_settings (panel.get_string()));
+
     return action;
   }
 }

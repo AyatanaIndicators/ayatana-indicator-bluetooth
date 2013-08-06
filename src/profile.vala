@@ -69,14 +69,20 @@ class Profile: Object
   protected MenuItem create_enabled_menuitem ()
   {
     MenuItem item = new MenuItem ("Bluetooth", "indicator.bluetooth-enabled");
-    item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.switch");
+
+    item.set_attribute ("x-canonical-type", "s",
+                        "com.canonical.indicator.switch");
+
     return item;
   }
 
   private MenuItem create_root_menuitem ()
   {
     var item = new MenuItem (null, @"indicator.root-$profile_name");
-    item.set_attribute ("x-canonical-type", "s", "com.canonical.indicator.root");
+
+    item.set_attribute ("x-canonical-type", "s",
+                        "com.canonical.indicator.root");
+
     return item;
   }
 
@@ -86,10 +92,19 @@ class Profile: Object
 
   protected Action create_enabled_action (Bluetooth bluetooth)
   {
-    var action = new SimpleAction.stateful ("bluetooth-enabled", null, !bluetooth.blocked);
-    action.activate.connect (() => action.set_state (!action.get_state().get_boolean()));
-    action.notify["state"].connect (() => bluetooth.try_set_blocked (!action.get_state().get_boolean()));
-    bluetooth.notify["blocked"].connect (() => action.set_state (!bluetooth.blocked));
+    var action = new SimpleAction.stateful ("bluetooth-enabled",
+                                            null,
+                                            !bluetooth.blocked);
+
+    action.activate.connect (()
+        => action.set_state (!action.get_state().get_boolean()));
+
+    action.notify["state"].connect (()
+        => bluetooth.try_set_blocked (!action.get_state().get_boolean()));
+
+    bluetooth.notify["blocked"].connect (()
+        => action.set_state (!bluetooth.blocked));
+
     return action;
   }
 
@@ -99,7 +114,9 @@ class Profile: Object
   {
     if (root_action == null)
       {
-        root_action = new SimpleAction.stateful (@"root-$profile", null, action_state_for_root());
+        root_action = new SimpleAction.stateful (@"root-$profile",
+                                                 null,
+                                                 action_state_for_root());
 
         notify["visible"].connect (() => update_root_action_state());
       }
