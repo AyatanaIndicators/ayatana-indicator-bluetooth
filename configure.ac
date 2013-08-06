@@ -14,12 +14,11 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
-PKG_CHECK_MODULES(INDICATOR_BLUETOOTH_SERVICE, [
-  glib-2.0
-  gnome-bluetooth-1.0
-  indicator3-0.4
-  dbusmenu-gtk3-0.4
-])
+GLIB_REQUIRED_VERSION=2.36
+GIO_REQUIRED_VERSION=2.36
+
+PKG_CHECK_MODULES(SERVICE_DEPS, [glib-2.0 >= $GLIB_REQUIRED_VERSION
+                                 gio-unix-2.0 >= $GIO_REQUIRED_VERSION])
 
 dnl ##############################
 dnl # Custom Junk

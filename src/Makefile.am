@@ -20,17 +20,17 @@ indicator_bluetooth_service_VALAFLAGS = \
 	--pkg rfkill \
 	--pkg posix \
 	--pkg glib-2.0 \
-	--pkg gtk+-3.0
+	--pkg gio-2.0
 
 # -w to disable warnings for vala-generated code
 indicator_bluetooth_service_CFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DLOCALE_DIR=\"$(datadir)/locale\" \
-        -w \
-	$(INDICATOR_BLUETOOTH_SERVICE_CFLAGS)
+	-w \
+	$(SERVICE_DEPS_CFLAGS)
 
 indicator_bluetooth_service_LDADD = \
-	$(INDICATOR_BLUETOOTH_SERVICE_LIBS)
+	$(SERVICE_DEPS_LIBS)
 
 CLEANFILES = \
 	$(patsubst %.vala,%.c,$(filter %.vala, $(SOURCES))) \
