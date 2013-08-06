@@ -30,7 +30,5 @@ public static int main (string[] args)
  
   // start the service
   var service = new Service (bluetooth);
-  service.run ();
-
-  return Posix.EXIT_SUCCESS;
+  return service.run ();
 }
