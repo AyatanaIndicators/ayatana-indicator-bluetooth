@@ -246,7 +246,7 @@ class Desktop: Profile
         try {
           AppInfo.launch_default_for_uri (uri, null);
         } catch (Error e) {
-          warning ("unable to launch '$uri': $(e.message)");
+          warning (@"unable to launch '$uri': $(e.message)");
         }
       });
     });
