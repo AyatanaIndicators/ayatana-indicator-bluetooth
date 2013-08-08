@@ -20,7 +20,8 @@ Package: indicator-bluetooth
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
-         gnome-bluetooth,
+         ubuntu-system-settings | gnome-control-center,
+         ubuntu-system-settings | gnome-bluetooth,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Description: System bluetooth indicator.
