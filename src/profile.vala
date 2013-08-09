@@ -24,6 +24,7 @@ class Profile: Object
   protected Menu root;
   protected Menu menu;
   private uint menu_export_id;
+  protected SimpleAction root_action;
 
   protected bool visible { get; set; default = true; }
 
@@ -31,6 +32,11 @@ class Profile: Object
   {
     this.bluetooth = bluetooth;
     this.profile_name = profile_name;
+
+    root_action = new SimpleAction.stateful (@"root-$profile_name",
+                                             null,
+                                             action_state_for_root());
+    notify["visible"].connect (() => update_root_action_state());
 
     menu = new Menu ();
 
@@ -117,22 +123,6 @@ class Profile: Object
         => action.set_state (!bluetooth.blocked));
 
     return action;
-  }
-
-  protected SimpleAction root_action = null;
-
-  protected SimpleAction get_root_action (string profile)
-  {
-    if (root_action == null)
-      {
-        root_action = new SimpleAction.stateful (@"root-$profile",
-                                                 null,
-                                                 action_state_for_root());
-
-        notify["visible"].connect (() => update_root_action_state());
-      }
-
-    return root_action;
   }
 
   protected void update_root_action_state ()

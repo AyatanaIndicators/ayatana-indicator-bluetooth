@@ -51,7 +51,7 @@ class Desktop: Profile
 
     // build the static actions
     Action[] actions = {};
-    actions += get_root_action (profile_name);
+    actions += root_action;
     actions += create_enabled_action (bluetooth);
     actions += create_discoverable_action (bluetooth);
     actions += create_wizard_action ();
