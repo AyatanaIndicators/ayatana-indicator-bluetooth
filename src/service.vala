@@ -27,6 +27,25 @@ public class Service: Object
   private MainLoop loop;
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
+  private DBusConnection connection;
+  private uint exported_action_id;
+  private const string OBJECT_PATH = "/com/canonical/indicator/bluetooth";
+
+  private void unexport ()
+  {
+    if (connection != null)
+      {
+        profiles.for_each ((name, profile)
+          => profile.unexport_menu (connection));
+
+        if (exported_action_id != 0)
+          {
+            debug (@"unexporting action group '$(OBJECT_PATH)'");
+            connection.unexport_action_group (exported_action_id);
+            exported_action_id = 0;
+          }
+      }
+  }
 
   public Service (Bluetooth bluetooth)
   {
@@ -45,37 +64,40 @@ public class Service: Object
         return Posix.EXIT_FAILURE;
       }
 
-    Bus.own_name (BusType.SESSION,
-                  "com.canonical.indicator.bluetooth",
-                  BusNameOwnerFlags.NONE,
-                  on_bus_acquired,
-                  null,
-                  on_name_lost);
+    var own_name_id = Bus.own_name (BusType.SESSION,
+                                    "com.canonical.indicator.bluetooth",
+                                    BusNameOwnerFlags.NONE,
+                                    on_bus_acquired,
+                                    null,
+                                    on_name_lost);
 
     loop = new MainLoop (null, false);
     loop.run ();
+
+    // cleanup
+    unexport ();
+    Bus.unown_name (own_name_id);
     return Posix.EXIT_SUCCESS;
   }
 
   void on_bus_acquired (DBusConnection connection, string name)
   {
     debug (@"bus acquired: $name");
+    this.connection = connection;
 
-    var object_path = "/com/canonical/indicator/bluetooth";
     try
       {
-        connection.export_action_group (object_path, actions);
+        debug (@"exporting action group '$(OBJECT_PATH)'");
+        exported_action_id = connection.export_action_group (OBJECT_PATH,
+                                                             actions);
       }
     catch (Error e)
       {
-        critical (@"Unable to export actions on $object_path: $(e.message)");
+        critical (@"Unable to export actions on $OBJECT_PATH: $(e.message)");
       }
 
-    profiles.for_each ((name, profile) => {
-      var path = @"$object_path/$name";
-      debug (@"exporting menu '$path'");
-      profile.export_menu (connection, path);
-    });
+    profiles.for_each ((name, profile)
+        => profile.export_menu (connection, @"$OBJECT_PATH/$name"));
   }
 
   void on_name_lost (DBusConnection connection, string name)

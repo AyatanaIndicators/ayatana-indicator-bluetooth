@@ -23,6 +23,7 @@ class Profile: Object
   protected string profile_name;
   protected Menu root;
   protected Menu menu;
+  private uint menu_export_id;
 
   protected bool visible { get; set; default = true; }
 
@@ -44,12 +45,22 @@ class Profile: Object
   {
     try
       {
-        debug (@"exporting '$profile_name' on $object_path");
-        connection.export_menu_model (object_path, root);
+        debug (@"exporting menu '$profile_name'");
+        menu_export_id = connection.export_menu_model (object_path, root);
       }
     catch (Error e)
       {
         critical (@"Unable to export menu on $object_path: $(e.message)");
+      }
+  }
+
+  public void unexport_menu (DBusConnection connection)
+  {
+    if (menu_export_id != 0)
+      {
+        debug (@"unexporting menu '$profile_name'");
+        connection.unexport_menu_model (menu_export_id);
+        menu_export_id = 0;
       }
   }
 
