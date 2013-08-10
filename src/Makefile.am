@@ -1,49 +1,36 @@
 pkglibexec_PROGRAMS = indicator-bluetooth-service
-indicatordir = $(INDICATORDIR)
-indicator_LTLIBRARIES = libbluetooth.la
 
-indicator_bluetooth_service_SOURCES = 	\
-	config.vapi \
-	indicator3-0.4.vapi \
-	gnome-bluetooth-1.0.vapi \
-	indicator-bluetooth-service.vala
+indicator_bluetooth_service_SOURCES = \
+	org-bluez.vala \
+	bluetooth.vala \
+	bluez.vala \
+	desktop.vala \
+	device.vala \
+	main.vala \
+	phone.vala \
+	profile.vala \
+	killswitch.vala \
+	service.vala
 
 indicator_bluetooth_service_VALAFLAGS = \
+	--ccode \
+	--vapidir=$(top_srcdir)/vapi/ \
+	--vapidir=./ \
+	--pkg config \
+	--pkg rfkill \
 	--pkg posix \
 	--pkg glib-2.0 \
-	--pkg gtk+-3.0 \
-	--pkg Dbusmenu-0.4
+	--pkg gio-2.0
 
+# -w to disable warnings for vala-generated code
 indicator_bluetooth_service_CFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DLOCALE_DIR=\"$(datadir)/locale\" \
-	$(INDICATOR_BLUETOOTH_SERVICE_CFLAGS)
+	-w \
+	$(SERVICE_DEPS_CFLAGS)
 
 indicator_bluetooth_service_LDADD = \
-	$(INDICATOR_BLUETOOTH_SERVICE_LIBS)
-
-libbluetooth_la_SOURCES = 	\
-	config.vapi \
-	indicator3-0.4.vapi \
-	indicator-bluetooth.vala \
-	libido3-0.1.vapi
-
-libbluetooth_la_VALAFLAGS = \
-	--pkg posix \
-	--pkg glib-2.0 \
-	--pkg gtk+-3.0 \
-	--pkg Dbusmenu-0.4 \
-	--pkg DbusmenuGtk3-0.4
-
-libbluetooth_la_CFLAGS = \
-	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
-	$(INDICATOR_BLUETOOTH_CFLAGS)
-
-libbluetooth_la_LIBADD = \
-	$(INDICATOR_BLUETOOTH_LIBS)
-
-libbluetooth_la_LDFLAGS = \
-	-module -avoid-version
+	$(SERVICE_DEPS_LIBS)
 
 CLEANFILES = \
 	$(patsubst %.vala,%.c,$(filter %.vala, $(SOURCES))) \

@@ -1,5 +1,6 @@
-AC_INIT(indicator-bluetooth, 0.0.6)
+AC_INIT([indicator-bluetooth],[13.10.0])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
+AC_CONFIG_HEADERS([config.h])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 
@@ -13,54 +14,40 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
-PKG_CHECK_MODULES(INDICATOR_BLUETOOTH_SERVICE, [
-  glib-2.0
-  gnome-bluetooth-1.0
-  indicator3-0.4
-  dbusmenu-gtk3-0.4
+GLIB_REQUIRED_VERSION=2.36
+GIO_REQUIRED_VERSION=2.36
+
+PKG_CHECK_MODULES(SERVICE_DEPS, [glib-2.0 >= $GLIB_REQUIRED_VERSION
+                                 gio-unix-2.0 >= $GIO_REQUIRED_VERSION])
+
+dnl ##############################
+dnl # Custom Junk
+dnl ##############################
+
+AC_DEFUN([AC_DEFINE_PATH], [
+        test "x$prefix" = xNONE && prefix="$ac_default_prefix"
+        test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+        ac_define_path=`eval echo [$]$2`
+        ac_define_path=`eval echo [$]ac_define_path`
+        $1="$ac_define_path"
+        AC_SUBST($1)
+        ifelse($3, ,
+                AC_DEFINE_UNQUOTED($1, "$ac_define_path"),
+                AC_DEFINE_UNQUOTED($1, "$ac_define_path", $3))
 ])
 
-PKG_CHECK_MODULES(INDICATOR_BLUETOOTH, [
-  glib-2.0
-  gtk+-3.0
-  indicator3-0.4
-  dbusmenu-gtk3-0.4
-  libido3-0.1
-])
+dnl ###########################
+dnl # Internationalization
+dnl ###########################
 
-dnl ###########################################################################
-dnl Internationalization
-dnl ###########################################################################
+IT_PROG_INTLTOOL([0.41.0])
 
-IT_PROG_INTLTOOL([0.35.0])
-AC_SUBST(GETTEXT_PACKAGE, indicator-bluetooth)
+GETTEXT_PACKAGE=indicator-bluetooth
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the default get text domain])
+AC_DEFINE_PATH(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
 
-with_localinstall="no"
-AC_ARG_ENABLE(localinstall, AS_HELP_STRING([--enable-localinstall], [install all of the files localy instead of system directories (for distcheck)]), with_localinstall=$enableval, with_localinstall=no)
-
-dnl ###########################################################################
-dnl Indicator Info
-dnl ###########################################################################
-
-AS_IF([test "x$with_localinstall" = "xyes"],
-	[
-	INDICATORDIR="${libdir}/indicators3/7/"
-	],
-	[
-	INDICATORDIR=`$PKG_CONFIG --variable=indicatordir indicator3-0.4`
-	])
-AC_SUBST(INDICATORDIR)
-
-dnl ###########################################################################
-dnl DBus Service Info
-dnl ###########################################################################
-
-if test "x$with_localinstall" = "xyes"; then
-	DBUSSERVICEDIR="${datadir}/dbus-1/services/"
-else
-	DBUSSERVICEDIR=`$PKG_CONFIG --variable=session_bus_services_dir dbus-1`
-fi
-AC_SUBST(DBUSSERVICEDIR)
+AM_GLIB_GNU_GETTEXT
 
 dnl ###########################################################################
 dnl Files to generate

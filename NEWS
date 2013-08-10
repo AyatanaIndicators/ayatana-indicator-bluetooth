@@ -1,3 +1,9 @@
+Overview of changes in indicator-bluetooth 13.10.0
+
+    * Add phone profile
+    * Remove dbusmenu, gtk, libindicator dependencies
+    * Remove gnome-bluetooth runtime dependency in phone profile
+
 Overview of changes in indicator-bluetooth 0.0.6
 
     * Add "Set Up New Device" menu item

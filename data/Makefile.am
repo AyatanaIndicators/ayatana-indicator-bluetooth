@@ -1,4 +1,10 @@
-dbus_servicesdir = $(DBUSSERVICEDIR)
+
+# the indicator bus file
+indicatorsdir = $(datadir)/unity/indicators
+dist_indicators_DATA = com.canonical.indicator.bluetooth
+
+# the dbus service file
+dbus_servicesdir = $(datadir)/dbus-1/services
 dbus_services_DATA = indicator-bluetooth.service
 
 %.service: %.service.in
