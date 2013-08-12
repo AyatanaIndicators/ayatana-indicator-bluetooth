@@ -1,3 +1,15 @@
+indicator-bluetooth (0.0.6+13.10.20130812.1-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * Add phone profile. Export menus & actions using gio. Drops the gtk,
+    dbusmenu, and libindicator build dependencies. Drops runtime
+    dependency on gnome-blueooth in the phone profile.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 53
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 12 Aug 2013 06:06:38 +0000
+
 indicator-bluetooth (0.0.6daily13.06.07-0ubuntu1) saucy; urgency=low
 
   [ Jeremy Bicha ]
