@@ -1,3 +1,15 @@
+indicator-bluetooth (0.0.6+13.10.20130823-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * Don't use deprecated GSimpleActionGroup APIs.
+  * Since we're not using the gnome-bluetooth vapi file, we shouldn't
+    bundle it.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 56
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 23 Aug 2013 18:07:31 +0000
+
 indicator-bluetooth (0.0.6+13.10.20130812.1-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]
