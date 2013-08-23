@@ -35,7 +35,7 @@ class Phone: Profile
     actions += create_enabled_action (bluetooth);
     actions += create_settings_action ();
     foreach (var a in actions)
-      action_group.insert (a);
+      action_group.add_action (a);
 
     var section = new Menu ();
     section.append_item (create_enabled_menuitem ());

@@ -59,7 +59,7 @@ class Desktop: Profile
     actions += create_send_file_action ();
     actions += create_show_settings_action ();
     foreach (var a in actions)
-      action_group.insert (a);
+      action_group.add_action (a);
 
     build_menu ();
 
@@ -112,7 +112,7 @@ class Desktop: Profile
           => bluetooth.set_device_connected (id, a.get_state().get_boolean()));
 
         connect_actions.insert (device.id, a);
-        action_group.insert (a);
+        action_group.add_action (a);
       }
     else
       {
