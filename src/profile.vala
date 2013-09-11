@@ -154,6 +154,7 @@ class Profile: Object
     builder.add ("{sv}", "visible", new Variant.boolean (visible));
     builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
     builder.add ("{sv}", "icon", icon.serialize());
+    builder.add ("{sv}", "title", new Variant.string (_("Bluetooth")));
     return builder.end ();
   }
 }

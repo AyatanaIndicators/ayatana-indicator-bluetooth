@@ -1,2 +1,3 @@
 src/indicator-bluetooth.c
 src/indicator-bluetooth-service.c
+src/profile.c
