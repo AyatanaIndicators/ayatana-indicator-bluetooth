@@ -1,3 +1,13 @@
+indicator-bluetooth (0.0.6+13.10.20130913-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * Adds a title in the header's action state. (LP: #1223635)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 58
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 13 Sep 2013 15:15:49 +0000
+
 indicator-bluetooth (0.0.6+13.10.20130823-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]
