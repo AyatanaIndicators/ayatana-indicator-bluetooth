@@ -114,10 +114,10 @@ class Profile: Object
                                             !bluetooth.blocked);
 
     action.activate.connect (()
-        => action.set_state (!action.get_state().get_boolean()));
+        => action.change_state (!action.get_state().get_boolean()));
 
-    action.notify["state"].connect (()
-        => bluetooth.try_set_blocked (!action.get_state().get_boolean()));
+    action.change_state.connect ((action, requestedValue)
+        => bluetooth.try_set_blocked (!requestedValue.get_boolean()));
 
     bluetooth.notify["blocked"].connect (()
         => action.set_state (!bluetooth.blocked));
