@@ -1,3 +1,16 @@
+indicator-bluetooth (0.0.6+13.10.20130924.2-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * Handle the change-state event rather than notify["state"] so that
+    there won't be any inconsistency between the action's state and the
+    killswitch -- ie, the state won't change unless the killswitch
+    toggle succeeds.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 60
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 24 Sep 2013 08:58:34 +0000
+
 indicator-bluetooth (0.0.6+13.10.20130913-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]
