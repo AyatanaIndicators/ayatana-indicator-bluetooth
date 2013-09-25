@@ -61,7 +61,7 @@ class Phone: Profile
 
   void show_settings (string panel)
   {
-    spawn_command_line_async ("system-settings " + panel);
+    UrlDispatch.send ("settings://system/bluetooth");
   }
 
   Action create_settings_action ()
