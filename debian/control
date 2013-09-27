@@ -22,8 +22,8 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          bluez (>= 4.36),
-         ubuntu-system-settings | gnome-control-center,
-         ubuntu-system-settings | gnome-bluetooth,
+         gnome-control-center | ubuntu-system-settings,
+         gnome-bluetooth | ubuntu-system-settings,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Description: System bluetooth indicator.
