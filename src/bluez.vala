@@ -70,6 +70,8 @@ public class Bluez: KillswitchBluetooth
 
   private void on_default_adapter_changed (string? object_path)
   {
+    supported = object_path != null;
+
     if (object_path != null) try
       {
         debug (@"using default adapter at $object_path");

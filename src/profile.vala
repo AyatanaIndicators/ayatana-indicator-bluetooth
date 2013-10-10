@@ -107,6 +107,18 @@ class Profile: Object
   ///  Actions
   ///
 
+  protected Action create_supported_action (Bluetooth bluetooth)
+  {
+    var action = new SimpleAction.stateful ("bluetooth-supported",
+                                            null,
+                                            bluetooth.supported);
+
+    bluetooth.notify["supported"].connect (()
+        => action.set_state (bluetooth.supported));
+
+    return action;
+  }
+
   protected Action create_enabled_action (Bluetooth bluetooth)
   {
     var action = new SimpleAction.stateful ("bluetooth-enabled",

@@ -23,6 +23,10 @@
  */
 public interface Bluetooth: Object
 {
+  /* True if there are any bluetooth adapters on this system.
+     This work as a proxy for "does this hardware support bluetooth?" */
+  public abstract bool supported { get; protected set; }
+
   /* True if there are any bluetooth adapters powered up on the system.
      In short, whether or not this system's bluetooth is "on". */
   public abstract bool powered { get; protected set; }
@@ -68,6 +72,7 @@ public abstract class KillswitchBluetooth: Object, Bluetooth
     killswitch.notify["blocked"].connect (() => blocked = killswitch.blocked );
   }
 
+  public bool supported { get; protected set; default = false; }
   public bool powered { get; protected set; default = false; }
   public bool discoverable { get; protected set; default = false; }
   public bool blocked { get; protected set; default = true; }
