@@ -32,6 +32,7 @@ class Phone: Profile
     // build the static actions
     Action[] actions = {};
     actions += root_action;
+    actions += create_supported_action (bluetooth);
     actions += create_enabled_action (bluetooth);
     actions += create_settings_action ();
     foreach (var a in actions)
