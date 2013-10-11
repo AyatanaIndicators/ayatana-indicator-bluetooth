@@ -1,3 +1,15 @@
+indicator-bluetooth (0.0.6+13.10.20131011-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * add an action whose state shows whether or not bluetooth is
+    supported by the hardware, used by ubuntu-system-settings. (LP:
+    #1233628)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 68
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 11 Oct 2013 04:27:05 +0000
+
 indicator-bluetooth (0.0.6+13.10.20131004-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]
