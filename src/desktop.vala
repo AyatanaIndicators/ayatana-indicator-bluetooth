@@ -82,7 +82,7 @@ class Desktop: Profile
 
   void update_visibility ()
   {
-    visible = bluetooth.powered && !bluetooth.blocked && settings.get_boolean("visible");
+    visible = bluetooth.enabled && settings.get_boolean("visible");
   }
 
   ///
@@ -228,10 +228,6 @@ class Desktop: Profile
 
     bluetooth.notify["discoverable"].connect (()
         => action.set_state (bluetooth.discoverable));
-
-    action.set_enabled (bluetooth.powered);
-    bluetooth.notify["powered"].connect (()
-        => action.set_enabled (bluetooth.powered));
 
     return action;
   }

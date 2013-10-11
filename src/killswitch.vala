@@ -26,6 +26,8 @@
  */
 public interface KillSwitch: Object
 {
+  public abstract bool is_valid ();
+
   public abstract bool blocked { get; protected set; }
 
   /* Try to block/unblock bluetooth.
@@ -107,6 +109,11 @@ public class RfKillSwitch: KillSwitch, Object
         channel = new IOChannel.unix_new (fd);
         watch = channel.add_watch (IOCondition.IN, on_channel_event);
       }
+  }
+
+  public bool is_valid ()
+  {
+    return fd != -1;
   }
 
   private bool on_channel_event (IOChannel source, IOCondition condition)

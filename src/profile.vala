@@ -123,16 +123,16 @@ class Profile: Object
   {
     var action = new SimpleAction.stateful ("bluetooth-enabled",
                                             null,
-                                            !bluetooth.blocked);
+                                            bluetooth.enabled);
 
     action.activate.connect (()
         => action.change_state (!action.get_state().get_boolean()));
 
     action.change_state.connect ((action, requestedValue)
-        => bluetooth.try_set_blocked (!requestedValue.get_boolean()));
+        => bluetooth.try_set_enabled (requestedValue.get_boolean()));
 
-    bluetooth.notify["blocked"].connect (()
-        => action.set_state (!bluetooth.blocked));
+    bluetooth.notify["enabled"].connect (()
+        => action.set_state (bluetooth.enabled));
 
     return action;
   }
@@ -144,12 +144,9 @@ class Profile: Object
 
   protected Variant action_state_for_root ()
   {
-    var blocked = bluetooth.blocked;
-    var powered = bluetooth.powered;
-
     string a11y;
     string icon_name;
-    if (powered && !blocked)
+    if (bluetooth.enabled)
       {
         a11y = "Bluetooth (on)";
         icon_name = "bluetooth-active";
