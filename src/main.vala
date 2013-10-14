@@ -26,7 +26,7 @@ public static int main (string[] args)
   Intl.textdomain (Config.GETTEXT_PACKAGE);
 
   // create the backend
-  var bluetooth = new Bluez (new RfKillSwitch ());
+  var bluetooth = new Bluez (null);
  
   // start the service
   var service = new Service (bluetooth);
