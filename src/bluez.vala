@@ -449,13 +449,9 @@ public class Bluez: Bluetooth, Object
 
   public void try_set_discoverable (bool b)
   {
-    if (discoverable != b) try
+    if (discoverable != b)
       {
-        default_adapter.set_property ("Discoverable", new Variant.boolean (b));
-      }
-    catch (Error e)
-      {
-        critical (@"$(e.message)");
+        default_adapter.set_property.begin ("Discoverable", new Variant.boolean (b));
       }
   }
 
@@ -475,18 +471,11 @@ public class Bluez: Bluetooth, Object
         debug (@"setting killswitch blocked to $(!b)");
         killswitch.try_set_blocked (!b);
       }
-    else
+    else if (default_adapter != null)
       {
-        if (default_adapter != null) try
-          {
-            debug (@"setting bluez Adapter's Powered property to $b");
-            default_adapter.set_property ("Powered", new Variant.boolean (b));
-            powered = b;
-          }
-        catch (Error e)
-          {
-            critical (@"$(e.message)");
-          }
+        debug (@"setting bluez Adapter's Powered property to $b");
+        default_adapter.set_property.begin ("Powered", new Variant.boolean (b));
+        powered = b;
       }
   }
 }
