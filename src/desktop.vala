@@ -66,7 +66,7 @@ class Desktop: Profile
 
     // know when to show the indicator & when to hide it
     settings.changed["visible"].connect (()=> update_visibility());
-    bluetooth.notify.connect (() => update_visibility());
+    bluetooth.notify["enabled"].connect (() => update_visibility());
     update_visibility ();
 
     // when devices change, rebuild our device section
