@@ -53,7 +53,7 @@ public class Bluez: Bluetooth, Object
   /* maps our arbitrary unique id to a Bluetooth.Device struct for public consumption */
   HashTable<uint,Device> id_to_device;
 
-  public Bluez (KillSwitch killswitch)
+  public Bluez (KillSwitch? killswitch)
   {
     try
       {
@@ -64,7 +64,7 @@ public class Bluez: Bluetooth, Object
         critical (@"$(e.message)");
       }
 
-    if (killswitch.is_valid())
+    if ((killswitch != null) && (killswitch.is_valid()))
       {
         this.killswitch = killswitch;
         killswitch.notify["blocked"].connect (() => update_enabled());
@@ -475,16 +475,18 @@ public class Bluez: Bluetooth, Object
         debug (@"setting killswitch blocked to $(!b)");
         killswitch.try_set_blocked (!b);
       }
-
-    if (default_adapter != null) try
+    else
       {
-        debug (@"setting bluez Adapter's Powered property to $b");
-        default_adapter.set_property ("Powered", new Variant.boolean (b));
-        powered = b;
-      }
-    catch (Error e)
-      {
-        critical (@"$(e.message)");
+        if (default_adapter != null) try
+          {
+            debug (@"setting bluez Adapter's Powered property to $b");
+            default_adapter.set_property ("Powered", new Variant.boolean (b));
+            powered = b;
+          }
+        catch (Error e)
+          {
+            critical (@"$(e.message)");
+          }
       }
   }
 }
