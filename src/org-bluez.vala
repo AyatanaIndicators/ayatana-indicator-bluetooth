@@ -69,7 +69,7 @@ namespace org {
 			public abstract GLib.HashTable<string, GLib.Variant> get_properties() throws DBusError, IOError;
 
 			[DBus (name = "SetProperty")]
-			public abstract void set_property(string name, GLib.Variant value) throws DBusError, IOError;
+			public abstract async void set_property(string name, GLib.Variant value) throws DBusError, IOError;
 
 			[DBus (name = "RequestSession")]
 			public abstract void request_session() throws DBusError, IOError;

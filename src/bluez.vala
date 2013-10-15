@@ -22,11 +22,24 @@
 /**
  * Bluetooth implementaion which uses org.bluez on DBus 
  */
-public class Bluez: KillswitchBluetooth
+public class Bluez: Bluetooth, Object
 {
   uint next_device_id = 1;
   org.bluez.Manager manager;
   org.bluez.Adapter default_adapter;
+
+  private bool _powered = false;
+
+  private bool powered {
+    get { return _powered; }
+    set { _powered = value; update_enabled(); }
+  }
+
+  private KillSwitch killswitch = null;
+
+  private string adapter_path = null;
+
+  private DBusConnection bus = null;
 
   /* maps an org.bluez.Device's object_path to the org.bluez.Device proxy */
   HashTable<string,org.bluez.Device> path_to_proxy;
@@ -40,44 +53,87 @@ public class Bluez: KillswitchBluetooth
   /* maps our arbitrary unique id to a Bluetooth.Device struct for public consumption */
   HashTable<uint,Device> id_to_device;
 
-  public Bluez (KillSwitch killswitch)
+  public Bluez (KillSwitch? killswitch)
   {
-    base (killswitch);
-
-    string adapter_path = null;
-
-    id_to_path    = new HashTable<uint,string> (direct_hash, direct_equal);
-    id_to_device  = new HashTable<uint,Device> (direct_hash, direct_equal);
-    path_to_id    = new HashTable<string,uint> (str_hash, str_equal);
-    path_to_proxy = new HashTable<string,org.bluez.Device> (str_hash, str_equal);
-
     try
       {
-        manager = Bus.get_proxy_sync (BusType.SYSTEM, "org.bluez", "/");
-
-        // get the current default adapter & watch for future default adapters
-        adapter_path = manager.default_adapter ();
-        manager.default_adapter_changed.connect ((object_path)
-            => on_default_adapter_changed (object_path));
+        bus = Bus.get_sync (BusType.SYSTEM);
       }
     catch (Error e)
       {
         critical (@"$(e.message)");
       }
 
-    on_default_adapter_changed (adapter_path);
+    if ((killswitch != null) && (killswitch.is_valid()))
+      {
+        this.killswitch = killswitch;
+        killswitch.notify["blocked"].connect (() => update_enabled());
+        update_enabled ();
+      }
+
+    id_to_path    = new HashTable<uint,string> (direct_hash, direct_equal);
+    id_to_device  = new HashTable<uint,Device> (direct_hash, direct_equal);
+    path_to_id    = new HashTable<string,uint> (str_hash, str_equal);
+    path_to_proxy = new HashTable<string,org.bluez.Device> (str_hash, str_equal);
+
+    reset_manager ();
   }
 
-  private void on_default_adapter_changed (string? object_path)
+  private void reset_manager ()
   {
-    supported = object_path != null;
+    string new_adapter_path = null;
+    try
+      {
+        manager = bus.get_proxy_sync ("org.bluez", "/");
+
+        // if the default adapter changes, update our connections
+        manager.default_adapter_changed.connect ((object_path)
+            => on_default_adapter_changed (object_path));
+
+        // if the current adapter disappears, call clear_adapter()
+        manager.adapter_removed.connect ((object_path) => { 
+            if (object_path == adapter_path)
+              clear_adapter ();
+        });
+
+        // get the current default adapter & watch for future default adapters
+        new_adapter_path = manager.default_adapter ();
+      }
+    catch (Error e)
+      {
+        critical (@"$(e.message)");
+      }
+
+    on_default_adapter_changed (new_adapter_path);
+  }
+
+  private void clear_adapter ()
+  {
+    if (adapter_path != null)
+      debug (@"clearing adapter; was using $adapter_path");
+
+    path_to_proxy.remove_all ();
+    path_to_id.remove_all ();
+    id_to_path.remove_all ();
+    id_to_device.remove_all ();
+
+    default_adapter = null;
+    adapter_path = null;
+
+    discoverable = false;
+    powered = false;
+  }
+
+  void on_default_adapter_changed (string? object_path)
+  {
+    clear_adapter ();
 
     if (object_path != null) try
       {
-        debug (@"using default adapter at $object_path");
+        adapter_path = object_path;
         default_adapter = Bus.get_proxy_sync (BusType.SYSTEM,
                                               "org.bluez",
-                                              object_path);
+                                              adapter_path);
 
         default_adapter.property_changed.connect (()
             => on_default_adapter_properties_changed ());
@@ -104,6 +160,8 @@ public class Bluez: KillswitchBluetooth
     on_default_adapter_properties_changed ();
   }
 
+  /* When the default adapter's properties change,
+     update our own properties "powered" and "discoverable" */
   private void on_default_adapter_properties_changed ()
   {
     bool is_discoverable = false;
@@ -217,7 +275,6 @@ public class Bluez: KillswitchBluetooth
   private void device_connect_on_interface (DBusProxy proxy,
                                             string interface_name)
   {
-    var bus = proxy.get_connection ();
     var object_path = proxy.get_object_path ();
 
     debug (@"trying to connect to $object_path: $(interface_name)");
@@ -359,11 +416,21 @@ public class Bluez: KillswitchBluetooth
     devices_changed ();
   }
 
+  /* update the 'enabled' property by looking at the killswitch state
+     and the 'powered' property state */
+  void update_enabled ()
+  {
+    var blocked = (killswitch != null) && killswitch.blocked;
+    debug (@"in upate_enabled, powered is $powered, blocked is $blocked");
+    enabled = powered && !blocked;
+  }
+    
+
   ////
   ////  Public API
   ////
 
-  public override void set_device_connected (uint id, bool connected)
+  public void set_device_connected (uint id, bool connected)
   {
     var device = id_to_device.lookup (id);
     var path = id_to_path.lookup (id);
@@ -380,20 +447,35 @@ public class Bluez: KillswitchBluetooth
       }
   }
 
-  public override void try_set_discoverable (bool b)
+  public void try_set_discoverable (bool b)
   {
-    if (discoverable != b) try
+    if (discoverable != b)
       {
-        default_adapter.set_property ("Discoverable", new Variant.boolean (b));
-      }
-    catch (Error e)
-      {
-        critical (@"$(e.message)");
+        default_adapter.set_property.begin ("Discoverable", new Variant.boolean (b));
       }
   }
 
-  public override List<unowned Device> get_devices ()
+  public List<unowned Device> get_devices ()
   {
     return id_to_device.get_values();
+  }
+
+  public bool supported { get; protected set; default = false; }
+  public bool discoverable { get; protected set; default = false; }
+  public bool enabled { get; protected set; default = false; }
+
+  public void try_set_enabled (bool b)
+  {
+    if (killswitch != null)
+      {
+        debug (@"setting killswitch blocked to $(!b)");
+        killswitch.try_set_blocked (!b);
+      }
+    else if (default_adapter != null)
+      {
+        debug (@"setting bluez Adapter's Powered property to $b");
+        default_adapter.set_property.begin ("Powered", new Variant.boolean (b));
+        powered = b;
+      }
   }
 }

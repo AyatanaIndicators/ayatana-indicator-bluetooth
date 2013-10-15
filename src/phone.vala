@@ -53,7 +53,7 @@ class Phone: Profile
 
   void update_visibility ()
   {
-    visible = bluetooth.powered && !bluetooth.blocked;
+    visible = bluetooth.enabled;
   }
 
   ///
