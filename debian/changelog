@@ -1,3 +1,15 @@
+indicator-bluetooth (0.0.6+13.10.20131016-0ubuntu1) saucy; urgency=low
+
+  [ Charles Kerr ]
+  * When the user chooses to toggle bluetooth on or off, if /dev/rfkill
+    isn't available, fall back to toggling org.bluez.Adapter's Powered
+    property. (LP: #1236249, #1230275)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 70
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 16 Oct 2013 02:34:31 +0000
+
 indicator-bluetooth (0.0.6+13.10.20131011-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]
