@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+13.10.20131016-0ubuntu2) UNRELEASED; urgency=low
+
+  * Define "ubiquity" indicator profile, reusing the greeter object. (LP:
+    #1241539)
+
+ -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Fri, 18 Oct 2013 13:27:45 +0100
+
 indicator-bluetooth (0.0.6+13.10.20131016-0ubuntu1) saucy; urgency=low
 
   [ Charles Kerr ]

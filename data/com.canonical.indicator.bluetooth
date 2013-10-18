@@ -8,3 +8,6 @@ ObjectPath=/com/canonical/indicator/bluetooth/desktop
 
 [phone]
 ObjectPath=/com/canonical/indicator/bluetooth/phone
+
+[ubiquity]
+ObjectPath=/com/canonical/indicator/bluetooth/desktop
