@@ -185,7 +185,7 @@ class Desktop: Profile
     // quick toggles section
     section = new Menu ();
     section.append_item (create_enabled_menuitem ());
-    item = new MenuItem ("Visible", "indicator.desktop-discoverable");
+    item = new MenuItem (_("Visible"), "indicator.desktop-discoverable");
     item.set_attribute ("x-canonical-type", "s",
                         "com.canonical.indicator.switch");
     section.append_item (item);
