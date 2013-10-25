@@ -111,10 +111,10 @@ class Profile: Object
   {
     var action = new SimpleAction.stateful ("bluetooth-supported",
                                             null,
-                                            bluetooth.supported);
+                                            new Variant.boolean (bluetooth.supported));
 
     bluetooth.notify["supported"].connect (()
-        => action.set_state (bluetooth.supported));
+        => action.set_state (new Variant.boolean (bluetooth.supported)));
 
     return action;
   }
@@ -123,16 +123,16 @@ class Profile: Object
   {
     var action = new SimpleAction.stateful ("bluetooth-enabled",
                                             null,
-                                            bluetooth.enabled);
+                                            new Variant.boolean (bluetooth.enabled));
 
     action.activate.connect (()
-        => action.change_state (!action.get_state().get_boolean()));
+        => action.change_state (new Variant.boolean (!action.get_state().get_boolean())));
 
     action.change_state.connect ((action, requestedValue)
         => bluetooth.try_set_enabled (requestedValue.get_boolean()));
 
     bluetooth.notify["enabled"].connect (()
-        => action.set_state (bluetooth.enabled));
+        => action.set_state (new Variant.boolean (bluetooth.enabled)));
 
     return action;
   }
