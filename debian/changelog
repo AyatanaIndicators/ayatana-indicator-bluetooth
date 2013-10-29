@@ -1,9 +1,25 @@
-indicator-bluetooth (0.0.6+13.10.20131016-0ubuntu2) UNRELEASED; urgency=low
+indicator-bluetooth (0.0.6+14.04.20131029.1-0ubuntu1) trusty; urgency=low
 
+  [ Dmitrijs Ledkovs ]
   * Define "ubiquity" indicator profile, reusing the greeter object. (LP:
     #1241539)
 
- -- Dmitrijs Ledkovs <xnox@ubuntu.com>  Fri, 18 Oct 2013 13:27:45 +0100
+  [ Charles Kerr ]
+  * explicitly instantiate GVariants to avoid leaking them. See the
+    description in bug #1244468 for before & after C code and more
+    information. (LP: #1244468)
+
+  [ Ted Gould ]
+  * Adding a phone_greeter profile.
+
+  [ Lars Uebernickel ]
+  * Desktop menu: mark "Visible" menu item label as translatable. (LP:
+    #1242038)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 75
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 29 Oct 2013 10:31:12 +0000
 
 indicator-bluetooth (0.0.6+13.10.20131016-0ubuntu1) saucy; urgency=low
 
