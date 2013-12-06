@@ -37,7 +37,8 @@ class Profile: Object
                                              null,
                                              action_state_for_root());
     notify["visible"].connect (() => update_root_action_state());
-
+    bluetooth.notify["enabled"].connect (() => update_root_action_state());
+    bluetooth.notify["connected"].connect (() => update_root_action_state());
     menu = new Menu ();
 
     var item = create_root_menuitem ();
@@ -85,7 +86,7 @@ class Profile: Object
 
   protected MenuItem create_enabled_menuitem ()
   {
-    var item = new MenuItem ("Bluetooth", "indicator.bluetooth-enabled");
+    var item = new MenuItem (_("Bluetooth"), "indicator.bluetooth-enabled");
 
     item.set_attribute ("x-canonical-type", "s",
                         "com.canonical.indicator.switch");
@@ -146,7 +147,13 @@ class Profile: Object
   {
     string a11y;
     string icon_name;
-    if (bluetooth.enabled)
+
+    if (bluetooth.connected)
+      {
+        a11y = "Bluetooth (connections)";
+        icon_name = "bluetooth-paired";
+      }
+    else if (bluetooth.enabled)
       {
         a11y = "Bluetooth (on)";
         icon_name = "bluetooth-active";
@@ -158,7 +165,6 @@ class Profile: Object
       }
 
     var icon = new ThemedIcon.with_default_fallbacks (icon_name);
-
     var builder = new VariantBuilder (new VariantType ("a{sv}"));
     builder.add ("{sv}", "visible", new Variant.boolean (visible));
     builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));

@@ -32,6 +32,9 @@ public interface Bluetooth: Object
      eg by a laptop's network killswitch */
   public abstract bool enabled { get; protected set; }
 
+  /* True if we have a connected device. */
+  public abstract bool connected { get; protected set; }
+
   /* Try to enable/disable bluetooth. This can fail if it's overridden
      by the system, eg by a laptop's network killswitch */
   public abstract void try_set_enabled (bool b);
