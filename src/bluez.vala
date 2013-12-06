@@ -157,6 +157,8 @@ public class Bluez: Bluetooth, Object
        critical (@"$(e.message)");
      }
 
+    supported = object_path != null;
+
     on_default_adapter_properties_changed ();
   }
 
