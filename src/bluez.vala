@@ -414,6 +414,7 @@ public class Bluez: Bluetooth, Object
                                          supports_file_transfer));
 
     devices_changed ();
+    update_connected ();
   }
 
   /* update the 'enabled' property by looking at the killswitch state
@@ -424,7 +425,22 @@ public class Bluez: Bluetooth, Object
     debug (@"in upate_enabled, powered is $powered, blocked is $blocked");
     enabled = powered && !blocked;
   }
-    
+
+  private bool have_connected_device ()
+  {
+    var devices = get_devices();
+
+    foreach (var device in devices)
+      if (device.is_connected)
+        return true;
+
+    return false;
+  }
+
+  private void update_connected ()
+  {
+    connected = have_connected_device ();
+  }
 
   ////
   ////  Public API
@@ -444,6 +460,8 @@ public class Bluez: Bluetooth, Object
           device_connect (proxy);
         else
           device_disconnect (proxy);
+
+        update_connected ();
       }
   }
 
@@ -463,6 +481,7 @@ public class Bluez: Bluetooth, Object
   public bool supported { get; protected set; default = false; }
   public bool discoverable { get; protected set; default = false; }
   public bool enabled { get; protected set; default = false; }
+  public bool connected { get; protected set; default = false; }
 
   public void try_set_enabled (bool b)
   {
