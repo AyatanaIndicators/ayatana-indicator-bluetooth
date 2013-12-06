@@ -86,7 +86,7 @@ class Profile: Object
 
   protected MenuItem create_enabled_menuitem ()
   {
-    var item = new MenuItem ("Bluetooth", "indicator.bluetooth-enabled");
+    var item = new MenuItem (_("Bluetooth"), "indicator.bluetooth-enabled");
 
     item.set_attribute ("x-canonical-type", "s",
                         "com.canonical.indicator.switch");
