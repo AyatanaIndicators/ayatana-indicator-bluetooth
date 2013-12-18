@@ -2,7 +2,6 @@
 Type=Application
 Name=Indicator Bluetooth
 Exec=@pkglibexecdir@/indicator-bluetooth-service
-NotShowIn=Unity;
 NoDisplay=true
 StartupNotify=false
 Terminal=false
