@@ -211,7 +211,7 @@ class Desktop: Profile
 
   void show_settings (string panel)
   {
-    if (Environment.find_program_in_path ("unity-control-center") != null)
+    if (Environment.get_variable ("XDG_CURRENT_DESKTOP") == "Unity" && Environment.find_program_in_path ("unity-control-center") != null)
       spawn_command_line_async ("unity-control-center " + panel);
     else
       spawn_command_line_async ("gnome-control-center " + panel);
