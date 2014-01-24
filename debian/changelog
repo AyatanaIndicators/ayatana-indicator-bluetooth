@@ -1,3 +1,27 @@
+indicator-bluetooth (0.0.6+14.04.20140124-0ubuntu1) trusty; urgency=low
+
+  [ Charles Kerr ]
+  * Gets us a little closer to the spec in two ways: 1. Indicator
+    Visibility On the desktop, the indicator's header icon is visible
+    whenever a default adapter is available (whether the adapter is
+    powered or not) and the user's preference settings call for a
+    visible Bluetooth indicator. On the phone, the indicator's header
+    icon is visible whenever a default adapter is available *and* the
+    adapter is powered. 2. Header Icon If Bluetooth is off, the header
+    icon now uses the "bluetooth-disabled" icon. If Bluetooth is on, it
+    now uses the "bluetooth-active" icon. If Bluetooth is on and has a
+    connected device, it now uses the "bluetooth-paired" icon. (LP:
+    #1126108)
+  * Switching DBus service to an Upstart Job.
+
+  [ Robert Ancell ]
+  * Use unity-control-center if it is available. (LP: #1257505)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 79
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 24 Jan 2014 10:59:56 +0000
+
 indicator-bluetooth (0.0.6+14.04.20131029.1-0ubuntu1) trusty; urgency=low
 
   [ Dmitrijs Ledkovs ]
