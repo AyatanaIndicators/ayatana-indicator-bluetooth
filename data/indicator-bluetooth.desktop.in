@@ -5,3 +5,4 @@ Exec=@pkglibexecdir@/indicator-bluetooth-service
 NoDisplay=true
 StartupNotify=false
 Terminal=false
+OnlyShowIn=Unity;
