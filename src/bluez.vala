@@ -35,7 +35,7 @@ public class Bluez: Bluetooth, Object
     set { _powered = value; update_enabled(); }
   }
 
-  private KillSwitch killswitch = null;
+  private KillSwitch killswitch = new RfKillSwitch ();
 
   private string adapter_path = null;
 
