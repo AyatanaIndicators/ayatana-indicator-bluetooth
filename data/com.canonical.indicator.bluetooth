@@ -1,7 +1,7 @@
 [Indicator Service]
 Name=indicator-bluetooth
 ObjectPath=/com/canonical/indicator/bluetooth
-Position=70
+Position=36
 
 [desktop]
 ObjectPath=/com/canonical/indicator/bluetooth/desktop
