@@ -8,10 +8,12 @@ ObjectPath=/com/canonical/indicator/bluetooth/desktop
 
 [phone]
 ObjectPath=/com/canonical/indicator/bluetooth/phone
+Position=36
 
 [ubiquity]
 ObjectPath=/com/canonical/indicator/bluetooth/desktop
 
 [phone_greeter]
 ObjectPath=/com/canonical/indicator/bluetooth/phone
+Position=36
 
