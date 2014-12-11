@@ -8,7 +8,6 @@ src/desktop.vala
 src/device.vala
 src/killswitch.vala
 src/main.vala
-src/org-bluez.vala
 src/phone.vala
 src/profile.vala
 src/service.vala

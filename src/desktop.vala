@@ -55,7 +55,6 @@ class Desktop: Profile
     actions += create_supported_action (bluetooth);
     actions += create_enabled_action (bluetooth);
     actions += create_discoverable_action (bluetooth);
-    actions += create_wizard_action ();
     actions += create_browse_files_action ();
     actions += create_send_file_action ();
     actions += create_show_settings_action ();
@@ -198,8 +197,6 @@ class Desktop: Profile
 
     // settings section
     section = new Menu ();
-    section.append (_("Set Up New Device…"),
-                    "indicator.desktop-wizard");
     section.append (_("Bluetooth Settings…"),
                     "indicator.desktop-show-settings::bluetooth");
     menu.append_section (null, section);
@@ -232,15 +229,6 @@ class Desktop: Profile
     bluetooth.notify["discoverable"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.discoverable)));
 
-    return action;
-  }
-
-  Action create_wizard_action ()
-  {
-    var action = new SimpleAction ("desktop-wizard", null);
-
-    action.activate.connect (()
-        => spawn_command_line_async ("bluetooth-wizard"));
     return action;
   }
 

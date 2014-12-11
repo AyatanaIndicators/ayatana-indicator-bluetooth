@@ -1,7 +1,6 @@
 pkglibexec_PROGRAMS = indicator-bluetooth-service
 
 indicator_bluetooth_service_SOURCES = \
-	org-bluez.vala \
 	bluetooth.vala \
 	bluez.vala \
 	desktop.vala \
