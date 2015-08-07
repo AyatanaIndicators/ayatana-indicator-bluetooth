@@ -414,7 +414,7 @@ public class Bluez: Bluetooth, Object
   }
 }
 
-[DBus (name = "org.freedesktop.DBus.ObjectManager", timeout = 120000)]
+[DBus (name = "org.freedesktop.DBus.ObjectManager")]
 private interface ObjectManager : Object {
   [DBus (name = "GetManagedObjects")]
   public abstract HashTable<ObjectPath, HashTable<string, HashTable<string, Variant>>> get_managed_objects() throws DBusError, IOError;
@@ -426,11 +426,11 @@ private interface ObjectManager : Object {
   public signal void interfaces_removed(ObjectPath object_path, string[] interfaces);
 }
 
-[DBus (name = "org.bluez.Adapter1", timeout = 120000)]
+[DBus (name = "org.bluez.Adapter1")]
 private interface BluezAdapter : DBusProxy {
 }
 
-[DBus (name = "org.bluez.Device1", timeout = 120000)]
+[DBus (name = "org.bluez.Device1")]
 private interface BluezDevice : DBusProxy {
   [DBus (name = "Connect")]
   public abstract void connect_() throws DBusError, IOError;
