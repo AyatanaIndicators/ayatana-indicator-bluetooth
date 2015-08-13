@@ -21,7 +21,7 @@ Package: indicator-bluetooth
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
-         bluez (>= 4.36),
+         bluez (>= 5),
          unity-control-center | gnome-control-center | ubuntu-system-settings,
          gnome-bluetooth | ubuntu-system-settings,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
