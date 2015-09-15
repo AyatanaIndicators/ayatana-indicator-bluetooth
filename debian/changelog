@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+15.10.20150915-0ubuntu1) wily; urgency=medium
+
+  * under unity8 start system-settings instead unity-control-center (LP:
+    #1489490)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 15 Sep 2015 14:15:38 +0000
+
 indicator-bluetooth (0.0.6+15.10.20150813-0ubuntu1) wily; urgency=medium
 
   [ Robert Ancell ]
