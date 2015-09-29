@@ -273,7 +273,7 @@ public class Bluez: Bluetooth, Object
 
     // look up the device's bus address
     v = device_proxy.get_cached_property ("Address");
-    var address = v.get_string ();
+    var address = v == null ? null : v.get_string ();
 
     // look up the device's bus address
     v = device_proxy.get_cached_property ("Icon");
@@ -285,10 +285,13 @@ public class Bluez: Bluetooth, Object
 
     // derive the uuid-related attributes we care about
     v = device_proxy.get_cached_property ("UUIDs");
-    string[] uuid_strings = v.dup_strv ();
     uint16[] uuids = {};
-    foreach (var s in uuid_strings)
-      uuids += get_uuid16_from_uuid_string (s);
+    if (v != null)
+    {
+        string[] uuid_strings = v.dup_strv ();
+        foreach (var s in uuid_strings)
+            uuids += get_uuid16_from_uuid_string (s);
+    }
     var supports_browsing = device_supports_browsing (uuids);
     var supports_file_transfer = device_supports_file_transfer (uuids);
 
