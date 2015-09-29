@@ -1,3 +1,11 @@
+indicator-bluetooth (0.0.6+15.10.20150929-0ubuntu1) wily; urgency=medium
+
+  [ Robert Ancell ]
+  * Check for NULL when getting cached properties Address and UUIDs.
+    (LP: #1497928)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 29 Sep 2015 09:36:03 +0000
+
 indicator-bluetooth (0.0.6+15.10.20150915-0ubuntu1) wily; urgency=medium
 
   * under unity8 start system-settings instead unity-control-center (LP:
