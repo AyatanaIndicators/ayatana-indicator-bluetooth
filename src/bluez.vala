@@ -24,6 +24,7 @@
  */
 public class Bluez: Bluetooth, Object
 {
+  uint name_watch_id = 0;
   uint next_device_id = 1;
   ObjectManager manager;
 
@@ -55,15 +56,6 @@ public class Bluez: Bluetooth, Object
 
   public Bluez (KillSwitch? killswitch)
   {
-    try
-      {
-        bus = Bus.get_sync (BusType.SYSTEM);
-      }
-    catch (Error e)
-      {
-        critical (@"$(e.message)");
-      }
-
     if ((killswitch != null) && (killswitch.is_valid()))
       {
         this.killswitch = killswitch;
@@ -71,17 +63,44 @@ public class Bluez: Bluetooth, Object
         update_enabled ();
       }
 
-    reset_manager ();
+    name_watch_id = Bus.watch_name(BusType.SYSTEM,
+                                   "org.bluez",
+                                   BusNameWatcherFlags.AUTO_START,
+                                   on_bluez_appeared,
+                                   on_bluez_vanished);
   }
 
-  private void reset_manager ()
+  ~Bluez()
+  {
+    Bus.unwatch_name(name_watch_id);
+  }
+
+  private void on_bluez_appeared (GLib.DBusConnection connection, string name, string name_owner)
+  {
+    debug(@"name $name owned by $name_owner, setting up bluez proxies");
+
+    bus = connection;
+
+    reset_bluez_lookup_vars();
+    reset_manager();
+  }
+
+  private void on_bluez_vanished (GLib.DBusConnection connection, string name)
+  {
+    reset_bluez_lookup_vars();
+  }
+
+  private void reset_bluez_lookup_vars ()
   {
     id_to_path = new HashTable<uint,ObjectPath> (direct_hash, direct_equal);
     id_to_device = new HashTable<uint,Device> (direct_hash, direct_equal);
     path_to_id = new HashTable<ObjectPath,uint> (str_hash, str_equal);
     path_to_adapter_proxy = new HashTable<ObjectPath,BluezAdapter> (str_hash, str_equal);
     path_to_device_proxy = new HashTable<ObjectPath,BluezDevice> (str_hash, str_equal);
+  }
 
+  private void reset_manager()
+  {
     try
       {
         manager = bus.get_proxy_sync ("org.bluez", "/");
@@ -134,6 +153,8 @@ public class Bluez: Bluetooth, Object
 
   private void update_adapter (ObjectPath object_path)
   {
+    debug(@"bluez5 calling update_adapter for $object_path");
+
     // Create a proxy if we don't have one
     var adapter_proxy = path_to_adapter_proxy.lookup (object_path);
     if (adapter_proxy == null)
@@ -232,6 +253,8 @@ public class Bluez: Bluetooth, Object
    */
   private void update_device (ObjectPath object_path)
   {
+    debug(@"bluez5 calling update_device for $object_path");
+
     // Create a proxy if we don't have one
     var device_proxy = path_to_device_proxy.lookup (object_path);
     if (device_proxy == null)
