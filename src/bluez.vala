@@ -27,6 +27,7 @@ public class Bluez: Bluetooth, Object
   uint name_watch_id = 0;
   uint next_device_id = 1;
   ObjectManager manager;
+  static const string BLUEZ_BUSNAME = "org.bluez";
 
   private bool _powered = false;
 
@@ -64,7 +65,7 @@ public class Bluez: Bluetooth, Object
       }
 
     name_watch_id = Bus.watch_name(BusType.SYSTEM,
-                                   "org.bluez",
+                                   BLUEZ_BUSNAME,
                                    BusNameWatcherFlags.AUTO_START,
                                    on_bluez_appeared,
                                    on_bluez_vanished);
@@ -103,7 +104,7 @@ public class Bluez: Bluetooth, Object
   {
     try
       {
-        manager = bus.get_proxy_sync ("org.bluez", "/");
+        manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/");
 
         // Find the adapters and watch for changes
         manager.interfaces_added.connect ((object_path, interfaces_and_properties) => {
@@ -160,7 +161,7 @@ public class Bluez: Bluetooth, Object
     if (adapter_proxy == null)
       {
         try {
-          adapter_proxy = bus.get_proxy_sync ("org.bluez", object_path);
+          adapter_proxy = bus.get_proxy_sync (BLUEZ_BUSNAME, object_path);
         } catch (Error e) {
           critical (@"$(e.message)");
           return;
@@ -260,7 +261,7 @@ public class Bluez: Bluetooth, Object
     if (device_proxy == null)
       {
         try {
-          device_proxy = bus.get_proxy_sync ("org.bluez", object_path);
+          device_proxy = bus.get_proxy_sync (BLUEZ_BUSNAME, object_path);
         } catch (Error e) {
           critical (@"$(e.message)");
           return;
