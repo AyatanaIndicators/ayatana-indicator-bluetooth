@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+16.04.20160214-0ubuntu1) xenial; urgency=medium
+
+  * Change the indicator's Bluez class to watch for 'org.bluez' to
+    appear/vanish on the system bus.
+
+ -- Charles Kerr <charles.kerr@canonical.com>  Sun, 14 Feb 2016 21:13:56 +0000
+
 indicator-bluetooth (0.0.6+15.10.20150929-0ubuntu1) wily; urgency=medium
 
   [ Robert Ancell ]
