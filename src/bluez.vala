@@ -20,12 +20,14 @@
 
 
 /**
- * Bluetooth implementaion which uses org.bluez on DBus 
+ * Bluetooth implementaion which uses org.bluez on DBus
  */
 public class Bluez: Bluetooth, Object
 {
+  uint name_watch_id = 0;
   uint next_device_id = 1;
   ObjectManager manager;
+  static const string BLUEZ_BUSNAME = "org.bluez";
 
   private bool _powered = false;
 
@@ -55,14 +57,7 @@ public class Bluez: Bluetooth, Object
 
   public Bluez (KillSwitch? killswitch)
   {
-    try
-      {
-        bus = Bus.get_sync (BusType.SYSTEM);
-      }
-    catch (Error e)
-      {
-        critical (@"$(e.message)");
-      }
+    init_bluez_state_vars ();
 
     if ((killswitch != null) && (killswitch.is_valid()))
       {
@@ -71,20 +66,59 @@ public class Bluez: Bluetooth, Object
         update_enabled ();
       }
 
-    reset_manager ();
+    name_watch_id = Bus.watch_name(BusType.SYSTEM,
+                                   BLUEZ_BUSNAME,
+                                   BusNameWatcherFlags.AUTO_START,
+                                   on_bluez_appeared,
+                                   on_bluez_vanished);
   }
 
-  private void reset_manager ()
+  ~Bluez()
+  {
+    Bus.unwatch_name(name_watch_id);
+  }
+
+  private void on_bluez_appeared (DBusConnection connection, string name, string name_owner)
+  {
+    debug(@"$name owned by $name_owner, setting up bluez proxies");
+
+    bus = connection;
+
+    init_bluez_state_vars();
+    reset_manager();
+  }
+
+  private void on_bluez_vanished (DBusConnection connection, string name)
+  {
+    debug(@"$name vanished from the bus");
+
+    reset_bluez();
+  }
+
+  private void init_bluez_state_vars ()
   {
     id_to_path = new HashTable<uint,ObjectPath> (direct_hash, direct_equal);
     id_to_device = new HashTable<uint,Device> (direct_hash, direct_equal);
     path_to_id = new HashTable<ObjectPath,uint> (str_hash, str_equal);
     path_to_adapter_proxy = new HashTable<ObjectPath,BluezAdapter> (str_hash, str_equal);
     path_to_device_proxy = new HashTable<ObjectPath,BluezDevice> (str_hash, str_equal);
+  }
 
+  private void reset_bluez ()
+  {
+    init_bluez_state_vars ();
+
+    devices_changed ();
+    update_combined_adapter_state ();
+    update_connected ();
+    update_enabled ();
+  }
+
+  private void reset_manager()
+  {
     try
       {
-        manager = bus.get_proxy_sync ("org.bluez", "/");
+        manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/");
 
         // Find the adapters and watch for changes
         manager.interfaces_added.connect ((object_path, interfaces_and_properties) => {
@@ -134,12 +168,14 @@ public class Bluez: Bluetooth, Object
 
   private void update_adapter (ObjectPath object_path)
   {
+    debug(@"bluez5 calling update_adapter for $object_path");
+
     // Create a proxy if we don't have one
     var adapter_proxy = path_to_adapter_proxy.lookup (object_path);
     if (adapter_proxy == null)
       {
         try {
-          adapter_proxy = bus.get_proxy_sync ("org.bluez", object_path);
+          adapter_proxy = bus.get_proxy_sync (BLUEZ_BUSNAME, object_path);
         } catch (Error e) {
           critical (@"$(e.message)");
           return;
@@ -232,12 +268,14 @@ public class Bluez: Bluetooth, Object
    */
   private void update_device (ObjectPath object_path)
   {
+    debug(@"bluez5 calling update_device for $object_path");
+
     // Create a proxy if we don't have one
     var device_proxy = path_to_device_proxy.lookup (object_path);
     if (device_proxy == null)
       {
         try {
-          device_proxy = bus.get_proxy_sync ("org.bluez", object_path);
+          device_proxy = bus.get_proxy_sync (BLUEZ_BUSNAME, object_path);
         } catch (Error e) {
           critical (@"$(e.message)");
           return;
@@ -262,7 +300,7 @@ public class Bluez: Bluetooth, Object
     var v = device_proxy.get_cached_property ("Class");
     if (v == null)
       type = Device.Type.OTHER;
-    else 
+    else
       type = Device.class_to_device_type (v.get_uint32());
 
     // look up the device's human-readable name
