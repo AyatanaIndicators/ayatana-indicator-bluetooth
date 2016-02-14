@@ -20,7 +20,7 @@
 
 
 /**
- * Bluetooth implementaion which uses org.bluez on DBus 
+ * Bluetooth implementaion which uses org.bluez on DBus
  */
 public class Bluez: Bluetooth, Object
 {
@@ -285,7 +285,7 @@ public class Bluez: Bluetooth, Object
     var v = device_proxy.get_cached_property ("Class");
     if (v == null)
       type = Device.Type.OTHER;
-    else 
+    else
       type = Device.class_to_device_type (v.get_uint32());
 
     // look up the device's human-readable name
