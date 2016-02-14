@@ -57,6 +57,8 @@ public class Bluez: Bluetooth, Object
 
   public Bluez (KillSwitch? killswitch)
   {
+    init_bluez_state_vars ();
+
     if ((killswitch != null) && (killswitch.is_valid()))
       {
         this.killswitch = killswitch;
@@ -82,7 +84,7 @@ public class Bluez: Bluetooth, Object
 
     bus = connection;
 
-    reset_bluez_lookup_vars();
+    init_bluez_state_vars();
     reset_manager();
   }
 
@@ -90,21 +92,26 @@ public class Bluez: Bluetooth, Object
   {
     debug(@"$name vanished from the bus");
 
-    reset_bluez_lookup_vars();
-
-    devices_changed ();
-    update_combined_adapter_state ();
-    update_connected ();
-    update_enabled ();
+    reset_bluez();
   }
 
-  private void reset_bluez_lookup_vars ()
+  private void init_bluez_state_vars ()
   {
     id_to_path = new HashTable<uint,ObjectPath> (direct_hash, direct_equal);
     id_to_device = new HashTable<uint,Device> (direct_hash, direct_equal);
     path_to_id = new HashTable<ObjectPath,uint> (str_hash, str_equal);
     path_to_adapter_proxy = new HashTable<ObjectPath,BluezAdapter> (str_hash, str_equal);
     path_to_device_proxy = new HashTable<ObjectPath,BluezDevice> (str_hash, str_equal);
+  }
+
+  private void reset_bluez ()
+  {
+    init_bluez_state_vars ();
+
+    devices_changed ();
+    update_combined_adapter_state ();
+    update_connected ();
+    update_enabled ();
   }
 
   private void reset_manager()
