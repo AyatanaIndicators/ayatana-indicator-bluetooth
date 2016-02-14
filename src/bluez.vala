@@ -76,9 +76,9 @@ public class Bluez: Bluetooth, Object
     Bus.unwatch_name(name_watch_id);
   }
 
-  private void on_bluez_appeared (GLib.DBusConnection connection, string name, string name_owner)
+  private void on_bluez_appeared (DBusConnection connection, string name, string name_owner)
   {
-    debug(@"name $name owned by $name_owner, setting up bluez proxies");
+    debug(@"$name owned by $name_owner, setting up bluez proxies");
 
     bus = connection;
 
@@ -86,9 +86,16 @@ public class Bluez: Bluetooth, Object
     reset_manager();
   }
 
-  private void on_bluez_vanished (GLib.DBusConnection connection, string name)
+  private void on_bluez_vanished (DBusConnection connection, string name)
   {
+    debug(@"$name vanished from the bus");
+
     reset_bluez_lookup_vars();
+
+    devices_changed ();
+    update_combined_adapter_state ();
+    update_connected ();
+    update_enabled ();
   }
 
   private void reset_bluez_lookup_vars ()
