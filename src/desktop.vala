@@ -136,9 +136,14 @@ class Desktop: Profile
         if (device.is_connectable)
           submenu.append_item (create_device_connection_menuitem (device));
 
+        /* There is no working backend that can be used there, disable
+           the action until that situation gets sorted out
+           see http://launchpad.net/bugs/1562822
+           
         if (device.supports_browsing)
           submenu.append (_("Browse files…"),
                           @"indicator.desktop-browse-files::$(device.address)");
+        */
 
         if (device.supports_file_transfer)
           submenu.append (_("Send files…"),
