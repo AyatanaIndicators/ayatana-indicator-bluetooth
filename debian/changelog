@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+16.10.20160526-0ubuntu1) yakkety; urgency=medium
+
+  * Remove the "browse" action since there is no working backend (LP:
+    #1562822)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 26 May 2016 13:34:48 +0000
+
 indicator-bluetooth (0.0.6+16.04.20160214-0ubuntu1) xenial; urgency=medium
 
   * Change the indicator's Bluez class to watch for 'org.bluez' to
