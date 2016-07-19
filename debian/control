@@ -25,6 +25,7 @@ Depends: ${misc:Depends},
          bluez (>= 5),
          unity-control-center | gnome-control-center | ubuntu-system-settings,
          gnome-bluetooth | ubuntu-system-settings,
+         indicator-common,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Description: System bluetooth indicator.
