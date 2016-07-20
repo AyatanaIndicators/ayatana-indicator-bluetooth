@@ -5,3 +5,4 @@ After=indicators-pre.target
 
 [Service]
 ExecStart=@pkglibexec@/indicator-bluetooth-service
+Restart=on-failure
