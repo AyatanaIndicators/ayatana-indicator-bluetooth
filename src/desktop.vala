@@ -211,11 +211,24 @@ class Desktop: Profile
   ///  Actions
   ///
 
+  private bool is_desktop (string name)
+  {
+    var desktop_name_list = Environment.get_variable ("XDG_CURRENT_DESKTOP");
+    if (desktop_name_list == null)
+        return false;
+
+    foreach (var n in desktop_name_list.split (":"))
+      if (n == name)
+        return true;
+
+    return false;
+  }
+
   void show_settings (string panel)
   {
     if (Environment.get_variable ("MIR_SOCKET") != null)
       UrlDispatch.send ("settings:///system/bluetooth");
-    else if (Environment.get_variable ("XDG_CURRENT_DESKTOP") == "Unity" && Environment.find_program_in_path ("unity-control-center") != null)
+    else if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
       spawn_command_line_async ("unity-control-center " + panel);
     else
       spawn_command_line_async ("gnome-control-center " + panel);
