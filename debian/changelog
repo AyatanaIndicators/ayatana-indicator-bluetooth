@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+16.10.20161003-0ubuntu1) yakkety; urgency=medium
+
+  [ Robert Ancell ]
+  * Correctly use XDG_CURRENT_DESKTOP (LP: #1554878)
+
+ -- iain@orangesquash.org.uk <iain@orangesquash.org.uk>  Mon, 03 Oct 2016 10:15:04 +0000
+
 indicator-bluetooth (0.0.6+16.10.20160526-0ubuntu1) yakkety; urgency=medium
 
   * Remove the "browse" action since there is no working backend (LP:
