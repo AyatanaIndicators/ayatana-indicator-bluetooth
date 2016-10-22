@@ -4,5 +4,5 @@ PartOf=graphical-session.target
 After=indicators-pre.target
 
 [Service]
-ExecStart=@pkglibexec@/indicator-bluetooth-service
+ExecStart=@pkglibexecdir@/indicator-bluetooth-service
 Restart=on-failure
