@@ -1,0 +1,8 @@
+[Unit]
+Description=Indicator Bluetooth Backend
+PartOf=graphical-session.target
+After=indicators-pre.target
+
+[Service]
+ExecStart=@pkglibexecdir@/indicator-bluetooth-service
+Restart=on-failure
