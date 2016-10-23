@@ -1,3 +1,10 @@
+indicator-bluetooth (0.0.6+17.04.20161023-0ubuntu1) zesty; urgency=medium
+
+  [ Ted Gould ]
+  * Adding an systemd user session unit
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Sun, 23 Oct 2016 09:02:28 +0000
+
 indicator-bluetooth (0.0.6+16.10.20161003-0ubuntu1) yakkety; urgency=medium
 
   [ Robert Ancell ]
