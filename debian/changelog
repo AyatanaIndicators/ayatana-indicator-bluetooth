@@ -1,3 +1,9 @@
+indicator-bluetooth (0.0.7+ubports) zesty; urgency=medium
+
+  * Imported to UBports
+
+ -- UBports auto importer <infra@ubports.com>  Sun, 23 Jul 2017 17:24:48 +0200
+
 indicator-bluetooth (0.0.6+17.04.20161023-0ubuntu1) zesty; urgency=medium
 
   [ Ted Gould ]
