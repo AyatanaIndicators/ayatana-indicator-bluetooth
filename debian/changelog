@@ -1,3 +1,9 @@
+indicator-bluetooth (0.0.7+ubports1) xenial; urgency=medium
+
+  * Update Jenkinsfile for xenial
+
+ -- Dan Chapman <dan@ubports.com>  Thu, 11 Jan 2018 10:38:02 +0000
+
 indicator-bluetooth (0.0.7+ubports) vivid; urgency=medium
 
   * Imported to UBports
