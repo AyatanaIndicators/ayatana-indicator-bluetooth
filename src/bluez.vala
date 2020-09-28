@@ -27,7 +27,7 @@ public class Bluez: Bluetooth, Object
   uint name_watch_id = 0;
   uint next_device_id = 1;
   ObjectManager manager;
-  static const string BLUEZ_BUSNAME = "org.bluez";
+  const string BLUEZ_BUSNAME = "org.bluez";
 
   private bool _powered = false;
 
