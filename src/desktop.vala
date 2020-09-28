@@ -30,7 +30,7 @@ class Desktop: Profile
   {
     if (idle_rebuild_id != 0)
       {
-        Source.remove (idle_rebuild_id); 
+        Source.remove (idle_rebuild_id);
         idle_rebuild_id = 0;
       }
 
@@ -47,7 +47,7 @@ class Desktop: Profile
 
     connect_actions = new HashTable<uint,SimpleAction>(direct_hash, direct_equal);
 
-    settings = new Settings ("com.canonical.indicator.bluetooth");
+    settings = new Settings ("org.ayatana.indicator.bluetooth");
 
     // build the static actions
     Action[] actions = {};
@@ -94,22 +94,19 @@ class Desktop: Profile
     var action_name = @"desktop-device-$(id)-connected";
 
     var item = new MenuItem (_("Connection"), @"indicator.$action_name");
-    item.set_attribute ("x-canonical-type",
-                        "s", "com.canonical.indicator.switch");
+    item.set_attribute ("x-ayatana-type",
+                        "s", "org.ayatana.indicator.switch");
 
     // if this doesn't already have an action, create one
     if (!connect_actions.contains (id))
       {
         debug (@"creating action for $action_name");
         var a = new SimpleAction.stateful (action_name,
-                                           null,
+                                           VariantType.BOOLEAN,
                                            new Variant.boolean (device.is_connected));
 
-        a.activate.connect (()
-          => a.set_state (new Variant.boolean (!a.get_state().get_boolean())));
-
-        a.notify["state"].connect (()
-          => bluetooth.set_device_connected (id, a.get_state().get_boolean()));
+        a.activate.connect ((action, state)
+          => bluetooth.set_device_connected (id, state.get_boolean()));
 
         connect_actions.insert (device.id, a);
         action_group.add_action (a);
@@ -139,7 +136,7 @@ class Desktop: Profile
         /* There is no working backend that can be used there, disable
            the action until that situation gets sorted out
            see http://launchpad.net/bugs/1562822
-           
+
         if (device.supports_browsing)
           submenu.append (_("Browse files…"),
                           @"indicator.desktop-browse-files::$(device.address)");
@@ -190,8 +187,8 @@ class Desktop: Profile
     section = new Menu ();
     section.append_item (create_enabled_menuitem ());
     item = new MenuItem (_("Visible"), "indicator.desktop-discoverable");
-    item.set_attribute ("x-canonical-type", "s",
-                        "com.canonical.indicator.switch");
+    item.set_attribute ("x-ayatana-type", "s",
+                        "org.ayatana.indicator.switch");
     section.append_item (item);
     menu.append_section (null, section);
 
@@ -226,25 +223,40 @@ class Desktop: Profile
 
   void show_settings (string panel)
   {
-    if (Environment.get_variable ("MIR_SOCKET") != null)
-      UrlDispatch.send ("settings:///system/bluetooth");
-    else if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
+
+#if HAS_URLDISPATCHER
+
+        if (Environment.get_variable ("MIR_SOCKET") != null)
+        {
+            UrlDispatch.send ("settings:///system/bluetooth");
+
+            return;
+        }
+
+#endif
+
+    if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
+    {
       spawn_command_line_async ("unity-control-center " + panel);
+    }
+    else if (is_desktop ("MATE") && Environment.find_program_in_path ("blueman-manager") != null)
+    {
+      spawn_command_line_async ("blueman-manager");
+    }
     else
+    {
       spawn_command_line_async ("gnome-control-center " + panel);
+    }
   }
 
   Action create_discoverable_action (Bluetooth bluetooth)
   {
     var action = new SimpleAction.stateful ("desktop-discoverable",
-                                            null,
+                                            VariantType.BOOLEAN,
                                             new Variant.boolean (bluetooth.discoverable));
 
-    action.activate.connect (()
-        => action.set_state (new Variant.boolean (!action.get_state().get_boolean())));
-
-    action.notify["state"].connect (()
-        => bluetooth.try_set_discoverable (action.get_state().get_boolean()));
+    action.activate.connect ((action, state)
+        => bluetooth.try_set_discoverable (state.get_boolean()));
 
     bluetooth.notify["discoverable"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.discoverable)));
