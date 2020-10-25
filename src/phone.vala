@@ -62,7 +62,15 @@ class Phone: Profile
 
   void show_settings (string panel)
   {
+
+#if HAS_URLDISPATCHER
+
     UrlDispatch.send ("settings:///system/bluetooth");
+
+#endif
+
+    return;
+
   }
 
   Action create_settings_action ()

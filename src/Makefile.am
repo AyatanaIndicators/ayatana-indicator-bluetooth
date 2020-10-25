@@ -27,9 +27,11 @@ ayatana_indicator_bluetooth_service_CFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DLOCALE_DIR=\"$(datadir)/locale\" \
 	-w \
+	$(URL_DISPATCHER_CFLAGS) \
 	$(SERVICE_DEPS_CFLAGS)
 
 ayatana_indicator_bluetooth_service_LDADD = \
+	$(URL_DISPATCHER_LIBS) \
 	$(SERVICE_DEPS_LIBS)
 
 CLEANFILES = \

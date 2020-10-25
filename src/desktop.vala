@@ -226,12 +226,26 @@ class Desktop: Profile
 
   void show_settings (string panel)
   {
-    if (Environment.get_variable ("MIR_SOCKET") != null)
-      UrlDispatch.send ("settings:///system/bluetooth");
-    else if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
+
+#if HAS_URLDISPATCHER
+
+        if (Environment.get_variable ("MIR_SOCKET") != null)
+        {
+            UrlDispatch.send ("settings:///system/bluetooth");
+
+            return;
+        }
+
+#endif
+
+    if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
+    {
       spawn_command_line_async ("unity-control-center " + panel);
+    }
     else
+    {
       spawn_command_line_async ("gnome-control-center " + panel);
+    }
   }
 
   Action create_discoverable_action (Bluetooth bluetooth)
