@@ -5,7 +5,7 @@ NULL =
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 %:
-	dh $@ --parallel --with systemd
+	dh $@ --parallel --with systemd --with autoreconf
 
 override_dh_autoreconf:
 	NOCONFIGURE=1 dh_autoreconf ./autogen.sh
