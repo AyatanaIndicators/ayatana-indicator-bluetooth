@@ -14,3 +14,7 @@ override_dh_install:
 	find debian/ayatana-indicator-bluetooth/usr/lib -name *.la -delete
 	find debian/ayatana-indicator-bluetooth/usr/lib -name *.a -delete
 	dh_install --fail-missing
+
+# For live test logs:
+#override_dh_auto_test:
+#	ARGS=-V dh_auto_test
