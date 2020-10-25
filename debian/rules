@@ -5,15 +5,14 @@ NULL =
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
 %:
-	dh $@ --parallel --with systemd --with autoreconf
+	dh $@ --parallel --with systemd
 
-override_dh_autoreconf:
-	NOCONFIGURE=1 dh_autoreconf ./autogen.sh
-
-override_dh_install:
-	dh_install
-	find debian/ayatana-indicator-bluetooth/usr/lib -name *.la -delete
-	find debian/ayatana-indicator-bluetooth/usr/lib -name *.a -delete
+override_dh_auto_configure:
+	# Debian defines CMAKE_INSTALL_LOCALSTATEDIR as /usr/var, which is wrong.
+	# So until Debian bug 719148 is fixed, do it ourselves.
+	dh_auto_configure -- -DCMAKE_INSTALL_LOCALSTATEDIR="/var" \
+	                     -Denable_tests=off \
+	                     $(NULL)
 
 override_dh_missing:
 	dh_missing --fail-missing
