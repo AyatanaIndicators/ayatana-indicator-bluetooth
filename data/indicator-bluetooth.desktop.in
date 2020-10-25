@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Indicator Bluetooth
-Exec=@pkglibexecdir@/indicator-bluetooth-service
-NoDisplay=true
-StartupNotify=false
-Terminal=false
-OnlyShowIn=Unity;GNOME;
-AutostartCondition=GNOME3 unless-session gnome

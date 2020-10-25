@@ -88,8 +88,8 @@ class Profile: Object
   {
     var item = new MenuItem (_("Bluetooth"), "indicator.bluetooth-enabled");
 
-    item.set_attribute ("x-canonical-type", "s",
-                        "com.canonical.indicator.switch");
+    item.set_attribute ("x-ayatana-type", "s",
+                        "org.ayatana.indicator.switch");
 
     return item;
   }
@@ -98,8 +98,8 @@ class Profile: Object
   {
     var item = new MenuItem (null, @"indicator.root-$profile_name");
 
-    item.set_attribute ("x-canonical-type", "s",
-                        "com.canonical.indicator.root");
+    item.set_attribute ("x-ayatana-type", "s",
+                        "org.ayatana.indicator.root");
 
     return item;
   }

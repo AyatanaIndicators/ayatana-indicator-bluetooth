@@ -1,34 +1,31 @@
-Source: indicator-bluetooth
+Source: ayatana-indicator-bluetooth
 Section: gnome
-Priority: extra
-Maintainer: Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>
+Priority: optional
+Maintainer: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 Build-Depends: debhelper (>= 9.0),
                dh-autoreconf,
-               dh-translations,
+               dh-systemd,
                gnome-common,
-               libglib2.0-dev,
+               libglib2.0-dev (>= 2.32.0),
                liburl-dispatcher1-dev,
-               systemd,
-               valac (>=0.18),
-Standards-Version: 3.9.4
-Homepage: https://launchpad.net/indicator-bluetooth
-# If you aren't a member of ~indicator-applet-developers but need to upload
-# packaging changes, just go ahead.  ~indicator-applet-developers will notice
-# and sync up the code again.
-Vcs-Bzr: https://code.launchpad.net/~indicator-applet-developers/indicator-bluetooth/trunk
-Vcs-Browser: https://bazaar.launchpad.net/~indicator-applet-developers/indicator-bluetooth/trunk/files
+               systemd [linux-any],
+               valac (>= 0.20),
+Standards-Version: 4.1.1
+Homepage: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
+Vcs-Git: git://github.com:AyatanaIndicators/ayatana-indicator-bluetooth.git
+Vcs-Browser: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth.git
 
-Package: indicator-bluetooth
+Package: ayatana-indicator-bluetooth
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          bluez (>= 5),
          unity-control-center | gnome-control-center | ubuntu-system-settings,
-         gnome-bluetooth | ubuntu-system-settings,
-         indicator-common,
+         gnome-bluetooth | ubuntu-system-settings | blueman-manager,
+         ayatana-indicator-common,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
-Description: System bluetooth indicator.
- System bluetooth indicator which provides fast user controls for Bluetooth
+Description: Ayatana system bluetooth indicator
+ Ayatana system bluetooth indicator which provides fast user controls for Bluetooth
  devices.
 

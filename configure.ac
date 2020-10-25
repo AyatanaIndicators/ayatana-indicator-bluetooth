@@ -1,4 +1,4 @@
-AC_INIT([indicator-bluetooth],[13.10.0])
+AC_INIT([ayatana-indicator-bluetooth],[13.10.0])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AC_CONFIG_HEADERS([config.h])
 AM_SILENT_RULES([yes])
@@ -47,7 +47,7 @@ dnl ###########################
 
 IT_PROG_INTLTOOL([0.41.0])
 
-GETTEXT_PACKAGE=indicator-bluetooth
+GETTEXT_PACKAGE=ayatana-indicator-bluetooth
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of the default get text domain])
 AC_DEFINE_PATH(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])

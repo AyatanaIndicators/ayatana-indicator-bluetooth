@@ -47,7 +47,7 @@ class Desktop: Profile
 
     connect_actions = new HashTable<uint,SimpleAction>(direct_hash, direct_equal);
 
-    settings = new Settings ("com.canonical.indicator.bluetooth");
+    settings = new Settings ("org.ayatana.indicator.bluetooth");
 
     // build the static actions
     Action[] actions = {};
@@ -94,8 +94,8 @@ class Desktop: Profile
     var action_name = @"desktop-device-$(id)-connected";
 
     var item = new MenuItem (_("Connection"), @"indicator.$action_name");
-    item.set_attribute ("x-canonical-type",
-                        "s", "com.canonical.indicator.switch");
+    item.set_attribute ("x-ayatana-type",
+                        "s", "org.ayatana.indicator.switch");
 
     // if this doesn't already have an action, create one
     if (!connect_actions.contains (id))
@@ -190,8 +190,8 @@ class Desktop: Profile
     section = new Menu ();
     section.append_item (create_enabled_menuitem ());
     item = new MenuItem (_("Visible"), "indicator.desktop-discoverable");
-    item.set_attribute ("x-canonical-type", "s",
-                        "com.canonical.indicator.switch");
+    item.set_attribute ("x-ayatana-type", "s",
+                        "org.ayatana.indicator.switch");
     section.append_item (item);
     menu.append_section (null, section);
 
