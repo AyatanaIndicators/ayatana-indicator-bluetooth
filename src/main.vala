@@ -22,7 +22,7 @@ public static int main (string[] args)
   // set up i18n
   Intl.bind_textdomain_codeset (Config.GETTEXT_PACKAGE, "UTF-8");
   Intl.setlocale (LocaleCategory.ALL, "");
-  Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+  Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.LOCALEDIR);
   Intl.textdomain (Config.GETTEXT_PACKAGE);
 
   // create the backend
