@@ -30,7 +30,7 @@ class Desktop: Profile
   {
     if (idle_rebuild_id != 0)
       {
-        Source.remove (idle_rebuild_id); 
+        Source.remove (idle_rebuild_id);
         idle_rebuild_id = 0;
       }
 
@@ -139,7 +139,7 @@ class Desktop: Profile
         /* There is no working backend that can be used there, disable
            the action until that situation gets sorted out
            see http://launchpad.net/bugs/1562822
-           
+
         if (device.supports_browsing)
           submenu.append (_("Browse files…"),
                           @"indicator.desktop-browse-files::$(device.address)");

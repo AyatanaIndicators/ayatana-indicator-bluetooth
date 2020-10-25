@@ -27,7 +27,7 @@ public static int main (string[] args)
 
   // create the backend
   var bluetooth = new Bluez (null);
- 
+
   // start the service
   var service = new Service (bluetooth);
   return service.run ();
