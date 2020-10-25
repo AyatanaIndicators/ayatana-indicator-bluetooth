@@ -1,6 +1,6 @@
-pkglibexec_PROGRAMS = indicator-bluetooth-service
+pkglibexec_PROGRAMS = ayatana-indicator-bluetooth-service
 
-indicator_bluetooth_service_SOURCES = \
+ayatana_indicator_bluetooth_service_SOURCES = \
 	bluetooth.vala \
 	bluez.vala \
 	desktop.vala \
@@ -11,7 +11,7 @@ indicator_bluetooth_service_SOURCES = \
 	killswitch.vala \
 	service.vala
 
-indicator_bluetooth_service_VALAFLAGS = \
+ayatana_indicator_bluetooth_service_VALAFLAGS = \
 	--ccode \
 	--vapidir=$(top_srcdir)/vapi/ \
 	--vapidir=./ \
@@ -23,13 +23,13 @@ indicator_bluetooth_service_VALAFLAGS = \
 	--pkg gio-2.0
 
 # -w to disable warnings for vala-generated code
-indicator_bluetooth_service_CFLAGS = \
+ayatana_indicator_bluetooth_service_CFLAGS = \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-DLOCALE_DIR=\"$(datadir)/locale\" \
 	-w \
 	$(SERVICE_DEPS_CFLAGS)
 
-indicator_bluetooth_service_LDADD = \
+ayatana_indicator_bluetooth_service_LDADD = \
 	$(SERVICE_DEPS_LIBS)
 
 CLEANFILES = \

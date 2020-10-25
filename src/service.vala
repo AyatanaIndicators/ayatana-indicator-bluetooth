@@ -29,7 +29,7 @@ public class Service: Object
   private HashTable<string,Profile> profiles;
   private DBusConnection connection;
   private uint exported_action_id;
-  private const string OBJECT_PATH = "/com/canonical/indicator/bluetooth";
+  private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
 
   private void unexport ()
   {
@@ -65,7 +65,7 @@ public class Service: Object
       }
 
     var own_name_id = Bus.own_name (BusType.SESSION,
-                                    "com.canonical.indicator.bluetooth",
+                                    "org.ayatana.indicator.bluetooth",
                                     BusNameOwnerFlags.NONE,
                                     on_bus_acquired,
                                     null,

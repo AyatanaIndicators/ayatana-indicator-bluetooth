@@ -1,2 +1,2 @@
 version=3
-https://launchpad.net/indicator-bluetooth/+download .*/indicator-bluetooth-([0-9.]+)\.tar\.xz
+https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/archive/([0-9.]+)\.tar\.gz
