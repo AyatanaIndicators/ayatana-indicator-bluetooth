@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 9.0),
                dh-systemd,
                gnome-common,
                libglib2.0-dev (>= 2.32.0),
-               liburl-dispatcher1-dev,
+               liburl-dispatcher1-dev | hello,
                systemd [linux-any],
                valac (>= 0.20),
 Standards-Version: 4.1.1
