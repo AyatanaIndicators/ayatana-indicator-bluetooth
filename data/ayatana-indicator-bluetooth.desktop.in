@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Ayatana Indicator Bluetooth
-Exec=@pkglibexecdir@/ayatana-indicator-bluetooth/ayatana-indicator-bluetooth-service
+Exec=@CMAKE_INSTALL_FULL_LIBEXECDIR@/ayatana-indicator-bluetooth/ayatana-indicator-bluetooth-service
 NoDisplay=true
 StartupNotify=false
 Terminal=false
