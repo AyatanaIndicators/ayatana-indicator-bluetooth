@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-26 12:23+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+msgid "Whether or not to show the bluetooth indicator in the menu bar."
+msgstr ""
+
+#: ../src/bluez.vala:310
+msgid "Unknown"
+msgstr ""
+
+#: ../src/desktop.vala:96
+msgid "Connection"
+msgstr ""
+
+#: ../src/desktop.vala:146
+msgid "Send files…"
+msgstr ""
+
+#: ../src/desktop.vala:152
+msgid "Keyboard Settings…"
+msgstr ""
+
+#: ../src/desktop.vala:158
+msgid "Mouse and Touchpad Settings…"
+msgstr ""
+
+#: ../src/desktop.vala:165
+msgid "Sound Settings…"
+msgstr ""
+
+#: ../src/desktop.vala:189
+msgid "Visible"
+msgstr ""
+
+#. settings section
+#: ../src/desktop.vala:202
+msgid "Bluetooth Settings…"
+msgstr ""
+
+#: ../src/phone.vala:43
+msgid "Bluetooth settings…"
+msgstr ""
+
+#: ../src/profile.vala:89 ../src/profile.vala:169
+msgid "Bluetooth"
+msgstr ""
