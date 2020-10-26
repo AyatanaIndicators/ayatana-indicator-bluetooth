@@ -21,7 +21,7 @@
 /**
  * Boilerplate class to own the name on the bus,
  * to create the profiles, and to export them on the bus.
- */ 
+ */
 public class Service: Object
 {
   private MainLoop loop;

@@ -30,7 +30,7 @@ class Desktop: Profile
   {
     if (idle_rebuild_id != 0)
       {
-        Source.remove (idle_rebuild_id); 
+        Source.remove (idle_rebuild_id);
         idle_rebuild_id = 0;
       }
 
@@ -102,14 +102,11 @@ class Desktop: Profile
       {
         debug (@"creating action for $action_name");
         var a = new SimpleAction.stateful (action_name,
-                                           null,
+                                           VariantType.BOOLEAN,
                                            new Variant.boolean (device.is_connected));
 
-        a.activate.connect (()
-          => a.set_state (new Variant.boolean (!a.get_state().get_boolean())));
-
-        a.notify["state"].connect (()
-          => bluetooth.set_device_connected (id, a.get_state().get_boolean()));
+        a.activate.connect ((action, state)
+          => bluetooth.set_device_connected (id, state.get_boolean()));
 
         connect_actions.insert (device.id, a);
         action_group.add_action (a);
@@ -139,7 +136,7 @@ class Desktop: Profile
         /* There is no working backend that can be used there, disable
            the action until that situation gets sorted out
            see http://launchpad.net/bugs/1562822
-           
+
         if (device.supports_browsing)
           submenu.append (_("Browse files…"),
                           @"indicator.desktop-browse-files::$(device.address)");
@@ -255,14 +252,11 @@ class Desktop: Profile
   Action create_discoverable_action (Bluetooth bluetooth)
   {
     var action = new SimpleAction.stateful ("desktop-discoverable",
-                                            null,
+                                            VariantType.BOOLEAN,
                                             new Variant.boolean (bluetooth.discoverable));
 
-    action.activate.connect (()
-        => action.set_state (new Variant.boolean (!action.get_state().get_boolean())));
-
-    action.notify["state"].connect (()
-        => bluetooth.try_set_discoverable (action.get_state().get_boolean()));
+    action.activate.connect ((action, state)
+        => bluetooth.try_set_discoverable (state.get_boolean()));
 
     bluetooth.notify["discoverable"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.discoverable)));

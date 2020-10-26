@@ -123,14 +123,11 @@ class Profile: Object
   protected Action create_enabled_action (Bluetooth bluetooth)
   {
     var action = new SimpleAction.stateful ("bluetooth-enabled",
-                                            null,
+                                            VariantType.BOOLEAN,
                                             new Variant.boolean (bluetooth.enabled));
 
-    action.activate.connect (()
-        => action.change_state (new Variant.boolean (!action.get_state().get_boolean())));
-
-    action.change_state.connect ((action, requestedValue)
-        => bluetooth.try_set_enabled (requestedValue.get_boolean()));
+    action.activate.connect ((action, state)
+        => bluetooth.try_set_enabled (state.get_boolean()));
 
     bluetooth.notify["enabled"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.enabled)));
@@ -170,6 +167,7 @@ class Profile: Object
     builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
     builder.add ("{sv}", "icon", icon.serialize());
     builder.add ("{sv}", "title", new Variant.string (_("Bluetooth")));
+
     return builder.end ();
   }
 }
