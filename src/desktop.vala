@@ -242,6 +242,10 @@ class Desktop: Profile
     {
       spawn_command_line_async ("unity-control-center " + panel);
     }
+    else if (is_desktop ("MATE") && Environment.find_program_in_path ("blueman-manager") != null)
+    {
+      spawn_command_line_async ("blueman-manager");
+    }
     else
     {
       spawn_command_line_async ("gnome-control-center " + panel);
