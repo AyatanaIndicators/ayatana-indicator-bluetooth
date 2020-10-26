@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Canonical Ltd.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-28 20:27+0200\n"
+"POT-Creation-Date: 2020-10-26 12:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/indicator-bluetooth-service.vala:48
-msgid "Enabled"
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+msgid "Whether or not to show the bluetooth indicator in the menu bar."
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:62
-msgid "Visible"
+#: ../src/bluez.vala:310
+msgid "Unknown"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:111
-msgid "Bluetooth Settings..."
-msgstr ""
-
-#: ../src/indicator-bluetooth-service.vala:253
+#: ../src/desktop.vala:96
 msgid "Connection"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:276
-msgid "Send files..."
+#: ../src/desktop.vala:146
+msgid "Send files…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:284
-msgid "Browse files..."
+#: ../src/desktop.vala:152
+msgid "Keyboard Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:293
-msgid "Keyboard Settings..."
+#: ../src/desktop.vala:158
+msgid "Mouse and Touchpad Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:301
-msgid "Mouse and Touchpad Settings..."
+#: ../src/desktop.vala:165
+msgid "Sound Settings…"
 msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:310
-msgid "Sound Settings..."
+#: ../src/desktop.vala:189
+msgid "Visible"
+msgstr ""
+
+#. settings section
+#: ../src/desktop.vala:202
+msgid "Bluetooth Settings…"
+msgstr ""
+
+#: ../src/phone.vala:43
+msgid "Bluetooth settings…"
+msgstr ""
+
+#: ../src/profile.vala:89 ../src/profile.vala:169
+msgid "Bluetooth"
 msgstr ""

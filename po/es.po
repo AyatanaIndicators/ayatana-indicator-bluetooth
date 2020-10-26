@@ -6,49 +6,72 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-12-06 16:29+1300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-26 12:24+0100\n"
 "PO-Revision-Date: 2012-12-15 04:40+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-01-08 06:02+0000\n"
 "X-Generator: Launchpad (build 16402)\n"
 
-#: ../src/indicator-bluetooth-service.vala:48
-msgid "Enabled"
-msgstr "Activado"
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+msgid "Whether or not to show the bluetooth indicator in the menu bar."
+msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:62
-msgid "Visible"
-msgstr "Visible"
+#: ../src/bluez.vala:310
+msgid "Unknown"
+msgstr ""
 
-#: ../src/indicator-bluetooth-service.vala:111
-msgid "Bluetooth Settings..."
-msgstr "Configuración de Bluetooth…"
-
-#: ../src/indicator-bluetooth-service.vala:253
+#: ../src/desktop.vala:96
 msgid "Connection"
 msgstr "Conexión"
 
-#: ../src/indicator-bluetooth-service.vala:276
-msgid "Send files..."
+#: ../src/desktop.vala:146
+#, fuzzy
+msgid "Send files…"
 msgstr "Enviar archivos…"
 
-#: ../src/indicator-bluetooth-service.vala:284
-msgid "Browse files..."
-msgstr "Examinar archivos…"
-
-#: ../src/indicator-bluetooth-service.vala:293
-msgid "Keyboard Settings..."
+#: ../src/desktop.vala:152
+#, fuzzy
+msgid "Keyboard Settings…"
 msgstr "Configuración del teclado…"
 
-#: ../src/indicator-bluetooth-service.vala:301
-msgid "Mouse and Touchpad Settings..."
+#: ../src/desktop.vala:158
+#, fuzzy
+msgid "Mouse and Touchpad Settings…"
 msgstr "Configuración del ratón y touchpad…"
 
-#: ../src/indicator-bluetooth-service.vala:310
-msgid "Sound Settings..."
+#: ../src/desktop.vala:165
+#, fuzzy
+msgid "Sound Settings…"
 msgstr "Configuración de sonido…"
+
+#: ../src/desktop.vala:189
+msgid "Visible"
+msgstr "Visible"
+
+#. settings section
+#: ../src/desktop.vala:202
+#, fuzzy
+msgid "Bluetooth Settings…"
+msgstr "Configuración de Bluetooth…"
+
+#: ../src/phone.vala:43
+#, fuzzy
+msgid "Bluetooth settings…"
+msgstr "Configuración de Bluetooth…"
+
+#: ../src/profile.vala:89 ../src/profile.vala:169
+#, fuzzy
+msgid "Bluetooth"
+msgstr "Configuración de Bluetooth…"
+
+#~ msgid "Enabled"
+#~ msgstr "Activado"
+
+#~ msgid "Browse files..."
+#~ msgstr "Examinar archivos…"
