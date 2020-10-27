@@ -2,7 +2,7 @@ ayatana-indicator-bluetooth (0.8.0-0) unstable; urgency=medium
 
   * Port from Ubuntu Indicators to Ayatana Indicators.
 
- -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Sun, 25 Oct 2020 16:38:02 +0100
+ -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Tue, 27 Oct 2020 15:40:42 +0100
 
 indicator-bluetooth (0.0.7+ubports1) xenial; urgency=medium
 
