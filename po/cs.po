@@ -8,55 +8,58 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-10-29 23:26+0000\n"
+"Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/ayatana-indicators/"
+"bluetooth-applet/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3.2-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Zda se má či ne, zobrazit bluetooth v panelu nabídek."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "Spojení"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "Odeslat soubory…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Nastavení klávesnice …"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Nastavení myši a touchpadu …"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Nastavení zvuku …"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "Viditelné"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Nastavení Bluetooth…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Bluetooth nastavení…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
