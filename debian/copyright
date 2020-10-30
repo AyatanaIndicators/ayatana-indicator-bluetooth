@@ -1,21 +1,165 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ayatana-indicator-bluetooth
+Upstream-Contact: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+Source: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
 
-Files: *
-Copyright: 2012 Canonical Ltd.
+Files: config.h.in
+ src/bluetooth.vala
+ src/bluez.vala
+ src/desktop.vala
+ src/device.vala
+ src/killswitch.vala
+ src/main.vala
+ src/phone.vala
+ src/profile.vala
+ src/service.vala
+Copyright: 2013, Canonical Ltd.
 License: GPL-3
 
+Files: vapi/rfkill.vapi
+Copyright: NO-YEAR, Michael 'Mickey' Lauer <mickey@vanille-media.de>
+License: LGPL-2
+
+Files: update-po.sh
+ update-pot.sh
+Copyright: 2017, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 License: GPL-3
- This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, version 3 of the License.
+
+Files: cmake/FindGObjectIntrospection.cmake
+ cmake/UseGObjectIntrospection.cmake
+Copyright: 2010, Pino Toscano, <pino@kde.org>
+License: BSD-3-clause
+
+Files: cmake/FindVala.cmake
+ cmake/UseVala.cmake
+Copyright: 2011, Přemysl Janouch
+License: BSD-2-clause
+
+Files: po/ayatana-indicator-bluetooth.pot
+ po/*.po
+Copyright: YEAR, THE PACKAGE'S COPYRIGHT HOLDER
+License: GPL-3
+Comment:
+ GENERATED FILE: po/ayatana-indicator-bluetooth.pot.
  .
- This program is distributed in the hope that it will be useful,
+ Assuming same license as found in COPYING file.
+
+Files: po/ca.po
+ po/es.po
+ po/fr.po
+ po/pl.po
+Copyright: 2012, Rosetta Contributors and Canonical Ltd.
+ 2013, Rosetta Contributors and Canonical Ltd.
+License: GPL-3
+Comment:
+ Assuming same license as found in COPYING file.
+
+Files: CMakeLists.txt
+ ChangeLog
+ Jenkinsfile
+ MERGE-REVIEW
+ NEWS
+ data/CMakeLists.txt
+ data/ayatana-indicator-bluetooth.desktop.in
+ data/ayatana-indicator-bluetooth.service.in
+ data/org.ayatana.indicator.bluetooth
+ data/org.ayatana.indicator.bluetooth.gschema.xml.in
+ po/CMakeLists.txt
+ po/LINGUAS
+ po/POTFILES.in
+ po/POTFILES.skip
+ src/CMakeLists.txt
+ tests/manual
+ vapi/config.vapi
+ vapi/url-dispatcher.vapi
+Copyright: 2013, Canonical Ltd.
+License: GPL-3
+Comment:
+ Assuming license as found in COPYING file. Assuming copyright holders
+ from files in src/.
+
+Files: debian/*
+Copyright: 2013, Canonical Ltd.
+  2020, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: GPL-3 or BSD-2-clause or BSD-3-clause
+
+License: GPL-3
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 3 of the License.
+ .
+ This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ along with this program. If not, see <http://www.gnu.org/licenses/>
  .
- On Debian systems, the full text of the GNU General Public License
- version 3 can be found in the file /usr/share/common-licenses/GPL-3.
+ On Debian systems, the complete text of the GNU General
+ Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
+
+License: LGPL-2
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; version 2
+ of the License.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the complete text of the GNU Library General Public
+ License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: BSD-2-clause
+ Copyright Přemysl Janouch 2011
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+     * Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+     * Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS''
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ OF SUCH DAMAGE.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
