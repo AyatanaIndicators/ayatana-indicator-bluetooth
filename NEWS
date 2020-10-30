@@ -1,3 +1,11 @@
+Overview of changes in indicator-bluetooth 0.8.1
+
+  - Fix license headers in src/*.vala. They contained a mix of
+    GPL-3 and some LGPL license fragments. Updated to GPL-3.
+  - Translation updates.
+  - locale: Add more languages to this project's translation
+    scheme.
+
 Overview of changes in indicator-bluetooth 0.8.0
 
   - Port from Ubuntu Indicators to Ayatana Indicators.

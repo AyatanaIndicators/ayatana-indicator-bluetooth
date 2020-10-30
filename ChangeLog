@@ -1,6 +1,27 @@
-2020-10-27 15:44:27 +0100 Mike Gabriel
+2020-10-30 15:00:16 +0100 Mike Gabriel
 
-	* release 0.8.0 (HEAD -> master, tag: 0.8.0)
+	* release 0.8.1 (HEAD -> master, tag: 0.8.1)
+
+2020-10-30 14:59:36 +0100 Mike Gabriel (0ee1eb7)
+
+	* locale: Add more languages.
+
+2020-10-30 14:53:59 +0100 Mike Gabriel (bdb852e)
+
+	* debian/copyright: Adopt from official Debian package.
+
+2020-10-30 14:53:01 +0100 Mike Gabriel (dd2f32e)
+
+	* src/*.vala: Fix license headers having been a mix of GPL and LGPL
+          license text fragments. Adapt to GPL-3, fully.
+
+2020-10-28 23:22:28 +0000 Milan Korecky (60858e9)
+
+	* Translated using Weblate (Czech)
+
+2020-10-27 15:44:27 +0100 Mike Gabriel (17eb55d)
+
+	* release 0.8.0 (tag: 0.8.0)
 
 2020-10-27 15:40:11 +0100 Mike Gabriel (128e70b)
 
