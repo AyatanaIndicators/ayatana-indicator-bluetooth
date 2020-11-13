@@ -2,8 +2,8 @@
   <schema id="org.ayatana.indicator.bluetooth" path="/org/ayatana/indicator/bluetooth/">
     <key name="visible" type="b">
       <default>true</default>
-      <_summary>Whether or not to show the bluetooth indicator in the menu bar.</_summary>
-      <_description>Whether or not to show the bluetooth indicator in the menu bar.</_description>
+      <_summary>Bluetooth indicator in the menu bar.</_summary>
+      <_description>Whether or not to show the Bluetooth indicator in the menu bar.</_description>
     </key>
   </schema>
 </schemalist>
