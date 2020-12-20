@@ -64,9 +64,12 @@ class Desktop: Profile
     build_menu ();
 
     // know when to show the indicator & when to hide it
-    settings.changed["visible"].connect (()=> update_visibility());
-    bluetooth.notify["supported"].connect (() => update_visibility());
-    update_visibility ();
+    if (Environment.get_variable("MIR_SOCKET") != null)
+    {
+        settings.changed["visible"].connect (()=> update_visibility());
+        bluetooth.notify["supported"].connect (() => update_visibility());
+        update_visibility ();
+    }
 
     // when devices change, rebuild our device section
     bluetooth.devices_changed.connect (()=> {
