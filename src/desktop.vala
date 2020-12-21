@@ -168,6 +168,10 @@ class Desktop: Profile
               submenu.append (_("Sound Settings…"),
                               "indicator.desktop-show-settings::sound");
               break;
+
+            default:
+
+              break;
           }
 
         // only show the device if it's got actions that we can perform on it
