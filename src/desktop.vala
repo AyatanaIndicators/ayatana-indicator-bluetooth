@@ -179,7 +179,16 @@ class Desktop: Profile
           {
             item = new MenuItem (device.name, null);
             item.set_attribute_value ("icon", device.icon.serialize());
-            item.set_submenu (submenu);
+
+            if (Environment.get_variable("MIR_SOCKET") != null)
+            {
+                item.set_submenu (submenu);
+            }
+            else
+            {
+                item.set_section (submenu);
+            }
+
             device_section.append_item (item);
           }
       }
