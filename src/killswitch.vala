@@ -161,6 +161,10 @@ public class RfKillSwitch: KillSwitch, Object
         case Linux.RfKillOp.DEL:
           entries.remove (event.idx);
           break;
+
+        default:
+
+          break;
       }
 
     /* update our blocked property.
