@@ -129,7 +129,7 @@ public class RfKillSwitch: KillSwitch, Object
     var event = Linux.RfKillEvent();
     var n = sizeof (Linux.RfKillEvent);
     var bytesread = Posix.read (fd, &event, n);
-   
+
     if (bytesread == n)
       {
         process_event (event);
