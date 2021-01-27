@@ -3,7 +3,7 @@ Section: gnome
 Priority: optional
 Maintainer: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 Build-Depends: debhelper (>= 9.0),
-               dh-systemd,
+               dh-systemd | hello,
                cmake,
                cmake-extras (>= 0.10),
                intltool,
