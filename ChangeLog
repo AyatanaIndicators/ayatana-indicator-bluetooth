@@ -1,6 +1,138 @@
-2020-10-30 15:00:16 +0100 Mike Gabriel
+2021-02-03 14:22:27 +0100 Mike Gabriel
 
-	* release 0.8.1 (HEAD -> master, tag: 0.8.1)
+	* release 0.8.2 (HEAD -> master, tag: 0.8.2)
+
+2021-02-03 14:18:40 +0100 Mike Gabriel (3832935)
+
+	* src/CMakeLists.txt: Fix loading VAPI file for
+          lomiri-url-dispatcher.
+
+2021-02-03 11:47:38 +0100 Robert Tari (697f09a)
+
+	* Merge branch 'sunweaver-pr/finalize-lomiri-url-dispatcher-port'
+
+2021-02-03 10:47:19 +0100 Mike Gabriel (a0a8973)
+
+	* Finalize incomplete switch to Lomiri URL Dispatcher.
+
+2021-02-03 10:42:46 +0100 Mike Gabriel (8d6ed86)
+
+	* debian/control: Switch from url-dispatcher to
+          lomiri-url-dispatcher.
+
+2021-01-28 14:51:26 +0000 Milo Ivir (b406121)
+
+	* Translated using Weblate (Croatian)
+
+2021-01-27 20:51:52 +0100 Mike Gabriel (5817d4a)
+
+	* debian/control: Make B-D on dh-systemd optional (fixes FTBFS in
+          Debian bullseye).
+
+2021-01-16 06:45:27 +0000 Kristjan Räts (0d81295)
+
+	* Translated using Weblate (Estonian)
+
+2020-12-30 09:58:11 +0000 J. Lavoie (43bff8e)
+
+	* Translated using Weblate (French (Canada))
+
+2020-12-30 09:59:25 +0000 J. Lavoie (db1edad)
+
+	* Translated using Weblate (English (Canada))
+
+2020-12-30 03:13:14 +0000 J. Lavoie (ede9d94)
+
+	* Translated using Weblate (English (United Kingdom))
+
+2020-12-30 03:01:11 +0000 J. Lavoie (f1ecac8)
+
+	* Translated using Weblate (German)
+
+2020-12-29 13:52:08 +0000 Wellington Terumi Uemura (4632ce2)
+
+	* Translated using Weblate (Portuguese (Brazil))
+
+2020-12-30 03:00:12 +0000 J. Lavoie (101b074)
+
+	* Translated using Weblate (French)
+
+2020-12-23 01:59:46 +0000 Luna Jernberg (2575b09)
+
+	* Translated using Weblate (Swedish)
+
+2020-12-22 15:54:39 +0100 Mike Gabriel (e077724)
+
+	* Merge branch 'tari01-pr/devices-to-sections'
+
+2020-12-22 00:20:05 +0100 Robert Tari (0f5f6c0)
+
+	* Show devices in sections
+
+2020-12-22 15:51:32 +0100 Mike Gabriel (14e884b)
+
+	* Merge branch 'tari01-pr/build-warnings'
+
+2020-12-21 01:49:23 +0100 Robert Tari (3bbded7)
+
+	* Fix build warnings
+
+2020-12-22 15:43:02 +0100 Mike Gabriel (4634e40)
+
+	* Merge branch 'tari01-pr/do-not-hide-the-indicator'
+
+2020-12-21 00:43:40 +0100 Robert Tari (85de671)
+
+	* desktop.vala: Do not hide the indicator
+
+2020-11-26 13:27:22 +0000 Ács Zoltán (50669be)
+
+	* Translated using Weblate (Hungarian)
+
+2020-11-23 11:07:07 +0000 Adolfo Jayme Barrientos (ef717cb)
+
+	* Translated using Weblate (Spanish)
+
+2020-11-17 19:33:21 +0000 Moo (fc0410d)
+
+	* Translated using Weblate (Lithuanian)
+
+2020-11-13 07:31:40 +0100 Mike Gabriel (a173cf6)
+
+	* Merge branch 'comradekingu-patch-1'
+
+2020-11-10 23:46:16 +0000 Allan Nordhøy (ecdfded)
+
+	* Spelling: Bluetooth
+
+2020-11-10 23:45:22 +0000 Allan Nordhøy (cb5f6ae)
+
+	* Translated using Weblate (Norwegian Bokmål)
+
+2020-11-11 16:43:44 +0000 Oğuz Ersen (f398362)
+
+	* Translated using Weblate (Turkish)
+
+2020-11-07 20:56:43 +0000 Quentin PAGÈS (12531f6)
+
+	* Translated using Weblate (Occitan)
+
+2020-11-06 14:14:03 +0000 Ács Zoltán (ca86d83)
+
+	* Translated using Weblate (Hungarian)
+
+2020-10-31 03:48:59 +0000 Joan CiberSheep (663bafa)
+
+	* Translated using Weblate (Catalan)
+
+2020-10-30 15:06:34 +0100 Mike Gabriel (2191d31)
+
+	* src/*.vala: Follow-up fix for dd2f32e2 (fixing GPL-3 license texts
+          in file headers).
+
+2020-10-30 15:00:16 +0100 Mike Gabriel (5c72d42)
+
+	* release 0.8.1 (tag: 0.8.1)
 
 2020-10-30 14:59:36 +0100 Mike Gabriel (0ee1eb7)
 

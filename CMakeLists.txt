@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.8.9)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" "${CMAKE_MODULE_PATH}")
 
 set(PACKAGE ${CMAKE_PROJECT_NAME})
-set(PROJECT_VERSION 0.8.1)
+set(PROJECT_VERSION 0.8.2)
 find_package(PkgConfig REQUIRED)
 include(GNUInstallDirs)
 include(UseVala)

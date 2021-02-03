@@ -1,3 +1,11 @@
+Overview of changes in indicator-bluetooth 0.8.2
+
+  - Do not hide the indicator when unused.
+  - Fix build warnings.
+  - Show devices in sections for non-Lomiri environments.
+  - Finalize port from URL Dispatcher to Lomiri URL Dispatcher.
+  - Translation updates.
+
 Overview of changes in indicator-bluetooth 0.8.1
 
   - Fix license headers in src/*.vala. They contained a mix of
