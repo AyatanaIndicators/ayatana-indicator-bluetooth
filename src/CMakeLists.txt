@@ -8,7 +8,7 @@ set(VAPI_PATH "${CMAKE_CURRENT_BINARY_DIR}/ayatana-indicator-bluetooth-service.v
 
 if(URLDISPATCHER_FOUND)
     set (VALA_DEFINE_URLDISPATCHER "--define=HAS_URLDISPATCHER")
-    set (VALA_PKG_URLDISPATCHER "url-dispatcher")
+    set (VALA_PKG_URLDISPATCHER "lomiri-url-dispatcher")
 endif()
 
 vala_init(ayatana-indicator-bluetooth-service
