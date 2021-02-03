@@ -27,7 +27,7 @@ pkg_check_modules(
 
 include_directories(${BLUETOOTHSERVICE_INCLUDE_DIRS})
 
-set(URL_DISPATCHER_REQUIRED_VERSION 0.1)
+set(URL_DISPATCHER_REQUIRED_VERSION 0)
 
 pkg_check_modules(
   URLDISPATCHER
