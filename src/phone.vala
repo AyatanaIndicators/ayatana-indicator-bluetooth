@@ -65,7 +65,7 @@ class Phone: Profile
 
 #if HAS_URLDISPATCHER
 
-    UrlDispatch.send ("settings:///system/bluetooth");
+    LomiriUrlDispatch.send ("settings:///system/bluetooth");
 
 #endif
 

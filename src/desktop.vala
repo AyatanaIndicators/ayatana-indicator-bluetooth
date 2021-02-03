@@ -244,7 +244,7 @@ class Desktop: Profile
 
         if (Environment.get_variable ("MIR_SOCKET") != null)
         {
-            UrlDispatch.send ("settings:///system/bluetooth");
+            LomiriUrlDispatch.send ("settings:///system/bluetooth");
 
             return;
         }
