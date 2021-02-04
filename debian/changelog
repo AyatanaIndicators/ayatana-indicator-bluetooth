@@ -1,9 +1,16 @@
-ayatana-indicator-bluetooth (0.8.1-0) UNRELEASED; urgency=medium
+ayatana-indicator-bluetooth (0.8.2-0) unstable; urgency=medium
 
   * Upstream-provided Debian package for ayatana-indicator-bluetooth.
     See upstream ChangeLog for recent changes.
 
- -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Fri, 30 Oct 2020 14:54:17 +0100
+ -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Thu, 04 Feb 2021 01:30:42 +0100
+
+ayatana-indicator-bluetooth (0.8.1-0) unstable; urgency=medium
+
+  * Upstream-provided Debian package for ayatana-indicator-bluetooth.
+    See upstream ChangeLog for recent changes.
+
+ -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>  Fri, Oct 30 2020 15:00:16 +0100
 
 ayatana-indicator-bluetooth (0.8.0-0) unstable; urgency=medium
 
