@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-03-18 17:29+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
@@ -22,41 +25,41 @@ msgstr ""
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Tidak diketahui"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "Koneksi"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "Mengirim file…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Pengaturan Papan tik…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Pengaturan tetikus dan touchpad…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Pengaturan suara…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "Nampak"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Pengaturan Bluetooth…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Pengaturan bluetooth…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
