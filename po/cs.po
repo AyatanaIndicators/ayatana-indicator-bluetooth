@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: 2020-10-29 23:26+0000\n"
-"Last-Translator: Milan Korecky <milan.korecky@gmail.com>\n"
+"PO-Revision-Date: 2021-05-02 11:31+0000\n"
+"Last-Translator: Tomáš Marný <tomik.marny@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ayatana-indicators/"
 "bluetooth-applet/cs/>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
@@ -37,15 +37,15 @@ msgstr "Odeslat soubory…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr "Nastavení klávesnice …"
+msgstr "Nastavení klávesnice…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr "Nastavení myši a touchpadu …"
+msgstr "Nastavení myši a touchpadu…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr "Nastavení zvuku …"
+msgstr "Nastavení zvuku…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
