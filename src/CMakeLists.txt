@@ -168,7 +168,7 @@ target_link_libraries(
 
 install(
   TARGETS ayatana-indicator-bluetooth-service-bin
-  RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/ayatana-indicator-bluetooth/
+  RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR}/ayatana-indicator-bluetooth/
 )
 
 # coverage reporting

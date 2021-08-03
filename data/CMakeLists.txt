@@ -7,7 +7,7 @@ find_package(GSettings)
 
 set(
   INDICATOR_DIR
-  "${CMAKE_INSTALL_DATADIR}/ayatana/indicators"
+  "${CMAKE_INSTALL_FULL_DATADIR}/ayatana/indicators"
   CACHE FILEPATH "Ayatana Indicators Directory"
 )
 
