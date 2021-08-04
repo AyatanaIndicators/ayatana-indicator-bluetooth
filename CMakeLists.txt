@@ -1,10 +1,27 @@
 project(ayatana-indicator-bluetooth C CXX)
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.13)
+
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    SET(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "..." FORCE)
+endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" "${CMAKE_MODULE_PATH}")
 
 set(PACKAGE ${CMAKE_PROJECT_NAME})
 set(PROJECT_VERSION 0.8.2)
+
+# Options
+
+option(ENABLE_TESTS "Enable all tests and checks" OFF)
+option(ENABLE_COVERAGE "Enable coverage reports (includes enabling all tests and checks)" OFF)
+
+if(ENABLE_COVERAGE)
+    set(ENABLE_TESTS ON)
+    set(CMAKE_BUILD_TYPE "Coverage")
+else()
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+
 find_package(PkgConfig REQUIRED)
 include(GNUInstallDirs)
 include(UseVala)
@@ -57,3 +74,23 @@ configure_file(
 add_subdirectory(data)
 add_subdirectory(src)
 add_subdirectory(po)
+
+# testing & coverage
+
+if (ENABLE_TESTS)
+
+    include(CTest)
+    enable_testing()
+
+    if (ENABLE_COVERAGE)
+
+        find_package(CoverageReport)
+
+    endif()
+
+endif()
+
+# Display config info
+
+message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "Unit tests: ${ENABLE_TESTS}")
