@@ -46,6 +46,7 @@ pkg_check_modules(
     BLUETOOTHSERVICE REQUIRED
     glib-2.0>=${GLIB_2_0_REQUIRED_VERSION}
     gio-unix-2.0>=${GIO_2_0_REQUIRED_VERSION}
+    libayatana-common>=0.9.3
 )
 
 include_directories(${BLUETOOTHSERVICE_INCLUDE_DIRS})
