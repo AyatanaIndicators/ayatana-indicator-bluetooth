@@ -6,11 +6,6 @@ set(HEADER_PATH "${CMAKE_CURRENT_BINARY_DIR}/ayatana-indicator-bluetooth-service
 set(SYMBOLS_PATH "${CMAKE_CURRENT_BINARY_DIR}/ayatana-indicator-bluetooth-service.def")
 set(VAPI_PATH "${CMAKE_CURRENT_BINARY_DIR}/ayatana-indicator-bluetooth-service.vapi")
 
-if(URLDISPATCHER_FOUND)
-    set (VALA_DEFINE_URLDISPATCHER "--define=HAS_URLDISPATCHER")
-    set (VALA_PKG_URLDISPATCHER "lomiri-url-dispatcher")
-endif()
-
 vala_init(ayatana-indicator-bluetooth-service
   DEPENDS
   PACKAGES
@@ -25,7 +20,6 @@ vala_init(ayatana-indicator-bluetooth-service
     --target-glib=${GLIB_2_0_REQUIRED_VERSION}
     --vapidir=${CMAKE_SOURCE_DIR}/vapi/
     --vapidir=.
-    ${VALA_DEFINE_URLDISPATCHER}
 )
 
 vala_add(ayatana-indicator-bluetooth-service
@@ -136,7 +130,6 @@ add_library(
 target_link_libraries(
   ayatana-indicator-bluetooth-service-lib
   ${BLUETOOTHSERVICE_LIBRARIES}
-  ${URLDISPATCHER_LIBRARIES}
   -lm
 )
 

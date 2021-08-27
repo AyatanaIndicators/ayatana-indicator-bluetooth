@@ -51,16 +51,7 @@ pkg_check_modules(
 
 include_directories(${BLUETOOTHSERVICE_INCLUDE_DIRS})
 
-set(URL_DISPATCHER_REQUIRED_VERSION 0)
-
-pkg_check_modules(
-  URLDISPATCHER
-  lomiri-url-dispatcher>=${URL_DISPATCHER_REQUIRED_VERSION}
-)
-include_directories(${URLDISPATCHER_INCLUDE_DIRS})
-
 find_package(Vala 0.20)
-
 find_package(GObjectIntrospection 0.9.12)
 
 include_directories(${SOURCE_DIR})
