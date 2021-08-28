@@ -19,7 +19,7 @@ vala_init(ayatana-indicator-bluetooth-service
     posix
     gio-2.0
     gio-unix-2.0
-    ${VALA_PKG_URLDISPATCHER}
+    AyatanaCommon
   OPTIONS
     --ccode
     --target-glib=${GLIB_2_0_REQUIRED_VERSION}

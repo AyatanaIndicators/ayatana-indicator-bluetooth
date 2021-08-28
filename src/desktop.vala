@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2021 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *   Charles Kerr <charles.kerr@canonical.com>
+ *   Robert Tari <robert@tari.in>
  */
 
 class Desktop: Profile
@@ -64,7 +66,7 @@ class Desktop: Profile
     build_menu ();
 
     // know when to show the indicator & when to hide it
-    if (Environment.get_variable("MIR_SOCKET") != null)
+    if (AyatanaCommon.utils_is_lomiri())
     {
         settings.changed["visible"].connect (()=> update_visibility());
         bluetooth.notify["supported"].connect (() => update_visibility());
@@ -180,7 +182,7 @@ class Desktop: Profile
             item = new MenuItem (device.name, null);
             item.set_attribute_value ("icon", device.icon.serialize());
 
-            if (Environment.get_variable("MIR_SOCKET") != null)
+            if (AyatanaCommon.utils_is_lomiri())
             {
                 item.set_submenu (submenu);
             }
@@ -224,44 +226,23 @@ class Desktop: Profile
   ///  Actions
   ///
 
-  private bool is_desktop (string name)
-  {
-    var desktop_name_list = Environment.get_variable ("XDG_CURRENT_DESKTOP");
-    if (desktop_name_list == null)
-        return false;
-
-    foreach (var n in desktop_name_list.split (":"))
-      if (n == name)
-        return true;
-
-    return false;
-  }
-
   void show_settings (string panel)
   {
-
-#if HAS_URLDISPATCHER
-
-        if (Environment.get_variable ("MIR_SOCKET") != null)
-        {
-            LomiriUrlDispatch.send ("settings:///system/bluetooth");
-
-            return;
-        }
-
-#endif
-
-    if (is_desktop ("Unity") && Environment.find_program_in_path ("unity-control-center") != null)
+    if (AyatanaCommon.utils_is_lomiri())
     {
-      spawn_command_line_async ("unity-control-center " + panel);
+        AyatanaCommon.utils_open_url("settings:///system/bluetooth");
     }
-    else if (is_desktop ("MATE") && Environment.find_program_in_path ("blueman-manager") != null)
+    else if (AyatanaCommon.utils_is_unity() && AyatanaCommon.utils_have_program("unity-control-center"))
     {
-      spawn_command_line_async ("blueman-manager");
+      AyatanaCommon.utils_execute_command("unity-control-center " + panel);
+    }
+    else if (AyatanaCommon.utils_is_mate() && AyatanaCommon.utils_have_program("blueman-manager"))
+    {
+      AyatanaCommon.utils_execute_command("blueman-manager");
     }
     else
     {
-      spawn_command_line_async ("gnome-control-center " + panel);
+      AyatanaCommon.utils_execute_command("gnome-control-center " + panel);
     }
   }
 

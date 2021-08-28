@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2021 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *   Charles Kerr <charles.kerr@canonical.com>
+ *   Robert Tari <robert@tari.in>
  */
 
 class Phone: Profile
@@ -62,15 +64,7 @@ class Phone: Profile
 
   void show_settings (string panel)
   {
-
-#if HAS_URLDISPATCHER
-
-    LomiriUrlDispatch.send ("settings:///system/bluetooth");
-
-#endif
-
-    return;
-
+    AyatanaCommon.utils_open_url("settings:///system/bluetooth");
   }
 
   Action create_settings_action ()
