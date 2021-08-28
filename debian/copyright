@@ -71,7 +71,6 @@ Files: CMakeLists.txt
  src/CMakeLists.txt
  tests/manual
  vapi/config.vapi
- vapi/url-dispatcher.vapi
 Copyright: 2013, Canonical Ltd.
 License: GPL-3
 Comment:

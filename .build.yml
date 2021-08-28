@@ -19,6 +19,7 @@ requires:
     - vala
     # For building libayatana-common
     - gobject-introspection
+#    - liblomiri-url-dispatcher
 
   debian:
     # Useful URL: https://salsa.debian.org/debian-ayatana-team/ayatana-indicator-bluetooth
@@ -33,30 +34,12 @@ requires:
     - mate-common
     - intltool
     - libglib2.0-dev
+    - systemd
+    - valac
+    # For building libayatana-common
+    - gobject-introspection
+    - libgirepository1.0-dev
     - liblomiri-url-dispatcher-dev
-    - systemd
-    - valac
-    # For building libayatana-common
-    - gobject-introspection
-    - libgirepository1.0-dev
-
-  debian:stable:
-    - autopoint
-    - clang
-    - clang-tools
-    - g++
-    - cppcheck
-    - git
-    - cmake
-    - cmake-extras
-    - mate-common
-    - intltool
-    - libglib2.0-dev
-    - systemd
-    - valac
-    # For building libayatana-common
-    - gobject-introspection
-    - libgirepository1.0-dev
 
   ubuntu:
     - autopoint
@@ -69,12 +52,12 @@ requires:
     - mate-common
     - intltool
     - libglib2.0-dev
-    - liblomiri-url-dispatcher-dev
     - systemd
     - valac
     # For building libayatana-common
     - gobject-introspection
     - libgirepository1.0-dev
+    - liblomiri-url-dispatcher-dev
 
   ubuntu:focal:
     - autopoint
