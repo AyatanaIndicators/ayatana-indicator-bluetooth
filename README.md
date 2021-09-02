@@ -1,4 +1,4 @@
-# Ayatana System Indicator &mdash; Bluetooth [![Build Status](https://travis-ci.com/AyatanaIndicators/ayatana-indicator-bluetooth.svg)](https://travis-ci.com/AyatanaIndicators/ayatana-indicator-bluetooth)
+# Ayatana System Indicator &mdash; Bluetooth [![Build Status](https://api.travis-ci.com/AyatanaIndicators/ayatana-indicator-bluetooth.svg)](https://travis-ci.com/github/AyatanaIndicators/ayatana-indicator-bluetooth)
 
 ## About Ayatana Indicators
 
