@@ -73,4 +73,5 @@ set (ENV{LC_ALL} "C")
 execute_process (COMMAND intltool-merge -quiet --xml-style --utf8 --no-translations "${SCHEMA_FILE_IN}" "${SCHEMA_FILE}")
 
 # let UseGSettings do the rest
+set(GSETTINGS_COMPILE ON)
 add_schema (${SCHEMA_NAME})
