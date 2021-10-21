@@ -74,5 +74,4 @@ set (ENV{LC_ALL} "C")
 intltool_merge_translations("${SCHEMA_FILE_IN}" "${SCHEMA_FILE}" ALL UTF8 STYLE "xml" NO_TRANSLATIONS)
 
 # let UseGSettings do the rest
-set(GSETTINGS_COMPILE ON)
 add_schema (${SCHEMA_NAME})
