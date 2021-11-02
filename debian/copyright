@@ -57,7 +57,6 @@ Comment:
 Files: CMakeLists.txt
  ChangeLog
  Jenkinsfile
- MERGE-REVIEW
  NEWS
  data/CMakeLists.txt
  data/ayatana-indicator-bluetooth.desktop.in
