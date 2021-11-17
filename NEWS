@@ -1,4 +1,13 @@
-Overview of changes in indicator-bluetooth 0.8.2
+Overview of changes in ayatana-indicator-bluetooth 0.9.0
+
+  - Drop lomiri-url-dispatcher as a build dependency.
+  - Add libayatana-common as a build dependency.
+  - Replace code with libayatana-common functions.
+  - Update/add documentation.
+  - Add Travis CI configuration.
+  - Translation updates.
+
+Overview of changes in ayatana-indicator-bluetooth 0.8.2
 
   - Do not hide the indicator when unused.
   - Fix build warnings.
@@ -6,7 +15,7 @@ Overview of changes in indicator-bluetooth 0.8.2
   - Finalize port from URL Dispatcher to Lomiri URL Dispatcher.
   - Translation updates.
 
-Overview of changes in indicator-bluetooth 0.8.1
+Overview of changes in ayatana-indicator-bluetooth 0.8.1
 
   - Fix license headers in src/*.vala. They contained a mix of
     GPL-3 and some LGPL license fragments. Updated to GPL-3.
@@ -14,7 +23,7 @@ Overview of changes in indicator-bluetooth 0.8.1
   - locale: Add more languages to this project's translation
     scheme.
 
-Overview of changes in indicator-bluetooth 0.8.0
+Overview of changes in ayatana-indicator-bluetooth 0.8.0
 
   - Port from Ubuntu Indicators to Ayatana Indicators.
   - New versioning scheme.
