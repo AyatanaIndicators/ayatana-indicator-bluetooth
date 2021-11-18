@@ -8,55 +8,58 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-11-19 13:51+0000\n"
+"Last-Translator: phlostically <phlostically@mailinator.com>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.9.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Ĉu montri la Bludento-indikilon en la menubreto."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Nekonata"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "Konekto"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "Sendi dosierojn…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Agordoj pri klavoj…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Agordoj pri muso kaj tuŝplato…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Agordoj pri sono…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "Montrata"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Agordoj pri Bludento…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Agordoj pri Bludento…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bludento"
