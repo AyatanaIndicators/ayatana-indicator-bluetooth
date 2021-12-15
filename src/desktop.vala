@@ -60,6 +60,14 @@ class Desktop: Profile
     actions += create_browse_files_action ();
     actions += create_send_file_action ();
     actions += create_show_settings_action ();
+
+    if (!AyatanaCommon.utils_is_lomiri())
+    {
+        SimpleAction pAction = new SimpleAction ("item-enabled", VariantType.BOOLEAN);
+        pAction.set_enabled(false);
+        actions += pAction;
+    }
+
     foreach (var a in actions)
       action_group.add_action (a);
 
@@ -177,7 +185,9 @@ class Desktop: Profile
           }
 
         // only show the device if it's got actions that we can perform on it
-        if (submenu.get_n_items () > 0)
+        int nItems = submenu.get_n_items();
+
+        if (nItems > 0)
           {
             item = new MenuItem (device.name, null);
             item.set_attribute_value ("icon", device.icon.serialize());
@@ -185,13 +195,22 @@ class Desktop: Profile
             if (AyatanaCommon.utils_is_lomiri())
             {
                 item.set_submenu (submenu);
+                device_section.append_item (item);
             }
             else
             {
-                item.set_section (submenu);
-            }
+                item.set_detailed_action("indicator.item-enabled");
+                item.set_attribute("x-ayatana-type", "s", "org.ayatana.indicator.basic");
+                item.set_attribute("x-ayatana-use-markup", "b", true);
+                item.set_label("<b>" + device.name + "</b>");
+                device_section.append_item(item);
 
-            device_section.append_item (item);
+                for (int nItem = 0; nItem < nItems; nItem++)
+                {
+                    MenuItem pItem = new MenuItem.from_model(submenu, nItem);
+                    device_section.append_item(pItem);
+                }
+            }
           }
       }
   }
