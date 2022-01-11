@@ -24,8 +24,13 @@ else()
 endif()
 
 if(ENABLE_WERROR)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+    add_definitions("-Werror")
+endif()
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_definitions("-Weverything")
+else()
+    add_definitions("-Wall")
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -56,13 +61,6 @@ find_package(GObjectIntrospection 0.9.12)
 
 include_directories(${SOURCE_DIR})
 include_directories(${SOURCE_BINARY_DIR})
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
-add_definitions(
-  -Wall
-)
 
 configure_file(
   "config.h.in"
