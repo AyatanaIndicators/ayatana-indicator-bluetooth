@@ -1,6 +1,65 @@
+2022-02-17 Mike Gabriel
+
+        * release 22.2.0 (HEAD -> main, tag: 22.2.0)
+
+2022-02-16 Mike Gabriel
+
+        * Merge branch 'tari01-pr/drop-cmake-install-full-pkglibexecdir'
+          (f364437)
+
+2022-02-16 Robert Tari
+
+        * data/CMakeLists.txt: Drop unused pkglibexecdir definition (7b61cdf)
+
+2022-02-08 Robert Tari
+
+        * .travis.yml: Run CI builds on Travis CI's Ubuntu focal base system
+          (20f67a2)
+
+2022-02-02 Aung Xange
+
+        * Translated using Weblate (Burmese) (7c9505f)
+
+2022-01-27 Mike Gabriel
+
+        * Merge branch 'tari01-pr/cleanup-compile-flags' (cd08e1e)
+
+2022-01-11 Robert Tari
+
+        * .build.yml: Drop extra compilation flags and build with -Werror
+          (b1fd511)
+        * CMakeLists.txt: Clean up compilation flags (a7c80f6)
+
+2022-01-02 ssantos
+
+        * Translated using Weblate (Portuguese) (1267d39)
+
+2021-12-15 Mike Gabriel
+
+        * Merge branch 'tari01-pr/fix-device-section-layout' (aed99ec)
+
+2021-12-15 Robert Tari
+
+        * src/desktop.vala: Fix device section layout (706ba0d)
+
+2021-12-15 Mike Gabriel
+
+        * Merge branch
+          'tari01-pr/build-libayatana-common-with-enable-lomiri-features'
+          (2022bfc)
+
+2021-12-06 Robert Tari
+
+        * .build.yml: Build libayatana-common with ENABLE_LOMIRI_FEATURES
+          (d57e4c8)
+
+2021-11-18 phlostically
+
+        * Translated using Weblate (Esperanto) (a556eb8)
+
 2021-11-17 Mike Gabriel
 
-        * release 0.9.0 (HEAD -> main, tag: 0.9.0)
+        * release 0.9.0 (0ec67c2) (tag: 0.9.0)
 
 2021-11-16 Phil Clifford
 

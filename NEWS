@@ -1,3 +1,14 @@
+Overview of changes in ayatana-indicator-bluetooth 22.2.0
+
+  - Upstream version bump to new release versioning scheme:
+    <year>.<month>.<revision>, where <year>.<month> will be
+    bumped in Ayatana Indicators bundle releases and <revision>
+    gets incremented with minor changeset releases.
+  - data/CMakeLists.txt: Drop unused pkglibexecdir definition.
+  - CMakeLists.txt: Clean up compilation flags.
+  - src/desktop.vala: Fix device section layout.
+  - Translation updates.
+
 Overview of changes in ayatana-indicator-bluetooth 0.9.0
 
   - Drop lomiri-url-dispatcher as a build dependency.
