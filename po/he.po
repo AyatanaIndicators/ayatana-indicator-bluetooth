@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: 2021-05-23 11:32+0000\n"
+"PO-Revision-Date: 2022-03-01 12:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/he/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.7-dev\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
@@ -26,41 +26,41 @@ msgstr "האם להציג את מחוון ה־bluetooth בשורת התפריט�
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "לא ידוע"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "חיבור"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "שליחת קבצים…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "הגדרות מקלדת…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "הגדרות עכבר ומשטח מגע…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "הגדרות שמע…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "גלוי"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "הגדרות Bluetooth…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "הגדרות Bluetooth…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
