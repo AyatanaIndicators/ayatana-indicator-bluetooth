@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: 2022-04-23 10:11+0000\n"
+"PO-Revision-Date: 2022-04-23 10:54+0000\n"
 "Last-Translator: Sergii Horichenko <m@sgg.im>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/uk/>\n"
@@ -26,31 +26,31 @@ msgstr "Відображати чи ні індикатор bluetooth на па�
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Невідомо"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "Підключення"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "Надіслати файли…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Налаштування клавіатури…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Налаштування миші та сенсорної панелі…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Налаштування звуку…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "Видимий"
 
 #. settings section
 #: ../src/desktop.vala:202
