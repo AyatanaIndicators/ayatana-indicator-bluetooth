@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: 2022-04-23 12:18+0000\n"
+"PO-Revision-Date: 2022-04-23 13:36+0000\n"
 "Last-Translator: Sergii Horichenko <m@sgg.im>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/ru/>\n"
@@ -38,29 +38,29 @@ msgstr "Отправить файлы…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Настройки клавиатуры…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Настройки мыши и тачпада…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Настройки звука…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "Видимый"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Настройки Bluetooth…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Настройки Bluetooth…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
