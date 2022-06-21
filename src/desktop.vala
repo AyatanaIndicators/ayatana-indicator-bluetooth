@@ -106,7 +106,7 @@ class Desktop: Profile
     var id = device.id;
     var action_name = @"desktop-device-$(id)-connected";
 
-    var item = new MenuItem (_("Connection"), @"indicator.$action_name");
+    var item = new MenuItem (_("Connection"), @"indicator.$(action_name)(true)");
     item.set_attribute ("x-ayatana-type",
                         "s", "org.ayatana.indicator.switch");
 
@@ -118,8 +118,11 @@ class Desktop: Profile
                                            VariantType.BOOLEAN,
                                            new Variant.boolean (device.is_connected));
 
-        a.activate.connect ((action, state)
-          => bluetooth.set_device_connected (id, state.get_boolean()));
+        a.activate.connect ((action, param)
+          => a.change_state (param));
+
+        a.change_state.connect ((action, requestedValue)
+          => bluetooth.set_device_connected (id, requestedValue.get_boolean()));
 
         connect_actions.insert (device.id, a);
         action_group.add_action (a);
@@ -223,7 +226,7 @@ class Desktop: Profile
     // quick toggles section
     section = new Menu ();
     section.append_item (create_enabled_menuitem ());
-    item = new MenuItem (_("Visible"), "indicator.desktop-discoverable");
+    item = new MenuItem (_("Visible"), "indicator.desktop-discoverable(true)");
     item.set_attribute ("x-ayatana-type", "s",
                         "org.ayatana.indicator.switch");
     section.append_item (item);
@@ -271,8 +274,11 @@ class Desktop: Profile
                                             VariantType.BOOLEAN,
                                             new Variant.boolean (bluetooth.discoverable));
 
-    action.activate.connect ((action, state)
-        => bluetooth.try_set_discoverable (state.get_boolean()));
+    action.activate.connect ((action, param)
+        => action.change_state (param));
+
+    action.change_state.connect ((action, requestedValue)
+        => bluetooth.try_set_discoverable (requestedValue.get_boolean()));
 
     bluetooth.notify["discoverable"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.discoverable)));

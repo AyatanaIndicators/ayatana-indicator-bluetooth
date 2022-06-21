@@ -86,7 +86,7 @@ class Profile: Object
 
   protected MenuItem create_enabled_menuitem ()
   {
-    var item = new MenuItem (_("Bluetooth"), "indicator.bluetooth-enabled");
+    var item = new MenuItem (_("Bluetooth"), "indicator.bluetooth-enabled(true)");
 
     item.set_attribute ("x-ayatana-type", "s",
                         "org.ayatana.indicator.switch");
@@ -126,8 +126,11 @@ class Profile: Object
                                             VariantType.BOOLEAN,
                                             new Variant.boolean (bluetooth.enabled));
 
-    action.activate.connect ((action, state)
-        => bluetooth.try_set_enabled (state.get_boolean()));
+    action.activate.connect ((action, param)
+        => action.change_state (param));
+
+    action.change_state.connect ((action, requestedValue)
+        => bluetooth.try_set_enabled (requestedValue.get_boolean()));
 
     bluetooth.notify["enabled"].connect (()
         => action.set_state (new Variant.boolean (bluetooth.enabled)));
