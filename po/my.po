@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-27 15:38+0100\n"
-"PO-Revision-Date: 2022-02-03 13:57+0000\n"
-"Last-Translator: Aung Xange <matthewaungsange@gmail.com>\n"
+"PO-Revision-Date: 2022-07-15 20:14+0000\n"
+"Last-Translator: Teitei <beilaitei40@gmail.com>\n"
 "Language-Team: Burmese <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/my/>\n"
 "Language: my\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.14-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Whether or not to show the bluetooth indicator in the menu bar."
@@ -25,41 +25,41 @@ msgstr "မီနူး ဘားထဲက Bluetooth ညွှန်ပြတာ
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "မသိသော"
 
 #: ../src/desktop.vala:96
 msgid "Connection"
-msgstr ""
+msgstr "ဆက်သွယ်ခြင်း"
 
 #: ../src/desktop.vala:146
 msgid "Send files…"
-msgstr ""
+msgstr "ဖိုင်များကိုပို့ပါ…"
 
 #: ../src/desktop.vala:152
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "ကီးဘုတ်အပြင်အဆင်များ…"
 
 #: ../src/desktop.vala:158
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "မောက်စ်နှင့်တောက်ပတ်ခ်ျ ပြင်ဆင်မှုများ…"
 
 #: ../src/desktop.vala:165
 msgid "Sound Settings…"
-msgstr ""
+msgstr "အသံပြင်ဆင်ချက်များ…"
 
 #: ../src/desktop.vala:189
 msgid "Visible"
-msgstr ""
+msgstr "မြင်နိုင်စွမ်း"
 
 #. settings section
 #: ../src/desktop.vala:202
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "ဘလူးတုသ် ပြင်ဆင်မှုများ…"
 
 #: ../src/phone.vala:43
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "ဘလူးတုသ် ပြင်ဆင်မှုများ…"
 
 #: ../src/profile.vala:89 ../src/profile.vala:169
 msgid "Bluetooth"
-msgstr ""
+msgstr "ဘလူးတုသ်"
