@@ -177,6 +177,7 @@ class Profile: Object
     }
 
     builder.add ("{sv}", "title", new Variant.string (_("Bluetooth")));
+    builder.add ("{sv}", "tooltip", new Variant.string (_("Bluetooth status & device connections")));
 
     return builder.end ();
   }
