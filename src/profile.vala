@@ -170,6 +170,7 @@ class Profile: Object
     builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
     builder.add ("{sv}", "icon", icon.serialize());
     builder.add ("{sv}", "title", new Variant.string (_("Bluetooth")));
+    builder.add ("{sv}", "tooltip", new Variant.string (_("Bluetooth status & device connections")));
 
     return builder.end ();
   }
