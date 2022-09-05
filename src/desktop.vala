@@ -1,6 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
- * Copyright 2021 Robert Tari
+ * Copyright 2021-2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -79,6 +79,11 @@ class Desktop: Profile
         settings.changed["visible"].connect (()=> update_visibility());
         bluetooth.notify["supported"].connect (() => update_visibility());
         update_visibility ();
+    }
+    else
+    {
+        bluetooth.notify["supported"].connect (() => update_root_action_state());
+        update_root_action_state();
     }
 
     // when devices change, rebuild our device section

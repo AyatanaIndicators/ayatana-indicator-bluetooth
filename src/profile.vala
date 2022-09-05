@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *   Charles Kerr <charles.kerr@canonical.com>
+ *   Robert Tari <robert@tari.in>
  */
 
 class Profile: Object
@@ -167,8 +169,13 @@ class Profile: Object
     var icon = new ThemedIcon.with_default_fallbacks (icon_name);
     var builder = new VariantBuilder (new VariantType ("a{sv}"));
     builder.add ("{sv}", "visible", new Variant.boolean (visible));
-    builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
-    builder.add ("{sv}", "icon", icon.serialize());
+
+    if (bluetooth.supported && visible)
+    {
+        builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
+        builder.add ("{sv}", "icon", icon.serialize());
+    }
+
     builder.add ("{sv}", "title", new Variant.string (_("Bluetooth")));
     builder.add ("{sv}", "tooltip", new Variant.string (_("Bluetooth status & device connections")));
 
