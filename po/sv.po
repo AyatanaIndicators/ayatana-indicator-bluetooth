@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 15:38+0100\n"
+"POT-Creation-Date: 2022-09-05 12:58+0200\n"
 "PO-Revision-Date: 2020-12-24 02:29+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/"
-"ayatana-indicators/bluetooth-applet/sv/>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/ayatana-"
+"indicators/bluetooth-applet/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,46 +20,56 @@ msgstr ""
 "X-Generator: Weblate 4.4.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-msgid "Whether or not to show the bluetooth indicator in the menu bar."
+#, fuzzy
+msgid "Bluetooth indicator in the menu bar."
+msgstr "Huruvida Bluetooth-indikatorn ska visas eller inte visas i menyfält."
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#, fuzzy
+msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Huruvida Bluetooth-indikatorn ska visas eller inte visas i menyfält."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
 msgstr "Okänd"
 
-#: ../src/desktop.vala:96
+#: ../src/desktop.vala:114
 msgid "Connection"
 msgstr "Anslutning"
 
-#: ../src/desktop.vala:146
+#: ../src/desktop.vala:167
 msgid "Send files…"
 msgstr "Skicka filer…"
 
-#: ../src/desktop.vala:152
+#: ../src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "Tangentbordsinställningar…"
 
-#: ../src/desktop.vala:158
+#: ../src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "Inställningar för mus och styrplatta…"
 
-#: ../src/desktop.vala:165
+#: ../src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "Ljudinställningar…"
 
-#: ../src/desktop.vala:189
+#: ../src/desktop.vala:234
 msgid "Visible"
 msgstr "Synlig"
 
 #. settings section
-#: ../src/desktop.vala:202
+#: ../src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "Bluetooth-inställningar…"
 
-#: ../src/phone.vala:43
+#: ../src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "Bluetooth-inställningar…"
 
-#: ../src/profile.vala:89 ../src/profile.vala:169
+#: ../src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Blåtand"
+
+#: ../src/profile.vala:180
+msgid "Bluetooth status & device connections"
+msgstr ""

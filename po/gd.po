@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 15:38+0100\n"
+"POT-Creation-Date: 2022-09-05 12:58+0200\n"
 "PO-Revision-Date: 2021-11-17 14:52+0000\n"
 "Last-Translator: Phil Clifford <philip.clifford@gmail.com>\n"
-"Language-Team: Gaelic <https://hosted.weblate.org/projects/"
-"ayatana-indicators/bluetooth-applet/gd/>\n"
+"Language-Team: Gaelic <https://hosted.weblate.org/projects/ayatana-"
+"indicators/bluetooth-applet/gd/>\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,47 +21,55 @@ msgstr ""
 "X-Generator: Weblate 4.9.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-msgid "Whether or not to show the bluetooth indicator in the menu bar."
+msgid "Bluetooth indicator in the menu bar."
+msgstr ""
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
 msgstr ""
 
-#: ../src/desktop.vala:96
+#: ../src/desktop.vala:114
 msgid "Connection"
 msgstr ""
 
-#: ../src/desktop.vala:146
+#: ../src/desktop.vala:167
 msgid "Send files…"
 msgstr ""
 
-#: ../src/desktop.vala:152
+#: ../src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr ""
 
-#: ../src/desktop.vala:158
+#: ../src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr ""
 
-#: ../src/desktop.vala:165
+#: ../src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr ""
 
-#: ../src/desktop.vala:189
+#: ../src/desktop.vala:234
 msgid "Visible"
 msgstr ""
 
 #. settings section
-#: ../src/desktop.vala:202
+#: ../src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr ""
 
-#: ../src/phone.vala:43
+#: ../src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr ""
 
-#: ../src/profile.vala:89 ../src/profile.vala:169
+#: ../src/profile.vala:91 ../src/profile.vala:179
 #, fuzzy
 msgid "Bluetooth"
 msgstr "Bluetooth"
+
+#: ../src/profile.vala:180
+msgid "Bluetooth status & device connections"
+msgstr ""

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 15:38+0100\n"
+"POT-Creation-Date: 2022-09-05 12:58+0200\n"
 "PO-Revision-Date: 2022-07-29 00:22+0000\n"
 "Last-Translator: Sergii Horichenko <m@sgg.im>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
-"ayatana-indicators/bluetooth-applet/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/ayatana-"
+"indicators/bluetooth-applet/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,46 +21,56 @@ msgstr ""
 "X-Generator: Weblate 4.14-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-msgid "Whether or not to show the bluetooth indicator in the menu bar."
+#, fuzzy
+msgid "Bluetooth indicator in the menu bar."
+msgstr "Відображати чи ні індикатор bluetooth на панелі меню."
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#, fuzzy
+msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Відображати чи ні індикатор bluetooth на панелі меню."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: ../src/desktop.vala:96
+#: ../src/desktop.vala:114
 msgid "Connection"
 msgstr "Підключення"
 
-#: ../src/desktop.vala:146
+#: ../src/desktop.vala:167
 msgid "Send files…"
 msgstr "Надіслати файли…"
 
-#: ../src/desktop.vala:152
+#: ../src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "Налаштування клавіатури…"
 
-#: ../src/desktop.vala:158
+#: ../src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "Налаштування миші та сенсорної панелі…"
 
-#: ../src/desktop.vala:165
+#: ../src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "Налаштування звуку…"
 
-#: ../src/desktop.vala:189
+#: ../src/desktop.vala:234
 msgid "Visible"
 msgstr "Видимий"
 
 #. settings section
-#: ../src/desktop.vala:202
+#: ../src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "Налаштування Bluetooth…"
 
-#: ../src/phone.vala:43
+#: ../src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "Налаштування Bluetooth…"
 
-#: ../src/profile.vala:89 ../src/profile.vala:169
+#: ../src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
+
+#: ../src/profile.vala:180
+msgid "Bluetooth status & device connections"
+msgstr ""

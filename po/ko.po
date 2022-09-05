@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 15:38+0100\n"
+"POT-Creation-Date: 2022-09-05 12:58+0200\n"
 "PO-Revision-Date: 2022-03-01 12:58+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/"
-"ayatana-indicators/bluetooth-applet/ko/>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/ayatana-"
+"indicators/bluetooth-applet/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,46 +20,56 @@ msgstr ""
 "X-Generator: Weblate 4.11.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-msgid "Whether or not to show the bluetooth indicator in the menu bar."
+#, fuzzy
+msgid "Bluetooth indicator in the menu bar."
+msgstr "메뉴 표시줄에 블루투스 표시기를 표시할지 여부입니다."
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#, fuzzy
+msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "메뉴 표시줄에 블루투스 표시기를 표시할지 여부입니다."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: ../src/desktop.vala:96
+#: ../src/desktop.vala:114
 msgid "Connection"
 msgstr "연결"
 
-#: ../src/desktop.vala:146
+#: ../src/desktop.vala:167
 msgid "Send files…"
 msgstr "파일 전송…"
 
-#: ../src/desktop.vala:152
+#: ../src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "키보드 설정…"
 
-#: ../src/desktop.vala:158
+#: ../src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "마우스 및 터치패드 설정…"
 
-#: ../src/desktop.vala:165
+#: ../src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "사운드 설정…"
 
-#: ../src/desktop.vala:189
+#: ../src/desktop.vala:234
 msgid "Visible"
 msgstr "볼 수 있음"
 
 #. settings section
-#: ../src/desktop.vala:202
+#: ../src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "블루투스 설정…"
 
-#: ../src/phone.vala:43
+#: ../src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "블루투스 설정…"
 
-#: ../src/profile.vala:89 ../src/profile.vala:169
+#: ../src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "블루투스"
+
+#: ../src/profile.vala:180
+msgid "Bluetooth status & device connections"
+msgstr ""

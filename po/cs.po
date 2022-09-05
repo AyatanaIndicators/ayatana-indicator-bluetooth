@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 15:38+0100\n"
+"POT-Creation-Date: 2022-09-05 12:58+0200\n"
 "PO-Revision-Date: 2021-05-02 11:31+0000\n"
 "Last-Translator: Tomáš Marný <tomik.marny@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ayatana-indicators/"
@@ -20,46 +20,56 @@ msgstr ""
 "X-Generator: Weblate 4.7-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-msgid "Whether or not to show the bluetooth indicator in the menu bar."
+#, fuzzy
+msgid "Bluetooth indicator in the menu bar."
+msgstr "Zda se má či ne, zobrazit bluetooth v panelu nabídek."
+
+#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#, fuzzy
+msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Zda se má či ne, zobrazit bluetooth v panelu nabídek."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: ../src/desktop.vala:96
+#: ../src/desktop.vala:114
 msgid "Connection"
 msgstr "Spojení"
 
-#: ../src/desktop.vala:146
+#: ../src/desktop.vala:167
 msgid "Send files…"
 msgstr "Odeslat soubory…"
 
-#: ../src/desktop.vala:152
+#: ../src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "Nastavení klávesnice…"
 
-#: ../src/desktop.vala:158
+#: ../src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "Nastavení myši a touchpadu…"
 
-#: ../src/desktop.vala:165
+#: ../src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "Nastavení zvuku…"
 
-#: ../src/desktop.vala:189
+#: ../src/desktop.vala:234
 msgid "Visible"
 msgstr "Viditelné"
 
 #. settings section
-#: ../src/desktop.vala:202
+#: ../src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "Nastavení Bluetooth…"
 
-#: ../src/phone.vala:43
+#: ../src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "Bluetooth nastavení…"
 
-#: ../src/profile.vala:89 ../src/profile.vala:169
+#: ../src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
+
+#: ../src/profile.vala:180
+msgid "Bluetooth status & device connections"
+msgstr ""
