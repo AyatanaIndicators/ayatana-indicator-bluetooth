@@ -8,27 +8,25 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 12:58+0200\n"
-"PO-Revision-Date: 2022-03-01 12:58+0000\n"
+"PO-Revision-Date: 2022-09-05 19:29+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/he/>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "האם להציג את מחוון ה־bluetooth בשורת התפריטים או לא."
+msgstr "מחוון Bluetooth בסרגל התפריטים."
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "האם להציג את מחוון ה־bluetooth בשורת התפריטים או לא."
+msgstr "האם להציג את מחוון ה־Bluetooth בשורת התפריטים או לא."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
@@ -73,4 +71,4 @@ msgstr "Bluetooth"
 
 #: ../src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "מצב Bluetooth וחיבורי מכשירים"
