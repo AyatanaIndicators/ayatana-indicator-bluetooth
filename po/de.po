@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 12:58+0200\n"
-"PO-Revision-Date: 2022-09-05 19:29+0000\n"
+"PO-Revision-Date: 2022-09-05 19:42+0000\n"
 "Last-Translator: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/de/>\n"
@@ -24,7 +24,6 @@ msgid "Bluetooth indicator in the menu bar."
 msgstr "Bluetooth-Indikator in der Menüleiste."
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 "Ob der Bluetooth-Indikator in der Menüleiste angezeigt werden soll oder "
