@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 12:58+0200\n"
-"PO-Revision-Date: 2021-09-24 14:39+0000\n"
+"PO-Revision-Date: 2022-09-07 03:22+0000\n"
 "Last-Translator: Wellington Terumi Uemura <wellingtonuemura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "ayatana-indicators/bluetooth-applet/pt_BR/>\n"
@@ -17,17 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Se deve ou não mostrar o indicador bluetooth na barra do menu."
+msgstr "Indicador do bluetooth na barra do menu."
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "Se deve ou não mostrar o indicador bluetooth na barra do menu."
+msgstr "Se deve ou não mostrar o indicador do bluetooth na barra do menu."
 
 #: ../src/bluez.vala:310
 msgid "Unknown"
@@ -72,4 +70,4 @@ msgstr "Bluetooth"
 
 #: ../src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Condição do bluetooth & e dispositivos conectados"
