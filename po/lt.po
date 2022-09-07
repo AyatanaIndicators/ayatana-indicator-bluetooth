@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 12:58+0200\n"
-"PO-Revision-Date: 2020-11-18 20:28+0000\n"
+"PO-Revision-Date: 2022-09-08 18:20+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: Lithuanian <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/lt/>\n"
+"Language-Team: Lithuanian <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,15 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
 "19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
 "1 : 2);\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Ar meniu juostoje rodyti Bluetooth indikatorių, ar ne."
+msgstr "Bluetooth indikatorius meniu juostoje."
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Ar meniu juostoje rodyti Bluetooth indikatorių, ar ne."
 
@@ -74,4 +72,4 @@ msgstr "Bluetooth"
 
 #: ../src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Bluetooth būsena ir ryšiai su įrenginiais"
