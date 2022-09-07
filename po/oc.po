@@ -8,24 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-05 12:58+0200\n"
-"PO-Revision-Date: 2022-08-07 18:16+0000\n"
+"PO-Revision-Date: 2022-09-08 18:20+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
-"Language-Team: Occitan <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/oc/>\n"
+"Language-Team: Occitan <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/oc/>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Mostrar o non l’indicator Bluetooth dins la barra de menú."
+msgstr "Indicator Bluetooth dins la barra de menú."
 
 #: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Mostrar o non l’indicator Bluetooth dins la barra de menú."
 
@@ -72,4 +70,4 @@ msgstr "Bluetooth"
 
 #: ../src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Estatuts Bluetooth e connexions aparelhs"
