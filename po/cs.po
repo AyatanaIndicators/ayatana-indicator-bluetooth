@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 07:42+0200\n"
+"POT-Creation-Date: 2022-09-14 08:25+0200\n"
 "PO-Revision-Date: 2021-05-02 11:31+0000\n"
 "Last-Translator: Tomáš Marný <tomik.marny@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/ayatana-indicators/"
@@ -66,7 +66,7 @@ msgstr "Nastavení Bluetooth…"
 msgid "Bluetooth settings…"
 msgstr "Bluetooth nastavení…"
 
-#: src/profile.vala:91 ../src/profile.vala:179
+#: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
 

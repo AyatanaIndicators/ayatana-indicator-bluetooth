@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 07:42+0200\n"
+"POT-Creation-Date: 2022-09-14 08:25+0200\n"
 "PO-Revision-Date: 2020-11-24 11:28+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ayatana-"
@@ -69,7 +69,7 @@ msgstr "Configuración de Bluetooth…"
 msgid "Bluetooth settings…"
 msgstr "Configuración de Bluetooth…"
 
-#: src/profile.vala:91 ../src/profile.vala:179
+#: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
 

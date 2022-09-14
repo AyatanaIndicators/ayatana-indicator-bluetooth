@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 07:42+0200\n"
+"POT-Creation-Date: 2022-09-14 08:25+0200\n"
 "PO-Revision-Date: 2020-12-31 10:29+0000\n"
 "Last-Translator: J. Lavoie <j.lavoie@net-c.ca>\n"
 "Language-Team: English (Canada) <https://hosted.weblate.org/projects/ayatana-"
@@ -66,7 +66,7 @@ msgstr "Bluetooth settings…"
 msgid "Bluetooth settings…"
 msgstr "Bluetooth settings…"
 
-#: src/profile.vala:91 ../src/profile.vala:179
+#: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
