@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-05 12:58+0200\n"
+"POT-Creation-Date: 2022-09-14 07:42+0200\n"
 "PO-Revision-Date: 2022-09-05 19:29+0000\n"
 "Last-Translator: Eric <hamburger1024@firemail.cc>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -19,55 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.14.1-dev\n"
 
-#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Bluetooth indicator in the menu bar."
 msgstr "菜单栏上的蓝牙指示器。"
 
-#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "是否在菜单栏上显示蓝牙指示器。"
 
-#: ../src/bluez.vala:310
+#: src/bluez.vala:310
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/desktop.vala:114
+#: src/desktop.vala:114
 msgid "Connection"
 msgstr "连接"
 
-#: ../src/desktop.vala:167
+#: src/desktop.vala:167
 msgid "Send files…"
 msgstr "发送文件…"
 
-#: ../src/desktop.vala:173
+#: src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "键盘设置…"
 
-#: ../src/desktop.vala:179
+#: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "鼠标和触摸板设置…"
 
-#: ../src/desktop.vala:186
+#: src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "声音设置…"
 
-#: ../src/desktop.vala:234
+#: src/desktop.vala:234
 msgid "Visible"
 msgstr "可见"
 
 #. settings section
-#: ../src/desktop.vala:247
+#: src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "蓝牙设置…"
 
-#: ../src/phone.vala:45
+#: src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "蓝牙设置…"
 
-#: ../src/profile.vala:91 ../src/profile.vala:179
+#: src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "蓝牙"
 
-#: ../src/profile.vala:180
+#: src/profile.vala:180
 msgid "Bluetooth status & device connections"
 msgstr ""

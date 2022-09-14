@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-05 12:58+0200\n"
+"POT-Creation-Date: 2022-09-14 07:42+0200\n"
 "PO-Revision-Date: 2020-11-12 17:28+0000\n"
 "Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/ayatana-"
@@ -19,57 +19,57 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.4-dev\n"
 
-#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 #, fuzzy
 msgid "Bluetooth indicator in the menu bar."
 msgstr "Bluetooth göstergesinin menü çubuğunda gösterilip gösterilmeyeceği."
 
-#: ../data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
 #, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "Bluetooth göstergesinin menü çubuğunda gösterilip gösterilmeyeceği."
 
-#: ../src/bluez.vala:310
+#: src/bluez.vala:310
 msgid "Unknown"
 msgstr "Bilinmeyen Aygıt"
 
-#: ../src/desktop.vala:114
+#: src/desktop.vala:114
 msgid "Connection"
 msgstr "Bağlantı"
 
-#: ../src/desktop.vala:167
+#: src/desktop.vala:167
 msgid "Send files…"
 msgstr "Dosyaları gönder…"
 
-#: ../src/desktop.vala:173
+#: src/desktop.vala:173
 msgid "Keyboard Settings…"
 msgstr "Klavye Ayarları…"
 
-#: ../src/desktop.vala:179
+#: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
 msgstr "Fare ve Dokunmatik Yüzey Ayarları…"
 
-#: ../src/desktop.vala:186
+#: src/desktop.vala:186
 msgid "Sound Settings…"
 msgstr "Ses Ayarları…"
 
-#: ../src/desktop.vala:234
+#: src/desktop.vala:234
 msgid "Visible"
 msgstr "Görünür"
 
 #. settings section
-#: ../src/desktop.vala:247
+#: src/desktop.vala:247
 msgid "Bluetooth Settings…"
 msgstr "Bluetooth Ayarları…"
 
-#: ../src/phone.vala:45
+#: src/phone.vala:45
 msgid "Bluetooth settings…"
 msgstr "Bluetooth ayarları…"
 
-#: ../src/profile.vala:91 ../src/profile.vala:179
+#: src/profile.vala:91 ../src/profile.vala:179
 msgid "Bluetooth"
 msgstr "Bluetooth"
 
-#: ../src/profile.vala:180
+#: src/profile.vala:180
 msgid "Bluetooth status & device connections"
 msgstr ""
