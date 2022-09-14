@@ -1,6 +1,147 @@
+2022-09-14 Milan Korecky
+
+        * Translated using Weblate (Czech) (HEAD -> main)
+
+2022-09-14 Mike Gabriel
+
+        * po/*.po{,t}: Translation strings update (esp. source file
+          references). (2ffdf6a)
+        * update-po{,t}.sh: Also catch multi-file source file references.
+          (a2bfe09)
+        * po/*.po: Update translation strings. (989f4a2)
+
+2022-09-13 Robert Tari
+
+        * Merge branch 'sunweaver-pr/beautify-paths-in-pot-file' (743c3b5)
+
+2022-09-07 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (1f878cf)
+
+2022-09-07 Moo
+
+        * Translated using Weblate (Lithuanian) (786e35e)
+
+2022-09-06 Wellington Terumi Uemura
+
+        * Translated using Weblate (Portuguese (Brazil)) (bf2b816)
+
+2022-09-05 Mike Gabriel
+
+        * Translated using Weblate (German) (1471d82)
+
+2022-09-05 Eric
+
+        * Translated using Weblate (Chinese (Simplified)) (ce3b4c6)
+
+2022-09-05 Yaron Shahrabani
+
+        * Translated using Weblate (Hebrew) (9c0f84b)
+
+2022-09-05 Mike Gabriel
+
+        * Translated using Weblate (German) (590fd16)
+
+2022-09-11 Mike Gabriel
+
+        * po/ayatana-indicator-bluetooth.pot: Update file. (093d011)
+        * update-po{,t}.sh: Omit ../ at beginning of file names in .pot file.
+          (24033c3)
+
+2022-09-07 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (a651610)
+
+2022-09-07 Moo
+
+        * Translated using Weblate (Lithuanian) (c641890)
+
+2022-09-06 Wellington Terumi Uemura
+
+        * Translated using Weblate (Portuguese (Brazil)) (b79da34)
+
+2022-09-05 Mike Gabriel
+
+        * Translated using Weblate (German) (4726c38)
+
+2022-09-05 Eric
+
+        * Translated using Weblate (Chinese (Simplified)) (a9e1731)
+
+2022-09-05 Yaron Shahrabani
+
+        * Translated using Weblate (Hebrew) (972ac03)
+
+2022-09-05 Mike Gabriel
+
+        * Translated using Weblate (German) (1db42be)
+        * po/*.po{,t}: Translation strings update. (5fee084)
+        * Merge branch 'tari01-pr/hide-icon-if-no-adapter' (26e135a)
+
+2022-07-22 Mike Gabriel
+
+        * src/profile.vala: Add tooltip. (19530d5)
+
+2022-08-06 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (4bdc03c)
+
+2022-09-01 Mike Gabriel
+
+        * Merge branch 'sunweaver-pr/tooltip-support' (710c133)
+
+2022-07-22 Mike Gabriel
+
+        * src/profile.vala: Add tooltip. (f47463e)
+
+2022-08-06 Quentin PAGÈS
+
+        * Translated using Weblate (Occitan) (a683585)
+
+2022-08-01 Robert Tari
+
+        * Hide bluetooth icon on hardware without bluetooth support (5ebb1a3)
+
+2022-07-27 Sergii Horichenko
+
+        * Translated using Weblate (Ukrainian) (ed77cff)
+
+2022-07-14 Teitei
+
+        * Translated using Weblate (Burmese) (2f1676f)
+
+2022-06-26 Mike Gabriel
+
+        * Merge branch 'peat-psuwit-qmenumodel-compat' (4048650)
+
+2022-06-22 Ratchanan Srirattanamet
+
+        * src/*.vala: make the switch item & action QMenuModel compatible
+          (b3adf1f)
+
+2022-06-14 Mike Gabriel
+
+        * Translated using Weblate (German) (1e922c2)
+
+2022-04-23 Sergii Horichenko
+
+        * Translated using Weblate (Russian) (191e8c2)
+        * Translated using Weblate (Ukrainian) (6afb61b)
+        * Translated using Weblate (Russian) (3568eb4)
+        * Translated using Weblate (Ukrainian) (5f68674)
+        * Translated using Weblate (Ukrainian) (6968ff0)
+
+2022-02-27 이정희
+
+        * Translated using Weblate (Korean) (8e58a6d)
+
+2022-02-28 Yaron Shahrabani
+
+        * Translated using Weblate (Hebrew) (e0a57e2)
+
 2022-02-17 Mike Gabriel
 
-        * release 22.2.0 (HEAD -> main, tag: 22.2.0)
+        * release 22.2.0 (f2281a9) (tag: 22.2.0)
 
 2022-02-16 Mike Gabriel
 

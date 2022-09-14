@@ -1,3 +1,9 @@
+Overview of changes in ayatana-indicator-bluetooth 22.9.0
+
+  - Add tooltip support.
+  - src/*.vala: Make the switch item/action QMenuModel compatible.
+  - Translation updates.
+
 Overview of changes in ayatana-indicator-bluetooth 22.2.0
 
   - Upstream version bump to new release versioning scheme:
