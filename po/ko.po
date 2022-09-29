@@ -8,24 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2022-03-01 12:58+0000\n"
+"PO-Revision-Date: 2022-09-30 18:20+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/ko/>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.11.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "메뉴 표시줄에 블루투스 표시기를 표시할지 여부입니다."
+msgstr "메뉴 표시줄의 블루투스 표시기입니다."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr "메뉴 표시줄에 블루투스 표시기를 표시할지 여부입니다."
 
@@ -72,4 +70,4 @@ msgstr "블루투스"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "블루투스 상태 및 장치 연결"
