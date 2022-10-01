@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-10-01 12:23+0000\n"
+"Last-Translator: Mubarek Seyd Juhar <mubareksd@gmail.com>\n"
+"Language-Team: Tigrinya <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/ti/>\n"
 "Language: ti\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Bluetooth indicator in the menu bar."
@@ -26,7 +29,7 @@ msgstr ""
 
 #: src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "ዘይፍለጥ"
 
 #: src/desktop.vala:114
 msgid "Connection"
@@ -63,7 +66,7 @@ msgstr ""
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "ብሉቱዝ"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
