@@ -8,26 +8,24 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2021-01-17 07:32+0000\n"
+"PO-Revision-Date: 2022-10-20 10:03+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
-"Language-Team: Estonian <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/et/>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5-dev\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Kuva või peida Bluetoothi indikaator menüüribal."
+msgstr "Bluetoothi indikaator menüüribal."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "Kuva või peida Bluetoothi indikaator menüüribal."
+msgstr "Kas kuvada või peita Bluetoothi indikaator menüüribal."
 
 #: src/bluez.vala:310
 msgid "Unknown"
@@ -72,4 +70,4 @@ msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Bluetoothi olek ja ühendused seadmetega"
