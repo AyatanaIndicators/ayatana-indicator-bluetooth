@@ -1,3 +1,9 @@
+Overview of changes in ayatana-indicator-bluetooth 22.9.1
+
+  - src/profile.vala: Send all menu root properties to D-Bus on Lomiri
+    regardless of the Bluetooth state.
+  - Translation updates.
+
 Overview of changes in ayatana-indicator-bluetooth 22.9.0
 
   - Add tooltip support.

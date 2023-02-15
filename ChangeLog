@@ -1,6 +1,55 @@
+2023-02-15 Mike Gabriel
+
+        * release 22.9.1 (HEAD -> main, tag: 22.9.1)
+        * Merge branch 'tari01-pr/icon-to-bus-lomiri' (c6dc3d1)
+
+2023-02-14 Robert Tari
+
+        * src/profile.vala: Send all menu root properties to D-Bus on Lomiri
+          regardless of the Bluetooth state (fe15518)
+
+2023-02-10 Luna Jernberg
+
+        * Translated using Weblate (Swedish) (a924392)
+
+2023-01-06 Andy Chiang
+
+        * Translated using Weblate (Chinese (Simplified) (zh_LATN@pinyin))
+          (cafe652)
+
+2022-12-30 Milo Ivir
+
+        * Translated using Weblate (Croatian) (a393385)
+
+2022-10-19 Kristjan Räts
+
+        * Translated using Weblate (Estonian) (f90fbf4)
+
+2022-10-01 Mubarek Seyd Juhar
+
+        * Translated using Weblate (Tigrinya) (b80b675)
+
+2022-09-29 이정희
+
+        * Translated using Weblate (Korean) (25cb087)
+
+2022-09-25 Oğuz Ersen
+
+        * Translated using Weblate (Turkish) (f9bdc36)
+        * Translated using Weblate (Turkish) (4f8f75a)
+
+2022-09-14 Sergii Horichenko
+
+        * Translated using Weblate (Ukrainian) (c70652c)
+        * Translated using Weblate (Russian) (078e185)
+
+2022-09-14 Mike Gabriel
+
+        * release 22.9.0 (f7b910d) (tag: 22.9.0)
+
 2022-09-14 Milan Korecky
 
-        * Translated using Weblate (Czech) (HEAD -> main)
+        * Translated using Weblate (Czech) (01eb12d)
 
 2022-09-14 Mike Gabriel
 
