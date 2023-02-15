@@ -1,6 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
- * Copyright 2022 Robert Tari
+ * Copyright 2022-2023 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -169,10 +169,10 @@ class Profile: Object
     var icon = new ThemedIcon.with_default_fallbacks (icon_name);
     var builder = new VariantBuilder (new VariantType ("a{sv}"));
     builder.add ("{sv}", "visible", new Variant.boolean (visible));
+    builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
 
-    if (bluetooth.supported && visible)
+    if (AyatanaCommon.utils_is_lomiri () || (bluetooth.supported && visible))
     {
-        builder.add ("{sv}", "accessible-desc", new Variant.string (a11y));
         builder.add ("{sv}", "icon", icon.serialize());
     }
 
