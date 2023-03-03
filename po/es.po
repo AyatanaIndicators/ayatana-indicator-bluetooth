@@ -8,29 +8,25 @@ msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2020-11-24 11:28+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/es/>\n"
+"PO-Revision-Date: 2023-03-04 14:37+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4-dev\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 "X-Launchpad-Export-Date: 2013-01-08 06:02+0000\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
-"Indica si debe mostrarse o no el indicador de Bluetooth en la barra de menús."
+msgstr "Indicador Bluetooth en la barra de menú."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
-"Indica si debe mostrarse o no el indicador de Bluetooth en la barra de menús."
+msgstr "Mostrar o no el indicador Bluetooth en la barra de menús."
 
 #: src/bluez.vala:310
 msgid "Unknown"
@@ -46,7 +42,7 @@ msgstr "Enviar archivos…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr "Configuración de teclado…"
+msgstr "Ajustes del teclado…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
@@ -75,7 +71,7 @@ msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Estado del Bluetooth y conexiones del dispositivos"
 
 #~ msgid "Enabled"
 #~ msgstr "Activado"
