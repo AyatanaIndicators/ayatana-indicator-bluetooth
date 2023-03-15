@@ -8,63 +8,67 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-03-17 10:40+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/ayatana-indicators/"
+"bluetooth-applet/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Bluetoothindicator op de menubalk."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
+"Of de bluetoothindicator op de menubalk wel of niet dient te worden getoond."
 
 #: src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr ""
+msgstr "Verbinding"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "Bestanden versturen…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Toetsenbordinstellingen…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Muis- en touchpadinstellingen…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Geluidsinstellingen…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "Zichtbaar"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Bluetoothinstellingen…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Bluetoothinstellingen…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Bluetoothstatus en apparaatverbindingen"
