@@ -8,27 +8,25 @@ msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2020-11-01 04:26+0000\n"
+"PO-Revision-Date: 2023-06-23 01:41+0000\n"
 "Last-Translator: Joan CiberSheep <cibersheep@gmail.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/ca/>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-Launchpad-Export-Date: 2013-01-08 06:02+0000\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Si s'ha de mostrar o no l'indicador bluetooth a la barra de menú."
+msgstr "Indicador Bluetooth a la barra de menú."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "Si s'ha de mostrar o no l'indicador bluetooth a la barra de menú."
+msgstr "Si s'ha de mostrar o no l'indicador Bluetooth a la barra de menú."
 
 #: src/bluez.vala:310
 msgid "Unknown"
@@ -44,7 +42,7 @@ msgstr "Envia fitxers…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr "Configuració de teclat…"
+msgstr "Paràmetres del teclat…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
@@ -73,4 +71,4 @@ msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Estat del Bluetooth i connexions del dispositiu"
