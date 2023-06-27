@@ -8,26 +8,24 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2021-11-07 16:51+0000\n"
-"Last-Translator: Michele <miguel2000@livecom.it>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/it/>\n"
+"PO-Revision-Date: 2023-06-28 11:52+0000\n"
+"Last-Translator: Sylke Vicious <silkevicious@tuta.io>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
-#, fuzzy
 msgid "Bluetooth indicator in the menu bar."
-msgstr "Se mostrare o meno l'indicatore del bluetooth nella barra dei menu."
+msgstr "Indicatore Bluetooth nella barra dei menu."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
-#, fuzzy
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "Se mostrare o meno l'indicatore del bluetooth nella barra dei menu."
+msgstr "Mostrare o meno l'indicatore del bluetooth nella barra dei menu."
 
 #: src/bluez.vala:310
 msgid "Unknown"
@@ -43,7 +41,7 @@ msgstr "Invia file…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr "Impostazioni tastiera…"
+msgstr "Impostazioni Tastiera…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
@@ -60,11 +58,11 @@ msgstr "Visibile"
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr "Impostazioni bluetooth…"
+msgstr "Impostazioni Bluetooth…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr "Impostazioni bluetooth…"
+msgstr "Impostazioni Bluetooth…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
@@ -72,4 +70,4 @@ msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Stato del Bluetooth & connessioni dei dispositivi"
