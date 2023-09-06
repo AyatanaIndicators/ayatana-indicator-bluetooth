@@ -1,5 +1,5 @@
-project(ayatana-indicator-bluetooth C CXX)
 cmake_minimum_required(VERSION 3.13)
+project (ayatana-indicator-bluetooth VERSION 22.9.1 LANGUAGES C CXX)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "..." FORCE)
@@ -7,21 +7,10 @@ endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" "${CMAKE_MODULE_PATH}")
 
-set(PACKAGE ${CMAKE_PROJECT_NAME})
-set(PROJECT_VERSION 22.9.1)
-
 # Options
 
-option(ENABLE_TESTS "Enable all tests and checks" OFF)
-option(ENABLE_COVERAGE "Enable coverage reports (includes enabling all tests and checks)" OFF)
 option(ENABLE_WERROR "Treat all build warnings as errors" OFF)
-
-if(ENABLE_COVERAGE)
-    set(ENABLE_TESTS ON)
-    set(CMAKE_BUILD_TYPE "Coverage")
-else()
-    set(CMAKE_BUILD_TYPE "Release")
-endif()
+set (CMAKE_BUILD_TYPE "Release")
 
 if(ENABLE_WERROR)
     add_definitions("-Werror")
@@ -71,23 +60,7 @@ add_subdirectory(data)
 add_subdirectory(src)
 add_subdirectory(po)
 
-# testing & coverage
-
-if (ENABLE_TESTS)
-
-    include(CTest)
-    enable_testing()
-
-    if (ENABLE_COVERAGE)
-
-        find_package(CoverageReport)
-
-    endif()
-
-endif()
-
 # Display config info
 
 message(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
-message(STATUS "Unit tests: ${ENABLE_TESTS}")
 message(STATUS "Build with -Werror: ${ENABLE_WERROR}")
