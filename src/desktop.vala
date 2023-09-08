@@ -1,6 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
- * Copyright 2021-2022 Robert Tari
+ * Copyright 2021-2023 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -264,6 +264,10 @@ class Desktop: Profile
       AyatanaCommon.utils_execute_command("unity-control-center " + panel);
     }
     else if (AyatanaCommon.utils_is_mate() && AyatanaCommon.utils_have_program("blueman-manager"))
+    {
+      AyatanaCommon.utils_execute_command("blueman-manager");
+    }
+    else if (AyatanaCommon.utils_is_xfce() && AyatanaCommon.utils_have_program("blueman-manager"))
     {
       AyatanaCommon.utils_execute_command("blueman-manager");
     }
