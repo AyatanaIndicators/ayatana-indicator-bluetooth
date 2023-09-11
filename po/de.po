@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-14 08:25+0200\n"
-"PO-Revision-Date: 2022-09-05 19:42+0000\n"
+"PO-Revision-Date: 2023-09-11 19:55+0000\n"
 "Last-Translator: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/ayatana-"
-"indicators/bluetooth-applet/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
 msgid "Bluetooth indicator in the menu bar."
@@ -60,11 +60,11 @@ msgstr "Sichtbar"
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr "Bluetooth-Einstellungen …"
+msgstr "Bluetooth-Einstellungen…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr "Bluetooth-Einstellungen …"
+msgstr "Bluetooth-Einstellungen…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
