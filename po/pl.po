@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 08:25+0200\n"
+"POT-Creation-Date: 2023-10-10 23:51+0200\n"
 "PO-Revision-Date: 2013-01-14 21:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2013-01-15 05:31+0000\n"
 "X-Generator: Launchpad (build 16420)\n"
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
 msgstr ""
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 08:25+0200\n"
+"POT-Creation-Date: 2023-10-10 23:51+0200\n"
 "PO-Revision-Date: 2023-04-21 15:52+0000\n"
 "Last-Translator: Vilakone Thammavong <vilakone.thammavong@foodpanda.la>\n"
 "Language-Team: Lao <https://hosted.weblate.org/projects/ayatana-indicators/"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
 msgstr "ປະເພດການຈ່າຍເງິນ"
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 

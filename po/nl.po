@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-14 08:25+0200\n"
+"POT-Creation-Date: 2023-10-10 23:51+0200\n"
 "PO-Revision-Date: 2023-03-17 10:40+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/ayatana-indicators/"
@@ -19,11 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.16.2-dev\n"
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:1
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
 msgstr "Bluetoothindicator op de menubalk."
 
-#: data/org.ayatana.indicator.bluetooth.gschema.xml.in:2
+#: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 "Of de bluetoothindicator op de menubalk wel of niet dient te worden getoond."
