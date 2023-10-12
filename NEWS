@@ -1,3 +1,10 @@
+Overview of changes in ayatana-indicator-bluetooth 23.10.0
+
+  - Fix gschema file translation.
+  - Use blueman-manager for settings on XFCE.
+  - Drop testing/coverage options
+  - Update translations.
+
 Overview of changes in ayatana-indicator-bluetooth 22.9.1
 
   - src/profile.vala: Send all menu root properties to D-Bus on Lomiri

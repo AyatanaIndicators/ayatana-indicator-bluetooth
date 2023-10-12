@@ -1,6 +1,92 @@
+2023-10-12 Mike Gabriel
+
+        * release 23.10.0 (HEAD -> main, tag: 23.10.0)
+
+2023-10-10 Mike Gabriel
+
+        * po/: Update translatio files. (485e539)
+
+2023-09-15 gallegonovato
+
+        * Translated using Weblate (Spanish) (1aa2edd)
+
+2023-09-11 Mike Gabriel
+
+        * Translated using Weblate (German) (1b705e5)
+
+2023-09-09 Mike Gabriel
+
+        * Merge branch 'tari01-pr/fix-schema-translation' (33d4e81)
+
+2023-09-07 Robert Tari
+
+        * Fix gschema file translation (cfde53e)
+
+2023-09-09 Mike Gabriel
+
+        * Merge branch 'tari01-pr/drop-testing' (99055f6)
+
+2023-09-08 Robert Tari
+
+        * src/desktop.vala: Use blueman-manager for settings on XFCE
+          (0f4312d)
+
+2023-09-06 Kieran W
+
+        * Translated using Weblate (English (United Kingdom)) (145f43c)
+
+2023-09-08 Mike Gabriel
+
+        * Merge branch 'tari01-pr/xfce-blueman-settings' (6ca2230)
+
+2023-09-08 Robert Tari
+
+        * src/desktop.vala: Use blueman-manager for settings on XFCE
+          (15beb49)
+
+2023-09-06 Kieran W
+
+        * Translated using Weblate (English (United Kingdom)) (2ea6783)
+
+2023-09-06 Robert Tari
+
+        * Drop testing/coverage options (1d29622)
+
+2023-07-01 spnux
+
+        * Translated using Weblate (French) (25889d6)
+
+2023-06-27 Sylke Vicious
+
+        * Translated using Weblate (Italian) (1f17e86)
+
+2023-06-22 Joan CiberSheep
+
+        * Translated using Weblate (Catalan) (90e42cd)
+
+2023-05-20 Milo Ivir
+
+        * Translated using Weblate (Croatian) (d9ab7e4)
+
+2023-04-20 Vilakone Thammavong
+
+        * Translated using Weblate (Lao) (4b30503)
+
+2023-04-06 ssantos
+
+        * Translated using Weblate (Portuguese) (1b8d615)
+
+2023-03-15 Heimen Stoffels
+
+        * Translated using Weblate (Dutch) (ba3cdca)
+
+2023-03-03 gallegonovato
+
+        * Translated using Weblate (Spanish) (2e8c59d)
+
 2023-02-15 Mike Gabriel
 
-        * release 22.9.1 (HEAD -> main, tag: 22.9.1)
+        * release 22.9.1 (bc43252) (tag: 22.9.1)
         * Merge branch 'tari01-pr/icon-to-bus-lomiri' (c6dc3d1)
 
 2023-02-14 Robert Tari
