@@ -1,3 +1,9 @@
+Overview of changes in ayatana-indicator-bluetooth 24.5.0
+
+  - data/ayatana-indicator-bluetooth.service.in: Become part of
+    lomiri-indicators.target.
+  - Translation updates.
+
 Overview of changes in ayatana-indicator-bluetooth 23.10.0
 
   - Fix gschema file translation.

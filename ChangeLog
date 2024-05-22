@@ -1,1176 +1,1207 @@
+2024-05-22 Mike Gabriel
+
+        * release 24.5.0 (HEAD -> main, tag: 24.5.0)
+
+2024-05-21 Robert Tari
+
+        * Merge branch 'sunweaver-pr/lomiri-indicators-target' (d8ed9457)
+
+2024-05-21 Mike Gabriel
+
+        * data/ayatana-indicator-bluetooth.service.in: Become part of
+          lomiri-indicators.target. (af853087)
+
+2024-04-01 复予
+
+        * Translated using Weblate (Chinese (Simplified)) (66b25a85)
+
+2024-03-22 Steve
+
+        * Translated using Weblate (French) (15104e5a)
+
+2024-03-14 이정희
+
+        * Translated using Weblate (Korean) (b524b093)
+
+2023-10-22 Weblate
+
+        * Added translation using Weblate (Kurdish) (0668079f)
+
 2023-10-12 Mike Gabriel
 
-        * release 23.10.0 (HEAD -> main, tag: 23.10.0)
+        * release 23.10.0 (736eaa96) (tag: 23.10.0)
 
 2023-10-10 Mike Gabriel
 
-        * po/: Update translatio files. (485e539)
+        * po/: Update translatio files. (485e539e)
 
 2023-09-15 gallegonovato
 
-        * Translated using Weblate (Spanish) (1aa2edd)
+        * Translated using Weblate (Spanish) (1aa2edd7)
 
 2023-09-11 Mike Gabriel
 
-        * Translated using Weblate (German) (1b705e5)
+        * Translated using Weblate (German) (1b705e56)
 
 2023-09-09 Mike Gabriel
 
-        * Merge branch 'tari01-pr/fix-schema-translation' (33d4e81)
+        * Merge branch 'tari01-pr/fix-schema-translation' (33d4e817)
 
 2023-09-07 Robert Tari
 
-        * Fix gschema file translation (cfde53e)
+        * Fix gschema file translation (cfde53e2)
 
 2023-09-09 Mike Gabriel
 
-        * Merge branch 'tari01-pr/drop-testing' (99055f6)
+        * Merge branch 'tari01-pr/drop-testing' (99055f62)
 
 2023-09-08 Robert Tari
 
         * src/desktop.vala: Use blueman-manager for settings on XFCE
-          (0f4312d)
+          (0f4312d5)
 
 2023-09-06 Kieran W
 
-        * Translated using Weblate (English (United Kingdom)) (145f43c)
+        * Translated using Weblate (English (United Kingdom)) (145f43c2)
 
 2023-09-08 Mike Gabriel
 
-        * Merge branch 'tari01-pr/xfce-blueman-settings' (6ca2230)
+        * Merge branch 'tari01-pr/xfce-blueman-settings' (6ca2230b)
 
 2023-09-08 Robert Tari
 
         * src/desktop.vala: Use blueman-manager for settings on XFCE
-          (15beb49)
+          (15beb49d)
 
 2023-09-06 Kieran W
 
-        * Translated using Weblate (English (United Kingdom)) (2ea6783)
+        * Translated using Weblate (English (United Kingdom)) (2ea6783d)
 
 2023-09-06 Robert Tari
 
-        * Drop testing/coverage options (1d29622)
+        * Drop testing/coverage options (1d296224)
 
 2023-07-01 spnux
 
-        * Translated using Weblate (French) (25889d6)
+        * Translated using Weblate (French) (25889d67)
 
 2023-06-27 Sylke Vicious
 
-        * Translated using Weblate (Italian) (1f17e86)
+        * Translated using Weblate (Italian) (1f17e868)
 
 2023-06-22 Joan CiberSheep
 
-        * Translated using Weblate (Catalan) (90e42cd)
+        * Translated using Weblate (Catalan) (90e42cdc)
 
 2023-05-20 Milo Ivir
 
-        * Translated using Weblate (Croatian) (d9ab7e4)
+        * Translated using Weblate (Croatian) (d9ab7e48)
 
 2023-04-20 Vilakone Thammavong
 
-        * Translated using Weblate (Lao) (4b30503)
+        * Translated using Weblate (Lao) (4b305031)
 
 2023-04-06 ssantos
 
-        * Translated using Weblate (Portuguese) (1b8d615)
+        * Translated using Weblate (Portuguese) (1b8d6153)
 
 2023-03-15 Heimen Stoffels
 
-        * Translated using Weblate (Dutch) (ba3cdca)
+        * Translated using Weblate (Dutch) (ba3cdcae)
 
 2023-03-03 gallegonovato
 
-        * Translated using Weblate (Spanish) (2e8c59d)
+        * Translated using Weblate (Spanish) (2e8c59dd)
 
 2023-02-15 Mike Gabriel
 
-        * release 22.9.1 (bc43252) (tag: 22.9.1)
-        * Merge branch 'tari01-pr/icon-to-bus-lomiri' (c6dc3d1)
+        * release 22.9.1 (bc432520) (tag: 22.9.1)
+        * Merge branch 'tari01-pr/icon-to-bus-lomiri' (c6dc3d1e)
 
 2023-02-14 Robert Tari
 
         * src/profile.vala: Send all menu root properties to D-Bus on Lomiri
-          regardless of the Bluetooth state (fe15518)
+          regardless of the Bluetooth state (fe15518f)
 
 2023-02-10 Luna Jernberg
 
-        * Translated using Weblate (Swedish) (a924392)
+        * Translated using Weblate (Swedish) (a924392f)
 
 2023-01-06 Andy Chiang
 
         * Translated using Weblate (Chinese (Simplified) (zh_LATN@pinyin))
-          (cafe652)
+          (cafe652d)
 
 2022-12-30 Milo Ivir
 
-        * Translated using Weblate (Croatian) (a393385)
+        * Translated using Weblate (Croatian) (a393385c)
 
 2022-10-19 Kristjan Räts
 
-        * Translated using Weblate (Estonian) (f90fbf4)
+        * Translated using Weblate (Estonian) (f90fbf4f)
 
 2022-10-01 Mubarek Seyd Juhar
 
-        * Translated using Weblate (Tigrinya) (b80b675)
+        * Translated using Weblate (Tigrinya) (b80b6754)
 
 2022-09-29 이정희
 
-        * Translated using Weblate (Korean) (25cb087)
+        * Translated using Weblate (Korean) (25cb0870)
 
 2022-09-25 Oğuz Ersen
 
-        * Translated using Weblate (Turkish) (f9bdc36)
-        * Translated using Weblate (Turkish) (4f8f75a)
+        * Translated using Weblate (Turkish) (f9bdc366)
+        * Translated using Weblate (Turkish) (4f8f75ac)
 
 2022-09-14 Sergii Horichenko
 
-        * Translated using Weblate (Ukrainian) (c70652c)
-        * Translated using Weblate (Russian) (078e185)
+        * Translated using Weblate (Ukrainian) (c70652c6)
+        * Translated using Weblate (Russian) (078e185e)
 
 2022-09-14 Mike Gabriel
 
-        * release 22.9.0 (f7b910d) (tag: 22.9.0)
+        * release 22.9.0 (f7b910de) (tag: 22.9.0)
 
 2022-09-14 Milan Korecky
 
-        * Translated using Weblate (Czech) (01eb12d)
+        * Translated using Weblate (Czech) (01eb12da)
 
 2022-09-14 Mike Gabriel
 
         * po/*.po{,t}: Translation strings update (esp. source file
-          references). (2ffdf6a)
+          references). (2ffdf6a7)
         * update-po{,t}.sh: Also catch multi-file source file references.
-          (a2bfe09)
-        * po/*.po: Update translation strings. (989f4a2)
+          (a2bfe09c)
+        * po/*.po: Update translation strings. (989f4a24)
 
 2022-09-13 Robert Tari
 
-        * Merge branch 'sunweaver-pr/beautify-paths-in-pot-file' (743c3b5)
+        * Merge branch 'sunweaver-pr/beautify-paths-in-pot-file' (743c3b5c)
 
 2022-09-07 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (1f878cf)
+        * Translated using Weblate (Occitan) (1f878cf4)
 
 2022-09-07 Moo
 
-        * Translated using Weblate (Lithuanian) (786e35e)
+        * Translated using Weblate (Lithuanian) (786e35e4)
 
 2022-09-06 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (bf2b816)
+        * Translated using Weblate (Portuguese (Brazil)) (bf2b8167)
 
 2022-09-05 Mike Gabriel
 
-        * Translated using Weblate (German) (1471d82)
+        * Translated using Weblate (German) (1471d828)
 
 2022-09-05 Eric
 
-        * Translated using Weblate (Chinese (Simplified)) (ce3b4c6)
+        * Translated using Weblate (Chinese (Simplified)) (ce3b4c6b)
 
 2022-09-05 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (9c0f84b)
+        * Translated using Weblate (Hebrew) (9c0f84b8)
 
 2022-09-05 Mike Gabriel
 
-        * Translated using Weblate (German) (590fd16)
+        * Translated using Weblate (German) (590fd16b)
 
 2022-09-11 Mike Gabriel
 
-        * po/ayatana-indicator-bluetooth.pot: Update file. (093d011)
+        * po/ayatana-indicator-bluetooth.pot: Update file. (093d0112)
         * update-po{,t}.sh: Omit ../ at beginning of file names in .pot file.
-          (24033c3)
+          (24033c31)
 
 2022-09-07 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (a651610)
+        * Translated using Weblate (Occitan) (a6516106)
 
 2022-09-07 Moo
 
-        * Translated using Weblate (Lithuanian) (c641890)
+        * Translated using Weblate (Lithuanian) (c6418907)
 
 2022-09-06 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (b79da34)
+        * Translated using Weblate (Portuguese (Brazil)) (b79da34f)
 
 2022-09-05 Mike Gabriel
 
-        * Translated using Weblate (German) (4726c38)
+        * Translated using Weblate (German) (4726c385)
 
 2022-09-05 Eric
 
-        * Translated using Weblate (Chinese (Simplified)) (a9e1731)
+        * Translated using Weblate (Chinese (Simplified)) (a9e1731b)
 
 2022-09-05 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (972ac03)
+        * Translated using Weblate (Hebrew) (972ac030)
 
 2022-09-05 Mike Gabriel
 
-        * Translated using Weblate (German) (1db42be)
-        * po/*.po{,t}: Translation strings update. (5fee084)
-        * Merge branch 'tari01-pr/hide-icon-if-no-adapter' (26e135a)
+        * Translated using Weblate (German) (1db42be7)
+        * po/*.po{,t}: Translation strings update. (5fee084a)
+        * Merge branch 'tari01-pr/hide-icon-if-no-adapter' (26e135ab)
 
 2022-07-22 Mike Gabriel
 
-        * src/profile.vala: Add tooltip. (19530d5)
+        * src/profile.vala: Add tooltip. (19530d56)
 
 2022-08-06 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (4bdc03c)
+        * Translated using Weblate (Occitan) (4bdc03c8)
 
 2022-09-01 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/tooltip-support' (710c133)
+        * Merge branch 'sunweaver-pr/tooltip-support' (710c133e)
 
 2022-07-22 Mike Gabriel
 
-        * src/profile.vala: Add tooltip. (f47463e)
+        * src/profile.vala: Add tooltip. (f47463e4)
 
 2022-08-06 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (a683585)
+        * Translated using Weblate (Occitan) (a6835859)
 
 2022-08-01 Robert Tari
 
-        * Hide bluetooth icon on hardware without bluetooth support (5ebb1a3)
+        * Hide bluetooth icon on hardware without bluetooth support
+          (5ebb1a36)
 
 2022-07-27 Sergii Horichenko
 
-        * Translated using Weblate (Ukrainian) (ed77cff)
+        * Translated using Weblate (Ukrainian) (ed77cff4)
 
 2022-07-14 Teitei
 
-        * Translated using Weblate (Burmese) (2f1676f)
+        * Translated using Weblate (Burmese) (2f1676f6)
 
 2022-06-26 Mike Gabriel
 
-        * Merge branch 'peat-psuwit-qmenumodel-compat' (4048650)
+        * Merge branch 'peat-psuwit-qmenumodel-compat' (4048650f)
 
 2022-06-22 Ratchanan Srirattanamet
 
         * src/*.vala: make the switch item & action QMenuModel compatible
-          (b3adf1f)
+          (b3adf1f4)
 
 2022-06-14 Mike Gabriel
 
-        * Translated using Weblate (German) (1e922c2)
+        * Translated using Weblate (German) (1e922c24)
 
 2022-04-23 Sergii Horichenko
 
-        * Translated using Weblate (Russian) (191e8c2)
-        * Translated using Weblate (Ukrainian) (6afb61b)
-        * Translated using Weblate (Russian) (3568eb4)
-        * Translated using Weblate (Ukrainian) (5f68674)
-        * Translated using Weblate (Ukrainian) (6968ff0)
+        * Translated using Weblate (Russian) (191e8c2c)
+        * Translated using Weblate (Ukrainian) (6afb61b8)
+        * Translated using Weblate (Russian) (3568eb46)
+        * Translated using Weblate (Ukrainian) (5f68674e)
+        * Translated using Weblate (Ukrainian) (6968ff0b)
 
 2022-02-27 이정희
 
-        * Translated using Weblate (Korean) (8e58a6d)
+        * Translated using Weblate (Korean) (8e58a6de)
 
 2022-02-28 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (e0a57e2)
+        * Translated using Weblate (Hebrew) (e0a57e24)
 
 2022-02-17 Mike Gabriel
 
-        * release 22.2.0 (f2281a9) (tag: 22.2.0)
+        * release 22.2.0 (f2281a9a) (tag: 22.2.0)
 
 2022-02-16 Mike Gabriel
 
         * Merge branch 'tari01-pr/drop-cmake-install-full-pkglibexecdir'
-          (f364437)
+          (f3644373)
 
 2022-02-16 Robert Tari
 
-        * data/CMakeLists.txt: Drop unused pkglibexecdir definition (7b61cdf)
+        * data/CMakeLists.txt: Drop unused pkglibexecdir definition
+          (7b61cdfa)
 
 2022-02-08 Robert Tari
 
         * .travis.yml: Run CI builds on Travis CI's Ubuntu focal base system
-          (20f67a2)
+          (20f67a20)
 
 2022-02-02 Aung Xange
 
-        * Translated using Weblate (Burmese) (7c9505f)
+        * Translated using Weblate (Burmese) (7c9505ff)
 
 2022-01-27 Mike Gabriel
 
-        * Merge branch 'tari01-pr/cleanup-compile-flags' (cd08e1e)
+        * Merge branch 'tari01-pr/cleanup-compile-flags' (cd08e1e3)
 
 2022-01-11 Robert Tari
 
         * .build.yml: Drop extra compilation flags and build with -Werror
-          (b1fd511)
-        * CMakeLists.txt: Clean up compilation flags (a7c80f6)
+          (b1fd511a)
+        * CMakeLists.txt: Clean up compilation flags (a7c80f64)
 
 2022-01-02 ssantos
 
-        * Translated using Weblate (Portuguese) (1267d39)
+        * Translated using Weblate (Portuguese) (1267d39c)
 
 2021-12-15 Mike Gabriel
 
-        * Merge branch 'tari01-pr/fix-device-section-layout' (aed99ec)
+        * Merge branch 'tari01-pr/fix-device-section-layout' (aed99ec2)
 
 2021-12-15 Robert Tari
 
-        * src/desktop.vala: Fix device section layout (706ba0d)
+        * src/desktop.vala: Fix device section layout (706ba0db)
 
 2021-12-15 Mike Gabriel
 
         * Merge branch
           'tari01-pr/build-libayatana-common-with-enable-lomiri-features'
-          (2022bfc)
+          (2022bfc5)
 
 2021-12-06 Robert Tari
 
         * .build.yml: Build libayatana-common with ENABLE_LOMIRI_FEATURES
-          (d57e4c8)
+          (d57e4c82)
 
 2021-11-18 phlostically
 
-        * Translated using Weblate (Esperanto) (a556eb8)
+        * Translated using Weblate (Esperanto) (a556eb81)
 
 2021-11-17 Mike Gabriel
 
-        * release 0.9.0 (0ec67c2) (tag: 0.9.0)
+        * release 0.9.0 (0ec67c2c) (tag: 0.9.0)
 
 2021-11-16 Phil Clifford
 
-        * Translated using Weblate (Gaelic) (53e179e)
+        * Translated using Weblate (Gaelic) (53e179ef)
 
 2021-11-05 Andrej Shadura
 
-        * Translated using Weblate (Slovak) (fdd5521)
+        * Translated using Weblate (Slovak) (fdd55211)
 
 2021-11-04 Michele
 
-        * Translated using Weblate (Italian) (74b2a7a)
+        * Translated using Weblate (Italian) (74b2a7a5)
 
 2021-11-03 ElectrifiedSpeed
 
-        * Translated using Weblate (Macedonian) (103d42c)
+        * Translated using Weblate (Macedonian) (103d42c5)
 
 2021-11-02 Mike Gabriel
 
-        * Merge branch 'tari01-pr/drop-merge-review' (2e4774e)
+        * Merge branch 'tari01-pr/drop-merge-review' (2e4774e4)
 
 2021-11-02 Robert Tari
 
-        * Drop all references to MERGE-REVIEW (6d61bfd)
+        * Drop all references to MERGE-REVIEW (6d61bfd3)
 
 2021-10-26 Robert Tari
 
-        * Merge branch 'sunweaver-pr/travis-cleanup' (f0c22a8)
+        * Merge branch 'sunweaver-pr/travis-cleanup' (f0c22a81)
 
 2021-10-25 Mike Gabriel
 
         * .build.yml: Remove source code of locally built dependency after it
-          has been installed. (0472b40)
+          has been installed. (0472b402)
 
 2021-10-26 Mike Gabriel
 
         * .build.yml. Skip cppcheck run for the bluetooth indicator, only
-          Vala code in here. (a300ef3)
+          Vala code in here. (a300ef3b)
 
 2021-10-25 Mike Gabriel
 
         * .build.yml: If we ever start having unit tests, run those unit
-          tests in build_scripts: target. (7bec1ae)
-        * .build.yml: Drop autogen.sh support. (3d03427)
+          tests in build_scripts: target. (7bec1ae9)
+        * .build.yml: Drop autogen.sh support. (3d034271)
 
 2021-10-22 Robert Tari
 
         * data/CMakeLists.txt: Do not use automatic GSchema compilation
-          (8be805d)
+          (8be805d5)
 
 2021-10-21 Mike Gabriel
 
-        * Merge branch 'tari01-pr/use-intltool-merge-translations' (253e534)
+        * Merge branch 'tari01-pr/use-intltool-merge-translations' (253e534a)
 
 2021-10-21 Robert Tari
 
         * data/CMakeLists.txt: Use intltool_merge_translations instead of
-          execute_process (2e7199e)
+          execute_process (2e7199ec)
 
 2021-10-20 Robert Tari
 
-        * .travis.yml: Temporarily disable ppc64le builds (a77ead4)
+        * .travis.yml: Temporarily disable ppc64le builds (a77ead4c)
 
 2021-10-20 Mike Gabriel
 
         * Merge branch 'tari01-pr/compile-gschema-during-installation'
-          (ed27074)
+          (ed270745)
 
 2021-10-20 Robert Tari
 
-        * Compile GSchema during installation (2ee00dd)
+        * Compile GSchema during installation (2ee00dd9)
 
 2021-09-02 Robert Tari
 
         * .build.yml: Also run unit tests during CI builds against Ubuntu.
-          (f75ac44)
+          (f75ac444)
 
 2021-09-23 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (3ea1fef)
+        * Translated using Weblate (Portuguese (Brazil)) (3ea1fef6)
 
 2021-09-02 Robert Tari
 
-        * Fix Travis status image (61b6fcf)
+        * Fix Travis status image (61b6fcfe)
 
 2021-08-29 Mike Gabriel
 
-        * debian/{control,compat}: Bump to level 10. (25ea618)
-        * debian/changelog: Syntax fix. (cba8d5f)
-        * debian/rules: Enable unit tests with the new way. (c9adf52)
+        * debian/{control,compat}: Bump to level 10. (25ea6181)
+        * debian/changelog: Syntax fix. (cba8d5f2)
+        * debian/rules: Enable unit tests with the new way. (c9adf522)
 
 2021-08-28 Mike Gabriel
 
-        * po/: Split up ku.po into ckb.po, kmr.po, and sdh.po. (5b126ad)
+        * po/: Split up ku.po into ckb.po, kmr.po, and sdh.po. (5b126ad4)
         * .travis.yml: Fix branch name what is now the default branch in
-          ayatana-dev-scripts. (008ccb8)
+          ayatana-dev-scripts. (008ccb8b)
         * debian/control: Add B-D: libayatana-common-dev (>= 0.9.3).
-          (11f9570)
-        * Merge branch 'tari01-pr/drop-lomiri-url-dispatcher' (5699940)
+          (11f95708)
+        * Merge branch 'tari01-pr/drop-lomiri-url-dispatcher' (56999400)
 
 2021-08-27 Robert Tari
 
-        * debian/: Drop all references to lomiri-url-dispatcher (5849ff3)
+        * debian/: Drop all references to lomiri-url-dispatcher (5849ff3d)
         * .build.yml: Adjust to lomiri-url-dispatcher being an optional
           dependency of libayatana-common; Debian 11 has been
           released, so drop debian:stable specific requirements."
-          (c0df5d0)
-        * Drop lomiri-url-dispatcher (fe24f8d)
+          (c0df5d0e)
+        * Drop lomiri-url-dispatcher (fe24f8d4)
 
 2021-08-28 Mike Gabriel
 
-        * Merge branch 'tari01-pr/use-libayatana-common' (3e827b8)
+        * Merge branch 'tari01-pr/use-libayatana-common' (3e827b80)
 
 2021-08-27 Robert Tari
 
-        * Add libayatana-common dependencies (9ca4205)
-        * Replace code with libayatana-common functions (3e045e8)
+        * Add libayatana-common dependencies (9ca4205f)
+        * Replace code with libayatana-common functions (3e045e89)
 
 2021-08-28 Mike Gabriel
 
-        * Merge branch 'tari01-pr/add-enable-werror-option' (f9dcff7)
+        * Merge branch 'tari01-pr/add-enable-werror-option' (f9dcff7b)
 
 2021-08-09 Robert Tari
 
-        * Add ENABLE_WERROR option (6bddc11)
+        * Add ENABLE_WERROR option (6bddc110)
 
 2021-08-28 Mike Gabriel
 
-        * Merge branch 'tari01-pr/fix-duplicate-languages' (7d10907)
+        * Merge branch 'tari01-pr/fix-duplicate-languages' (7d109076)
 
 2021-07-28 Robert Tari
 
-        * Remove duplicate translation files (a523864)
+        * Remove duplicate translation files (a5238643)
 
 2021-08-04 Mike Gabriel
 
-        * Merge branch 'tari01-pr/cmake-install-full' (b48e316)
+        * Merge branch 'tari01-pr/cmake-install-full' (b48e3161)
 
 2021-08-03 Robert Tari
 
-        * Use CMAKE_INSTALL_FULL_*DIR locations for installation (2ea849e)
+        * Use CMAKE_INSTALL_FULL_*DIR locations for installation (2ea849e4)
 
 2021-08-04 Mike Gabriel
 
         * Merge branch 'tari01-pr/add-documentation-and-build-instructions'
-          (3675599)
+          (3675599e)
 
 2021-07-28 Robert Tari
 
-        * Add documentation and build instructions (c200a3d)
+        * Add documentation and build instructions (c200a3d1)
 
 2021-08-04 Mike Gabriel
 
-        * Merge branch 'tari01-pr/add-standard-cmake-bits' (cbfecc6)
+        * Merge branch 'tari01-pr/add-standard-cmake-bits' (cbfecc6a)
 
 2021-07-28 Robert Tari
 
-        * Add standard Ayatana CMake bits (fb099bb)
+        * Add standard Ayatana CMake bits (fb099bb1)
 
 2021-07-15 Boyuan Yang
 
-        * Translated using Weblate (Chinese (Simplified)) (a84dc9b)
+        * Translated using Weblate (Chinese (Simplified)) (a84dc9bf)
 
 2021-05-22 Yaron Shahrabani
 
-        * Translated using Weblate (Hebrew) (83d34cb)
+        * Translated using Weblate (Hebrew) (83d34cb2)
 
 2021-05-04 Robert Tari
 
-        * Merge branch 'sunweaver-pr/travis-ci' (f116de5)
+        * Merge branch 'sunweaver-pr/travis-ci' (f116de58)
 
 2021-05-01 Tomáš Marný
 
-        * Translated using Weblate (Czech) (7aa2d3b)
+        * Translated using Weblate (Czech) (7aa2d3bb)
 
 2021-03-29 Weblate
 
         * Added translation using Weblate (Chinese (Simplified)
-          (zh_LATN@pinyin)) (e1d6ffe)
+          (zh_LATN@pinyin)) (e1d6ffe5)
 
 2021-03-18 Reza Almanda
 
-        * Translated using Weblate (Indonesian) (48b55c6)
+        * Translated using Weblate (Indonesian) (48b55c65)
 
 2021-05-04 Mike Gabriel
 
-        * .travis.yml: Don't try running autotools based CI build. (c89874f)
-        * Travis CI: Disable unit test runs (none present). (6c28702)
-        * Travis CI: Initial draft for CI builds. (b3a3958)
+        * .travis.yml: Don't try running autotools based CI build. (c89874fb)
+        * Travis CI: Disable unit test runs (none present). (6c287023)
+        * Travis CI: Initial draft for CI builds. (b3a39588)
 
 2021-05-01 Tomáš Marný
 
-        * Translated using Weblate (Czech) (977400d)
+        * Translated using Weblate (Czech) (977400d8)
 
 2021-03-29 Weblate
 
         * Added translation using Weblate (Chinese (Simplified)
-          (zh_LATN@pinyin)) (c0d9f6a)
+          (zh_LATN@pinyin)) (c0d9f6a2)
 
 2021-03-18 Reza Almanda
 
-        * Translated using Weblate (Indonesian) (46166aa)
+        * Translated using Weblate (Indonesian) (46166aa8)
 
 2021-02-04 Mike Gabriel
 
-        * post-release update of debian/changelog (720dbfe)
+        * post-release update of debian/changelog (720dbfef)
 
 2021-02-03 Mike Gabriel
 
-        * release 0.8.2 (43c78e6) (tag: 0.8.2)
+        * release 0.8.2 (43c78e6b) (tag: 0.8.2)
         * src/CMakeLists.txt: Fix loading VAPI file for
-          lomiri-url-dispatcher. (3832935)
+          lomiri-url-dispatcher. (38329359)
 
 2021-02-03 Robert Tari
 
         * Merge branch 'sunweaver-pr/finalize-lomiri-url-dispatcher-port'
-          (697f09a)
+          (697f09a1)
 
 2021-02-03 Mike Gabriel
 
-        * Finalize incomplete switch to Lomiri URL Dispatcher. (a0a8973)
+        * Finalize incomplete switch to Lomiri URL Dispatcher. (a0a8973d)
         * debian/control: Switch from url-dispatcher to
-          lomiri-url-dispatcher. (8d6ed86)
+          lomiri-url-dispatcher. (8d6ed865)
 
 2021-01-28 Milo Ivir
 
-        * Translated using Weblate (Croatian) (b406121)
+        * Translated using Weblate (Croatian) (b406121c)
 
 2021-01-27 Mike Gabriel
 
         * debian/control: Make B-D on dh-systemd optional (fixes FTBFS in
-          Debian bullseye). (5817d4a)
+          Debian bullseye). (5817d4a4)
 
 2021-01-16 Kristjan Räts
 
-        * Translated using Weblate (Estonian) (0d81295)
+        * Translated using Weblate (Estonian) (0d81295f)
 
 2020-12-30 J. Lavoie
 
-        * Translated using Weblate (French (Canada)) (43bff8e)
-        * Translated using Weblate (English (Canada)) (db1edad)
-        * Translated using Weblate (English (United Kingdom)) (ede9d94)
-        * Translated using Weblate (German) (f1ecac8)
+        * Translated using Weblate (French (Canada)) (43bff8e3)
+        * Translated using Weblate (English (Canada)) (db1edad4)
+        * Translated using Weblate (English (United Kingdom)) (ede9d942)
+        * Translated using Weblate (German) (f1ecac86)
 
 2020-12-29 Wellington Terumi Uemura
 
-        * Translated using Weblate (Portuguese (Brazil)) (4632ce2)
+        * Translated using Weblate (Portuguese (Brazil)) (4632ce2e)
 
 2020-12-30 J. Lavoie
 
-        * Translated using Weblate (French) (101b074)
+        * Translated using Weblate (French) (101b0742)
 
 2020-12-23 Luna Jernberg
 
-        * Translated using Weblate (Swedish) (2575b09)
+        * Translated using Weblate (Swedish) (2575b097)
 
 2020-12-22 Mike Gabriel
 
-        * Merge branch 'tari01-pr/devices-to-sections' (e077724)
+        * Merge branch 'tari01-pr/devices-to-sections' (e077724a)
 
 2020-12-22 Robert Tari
 
-        * Show devices in sections (0f5f6c0)
+        * Show devices in sections (0f5f6c0b)
 
 2020-12-22 Mike Gabriel
 
-        * Merge branch 'tari01-pr/build-warnings' (14e884b)
+        * Merge branch 'tari01-pr/build-warnings' (14e884ba)
 
 2020-12-21 Robert Tari
 
-        * Fix build warnings (3bbded7)
+        * Fix build warnings (3bbded73)
 
 2020-12-22 Mike Gabriel
 
-        * Merge branch 'tari01-pr/do-not-hide-the-indicator' (4634e40)
+        * Merge branch 'tari01-pr/do-not-hide-the-indicator' (4634e402)
 
 2020-12-21 Robert Tari
 
-        * desktop.vala: Do not hide the indicator (85de671)
+        * desktop.vala: Do not hide the indicator (85de6718)
 
 2020-11-26 Ács Zoltán
 
-        * Translated using Weblate (Hungarian) (50669be)
+        * Translated using Weblate (Hungarian) (50669bef)
 
 2020-11-23 Adolfo Jayme Barrientos
 
-        * Translated using Weblate (Spanish) (ef717cb)
+        * Translated using Weblate (Spanish) (ef717cbf)
 
 2020-11-17 Moo
 
-        * Translated using Weblate (Lithuanian) (fc0410d)
+        * Translated using Weblate (Lithuanian) (fc0410dd)
 
 2020-11-13 Mike Gabriel
 
-        * Merge branch 'comradekingu-patch-1' (a173cf6)
+        * Merge branch 'comradekingu-patch-1' (a173cf66)
 
 2020-11-10 Allan Nordhøy
 
-        * Spelling: Bluetooth (ecdfded)
-        * Translated using Weblate (Norwegian Bokmål) (cb5f6ae)
+        * Spelling: Bluetooth (ecdfded1)
+        * Translated using Weblate (Norwegian Bokmål) (cb5f6aed)
 
 2020-11-11 Oğuz Ersen
 
-        * Translated using Weblate (Turkish) (f398362)
+        * Translated using Weblate (Turkish) (f3983620)
 
 2020-11-07 Quentin PAGÈS
 
-        * Translated using Weblate (Occitan) (12531f6)
+        * Translated using Weblate (Occitan) (12531f68)
 
 2020-11-06 Ács Zoltán
 
-        * Translated using Weblate (Hungarian) (ca86d83)
+        * Translated using Weblate (Hungarian) (ca86d838)
 
 2020-10-31 Joan CiberSheep
 
-        * Translated using Weblate (Catalan) (663bafa)
+        * Translated using Weblate (Catalan) (663bafa6)
 
 2020-10-30 Mike Gabriel
 
         * src/*.vala: Follow-up fix for dd2f32e2 (fixing GPL-3 license texts
-          in file headers). (2191d31)
-        * release 0.8.1 (5c72d42) (tag: 0.8.1)
-        * locale: Add more languages. (0ee1eb7)
-        * debian/copyright: Adopt from official Debian package. (bdb852e)
+          in file headers). (2191d313)
+        * release 0.8.1 (5c72d42a) (tag: 0.8.1)
+        * locale: Add more languages. (0ee1eb78)
+        * debian/copyright: Adopt from official Debian package. (bdb852e1)
         * src/*.vala: Fix license headers having been a mix of GPL and LGPL
-          license text fragments. Adapt to GPL-3, fully. (dd2f32e)
+          license text fragments. Adapt to GPL-3, fully. (dd2f32e2)
 
 2020-10-28 Milan Korecky
 
-        * Translated using Weblate (Czech) (60858e9)
+        * Translated using Weblate (Czech) (60858e98)
 
 2020-10-27 Mike Gabriel
 
-        * release 0.8.0 (17eb55d) (tag: 0.8.0)
-        * locale: Update translation files once more. (128e70b)
+        * release 0.8.0 (17eb55dc) (tag: 0.8.0)
+        * locale: Update translation files once more. (128e70bc)
 
 2020-10-26 Adrià Martín
 
-        * Translated using Weblate (Sardinian) (af8276b)
+        * Translated using Weblate (Sardinian) (af8276bd)
 
 2020-10-26 Anders Jonsson
 
-        * Translated using Weblate (Swedish) (a60a03f)
+        * Translated using Weblate (Swedish) (a60a03fb)
 
 2020-10-27 Milo Ivir
 
-        * Translated using Weblate (Croatian) (0454b48)
+        * Translated using Weblate (Croatian) (0454b48c)
 
 2020-10-26 Michele
 
-        * Translated using Weblate (Italian) (371b394)
+        * Translated using Weblate (Italian) (371b3949)
 
 2020-10-26 Luna Jernberg
 
-        * Translated using Weblate (Swedish) (ab8f265)
+        * Translated using Weblate (Swedish) (ab8f265e)
 
 2020-10-26 Weblate
 
-        * Added translation using Weblate (Norwegian Bokmål) (844cab1)
-        * Added translation using Weblate (German (Walser)) (350b6b7)
-        * Added translation using Weblate (Shan) (ac26ae9)
-        * Added translation using Weblate (Meadow Mari) (e4c5357)
-        * Added translation using Weblate (Crimean Tatar) (6cbb817)
-        * Added translation using Weblate (Bemba) (d7bfd86)
-        * Added translation using Weblate (Manx) (ac06bf7)
-        * Added translation using Weblate (Chuvash) (b4c1325)
-        * Added translation using Weblate (Corsican) (fecb19e)
-        * Added translation using Weblate (Chechen) (8221edb)
-        * Added translation using Weblate (Afar) (5e7dcdc)
-        * Added translation using Weblate (Silesian) (3d7bcc3)
-        * Added translation using Weblate (Sanskrit) (5539664)
-        * Added translation using Weblate (Latin) (4102244)
-        * Added translation using Weblate (Nyanja) (c714b3f)
-        * Added translation using Weblate (French (Canada)) (0cd8200)
-        * Added translation using Weblate (Chinese (Traditional)) (53d4e30)
-        * Added translation using Weblate (Franco-Provençal) (b0d399d)
-        * Added translation using Weblate (Ossetian) (1aa1562)
-        * Added translation using Weblate (Sindhi) (85c946d)
-        * Added translation using Weblate (Northern Sami) (b3e900f)
-        * Added translation using Weblate (Burmese) (5b6d5f8)
-        * Added translation using Weblate (Greenlandic) (daf1c11)
-        * Added translation using Weblate (Assamese) (2c5185a)
-        * Added translation using Weblate (Sardinian) (dad532c)
-        * Added translation using Weblate (Wolof) (d548538)
-        * Added translation using Weblate (Haitian) (e381cc5)
-        * Added translation using Weblate (Central Kurdish) (9000576)
-        * Added translation using Weblate (Uzbek) (fb6fb1f)
-        * Added translation using Weblate (Urdu) (5fc571d)
-        * Added translation using Weblate (Kyrgyz) (26fa61f)
-        * Added translation using Weblate (Kurdish) (0089e99)
-        * Added translation using Weblate (Cornish) (91a466a)
-        * Added translation using Weblate (Sinhala) (1234775)
-        * Added translation using Weblate (Central Khmer) (ab02918)
-        * Added translation using Weblate (Kannada) (7d7a313)
-        * Added translation using Weblate (Korean) (066fa6d)
-        * Added translation using Weblate (Albanian) (33d5f6b)
-        * Added translation using Weblate (Georgian) (b580140)
-        * Added translation using Weblate (Faroese) (b8daf91)
-        * Added translation using Weblate (Persian) (4a7d2a5)
-        * Added translation using Weblate (Swedish) (28d53c4)
-        * Added translation using Weblate (Frisian) (5a73892)
-        * Added translation using Weblate (Nepali) (bc956c0)
-        * Added translation using Weblate (Indonesian) (82f8857)
+        * Added translation using Weblate (Norwegian Bokmål) (844cab1e)
+        * Added translation using Weblate (German (Walser)) (350b6b71)
+        * Added translation using Weblate (Shan) (ac26ae9c)
+        * Added translation using Weblate (Meadow Mari) (e4c53574)
+        * Added translation using Weblate (Crimean Tatar) (6cbb817d)
+        * Added translation using Weblate (Bemba) (d7bfd86a)
+        * Added translation using Weblate (Manx) (ac06bf70)
+        * Added translation using Weblate (Chuvash) (b4c13259)
+        * Added translation using Weblate (Corsican) (fecb19eb)
+        * Added translation using Weblate (Chechen) (8221edbd)
+        * Added translation using Weblate (Afar) (5e7dcdc7)
+        * Added translation using Weblate (Silesian) (3d7bcc32)
+        * Added translation using Weblate (Sanskrit) (5539664f)
+        * Added translation using Weblate (Latin) (41022442)
+        * Added translation using Weblate (Nyanja) (c714b3f1)
+        * Added translation using Weblate (French (Canada)) (0cd8200d)
+        * Added translation using Weblate (Chinese (Traditional)) (53d4e30a)
+        * Added translation using Weblate (Franco-Provençal) (b0d399dc)
+        * Added translation using Weblate (Ossetian) (1aa15623)
+        * Added translation using Weblate (Sindhi) (85c946d6)
+        * Added translation using Weblate (Northern Sami) (b3e900f2)
+        * Added translation using Weblate (Burmese) (5b6d5f86)
+        * Added translation using Weblate (Greenlandic) (daf1c111)
+        * Added translation using Weblate (Assamese) (2c5185a4)
+        * Added translation using Weblate (Sardinian) (dad532c2)
+        * Added translation using Weblate (Wolof) (d5485383)
+        * Added translation using Weblate (Haitian) (e381cc5d)
+        * Added translation using Weblate (Central Kurdish) (90005766)
+        * Added translation using Weblate (Uzbek) (fb6fb1f0)
+        * Added translation using Weblate (Urdu) (5fc571d9)
+        * Added translation using Weblate (Kyrgyz) (26fa61f6)
+        * Added translation using Weblate (Kurdish) (0089e990)
+        * Added translation using Weblate (Cornish) (91a466ae)
+        * Added translation using Weblate (Sinhala) (12347757)
+        * Added translation using Weblate (Central Khmer) (ab029189)
+        * Added translation using Weblate (Kannada) (7d7a3139)
+        * Added translation using Weblate (Korean) (066fa6d2)
+        * Added translation using Weblate (Albanian) (33d5f6b7)
+        * Added translation using Weblate (Georgian) (b5801401)
+        * Added translation using Weblate (Faroese) (b8daf914)
+        * Added translation using Weblate (Persian) (4a7d2a52)
+        * Added translation using Weblate (Swedish) (28d53c4a)
+        * Added translation using Weblate (Frisian) (5a738925)
+        * Added translation using Weblate (Nepali) (bc956c08)
+        * Added translation using Weblate (Indonesian) (82f88573)
 
 2020-10-26 Mike Gabriel
 
-        * Translated using Weblate (German) (f74e48b)
+        * Translated using Weblate (German) (f74e48bb)
 
 2020-10-26 Weblate
 
-        * Added translation using Weblate (Azerbaijani) (cc7b0a0)
-        * Added translation using Weblate (Interlingua) (1f5eca0)
-        * Added translation using Weblate (Arabic) (a76c8c8)
-        * Added translation using Weblate (Aragonese) (d536a43)
-        * Added translation using Weblate (Amharic) (59f922c)
-        * Added translation using Weblate (Swahili) (010e2c1)
-        * Added translation using Weblate (Afrikaans) (57c3caa)
-        * Added translation using Weblate (Marathi) (02f697e)
-        * Added translation using Weblate (Maori) (187f8ad)
-        * Added translation using Weblate (Malayalam) (b44355f)
-        * Added translation using Weblate (Chinese (Simplified)) (278eb57)
-        * Added translation using Weblate (Malagasy) (244fc0e)
-        * Added translation using Weblate (English (Canada)) (28d7c46)
-        * Added translation using Weblate (English (Australia)) (ef2233a)
-        * Added translation using Weblate (Hebrew) (646216d)
-        * Added translation using Weblate (Hindi) (f685023)
-        * Added translation using Weblate (Slovenian) (ae9a510)
-        * Added translation using Weblate (Slovak) (4030019)
-        * Added translation using Weblate (Serbian) (24420be)
-        * Added translation using Weblate (Armenian) (c290f62)
-        * Added translation using Weblate (Icelandic) (d44744e)
-        * Added translation using Weblate (Vietnamese) (9db40ad)
-        * Added translation using Weblate (Kazakh) (7e13d0c)
-        * Added translation using Weblate (Finnish) (fe57f29)
-        * Added translation using Weblate (Norwegian Nynorsk) (7ff80f3)
-        * Added translation using Weblate (Punjabi) (23f3c34)
-        * Added translation using Weblate (Dutch) (a8a31fb)
-        * Added translation using Weblate (Pashto) (cdb33ab)
-        * Added translation using Weblate (Bosnian) (022a562)
-        * Added translation using Weblate (Italian) (fe8ca94)
-        * Added translation using Weblate (Uyghur) (466271c)
-        * Added translation using Weblate (Malay) (6602d1e)
-        * Added translation using Weblate (Breton) (3fb9c4a)
-        * Added translation using Weblate (Tibetan) (c4e4deb)
-        * Added translation using Weblate (Hungarian) (142771a)
-        * Added translation using Weblate (Asturian) (27d3666)
-        * Added translation using Weblate (Croatian) (2db95e5)
+        * Added translation using Weblate (Azerbaijani) (cc7b0a00)
+        * Added translation using Weblate (Interlingua) (1f5eca00)
+        * Added translation using Weblate (Arabic) (a76c8c89)
+        * Added translation using Weblate (Aragonese) (d536a436)
+        * Added translation using Weblate (Amharic) (59f922cd)
+        * Added translation using Weblate (Swahili) (010e2c1e)
+        * Added translation using Weblate (Afrikaans) (57c3caa8)
+        * Added translation using Weblate (Marathi) (02f697ee)
+        * Added translation using Weblate (Maori) (187f8ade)
+        * Added translation using Weblate (Malayalam) (b44355f5)
+        * Added translation using Weblate (Chinese (Simplified)) (278eb574)
+        * Added translation using Weblate (Malagasy) (244fc0e5)
+        * Added translation using Weblate (English (Canada)) (28d7c463)
+        * Added translation using Weblate (English (Australia)) (ef2233ab)
+        * Added translation using Weblate (Hebrew) (646216d4)
+        * Added translation using Weblate (Hindi) (f6850238)
+        * Added translation using Weblate (Slovenian) (ae9a510f)
+        * Added translation using Weblate (Slovak) (40300195)
+        * Added translation using Weblate (Serbian) (24420be4)
+        * Added translation using Weblate (Armenian) (c290f628)
+        * Added translation using Weblate (Icelandic) (d44744ed)
+        * Added translation using Weblate (Vietnamese) (9db40ad6)
+        * Added translation using Weblate (Kazakh) (7e13d0c1)
+        * Added translation using Weblate (Finnish) (fe57f29c)
+        * Added translation using Weblate (Norwegian Nynorsk) (7ff80f38)
+        * Added translation using Weblate (Punjabi) (23f3c343)
+        * Added translation using Weblate (Dutch) (a8a31fb2)
+        * Added translation using Weblate (Pashto) (cdb33abe)
+        * Added translation using Weblate (Bosnian) (022a5624)
+        * Added translation using Weblate (Italian) (fe8ca94a)
+        * Added translation using Weblate (Uyghur) (466271c6)
+        * Added translation using Weblate (Malay) (6602d1e6)
+        * Added translation using Weblate (Breton) (3fb9c4a1)
+        * Added translation using Weblate (Tibetan) (c4e4deb7)
+        * Added translation using Weblate (Hungarian) (142771af)
+        * Added translation using Weblate (Asturian) (27d36660)
+        * Added translation using Weblate (Croatian) (2db95e5d)
         * Added translation using Weblate (English (United Kingdom))
-          (2719865)
-        * Added translation using Weblate (Belarusian) (0656e05)
-        * Added translation using Weblate (Portuguese) (58b5e76)
-        * Added translation using Weblate (Romanian) (0743ff0)
-        * Added translation using Weblate (Czech) (caab75c)
-        * Added translation using Weblate (Basque) (248bf8e)
-        * Added translation using Weblate (Welsh) (6c3540a)
-        * Added translation using Weblate (Esperanto) (cf8fc28)
-        * Added translation using Weblate (Occitan) (069f23a)
-        * Added translation using Weblate (Japanese) (763e389)
-        * Added translation using Weblate (Ukrainian) (9aaaee7)
-        * Added translation using Weblate (Danish) (6aa4011)
-        * Added translation using Weblate (Bulgarian) (4d20163)
+          (27198654)
+        * Added translation using Weblate (Belarusian) (0656e059)
+        * Added translation using Weblate (Portuguese) (58b5e765)
+        * Added translation using Weblate (Romanian) (0743ff09)
+        * Added translation using Weblate (Czech) (caab75ca)
+        * Added translation using Weblate (Basque) (248bf8e9)
+        * Added translation using Weblate (Welsh) (6c3540a4)
+        * Added translation using Weblate (Esperanto) (cf8fc280)
+        * Added translation using Weblate (Occitan) (069f23a3)
+        * Added translation using Weblate (Japanese) (763e389c)
+        * Added translation using Weblate (Ukrainian) (9aaaee7f)
+        * Added translation using Weblate (Danish) (6aa4011e)
+        * Added translation using Weblate (Bulgarian) (4d20163b)
         * Added translation using Weblate (Chinese (Traditional, Hong Kong))
-          (1112b20)
-        * Added translation using Weblate (Bengali) (178d3d2)
-        * Added translation using Weblate (Russian) (8d9f018)
-        * Added translation using Weblate (Tamil) (a9fb625)
-        * Added translation using Weblate (Filipino) (7855a93)
-        * Added translation using Weblate (Estonian) (0eae014)
-        * Added translation using Weblate (Tajik) (1340616)
-        * Added translation using Weblate (Greek) (aad6963)
-        * Added translation using Weblate (German) (582557c)
-        * Added translation using Weblate (Portuguese (Brazil)) (af59894)
-        * Added translation using Weblate (Tigrinya) (f74eb77)
-        * Added translation using Weblate (Thai) (f81bd8a)
-        * Added translation using Weblate (Telugu) (96df519)
-        * Added translation using Weblate (Lao) (d3484c6)
-        * Added translation using Weblate (Lithuanian) (8675257)
-        * Added translation using Weblate (Luxembourgish) (7e6185a)
-        * Added translation using Weblate (Latvian) (d02f7d6)
-        * Added translation using Weblate (Irish) (370b61f)
-        * Added translation using Weblate (Turkish) (4817417)
-        * Added translation using Weblate (Galician) (479ef83)
-        * Added translation using Weblate (Gaelic) (30506ae)
-        * Added translation using Weblate (Valencian) (6fe384e)
-        * Added translation using Weblate (Gujarati) (09c3f6b)
+          (1112b201)
+        * Added translation using Weblate (Bengali) (178d3d2f)
+        * Added translation using Weblate (Russian) (8d9f0182)
+        * Added translation using Weblate (Tamil) (a9fb6256)
+        * Added translation using Weblate (Filipino) (7855a93e)
+        * Added translation using Weblate (Estonian) (0eae0142)
+        * Added translation using Weblate (Tajik) (13406166)
+        * Added translation using Weblate (Greek) (aad69634)
+        * Added translation using Weblate (German) (582557c0)
+        * Added translation using Weblate (Portuguese (Brazil)) (af598945)
+        * Added translation using Weblate (Tigrinya) (f74eb770)
+        * Added translation using Weblate (Thai) (f81bd8ab)
+        * Added translation using Weblate (Telugu) (96df519c)
+        * Added translation using Weblate (Lao) (d3484c6a)
+        * Added translation using Weblate (Lithuanian) (86752576)
+        * Added translation using Weblate (Luxembourgish) (7e6185a7)
+        * Added translation using Weblate (Latvian) (d02f7d6a)
+        * Added translation using Weblate (Irish) (370b61ff)
+        * Added translation using Weblate (Turkish) (4817417b)
+        * Added translation using Weblate (Galician) (479ef832)
+        * Added translation using Weblate (Gaelic) (30506aeb)
+        * Added translation using Weblate (Valencian) (6fe384ea)
+        * Added translation using Weblate (Gujarati) (09c3f6b9)
 
 2020-10-26 Mike Gabriel
 
         * locale: Update translation files (add new .po files for just added
-          languages). (b9d8876)
-        * locale: Update LINGUAS file, with many new translations. (bdc4882)
-        * locale: update translation files. (c5e0906)
-        * Merge branch 'sunweaver-pr/locale-helper-scripts' (bd5008a)
+          languages). (b9d8876f)
+        * locale: Update LINGUAS file, with many new translations. (bdc48828)
+        * locale: update translation files. (c5e0906a)
+        * Merge branch 'sunweaver-pr/locale-helper-scripts' (bd5008a1)
 
 2020-10-25 Mike Gabriel
 
-        * Add locale helper scripts. (7930783)
+        * Add locale helper scripts. (7930783f)
 
 2020-10-26 Mike Gabriel
 
-        * debian/control: Add B-D: intltool. (3c2271b)
-        * Merge branch 'sunweaver-pr/cmake-port' (a3c012d)
+        * debian/control: Add B-D: intltool. (3c2271b4)
+        * Merge branch 'sunweaver-pr/cmake-port' (a3c012df)
 
 2020-10-25 Mike Gabriel
 
-        * Port from autotools to CMake. (e672e51)
+        * Port from autotools to CMake. (e672e512)
 
 2020-10-26 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/debian-amendments' (d720a79)
+        * Merge branch 'sunweaver-pr/debian-amendments' (d720a798)
 
 2020-10-25 Mike Gabriel
 
-        * debian/control: Improve LONG_DESCRIPTION. (46a83f4)
-        * debian/source/format: Add file (format 1.0). (2ae8a3e)
+        * debian/control: Improve LONG_DESCRIPTION. (46a83f42)
+        * debian/source/format: Add file (format 1.0). (2ae8a3e4)
 
 2020-10-26 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/indicator-specific-fixes' (3404e45)
+        * Merge branch 'sunweaver-pr/indicator-specific-fixes' (3404e45c)
 
 2020-10-25 Robert Tari
 
         * src/*: Switch to new activate state connect approach, rathern than
-          using notify["state"].connect. (33860bf)
+          using notify["state"].connect. (33860bf0)
         * src/bluez.vala: Make BLUEZ_BUSNAME 'const string' (not 'static
-          const string'). (fd44171)
-        * src/*: Scope and white-space fixes. (89e7fc1)
+          const string'). (fd441718)
+        * src/*: Scope and white-space fixes. (89e7fc16)
 
 2020-10-26 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/mate-support' (d097481)
+        * Merge branch 'sunweaver-pr/mate-support' (d0974811)
 
 2020-10-25 Robert Tari
 
         * debian/control: Alternative dependency on mate-control-center.
-          (aae2a1f)
+          (aae2a1fa)
         * Make indicator aware of running inside the MATE desktop
-          environment. (c0de75c)
+          environment. (c0de75cc)
 
 2020-10-26 Mike Gabriel
 
         * configure.ac: Regression fix for 49e87fdb. Drop reference to
           data/upstart/Makefile. The data/upstart/ folder has been
-          removed in the referenced commit. (fc0145c)
-        * Merge branch 'sunweaver-pr/fix-localedir-variable-name' (4105028)
+          removed in the referenced commit. (fc0145c9)
+        * Merge branch 'sunweaver-pr/fix-localedir-variable-name' (4105028e)
 
 2020-10-25 Robert Tari
 
-        * Switch from GNOMELOCALEDIR to LOCALEDIR variable name. (447f27c)
+        * Switch from GNOMELOCALEDIR to LOCALEDIR variable name. (447f27c4)
 
 2020-10-26 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/make-url-dispatcher-optional' (c53da7f)
+        * Merge branch 'sunweaver-pr/make-url-dispatcher-optional' (c53da7f6)
 
 2020-10-25 Mike Gabriel
 
         * debian/control: Allow builds where liburl-dispatcher1-dev is not
-          available. (00c7151)
+          available. (00c71511)
 
 2020-10-25 Robert Tari
 
-        * Make dependency on liburl-dispatcher optional. (babfaba)
+        * Make dependency on liburl-dispatcher optional. (babfaba6)
 
 2020-10-26 Mike Gabriel
 
-        * Merge branch 'sunweaver-pr/drop-ubuntuisms' (21b8f5e)
+        * Merge branch 'sunweaver-pr/drop-ubuntuisms' (21b8f5e9)
 
 2020-10-25 Robert Tari
 
-        * Drop bzr remnants. We are on Git these days. (611df0c)
-        * Drop upstart support. (49e87fd)
+        * Drop bzr remnants. We are on Git these days. (611df0c8)
+        * Drop upstart support. (49e87fdb)
 
 2020-10-26 Robert Tari
 
         * Attributes GH PR #2:
           https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth/pull/2
           Merge branch 'sunweaver-pr/ayatana-indicators-port' into
-          master (73163e6)
+          master (73163e63)
 
 2020-10-25 Robert Tari
 
-        * debian/rules: Add --with autoreconf DH option. (6a5ff48)
+        * debian/rules: Add --with autoreconf DH option. (6a5ff481)
         * debian/rules: Move --fail-missing DH flag into dh_missing override.
-          (8a508b6)
+          (8a508b6c)
         * debian/rules: Add dh_auto_test override that shows how to enable
-          live test logs. (1d1dd40)
+          live test logs. (1d1dd40b)
         * Switch over from Ubuntu System Indicator to Ayatana System
-          Indicator. (67376d6)
+          Indicator. (67376d6a)
 
 2018-01-11 Dan Chapman
 
-        * Update Jenkinsfile (5024aaf)
+        * Update Jenkinsfile (5024aafd)
 
 2017-11-01 Marius Gripsgard
 
-        * Update Jenkinsfile (bcd3785)
+        * Update Jenkinsfile (bcd3785a)
 
 2017-07-23 Marius Gripsgard
 
-        * Update changelog (2a5ca18)
-        * Imported to UBports (ec3f329)
+        * Update changelog (2a5ca189)
+        * Imported to UBports (ec3f329b)
 
 2016-10-23 Bileto Bot
 
-        * Releasing 0.0.6+17.04.20161023-0ubuntu1 (bebb187)
+        * Releasing 0.0.6+17.04.20161023-0ubuntu1 (bebb1871)
 
 2016-10-23 Ted Gould
 
-        * Adding an systemd user session unit (accdf32)
+        * Adding an systemd user session unit (accdf325)
 
 2016-10-22 Ted Gould
 
-        * Fix variable name (2e85ab9)
-        * Merging trunk (8a43e4a)
+        * Fix variable name (2e85ab90)
+        * Merging trunk (8a43e4ad)
 
 2016-10-03 Bileto Bot
 
-        * Releasing 0.0.6+16.10.20161003-0ubuntu1 (285ce0f)
+        * Releasing 0.0.6+16.10.20161003-0ubuntu1 (285ce0ff)
 
 2016-10-03 Robert Ancell
 
-        * Correctly use XDG_CURRENT_DESKTOP (LP: #1554878) (c41ef29)
+        * Correctly use XDG_CURRENT_DESKTOP (LP: #1554878) (c41ef290)
 
 2016-07-20 Ted Gould
 
-        * Adding a restart rule (8d19980)
+        * Adding a restart rule (8d199809)
 
 2016-07-19 Ted Gould
 
-        * Install dep on indicator-common (7f2c3a6)
+        * Install dep on indicator-common (7f2c3a6e)
 
 2016-07-18 Ted Gould
 
-        * Adding an systemd user session unit (475e5e0)
+        * Adding an systemd user session unit (475e5e01)
 
 2016-06-07 Robert Ancell
 
-        * Correctly use XDG_CURRENT_DESKTOP (6578e27)
+        * Correctly use XDG_CURRENT_DESKTOP (6578e279)
 
 2016-05-26 CI Train Bot
 
-        * Releasing 0.0.6+16.10.20160526-0ubuntu1 (eb2d435)
+        * Releasing 0.0.6+16.10.20160526-0ubuntu1 (eb2d435f)
 
 2016-05-26 Sebastien Bacher
 
         * Remove the "browse" action since there is no working backend
           Fixes:
           #1562822 Approved by: Robert Ancell, PS Jenkins bot
-          (1e4d22b)
+          (1e4d22b1)
 
 2016-05-12 Sebastien Bacher
 
         * Remove the "browse" action since there is no working backend
-          (04743cc)
+          (04743cc8)
 
 2016-02-14 CI Train Bot
 
-        * Releasing 0.0.6+16.04.20160214-0ubuntu1 (7be3a46)
+        * Releasing 0.0.6+16.04.20160214-0ubuntu1 (7be3a464)
 
 2016-02-14 Charles Kerr
 
         * Change the indicator's Bluez class to watch for 'org.bluez' to
-          appear/vanish on the system bus. (1c4b29c)
+          appear/vanish on the system bus. (1c4b29c5)
         * in bluez.vala, silence a startup g_warning by calling
           init_bluez_state_vars() before we start listening for
-          org.bluez on the bus (20ea574)
+          org.bluez on the bus (20ea5744)
         * in bluez.vala, update our state properties when org.bluez vanishes
-          from the bus (4fc9eb3)
-        * in bluez.vala, create a symbolic name for bluez' busname (55bd790)
-        * (trivial) remove trailing whitespace (5262691)
+          from the bus (4fc9eb37)
+        * in bluez.vala, create a symbolic name for bluez' busname (55bd7905)
+        * (trivial) remove trailing whitespace (5262691e)
         * in bluez.vala, watch for org.bluez to be owned/unowned on the
-          system bus (1e38642)
+          system bus (1e386423)
 
 2015-09-29 CI Train Bot
 
-        * Releasing 0.0.6+15.10.20150929-0ubuntu1 (cb2ad7c)
+        * Releasing 0.0.6+15.10.20150929-0ubuntu1 (cb2ad7cf)
 
 2015-09-29 Robert Ancell
 
         * Check for NULL when getting cached properties Address and UUIDs.
 
           Fixes: #1497928 Approved by: PS Jenkins bot, Sebastien
-          Bacher (b01126f)
+          Bacher (b01126f6)
 
 2015-09-28 Robert Ancell
 
         * Check for NULL when getting cached properties Address and UUIDs
-          (507aff2)
+          (507aff23)
 
 2015-09-15 CI Train Bot
 
-        * Releasing 0.0.6+15.10.20150915-0ubuntu1 (99dc56c)
+        * Releasing 0.0.6+15.10.20150915-0ubuntu1 (99dc56c4)
 
 2015-09-15 Sebastien Bacher
 
         * under unity8 start system-settings instead unity-control-center
 
           Fixes: #1489490 Approved by: Charles Kerr, PS Jenkins bot
-          (3a835ef)
+          (3a835ef0)
 
 2015-08-27 Sebastien Bacher
 
         * under unity8 start system-settings instead unity-control-center
-          (8e6baf4)
+          (8e6baf47)
 
 2015-08-13 CI Train Bot
 
-        * Releasing 0.0.6+15.10.20150813-0ubuntu1 (3d63ade)
+        * Releasing 0.0.6+15.10.20150813-0ubuntu1 (3d63adec)
 
 2015-08-13 Robert Ancell
 
-        * Support Bluez 5 (cf886e1)
+        * Support Bluez 5 (cf886e17)
 
 2015-08-07 Robert Ancell
 
-        * Remove unused argument in DBus interface (db3ee2a)
+        * Remove unused argument in DBus interface (db3ee2a3)
 
 2014-12-11 Robert Ancell
 
-        * Support Bluez 5 (682e614)
+        * Support Bluez 5 (682e6149)
 
 2014-10-06 CI bot
 
-        * Releasing 0.0.6+14.10.20141006-0ubuntu1 (b60855a)
+        * Releasing 0.0.6+14.10.20141006-0ubuntu1 (b60855a8)
 
 2014-10-06 Charles Kerr
 
         * Move the position of this indicator on the panel.
           Fixes: 1377294
-          Approved by: Ted Gould, PS Jenkins bot (9231c13)
-        * only rearrange the indicator position on the phone (2c5271e)
+          Approved by: Ted Gould, PS Jenkins bot (9231c137)
+        * only rearrange the indicator position on the phone (2c5271eb)
         * move bluetooth indicator as per the 'Indicator RTM Usability Fixes'
-          document (280728d)
+          document (280728d2)
 
 2014-09-22 CI bot
 
-        * Releasing 0.0.6+14.10.20140922-0ubuntu1 (0a23919)
+        * Releasing 0.0.6+14.10.20140922-0ubuntu1 (0a23919d)
 
 2014-09-22 Mathieu Trudel-Lapierre
 
         * Synchronize process management across indicators
           Fixes: 1232828
-          Approved by: Charles Kerr, PS Jenkins bot (a5bb066)
+          Approved by: Charles Kerr, PS Jenkins bot (a5bb0664)
 
 2014-09-22 Ted Gould
 
-        * Changlog for CI Train (816d353)
+        * Changlog for CI Train (816d3537)
 
 2014-09-22 Mathieu Trudel-Lapierre
 
         * Toggle rfkill again so that we have a chance of persisting the
-          bluetooth state across reboots. (a365a5f)
+          bluetooth state across reboots. (a365a5fb)
 
 2014-02-26 Ted Gould
 
-        * Update for gnome-fallback (754b56d)
+        * Update for gnome-fallback (754b56db)
 
 2014-02-19 Ted Gould
 
         * Putting the upstart directory in its own directory so it doesn't
-          fight (df75643)
-        * Add onlyshowin (514971d)
+          fight (df756433)
+        * Add onlyshowin (514971da)
 
 2014-02-14 Ted Gould
 
-        * Start condition cleanup and respawn limits (3279417)
+        * Start condition cleanup and respawn limits (3279417b)
 
 2014-02-07 CI bot
 
-        * Releasing 0.0.6+14.04.20140207-0ubuntu1 (c23fc96)
-        * Adding acceptance tests and merge review policies (06473b3)
+        * Releasing 0.0.6+14.04.20140207-0ubuntu1 (c23fc969)
+        * Adding acceptance tests and merge review policies (06473b37)
 
 2014-01-31 Ted Gould
 
-        * Adding acceptance tests and merge review policies. (546f3c5)
-        * Adding merge review policy (58ec03d)
-        * Adding basic acceptance tests (6c339c1)
+        * Adding acceptance tests and merge review policies. (546f3c51)
+        * Adding merge review policy (58ec03d9)
+        * Adding basic acceptance tests (6c339c10)
 
 2014-01-24 Automatic PS uploader
 
         * Releasing 0.0.6+14.04.20140124-0ubuntu1 (revision 79 from
-          lp:indicator-bluetooth). (869f373)
-        * Releasing 0.0.6+14.04.20140124-0ubuntu1, based on r79 (8f8a2ea)
+          lp:indicator-bluetooth). (869f3737)
+        * Releasing 0.0.6+14.04.20140124-0ubuntu1, based on r79 (8f8a2ea1)
 
 2014-01-22 Robert Ancell
 
         * Use unity-control-center if it is available.
           Fixes:
-          https://bugs.launchpad.net/bugs/1257505. (8d51105)
-        * Only run unity-control-center under unity (d364082)
+          https://bugs.launchpad.net/bugs/1257505. (8d511055)
+        * Only run unity-control-center under unity (d3640822)
 
 2014-01-14 Robert Ancell
 
         * Recommend unity-control-center before gnome-control-center
-          (722d610)
+          (722d6102)
 
 2014-01-10 Robert Ancell
 
-        * Use unity-control-center if it is available (dce18d4)
+        * Use unity-control-center if it is available (dce18d4a)
 
 2013-12-18 Charles Kerr
 
-        * Switching DBus service to an Upstart Job. (7f23146)
-        * sync with trunk (c2536fe)
-        * remove NotShowIn=Unity from the main .desktop file (33dc5dc)
+        * Switching DBus service to an Upstart Job. (7f23146b)
+        * sync with trunk (c2536fe0)
+        * remove NotShowIn=Unity from the main .desktop file (33dc5dc1)
         * add a second .desktop file to be installed in
           /usr/share/upstart/xdg/autostart with Hidden=true
-          (004680a)
+          (004680a0)
 
 2013-12-06 Charles Kerr
 
-        * Gets us a little closer to the spec in two ways: (a996850)
-        * Switching DBus service to an Upstart Job. (8c6f26a)
-        * mark the 'Bluetooth' menuitem for translation (f1ebedf)
+        * Gets us a little closer to the spec in two ways: (a9968502)
+        * Switching DBus service to an Upstart Job. (8c6f26a6)
+        * mark the 'Bluetooth' menuitem for translation (f1ebedfa)
         * change the bluetooth.supported property whenever bluez' default
-          adapter changes its object path. (1ada398)
+          adapter changes its object path. (1ada398d)
         * support header icon states as per the spec -- different icons for
           disabled, enabled, and enabled-with-connected-devices
-          (a3b7b1c)
+          (a3b7b1c7)
         * add a 'connected' property as a simple hook to whether or not we
-          have any connected bluetooth devices (abc3e28)
+          have any connected bluetooth devices (abc3e28d)
         * on the desktop, show a bluetooth indicator if the hardware supports
           bluetooth and if the user has chosen for the indicator to
-          be visible. (9d183eb)
+          be visible. (9d183eb6)
 
 2013-10-29 Automatic PS uploader
 
         * Releasing 0.0.6+14.04.20131029.1-0ubuntu1 (revision 75 from
-          lp:indicator-bluetooth). (a26756e)
-        * Releasing 0.0.6+14.04.20131029.1-0ubuntu1, based on r75 (b08565f)
+          lp:indicator-bluetooth). (a26756e4)
+        * Releasing 0.0.6+14.04.20131029.1-0ubuntu1, based on r75 (b08565fe)
 
 2013-10-28 Ted Gould
 
-        * Adding a phone_greeter profile. (eab5e96)
-        * Adding a phone_greeter profile (eb110a2)
+        * Adding a phone_greeter profile. (eab5e96a)
+        * Adding a phone_greeter profile (eb110a27)
 
 2013-10-25 Charles Kerr
 
@@ -1178,37 +1209,37 @@
           description in bug #1244468 for before & after C code and
           more information.
           Fixes:
-          https://bugs.launchpad.net/bugs/1244468. (674cdd5)
+          https://bugs.launchpad.net/bugs/1244468. (674cdd5b)
 
 2013-10-24 Charles Kerr
 
-        * don't leak implicitly-created GVariants (1ad4f0f)
+        * don't leak implicitly-created GVariants (1ad4f0f5)
 
 2013-10-24 Lars Uebernickel
 
         * Desktop menu: mark "Visible" menu item label as translatable.
 
-          Fixes: https://bugs.launchpad.net/bugs/1242038. (506ae9c)
+          Fixes: https://bugs.launchpad.net/bugs/1242038. (506ae9ce)
 
 2013-10-21 Lars Uebernickel
 
         * Desktop menu: mark "Visible" menu item label for translation
-          (d753f21)
+          (d753f21a)
 
 2013-10-18 Dmitrijs Ledkovs
 
         * Define "ubiquity" indicator profile, reusing the greeter object.
           (LP: #1241539).
           Fixes:
-          https://bugs.launchpad.net/bugs/1241539. (0795831)
+          https://bugs.launchpad.net/bugs/1241539. (07958318)
         * Define "ubiquity" indicator profile, reusing the greeter object.
-          (LP: #1241539) (2d76b5e)
+          (LP: #1241539) (2d76b5ea)
 
 2013-10-16 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20131016-0ubuntu1 (revision 70 from
-          lp:indicator-bluetooth). (329794c)
-        * Releasing 0.0.6+13.10.20131016-0ubuntu1, based on r70 (c48b164)
+          lp:indicator-bluetooth). (329794cb)
+        * Releasing 0.0.6+13.10.20131016-0ubuntu1, based on r70 (c48b1641)
 
 2013-10-15 Charles Kerr
 
@@ -1217,376 +1248,380 @@
           Powered property.
           Fixes:
           https://bugs.launchpad.net/bugs/1230275,
-          https://bugs.launchpad.net/bugs/1236249. (08f4099)
+          https://bugs.launchpad.net/bugs/1236249. (08f40993)
 
 2013-10-14 Charles Kerr
 
-        * make org.bluez.Adapter's set_property() call nonblocking (73cc5b0)
+        * make org.bluez.Adapter's set_property() call nonblocking (73cc5b06)
         * omit the rfkill killswitch altogether, leaving on/off to bluez via
-          org.bluez.Adapter's Powered property (46d4ad6)
+          org.bluez.Adapter's Powered property (46d4ad6f)
         * when listening to notify events from bluetooth to update desktop
           indicator visibility, add a specifier for which event to
-          monitor (e15cd36)
+          monitor (e15cd36f)
         * if killswitch exists and is valid, prefer its use over toggling
-          org.bluez.Adapter's Powered property (5a14c4f)
+          org.bluez.Adapter's Powered property (5a14c4f4)
 
 2013-10-11 Charles Kerr
 
         * if /dev/rfkill doesn't exist or isn't writable, then try to handle
           bluetooth toggles simply by toggling bluez Adapters'
-          Powered property (f7ca11b)
+          Powered property (f7ca11b2)
 
 2013-10-11 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20131011-0ubuntu1 (revision 68 from
-          lp:indicator-bluetooth). (5fb7802)
-        * Releasing 0.0.6+13.10.20131011-0ubuntu1, based on r68 (c0e9fd2)
+          lp:indicator-bluetooth). (5fb78027)
+        * Releasing 0.0.6+13.10.20131011-0ubuntu1, based on r68 (c0e9fd23)
 
 2013-10-10 Charles Kerr
 
         * add an action whose state shows whether or not bluetooth is
           supported by the hardware, used by ubuntu-system-settings.
 
-          Fixes: https://bugs.launchpad.net/bugs/1233628. (3145f10)
+          Fixes: https://bugs.launchpad.net/bugs/1233628. (3145f106)
         * add an action whose state shows whether or not bluetooth is
           supported by the hardware, used by ubuntu-system-settings
-          (0932c83)
+          (0932c83d)
 
 2013-10-04 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20131004-0ubuntu1 (revision 66 from
-          lp:indicator-bluetooth). (5165b13)
-        * Releasing 0.0.6+13.10.20131004-0ubuntu1, based on r66 (b1e6e1a)
+          lp:indicator-bluetooth). (5165b13e)
+        * Releasing 0.0.6+13.10.20131004-0ubuntu1, based on r66 (b1e6e1a8)
 
 2013-10-03 Charles Kerr
 
         * Update settings URL to settings:///system.
           Fixes:
-          https://bugs.launchpad.net/bugs/1231444. (ea3f6e9)
-        * Update settings URL to settings:///system (d6b2ff5)
+          https://bugs.launchpad.net/bugs/1231444. (ea3f6e94)
+        * Update settings URL to settings:///system (d6b2ff51)
 
 2013-10-02 Sebastien Bacher
 
-        * Don't list autogenerated files as translation sources. (e099052)
+        * Don't list autogenerated files as translation sources. (e0990524)
 
 2013-10-01 Ted Gould
 
         * Flip the dependency list so that ubuntu-system-settings doesn't get
-          pulled in. (656d54f)
+          pulled in. (656d54ff)
 
 2013-10-01 Sebastien Bacher
 
-        * Don't list autogenerated files as translation sources (1fc501b)
+        * Don't list autogenerated files as translation sources (1fc501b3)
 
 2013-09-30 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20130930-0ubuntu1 (revision 62 from
-          lp:indicator-bluetooth). (eeb4c22)
-        * Releasing 0.0.6+13.10.20130930-0ubuntu1, based on r62 (ad40c38)
+          lp:indicator-bluetooth). (eeb4c223)
+        * Releasing 0.0.6+13.10.20130930-0ubuntu1, based on r62 (ad40c38f)
 
 2013-09-26 Ted Gould
 
         * Flip the dependency list so that ubuntu-system-settings doesn't get
-          pulled in (ba13ff9)
+          pulled in (ba13ff91)
 
 2013-09-25 Charles Kerr
 
         * Use url-dispatcher instead of invoking system-settings directly.
 
-          Fixes: https://bugs.launchpad.net/bugs/1230819. (dadbe9e)
+          Fixes: https://bugs.launchpad.net/bugs/1230819. (dadbe9e8)
         * use url-dispatcher instead of invoking system-settings directly.
-          (760dc3b)
+          (760dc3b9)
 
 2013-09-24 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20130924.2-0ubuntu1 (revision 60 from
-          lp:indicator-bluetooth). (acbd029)
-        * Releasing 0.0.6+13.10.20130924.2-0ubuntu1, based on r60 (5333068)
+          lp:indicator-bluetooth). (acbd029f)
+        * Releasing 0.0.6+13.10.20130924.2-0ubuntu1, based on r60 (5333068a)
 
 2013-09-23 Charles Kerr
 
         * Handle the change-state event rather than notify["state"] so that
           there won't be any inconsistency between the action's
           state and the killswitch -- ie, the state won't change
-          unless the killswitch toggle succeeds. (e440832)
+          unless the killswitch toggle succeeds. (e440832b)
         * use the change-state signal to handle bluetooth-enabled change
-          requests. h/t larsu (2edd2fb)
+          requests. h/t larsu (2edd2fbe)
 
 2013-09-13 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20130913-0ubuntu1 (revision 58 from
-          lp:indicator-bluetooth). (d42aa2d)
-        * Releasing 0.0.6+13.10.20130913-0ubuntu1, based on r58 (e642f81)
+          lp:indicator-bluetooth). (d42aa2d2)
+        * Releasing 0.0.6+13.10.20130913-0ubuntu1, based on r58 (e642f815)
 
 2013-09-11 Charles Kerr
 
         * Adds a title in the header's action state.
           Fixes:
-          https://bugs.launchpad.net/bugs/1223635. (2c2f7da)
-        * add a title to the header's action state (ff2593f)
+          https://bugs.launchpad.net/bugs/1223635. (2c2f7da4)
+        * add a title to the header's action state (ff2593f1)
 
 2013-08-23 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20130823-0ubuntu1 (revision 56 from
-          lp:indicator-bluetooth). (cb5ce56)
-        * Releasing 0.0.6+13.10.20130823-0ubuntu1, based on r56 (58126cd)
+          lp:indicator-bluetooth). (cb5ce56f)
+        * Releasing 0.0.6+13.10.20130823-0ubuntu1, based on r56 (58126cde)
 
 2013-08-23 Charles Kerr
 
         * Since we're not using the gnome-bluetooth vapi file, we shouldn't
-          bundle it. (bf7ba1f)
-        * Don't use deprecated GSimpleActionGroup APIs. (43c384d)
+          bundle it. (bf7ba1f4)
+        * Don't use deprecated GSimpleActionGroup APIs. (43c384d3)
 
 2013-08-22 Charles Kerr
 
-        * Don't use deprecated GSimpleActionGroup APIs. (076c482)
-        * remove vapi/gnome-bluetooth-1.0.vapi (8b2bc6c)
+        * Don't use deprecated GSimpleActionGroup APIs. (076c482f)
+        * remove vapi/gnome-bluetooth-1.0.vapi (8b2bc6c8)
 
 2013-08-12 Automatic PS uploader
 
         * Releasing 0.0.6+13.10.20130812.1-0ubuntu1 (revision 53 from
-          lp:indicator-bluetooth). (2ee6f89)
-        * Releasing 0.0.6+13.10.20130812.1-0ubuntu1, based on r53 (8f6e427)
+          lp:indicator-bluetooth). (2ee6f894)
+        * Releasing 0.0.6+13.10.20130812.1-0ubuntu1, based on r53 (8f6e427e)
 
 2013-08-10 Charles Kerr
 
         * Add phone profile. Export menus & actions using gio. Drops the gtk,
           dbusmenu, and libindicator build dependencies. Drops
           runtime dependency on gnome-blueooth in the phone profile.
-          (f28653e)
+          (f28653eb)
 
 2013-08-09 Charles Kerr
 
-        * remove the libindicator vapi file; it's no longer used. (a061690)
-        * create Profile.root_action in Profile's constructor. (aacf0de)
-        * on shutdown, unexport the menus and unown the bus name (c1d8ca0)
+        * remove the libindicator vapi file; it's no longer used. (a0616908)
+        * create Profile.root_action in Profile's constructor. (aacf0dec)
+        * on shutdown, unexport the menus and unown the bus name (c1d8ca09)
         * set indicatorsdir to $(datadir)/unity/indicators instead of
-          $(prefix)/share/unity/indicators (654ce42)
+          $(prefix)/share/unity/indicators (654ce426)
 
 2013-08-08 Charles Kerr
 
-        * in debian/control, make the bluez dependency explicit (a6092a4)
+        * in debian/control, make the bluez dependency explicit (a6092a4c)
         * change control s.t. either ubuntu-system-settings, or
           (gnome-control-center && gnome-bluetooth), are a
-          Dependency (f77ffbd)
+          Dependency (f77ffbd3)
 
 2013-08-06 Charles Kerr
 
-        * copyediting: whitespace, type inference (b82c9a9)
-        * templated strings need to begin with a '@' (df2bb30)
+        * copyediting: whitespace, type inference (b82c9a9d)
+        * templated strings need to begin with a '@' (df2bb308)
         * add src/bluez.c, src/desktop.c, src/phone.c to POTFILES.in
-          (a5c2cb1)
-        * copyediting: fix lines that wrap (bbca3ae)
-        * add some extra comments (c920d6f)
-        * copyediting: don't use 'this.' when it's not needed (cd19774)
-        * bump version to 13.10.0 (d4432eb)
-        * sync POTFILES.in with the new files in src/ (7c0143b)
-        * add device.vala to the repo (afafeed)
+          (a5c2cb14)
+        * copyediting: fix lines that wrap (bbca3ae3)
+        * add some extra comments (c920d6f9)
+        * copyediting: don't use 'this.' when it's not needed (cd197748)
+        * bump version to 13.10.0 (d4432eb4)
+        * sync POTFILES.in with the new files in src/ (7c0143bb)
+        * add device.vala to the repo (afafeed1)
 
 2013-08-05 Charles Kerr
 
         * Remove dbusmenu, gtk, indicator dependencies. Only require
-          gnome-bluetooth on the desktop. (6f6674a)
-        * main() should return service.run() (90a5d3f)
+          gnome-bluetooth on the desktop. (6f6674a8)
+        * main() should return service.run() (90a5d3f5)
         * copyediting: fix indentation in Service, fix copyright & author
-          comments in bluez, service, main (bae23fb)
+          comments in bluez, service, main (bae23fbc)
         * promote shared functions up from Desktop to Profile so that Phone
-          can use it too (6492053)
+          can use it too (6492053f)
         * in phone and desktop, make 'action_state_for_root' private -- it's
-          no longer in the Profile superclass. (2d03420)
+          no longer in the Profile superclass. (2d034206)
         * copyediting: readability + grouping related methods together
-          (76efb05)
+          (76efb05a)
         * pass the SimpleActionGroup handle into the profile object so that
-          dynamically-added actions can get added/exported (77e298f)
-        * silence g_message scaffolding (fcf74c7)
+          dynamically-added actions can get added/exported
+          (77e298f1)
+        * silence g_message scaffolding (fcf74c76)
         * edit killswitch for readability and to remove the iowatch in
-          dispose() (ccc5657)
+          dispose() (ccc56573)
         * fully implement the bluez/device backend. in the desktop profile,
-          add menuitems for the devices. (c1ce02f)
+          add menuitems for the devices. (c1ce02f2)
 
 2013-08-03 Charles Kerr
 
-        * initial support for individual devices in Bluetooth class (9837ce8)
-        * tweak startup comments (d73ae64)
-        * change the 'BluetoothMenu' superclass to 'Profile' (43059ed)
+        * initial support for individual devices in Bluetooth class
+          (9837ce82)
+        * tweak startup comments (d73ae642)
+        * change the 'BluetoothMenu' superclass to 'Profile' (43059ed4)
 
 2013-08-01 Charles Kerr
 
         * move indicator3-0.4.vapi to the vapi dir. it'll go away soon
-          enough... (dfd38e5)
-        * improve documentation on Killswitch, Bluetooth, and Bluez (5bc8ff5)
+          enough... (dfd38e50)
+        * improve documentation on Killswitch, Bluetooth, and Bluez
+          (5bc8ff54)
         * add a bluetooth backend to track bluetooth being enabled, being
-          hard/soft blocked, and its devices. (cf89430)
+          hard/soft blocked, and its devices. (cf894302)
         * add per-profile icons and initial menus w/settings section
-          (3cc732f)
+          (3cc732f5)
 
 2013-07-31 Charles Kerr
 
-        * add main() to its own file (39263df)
-        * add a vapi/ directory off the top package directory (761a9ff)
+        * add main() to its own file (39263df5)
+        * add a vapi/ directory off the top package directory (761a9fff)
         * sync this indicator's i18n autoconf rules with the other indicators
-          (143845e)
-        * remove --enable-localinstall (5140c09)
+          (143845e6)
+        * remove --enable-localinstall (5140c099)
 
 2013-06-07 Automatic PS uploader
 
-        * Releasing 0.0.6daily13.06.07-0ubuntu1 to ubuntu. (0391025)
-        * Releasing 0.0.6daily13.06.07-0ubuntu1, based on r51 (387eca4)
+        * Releasing 0.0.6daily13.06.07-0ubuntu1 to ubuntu. (0391025f)
+        * Releasing 0.0.6daily13.06.07-0ubuntu1, based on r51 (387eca46)
 
 2013-06-06 Jeremy Bicha
 
         * This change will have indicator-bluetooth build against the default
           valac (for Ubuntu 13.10 this is currently valac 0.18 but
           we may switch to 0.20 as Debian testing already has). I
-          have successfully test-built against valac-0.20. (9cbe6f1)
+          have successfully test-built against valac-0.20.
+          (9cbe6f19)
         * debian/control:   - Build with valac (>= 0.18) instead of
-          vala-0.18 for easier transitions (d80631e)
+          vala-0.18 for easier transitions (d80631e8)
 
 2013-02-19 Automatic PS uploader
 
-        * Releasing 0.0.6daily13.02.19-0ubuntu1 to ubuntu. (ed790f8)
-        * Releasing 0.0.6daily13.02.19-0ubuntu1, based on r49 (4087b18)
+        * Releasing 0.0.6daily13.02.19-0ubuntu1 to ubuntu. (ed790f85)
+        * Releasing 0.0.6daily13.02.19-0ubuntu1, based on r49 (4087b182)
 
 2013-02-15 Sebastien Bacher
 
         * breaks/replaces gnome-bluetooth (<< 3.6.1-0ubuntu2).
           Fixes:
-          https://bugs.launchpad.net/bugs/1123115. (7a4ce65)
-        * breaks/replaces gnome-bluetooth (<< 3.6.1-0ubuntu2) (f1e4c72)
+          https://bugs.launchpad.net/bugs/1123115. (7a4ce653)
+        * breaks/replaces gnome-bluetooth (<< 3.6.1-0ubuntu2) (f1e4c729)
 
 2013-02-12 Robert Ancell
 
-        * Releasing 0.0.6 (8bda5c9)
+        * Releasing 0.0.6 (8bda5c90)
 
 2013-02-11 Robert Ancell
 
         * Support existing gsettings key to disable indicator.
           Fixes:
-          https://bugs.launchpad.net/bugs/1115394. (c3b9103)
+          https://bugs.launchpad.net/bugs/1115394. (c3b9103a)
 
 2013-02-08 Robert Ancell
 
-        * Support existing gsettings key to disable indicator (5ab20c1)
-        * Only show indicator if Bluetooth adapter present (4643e10)
-        * Add "Set Up New Device" menu item (0166a12)
+        * Support existing gsettings key to disable indicator (5ab20c16)
+        * Only show indicator if Bluetooth adapter present (4643e100)
+        * Add "Set Up New Device" menu item (0166a12e)
 
 2013-02-06 Michael Terry
 
-        * A couple strings weren't marked for translation. (b4ead8b)
-        * Add bootstrap message for Jenkins. (103c24e)
+        * A couple strings weren't marked for translation. (b4ead8b4)
+        * Add bootstrap message for Jenkins. (103c24e2)
 
 2013-02-05 Michael Terry
 
-        * add autolanding bootstrap message (96acdc0)
+        * add autolanding bootstrap message (96acdc0b)
 
 2013-02-05 Mathieu Trudel-Lapierre
 
         * Fix up changelog to match what is in the archive (release 0.0.5).
-          (9f7df98)
+          (9f7df98b)
         * With debhelper compat level 9, libexecdir no longer includes the
-          package name. So use pkglibexecdir instead. (c328f67)
-        * Inline packaging, for autolanding. (ca53a57)
+          package name. So use pkglibexecdir instead. (c328f677)
+        * Inline packaging, for autolanding. (ca53a577)
 
 2013-02-04 Michael Terry
 
-        * add bzr-builddeb (7112b9e)
+        * add bzr-builddeb (7112b9e2)
 
 2013-02-01 Robert Ancell
 
-        * Update license header (f338093)
+        * Update license header (f338093b)
 
 2013-01-31 Michael Terry
 
-        * install service into pkglibexecdir, not libexecdir (e3d1f4a)
-        * update POTFILES and pot (7471eb6)
-        * translate accessible descriptions (ead9d50)
-        * move debian/ inline (d2b21e0)
-        * relicense as GPL-3, not GPL-3+ (e73d88a)
-        * Add COPYING file and fix license to be GPL-3, not GPL-3+ (06e6079)
+        * install service into pkglibexecdir, not libexecdir (e3d1f4a3)
+        * update POTFILES and pot (7471eb6e)
+        * translate accessible descriptions (ead9d50f)
+        * move debian/ inline (d2b21e0f)
+        * relicense as GPL-3, not GPL-3+ (e73d88a4)
+        * Add COPYING file and fix license to be GPL-3, not GPL-3+ (06e60790)
 
 2013-01-31 Robert Ancell
 
-        * Stop items being duplicated on resume from suspend (748795c)
+        * Stop items being duplicated on resume from suspend (748795c6)
 
 2013-01-30 Robert Ancell
 
-        * Update LINGUAS (842e578)
+        * Update LINGUAS (842e5786)
 
 2013-01-24 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (6efdf5f)
+        * Launchpad automatic translations update. (6efdf5f1)
 
 2013-01-15 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (c96b557)
+        * Launchpad automatic translations update. (c96b5578)
 
 2013-01-11 Robert Ancell
 
-        * Releasing 0.0.3 (0af35a7)
+        * Releasing 0.0.3 (0af35a79)
         * Fix indicator-bluetooth.service file having wrong library directory
-          (9107c64)
-        * Set useful values for accessible description (29eaa61)
+          (9107c644)
+        * Set useful values for accessible description (29eaa616)
 
 2013-01-08 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (f5413a1)
+        * Launchpad automatic translations update. (f5413a11)
 
 2013-01-08 Robert Ancell
 
-        * Releasing 0.0.2 (1f12196)
-        * Fix item disconnection (5619bd3)
-        * Add start of accessible description (bc42915)
-        * Hide items without options (3cdfd9a)
+        * Releasing 0.0.2 (1f12196a)
+        * Fix item disconnection (5619bd36)
+        * Add start of accessible description (bc429154)
+        * Hide items without options (3cdfd9a3)
         * Stop feedback loop when switch settings changed from external
-          sources (5430140)
-        * Use ellipses in labels (6895fc9)
-        * Add LINGUAS (a725295)
-        * Merge in translations (df30168)
-        * Fix reversed logic on visible menu item (c424971)
+          sources (54301406)
+        * Use ellipses in labels (6895fc9d)
+        * Add LINGUAS (a7252957)
+        * Merge in translations (df30168f)
+        * Fix reversed logic on visible menu item (c4249717)
 
 2012-12-16 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (589700f)
+        * Launchpad automatic translations update. (589700f1)
 
 2012-12-15 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (b430c43)
+        * Launchpad automatic translations update. (b430c436)
 
 2012-12-09 Launchpad Translations on behalf of robert-ancell
 
-        * Launchpad automatic translations update. (237fa94)
+        * Launchpad automatic translations update. (237fa941)
 
 2012-12-06 Robert Ancell
 
-        * Make enable label 'Bluetooth' to match design (9a8b4ff)
-        * Check in translations (07e85b5)
-        * Ignore files (bf24e68)
-        * Get distcheck working (b121a13)
-        * Fix icon (0119cb8)
-        * Make into a proper indicator (4993d0a)
+        * Make enable label 'Bluetooth' to match design (9a8b4ffb)
+        * Check in translations (07e85b52)
+        * Ignore files (bf24e68c)
+        * Get distcheck working (b121a13c)
+        * Fix icon (0119cb84)
+        * Make into a proper indicator (4993d0aa)
 
 2012-12-05 Robert Ancell
 
-        * Add icons (34c7299)
-        * Add connect button (6309b14)
-        * Only add required elements to submenus (a958c28)
-        * Add bug link for workaround (90a0f1b)
-        * Workaround a bug in libappindicator3 (22bfe32)
+        * Add icons (34c7299d)
+        * Add connect button (6309b14c)
+        * Only add required elements to submenus (a958c28e)
+        * Add bug link for workaround (90a0f1be)
+        * Workaround a bug in libappindicator3 (22bfe324)
 
 2012-12-04 Robert Ancell
 
-        * Fix visible toggle (904619d)
-        * Only show devices, not adapters (5f29593)
-        * Tidy up gnome-bluetooth-1.0.vapi (f2e15cb)
-        * Correctly set icon (35ab354)
+        * Fix visible toggle (904619da)
+        * Only show devices, not adapters (5f295934)
+        * Tidy up gnome-bluetooth-1.0.vapi (f2e15cbd)
+        * Correctly set icon (35ab3546)
         * Use GnomeBluetooth.Killswitch instead of reading /dev/rfkill
-          directly (7dd1e1a)
-        * Use GnomeBluetooth instead of bluez directly (c9759cf)
+          directly (7dd1e1aa)
+        * Use GnomeBluetooth instead of bluez directly (c9759cfd)
 
 2012-10-11 Robert Ancell
 
-        * Check device class (de24772)
-        * Fix visible toggle (8e5d7ea)
-        * Abstract out bluez more (072e048)
-        * Get killswitch working (ca444db)
-        * First start on bluetooth-indicator (f14da3c)
+        * Check device class (de247720)
+        * Fix visible toggle (8e5d7ea5)
+        * Abstract out bluez more (072e0486)
+        * Get killswitch working (ca444db4)
+        * First start on bluetooth-indicator (f14da3cc)
