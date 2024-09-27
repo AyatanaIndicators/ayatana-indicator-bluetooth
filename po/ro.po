@@ -8,63 +8,67 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-10 23:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-09-29 00:16+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/"
+"ayatana-indicators/bluetooth-applet/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Indicator Bluetooth în bara de meniu."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Dacă să se afișeze sau nu indicatorul Bluetooth în bara de meniu."
 
 #: src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "Necunoscut"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr ""
+msgstr "Conexiune"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "Trimite fișiere…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Configurări tastatură…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Configurări mouse și touchpad…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Configurări sunet…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "Vizibil"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Configurări Bluetooth…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Configurări Bluetooth…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Starea Bluetooth și conexiunile dispozitivului"
