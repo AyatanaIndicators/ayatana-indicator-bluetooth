@@ -8,63 +8,66 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-10 23:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-11-09 09:00+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/ayatana-indicators/"
+"bluetooth-applet/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "பட்டியல் பட்டியில் ஊடலை காட்டி."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "பட்டியல் பட்டியில் ஊடலை குறிகாட்டியைக் காட்டலாமா இல்லையா."
 
 #: src/bluez.vala:310
 msgid "Unknown"
-msgstr ""
+msgstr "தெரியவில்லை"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr ""
+msgstr "இணைப்பு"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "கோப்புகளை அனுப்பவும்…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "விசைப்பலகை அமைப்புகள்…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "மவுச் மற்றும் டச்பேட் அமைப்புகள்…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr ""
+msgstr "ஒலி அமைப்புகள்…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "தெரியும்"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "ஊடலை அமைப்புகள்…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "ஊடலை அமைப்புகள்…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "ஊடலை"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "ஊடலை நிலை மற்றும் சாதன இணைப்புகள்"
