@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2025 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,6 +17,7 @@
  * Authors:
  *   Charles Kerr <charles.kerr@canonical.com>
  *   Robert Ancell <robert.ancell@canonical.com>
+ *   Robert Tari <robert@tari.in>
  */
 
 /**
@@ -54,6 +56,7 @@ public class Service: Object
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
     profiles.insert ("desktop", new Desktop (bluetooth, actions));
+    profiles.insert ("greeter", new Greeter (bluetooth, actions));
   }
 
   public int run ()
