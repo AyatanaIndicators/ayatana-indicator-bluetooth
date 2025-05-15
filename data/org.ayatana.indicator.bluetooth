@@ -17,3 +17,6 @@ ObjectPath=/org/ayatana/indicator/bluetooth/desktop
 ObjectPath=/org/ayatana/indicator/bluetooth/phone
 Position=36
 
+[desktop_greeter]
+ObjectPath=/org/ayatana/indicator/bluetooth/greeter
+Position=36
