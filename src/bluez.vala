@@ -55,6 +55,8 @@ public class Bluez: Bluetooth, Object
   /* maps our arbitrary unique id to a Bluetooth.Device struct for public consumption */
   private HashTable<uint,Device> id_to_device;
 
+  private BluezAgentManager agent_manager;
+
   public Bluez (KillSwitch? killswitch)
   {
     init_bluez_state_vars ();
@@ -119,6 +121,8 @@ public class Bluez: Bluetooth, Object
     try
       {
         manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/");
+        agent_manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/org/bluez");
+        add_agent ("/agent");
 
         // Find the adapters and watch for changes
         manager.interfaces_added.connect ((object_path, interfaces_and_properties) => {
@@ -425,6 +429,12 @@ public class Bluez: Bluetooth, Object
       }
   }
 
+  public string get_device_name (ObjectPath path)
+  {
+    var device = id_to_device.lookup(path_to_id.lookup(path));
+    return device.name;
+  }
+
   public List<unowned Device> get_devices ()
   {
     return id_to_device.get_values();
@@ -453,6 +463,27 @@ public class Bluez: Bluetooth, Object
                                     DBusCallFlags.NONE, -1);
       }
   }
+
+  public void add_agent(string path)
+  {
+    try
+    {
+        agent_manager.register_agent (new GLib.ObjectPath(path), "DisplayYesNo");
+    }
+    catch (GLib.Error pError)
+    {
+        warning ("Panic: Failed registering pairing agent: %s", pError.message);
+    }
+
+    try
+    {
+        agent_manager.request_default_agent (new GLib.ObjectPath(path));
+    }
+    catch (GLib.Error pError)
+    {
+        warning ("Panic: Failed getting default pairing agent: %s", pError.message);
+    }
+  }
 }
 
 [DBus (name = "org.freedesktop.DBus.ObjectManager")]
@@ -478,4 +509,13 @@ private interface BluezDevice : DBusProxy {
 
   [DBus (name = "Disconnect")]
   public abstract void disconnect_() throws DBusError, IOError;
+}
+
+[DBus (name = "org.bluez.AgentManager1")]
+private interface BluezAgentManager : DBusProxy {
+  [DBus (name = "RegisterAgent")]
+  public abstract void register_agent(GLib.ObjectPath object, string capabilities) throws DBusError, IOError;
+
+  [DBus (name = "RequestDefaultAgent")]
+  public abstract void request_default_agent(GLib.ObjectPath object) throws DBusError, IOError;
 }

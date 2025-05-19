@@ -29,6 +29,7 @@ public class Service: Object
   private MainLoop loop;
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
+  private Bluetooth bluez;
   private DBusConnection connection;
   private uint exported_action_id;
   private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
@@ -52,6 +53,7 @@ public class Service: Object
   public Service (Bluetooth bluetooth)
   {
     actions = new SimpleActionGroup ();
+    bluez = bluetooth;
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
@@ -74,13 +76,33 @@ public class Service: Object
                                     null,
                                     on_name_lost);
 
+    var system_name_id = Bus.own_name (BusType.SYSTEM,
+                                       "org.ayatana.indicator.bluetooth",
+                                       BusNameOwnerFlags.NONE,
+                                       on_system_bus_acquired,
+                                       null,
+                                       null);
+
     loop = new MainLoop (null, false);
     loop.run ();
 
     // cleanup
     unexport ();
     Bus.unown_name (own_name_id);
+    Bus.unown_name (system_name_id);
     return Posix.EXIT_SUCCESS;
+  }
+
+  void on_system_bus_acquired (DBusConnection connection, string name)
+  {
+    try
+    {
+        connection.register_object ("/agent", new Agent (bluez));
+    }
+    catch (GLib.IOError pError)
+    {
+        warning ("Panic: Failed registering pairing agent: %s", pError.message);
+    }
   }
 
   void on_bus_acquired (DBusConnection connection, string name)
