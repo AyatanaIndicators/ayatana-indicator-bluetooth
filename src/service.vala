@@ -29,7 +29,7 @@ public class Service: Object
   private MainLoop loop;
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
-  private Bluetooth bluez;
+  private Bluetooth bluetooth;
   private DBusConnection connection;
   private uint exported_action_id;
   private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
@@ -50,10 +50,10 @@ public class Service: Object
       }
   }
 
-  public Service (Bluetooth bluetooth)
+  public Service (Bluetooth bluetooth_service)
   {
     actions = new SimpleActionGroup ();
-    bluez = bluetooth;
+    bluetooth = bluetooth_service;
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
@@ -83,6 +83,10 @@ public class Service: Object
                                        null,
                                        null);
 
+    bluetooth.agent_manager_ready.connect (() => {
+        bluetooth.add_agent ("/agent");
+    });
+
     loop = new MainLoop (null, false);
     loop.run ();
 
@@ -97,7 +101,7 @@ public class Service: Object
   {
     try
     {
-        connection.register_object ("/agent", new Agent (bluez));
+        connection.register_object ("/agent", new Agent (bluetooth));
     }
     catch (GLib.IOError pError)
     {

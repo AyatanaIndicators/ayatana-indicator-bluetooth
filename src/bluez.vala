@@ -122,7 +122,7 @@ public class Bluez: Bluetooth, Object
       {
         manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/");
         agent_manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/org/bluez");
-        add_agent ("/agent");
+        agent_manager_ready ();
 
         // Find the adapters and watch for changes
         manager.interfaces_added.connect ((object_path, interfaces_and_properties) => {

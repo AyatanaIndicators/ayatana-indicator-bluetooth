@@ -55,5 +55,7 @@ public interface Bluetooth: Object
 
   public abstract string get_device_name (ObjectPath path);
 
+  public signal void agent_manager_ready ();
+
   public abstract void add_agent (string path);
 }
