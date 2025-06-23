@@ -6,6 +6,7 @@ Build-Depends: debhelper (>= 10),
                dh-systemd | hello,
                cmake,
                cmake-extras (>= 0.10),
+               libnotify-dev,
                intltool,
                libayatana-common-dev (>= 0.9.3),
                libglib2.0-dev (>= 2.32.0),
@@ -21,8 +22,8 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          bluez (>= 5),
-         unity-control-center | mate-control-center | gnome-control-center | ubuntu-system-settings,
-         gnome-bluetooth | ubuntu-system-settings | blueman-manager,
+         unity-control-center | mate-control-center | gnome-control-center | ubuntu-system-settings | lomiri-system-settings,
+         gnome-bluetooth | ubuntu-system-settings | blueman-manager | lomiri-system-settings,
          ayatana-indicator-common,
 Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
 Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
