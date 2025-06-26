@@ -1,11 +1,30 @@
 [DBus (name = "org.bluez.Agent1")]
 public class Agent: Object
 {
+    public GLib.Menu menu;
+    public GLib.SimpleActionGroup actions;
+
+    private GLib.SimpleAction pin_action;
     private MainLoop loop;
     private Bluetooth bluetooth;
 
     public Agent (Bluetooth bluez)
     {
+        // Menu
+        menu = new GLib.Menu ();
+        GLib.MenuItem item = new GLib.MenuItem ("PIN", "password");
+        item.set_attribute_value ("x-canonical-type", new Variant.string ("com.canonical.snapdecision.textfield"));
+        item.set_attribute_value ("x-echo-mode-password", new Variant.boolean (false));
+        menu.append_item (item);
+
+        // Actions
+        actions = new GLib.SimpleActionGroup ();
+        pin_action = new GLib.SimpleAction.stateful ("password", null, new Variant.string (""));
+        pin_action.change_state.connect ((value) => {
+            warning ("HELLO!");
+        });
+        actions.add_action (pin_action);
+
         loop = new MainLoop (null, false);
         bluetooth = bluez;
         Notify.init ("ayatana-indicator-bluetooth");
@@ -22,6 +41,22 @@ public class Agent: Object
         {
             notification.set_hint ("x-lomiri-snap-decisions", true);
             notification.set_hint ("x-lomiri-private-affirmative-tint", "true");
+
+            VariantBuilder actions_builder = new VariantBuilder (new VariantType ("a{sv}"));
+            actions_builder.add ("{sv}", "notifications", new Variant.string ("/agent/actions"));
+            Variant actions = actions_builder.end ();
+
+            VariantBuilder builder = new VariantBuilder (new VariantType ("a{sv}"));
+            builder.add ("{sv}", "busName", new Variant.string ("org.ayatana.indicator.bluetooth"));
+            builder.add ("{sv}", "menuPath", new Variant.string ("/agent/menu"));
+            builder.add ("{sv}", "actions", actions);
+            Variant stuff = builder.end ();
+
+            notification.set_hint ("x-lomiri-private-menu-model", stuff);
+
+            string some_shit = actions.print(true);
+            string other_shit = stuff.print(true);
+            warning (@"we got some stuff! $some_shit $other_shit");
         }
 
         notification.add_action("yes_id", "Yes", (notif, action) => {

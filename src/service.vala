@@ -30,8 +30,10 @@ public class Service: Object
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
   private Bluetooth bluetooth;
+  private Agent agent;
   private DBusConnection connection;
   private uint exported_action_id;
+  private uint exported_agent_action_id;
   private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
 
   private void unexport ()
@@ -54,6 +56,7 @@ public class Service: Object
   {
     actions = new SimpleActionGroup ();
     bluetooth = bluetooth_service;
+    agent = new Agent (bluetooth);
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
@@ -101,7 +104,7 @@ public class Service: Object
   {
     try
     {
-        connection.register_object ("/agent", new Agent (bluetooth));
+        connection.register_object ("/agent", agent);
     }
     catch (GLib.IOError pError)
     {
@@ -119,6 +122,10 @@ public class Service: Object
         debug (@"exporting action group '$(OBJECT_PATH)'");
         exported_action_id = connection.export_action_group (OBJECT_PATH,
                                                              actions);
+
+        exported_agent_action_id = connection.export_action_group ("/agent/actions",
+                                                                   agent.actions);
+        connection.export_menu_model ("/agent/menu", agent.menu);
       }
     catch (Error e)
       {
