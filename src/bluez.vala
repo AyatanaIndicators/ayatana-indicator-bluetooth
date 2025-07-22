@@ -468,7 +468,7 @@ public class Bluez: Bluetooth, Object
   {
     try
     {
-        agent_manager.register_agent (new GLib.ObjectPath(path), "DisplayYesNo");
+        agent_manager.register_agent (new GLib.ObjectPath(path), AyatanaCommon.utils_is_lomiri() ? "KeyboardDisplay" : "DisplayYesNo");
     }
     catch (GLib.Error pError)
     {

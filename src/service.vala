@@ -30,9 +30,15 @@ public class Service: Object
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
   private Bluetooth bluetooth;
+  private Agent agent;
   private DBusConnection connection;
   private uint exported_action_id;
+
+  private uint exported_agent_action_id;
+  private uint exported_agent_menu_id;
+
   private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
+  private const string AGENT_OBJECT_PATH = "/org/ayatana/indicator/bluetooth/agent";
 
   private void unexport ()
   {
@@ -47,6 +53,18 @@ public class Service: Object
             connection.unexport_action_group (exported_action_id);
             exported_action_id = 0;
           }
+
+        if (exported_agent_menu_id != 0)
+          {
+            connection.unexport_menu_model (exported_agent_menu_id);
+            exported_agent_menu_id = 0;
+          }
+
+        if (exported_agent_action_id != 0)
+          {
+            connection.unexport_action_group (exported_agent_action_id);
+            exported_agent_action_id = 0;
+          }
       }
   }
 
@@ -54,6 +72,9 @@ public class Service: Object
   {
     actions = new SimpleActionGroup ();
     bluetooth = bluetooth_service;
+    agent = new Agent (bluetooth);
+    agent.actions_path = AGENT_OBJECT_PATH;
+    agent.menu_path = AGENT_OBJECT_PATH;
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
@@ -84,7 +105,7 @@ public class Service: Object
                                        null);
 
     bluetooth.agent_manager_ready.connect (() => {
-        bluetooth.add_agent ("/agent");
+        bluetooth.add_agent (AGENT_OBJECT_PATH);
     });
 
     loop = new MainLoop (null, false);
@@ -101,7 +122,7 @@ public class Service: Object
   {
     try
     {
-        connection.register_object ("/agent", new Agent (bluetooth));
+        connection.register_object (AGENT_OBJECT_PATH, agent);
     }
     catch (GLib.IOError pError)
     {
@@ -119,6 +140,11 @@ public class Service: Object
         debug (@"exporting action group '$(OBJECT_PATH)'");
         exported_action_id = connection.export_action_group (OBJECT_PATH,
                                                              actions);
+
+        exported_agent_action_id = connection.export_action_group (AGENT_OBJECT_PATH,
+                                                                   agent.actions);
+        exported_agent_menu_id = connection.export_menu_model (AGENT_OBJECT_PATH,
+                                                               agent.menu);
       }
     catch (Error e)
       {
