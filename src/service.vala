@@ -29,9 +29,16 @@ public class Service: Object
   private MainLoop loop;
   private SimpleActionGroup actions;
   private HashTable<string,Profile> profiles;
+  private Bluetooth bluetooth;
+  private Agent agent;
   private DBusConnection connection;
   private uint exported_action_id;
+
+  private uint exported_agent_action_id;
+  private uint exported_agent_menu_id;
+
   private const string OBJECT_PATH = "/org/ayatana/indicator/bluetooth";
+  private const string AGENT_OBJECT_PATH = "/org/ayatana/indicator/bluetooth/agent";
 
   private void unexport ()
   {
@@ -46,12 +53,28 @@ public class Service: Object
             connection.unexport_action_group (exported_action_id);
             exported_action_id = 0;
           }
+
+        if (exported_agent_menu_id != 0)
+          {
+            connection.unexport_menu_model (exported_agent_menu_id);
+            exported_agent_menu_id = 0;
+          }
+
+        if (exported_agent_action_id != 0)
+          {
+            connection.unexport_action_group (exported_agent_action_id);
+            exported_agent_action_id = 0;
+          }
       }
   }
 
-  public Service (Bluetooth bluetooth)
+  public Service (Bluetooth bluetooth_service)
   {
     actions = new SimpleActionGroup ();
+    bluetooth = bluetooth_service;
+    agent = new Agent (bluetooth);
+    agent.actions_path = AGENT_OBJECT_PATH;
+    agent.menu_path = AGENT_OBJECT_PATH;
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
@@ -74,13 +97,37 @@ public class Service: Object
                                     null,
                                     on_name_lost);
 
+    var system_name_id = Bus.own_name (BusType.SYSTEM,
+                                       "org.ayatana.indicator.bluetooth",
+                                       BusNameOwnerFlags.NONE,
+                                       on_system_bus_acquired,
+                                       null,
+                                       null);
+
+    bluetooth.agent_manager_ready.connect (() => {
+        bluetooth.add_agent (AGENT_OBJECT_PATH);
+    });
+
     loop = new MainLoop (null, false);
     loop.run ();
 
     // cleanup
     unexport ();
     Bus.unown_name (own_name_id);
+    Bus.unown_name (system_name_id);
     return Posix.EXIT_SUCCESS;
+  }
+
+  void on_system_bus_acquired (DBusConnection connection, string name)
+  {
+    try
+    {
+        connection.register_object (AGENT_OBJECT_PATH, agent);
+    }
+    catch (GLib.IOError pError)
+    {
+        warning ("Panic: Failed registering pairing agent: %s", pError.message);
+    }
   }
 
   void on_bus_acquired (DBusConnection connection, string name)
@@ -93,6 +140,11 @@ public class Service: Object
         debug (@"exporting action group '$(OBJECT_PATH)'");
         exported_action_id = connection.export_action_group (OBJECT_PATH,
                                                              actions);
+
+        exported_agent_action_id = connection.export_action_group (AGENT_OBJECT_PATH,
+                                                                   agent.actions);
+        exported_agent_menu_id = connection.export_menu_model (AGENT_OBJECT_PATH,
+                                                               agent.menu);
       }
     catch (Error e)
       {
