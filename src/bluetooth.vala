@@ -52,4 +52,10 @@ public interface Bluetooth: Object
   /* Try to connect/disconnect a particular device.
      The device_key argument comes from the Device struct */
   public abstract void set_device_connected (uint device_key, bool connected);
+
+  public abstract string get_device_name (ObjectPath path);
+
+  public signal void agent_manager_ready ();
+
+  public abstract void add_agent (string path);
 }
