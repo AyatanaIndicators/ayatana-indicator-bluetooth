@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-10 23:51+0200\n"
-"PO-Revision-Date: 2025-11-15 04:51+0000\n"
+"PO-Revision-Date: 2026-01-28 00:35+0000\n"
 "Last-Translator: BoneNI <bounkirdni@gmail.com>\n"
 "Language-Team: Lao <https://hosted.weblate.org/projects/ayatana-indicators/"
 "bluetooth-applet/lo/>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr "ປະເພດການຈ່າຍເງິນ"
+msgstr "ຕົວຊີ້ບອກບລູທູດໃນແຖບເມນູ."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "ຈະສະແດງ ຫຼື ບໍ່ສະແດງຕົວຊີ້ບອກບລູທູດໃນແຖບເມນູ."
 
 #: src/bluez.vala:310
 msgid "Unknown"
@@ -33,41 +33,41 @@ msgstr "ບໍ່ຮູ້ຈັກ"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr "ເຊື່ອມຕໍ່"
+msgstr "ການເຊື່ອມຕໍ່"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "ສົ່ງໄຟລ໌…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າແປ້ນພິມ…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າເມົາສ໌ ແລະ ທັດຊ໌ແພັດ…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr "ຕັ້ງຄ່າສຽງ…"
+msgstr "ການຕັ້ງຄ່າສຽງ…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "ສາມາດເບິ່ງເຫັນໄດ້"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າບລູທູດ…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າບລູທູດ…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "ບລູທູດ"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "ສະຖານະບລູທູດ ແລະ ການເຊື່ອມຕໍ່ອຸປະກອນ"
