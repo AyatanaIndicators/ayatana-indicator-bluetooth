@@ -25,6 +25,7 @@ class Phone: Profile
 
   public Phone (Bluetooth bluetooth, SimpleActionGroup action_group)
   {
+    string user = GLib.Environment.get_user_name ();
     const string profile_name = "phone";
     base (bluetooth, profile_name);
 
@@ -42,8 +43,10 @@ class Phone: Profile
 
     var section = new Menu ();
     section.append_item (create_enabled_menuitem ());
-    section.append (_("Bluetooth settings…"),
-                    "indicator.phone-show-settings::bluetooth");
+    if (user != "lightdm") {
+      section.append (_("Bluetooth settings…"),
+                        "indicator.phone-show-settings::bluetooth");
+    }
     menu.append_section (null, section);
 
     // know when to show the indicator & when to hide it
