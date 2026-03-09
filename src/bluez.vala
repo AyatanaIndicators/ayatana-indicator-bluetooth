@@ -325,6 +325,10 @@ public class Bluez: Bluetooth, Object
     v = device_proxy.get_cached_property ("Connected");
     var is_connected = (v != null) && v.get_boolean ();
 
+    // look up whether the device is trusted
+    v = device_proxy.get_cached_property ("Trusted");
+    var is_trusted = (v != null) && v.get_boolean ();
+
     // derive the uuid-related attributes we care about
     v = device_proxy.get_cached_property ("UUIDs");
     uint16[] uuids = {};
@@ -344,6 +348,7 @@ public class Bluez: Bluetooth, Object
                                          icon,
                                          true,
                                          is_connected,
+                                         is_trusted,
                                          supports_browsing,
                                          supports_file_transfer));
 
@@ -415,6 +420,19 @@ public class Bluez: Bluetooth, Object
       }
   }
 
+  public void set_device_trusted (uint id, bool trusted)
+  {
+    var device = id_to_device.lookup (id);
+    var path = id_to_path.lookup (id);
+    var proxy = (path != null) ? path_to_device_proxy.lookup (path) : null;
+
+    if ((device != null)
+        && (device.is_trusted != trusted))
+      {
+        proxy.trusted = trusted;
+      }
+  }
+
   public void try_set_discoverable (bool b)
   {
     if (discoverable != b)
@@ -438,6 +456,11 @@ public class Bluez: Bluetooth, Object
   public List<unowned Device> get_devices ()
   {
     return id_to_device.get_values();
+  }
+
+  public Device get_device (ObjectPath path)
+  {
+    return id_to_device.lookup(path_to_id.lookup(path));
   }
 
   public bool supported { get; protected set; default = false; }
@@ -509,6 +532,9 @@ private interface BluezDevice : DBusProxy {
 
   [DBus (name = "Disconnect")]
   public abstract void disconnect_() throws DBusError, IOError;
+
+  [DBus (name = "Trusted")]
+  public abstract bool trusted {  get; set; }
 }
 
 [DBus (name = "org.bluez.AgentManager1")]

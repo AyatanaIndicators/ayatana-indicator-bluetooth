@@ -1,9 +1,12 @@
 [DBus (name = "org.bluez.Agent1")]
 public class Agent: Object
 {
+    // These actions and menus are exposed on their relevant paths by service.vala
     public GLib.Menu menu;
     public GLib.SimpleActionGroup actions;
     private GLib.SimpleAction pin_action;
+
+    // These paths are set by service.vala
     public string menu_path;
     public string actions_path;
 
@@ -102,8 +105,66 @@ public class Agent: Object
         return accepted;
     }
 
-    public void AuthorizeService (GLib.ObjectPath object, string uuid) throws GLib.DBusError, GLib.IOError
+    public void AuthorizeService (GLib.ObjectPath object, string uuid) throws RejectedError, GLib.DBusError, GLib.IOError
     {
+        bool authorized = false;
+        bool trusted = false;
+
+        string header = "Allow %s to connect?".printf (bluetooth.get_device_name (object));
+        string body = "Allow the Bluetooth device to access a Bluetooth service?";
+
+        notification = new Notify.Notification (header, body, "bluetooth-active");
+        notification.closed.connect (() => {
+            authorized = false;
+            notification = null;
+
+            if (loop.is_running ()) {
+                loop.quit ();
+            }
+        });
+
+        if (AyatanaCommon.utils_is_lomiri ()) {
+            notification.set_hint ("x-lomiri-snap-decisions", true);
+        }
+
+        notification.add_action ("trust_and_authorize", "Trust and authorize", (notif, action) => {
+            loop.quit ();
+            notification = null;
+
+            trusted = true;
+            authorized = true;
+        });
+
+        notification.add_action ("authorize", "Authorize", (notif, action) => {
+            loop.quit ();
+            notification = null;
+
+            authorized = true;
+        });
+
+        notification.add_action ("reject", "Do not authorize", (notif, action) => {
+            loop.quit ();
+            notification = null;
+        });
+
+        try {
+            notification.show ();
+        }
+        catch (Error e) {
+            warning ("Panic: Failed showing notification: %s", e.message);
+        }
+
+        loop.run ();
+
+        // Once the loop quits, we can see if we want to set the 'Trusted' property in BlueZ
+        if (trusted) {
+            Device device = bluetooth.get_device (object);
+            bluetooth.set_device_trusted (device.id, trusted);
+        }
+
+        if (!authorized) {
+            throw new RejectedError.ERROR ("Rejected by user");
+        }
     }
 
     public void RequestConfirmation (GLib.ObjectPath object, uint32 passkey) throws RejectedError, GLib.DBusError, GLib.IOError
