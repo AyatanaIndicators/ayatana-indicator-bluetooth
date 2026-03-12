@@ -42,7 +42,8 @@ public class Agent: Object
     {
         bool accepted = !have_actions;
 
-        notification = new Notify.Notification (@"Pair with $device_name?", body, "bluetooth-active");
+        string header = (_("Pair with %s?").printf (device_name));
+        notification = new Notify.Notification (header, body, "bluetooth-active");
         notification.closed.connect (() => {
             accepted = false;
             notification = null;
@@ -74,12 +75,12 @@ public class Agent: Object
         }
 
         if (have_actions) {
-            notification.add_action("yes_id", "Yes", (notif, action) => {
+            notification.add_action("yes_id", (_("Yes")), (notif, action) => {
                 loop.quit ();
                 notification = null;
                 accepted = true;
             });
-            notification.add_action("no_id", "No", (notif, action) => {
+            notification.add_action("no_id", (_("No")), (notif, action) => {
                 loop.quit ();
                 notification = null;
                 accepted = false;
@@ -110,8 +111,8 @@ public class Agent: Object
         bool authorized = false;
         bool trusted = false;
 
-        string header = "Allow %s to connect?".printf (bluetooth.get_device_name (object));
-        string body = "Allow the Bluetooth device to access a Bluetooth service?";
+        string header = (_("Allow %s to connect?").printf (bluetooth.get_device_name (object)));
+        string body = (_("Allow the Bluetooth device to access a Bluetooth service?"));
 
         notification = new Notify.Notification (header, body, "bluetooth-active");
         notification.closed.connect (() => {
@@ -127,7 +128,7 @@ public class Agent: Object
             notification.set_hint ("x-lomiri-snap-decisions", true);
         }
 
-        notification.add_action ("trust_and_authorize", "Trust and authorize", (notif, action) => {
+        notification.add_action ("trust_and_authorize", (_("Trust and authorize")), (notif, action) => {
             loop.quit ();
             notification = null;
 
@@ -135,14 +136,14 @@ public class Agent: Object
             authorized = true;
         });
 
-        notification.add_action ("authorize", "Authorize", (notif, action) => {
+        notification.add_action ("authorize", (_("Authorize")), (notif, action) => {
             loop.quit ();
             notification = null;
 
             authorized = true;
         });
 
-        notification.add_action ("reject", "Do not authorize", (notif, action) => {
+        notification.add_action ("reject", (_("Do not authorize")), (notif, action) => {
             loop.quit ();
             notification = null;
         });
@@ -169,7 +170,7 @@ public class Agent: Object
 
     public void RequestConfirmation (GLib.ObjectPath object, uint32 passkey) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        string body = "Are you sure you want to pair with PIN %06u?".printf (passkey);
+        string body = (_("Are you sure you want to pair with PIN %06u?").printf (passkey));
         bool confirmed = sendNotification (bluetooth.get_device_name (object), body, false, true);
 
         if (!confirmed) {
@@ -179,7 +180,7 @@ public class Agent: Object
 
     public void RequestAuthorization (GLib.ObjectPath object) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        bool authorized = sendNotification (bluetooth.get_device_name (object), "Are you sure you want to pair with this device?", false, true);
+        bool authorized = sendNotification (bluetooth.get_device_name (object), (_("Are you sure you want to pair with this device?")), false, true);
 
         if (!authorized) {
             throw new RejectedError.ERROR ("Rejected by user");
@@ -188,7 +189,7 @@ public class Agent: Object
 
     public string RequestPinCode (GLib.ObjectPath object) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        bool accepted = sendNotification (bluetooth.get_device_name (object), "Enter PIN for this device", true, true);
+        bool accepted = sendNotification (bluetooth.get_device_name (object), (_("Enter PIN for this device")), true, true);
 
         if (!accepted) {
             throw new RejectedError.ERROR ("Rejected by user");
@@ -199,12 +200,13 @@ public class Agent: Object
 
     public void DisplayPinCode (GLib.ObjectPath object, string pincode) throws GLib.DBusError, GLib.IOError
     {
-        sendNotification (bluetooth.get_device_name (object), @"Enter the PIN code $pincode on the other device", false, false);
+        string body = (_("Enter the PIN code %s on the other device").printf (pincode));
+        sendNotification (bluetooth.get_device_name (object), body, false, false);
     }
 
     public uint32 RequestPasskey (GLib.ObjectPath object) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        bool accepted = sendNotification (bluetooth.get_device_name (object), "Enter PIN for this device", true, true);
+        bool accepted = sendNotification (bluetooth.get_device_name (object), (_("Enter PIN for this device")), true, true);
 
         if (!accepted) {
             throw new RejectedError.ERROR ("Rejected by user");
@@ -215,7 +217,7 @@ public class Agent: Object
 
     public void DisplayPasskey (GLib.ObjectPath object, uint32 passkey, uint16 entered) throws GLib.DBusError, GLib.IOError
     {
-        string body = "Enter the PIN %06u on the other device".printf (passkey);
+        string body = (_("Enter the PIN %06u on the other device").printf (passkey));
         sendNotification (bluetooth.get_device_name (object), body, false, false);
     }
 
