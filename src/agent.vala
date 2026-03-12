@@ -169,7 +169,7 @@ public class Agent: Object
 
     public void RequestConfirmation (GLib.ObjectPath object, uint32 passkey) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        string body = "Are you sure you want to pair with passkey %06u?".printf (passkey);
+        string body = "Are you sure you want to pair with PIN %06u?".printf (passkey);
         bool confirmed = sendNotification (bluetooth.get_device_name (object), body, false, true);
 
         if (!confirmed) {
@@ -204,7 +204,7 @@ public class Agent: Object
 
     public uint32 RequestPasskey (GLib.ObjectPath object) throws RejectedError, GLib.DBusError, GLib.IOError
     {
-        bool accepted = sendNotification (bluetooth.get_device_name (object), "Enter passkey for this device", true, true);
+        bool accepted = sendNotification (bluetooth.get_device_name (object), "Enter PIN for this device", true, true);
 
         if (!accepted) {
             throw new RejectedError.ERROR ("Rejected by user");
@@ -215,7 +215,7 @@ public class Agent: Object
 
     public void DisplayPasskey (GLib.ObjectPath object, uint32 passkey, uint16 entered) throws GLib.DBusError, GLib.IOError
     {
-        string body = "Enter the passkey %06u on the other device".printf (passkey);
+        string body = "Enter the PIN %06u on the other device".printf (passkey);
         sendNotification (bluetooth.get_device_name (object), body, false, false);
     }
 
