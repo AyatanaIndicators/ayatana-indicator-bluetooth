@@ -6,14 +6,20 @@ Source: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
 Files: config.h.in
  src/bluetooth.vala
  src/bluez.vala
- src/desktop.vala
  src/device.vala
  src/killswitch.vala
  src/main.vala
- src/phone.vala
- src/profile.vala
  src/service.vala
 Copyright: 2013, Canonical Ltd.
+License: GPL-3
+
+Files: src/desktop.vala
+ src/phone.vala
+ src/profile.vala
+Copyright: 2013, Canonical Ltd.
+ 2021, Robert Tari <robert@tari.in>
+ 2021-2022, Robert Tari <robert@tari.in>
+ 2022-2023, Robert Tari <robert@tari.in>
 License: GPL-3
 
 Files: vapi/rfkill.vapi
@@ -54,21 +60,25 @@ License: GPL-3
 Comment:
  Assuming same license as found in COPYING file.
 
-Files: CMakeLists.txt
+Files: .build.yml
+ .travis.yml
+ AUTHORS
+ CMakeLists.txt
  ChangeLog
+ INSTALL.md
  Jenkinsfile
  NEWS
+ README.md
  data/CMakeLists.txt
  data/ayatana-indicator-bluetooth.desktop.in
  data/ayatana-indicator-bluetooth.service.in
  data/org.ayatana.indicator.bluetooth
- data/org.ayatana.indicator.bluetooth.gschema.xml.in
+ data/org.ayatana.indicator.bluetooth.gschema.xml
  po/CMakeLists.txt
  po/LINGUAS
  po/POTFILES.in
  po/POTFILES.skip
  src/CMakeLists.txt
- tests/manual
  vapi/config.vapi
 Copyright: 2013, Canonical Ltd.
 License: GPL-3
@@ -78,7 +88,7 @@ Comment:
 
 Files: debian/*
 Copyright: 2013, Canonical Ltd.
-  2020, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+  2020-2024, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 License: GPL-3 or BSD-2-clause or BSD-3-clause
 
 License: GPL-3
@@ -116,8 +126,6 @@ License: LGPL-2
  License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
 
 License: BSD-2-clause
- Copyright Přemysl Janouch 2011
- .
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
      * Redistributions of source code must retain the above copyright

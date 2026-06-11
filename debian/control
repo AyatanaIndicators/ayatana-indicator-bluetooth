@@ -1,31 +1,40 @@
 Source: ayatana-indicator-bluetooth
-Section: gnome
+Section: misc
 Priority: optional
-Maintainer: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
-Build-Depends: debhelper (>= 10),
-               dh-systemd | hello,
+Maintainer: Ayatana Packagers <pkg-ayatana-devel@lists.alioth.debian.org>
+Uploaders:
+ Mike Gabriel <sunweaver@debian.org>,
+ Debian UBports Team <team+ubports@tracker.debian.org>,
+Build-Depends: debhelper-compat (= 13),
                cmake,
                cmake-extras (>= 0.10),
                intltool,
                libayatana-common-dev (>= 0.9.3),
                libglib2.0-dev (>= 2.32.0),
-               systemd [linux-any],
+               systemd-dev [linux-any],
                valac (>= 0.20),
-Standards-Version: 4.1.1
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
 Homepage: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
-Vcs-Git: git://github.com:AyatanaIndicators/ayatana-indicator-bluetooth.git
-Vcs-Browser: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth.git
+Vcs-Git: https://salsa.debian.org/debian-ayatana-team/ayatana-indicator-bluetooth.git
+Vcs-Browser: https://salsa.debian.org/debian-ayatana-team/ayatana-indicator-bluetooth/
 
 Package: ayatana-indicator-bluetooth
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          bluez (>= 5),
-         unity-control-center | mate-control-center | gnome-control-center | ubuntu-system-settings,
-         gnome-bluetooth | ubuntu-system-settings | blueman-manager,
          ayatana-indicator-common,
-Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2)
-Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2)
-Description: Ayatana system bluetooth indicator
+Suggests: unity-control-center | mate-control-center | gnome-control-center | lomiri-system-settings,
+          blueman | blueman-manager | lomiri-system-settings | gnome-bluetooth,
+Replaces: gnome-bluetooth (<< 3.6.1-0ubuntu2),
+          indicator-bluetooth,
+Breaks: gnome-bluetooth (<< 3.6.1-0ubuntu2),
+        indicator-bluetooth,
+Description: Ayatana Indicator for managing Bluetooth devices
  This Ayatana Indicator exposes bluetooth functionality via the system
  indicator API and provides fast user controls for Bluetooth devices.
+ .
+ Ayatana Indicators are only available on desktop environments that
+ provide a renderer for system indicators (such as MATE, Xfce, Lomiri,
+ etc.).

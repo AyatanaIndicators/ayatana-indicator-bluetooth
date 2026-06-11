@@ -2,14 +2,20 @@
 
 NULL =
 
-DEB_CMAKE_EXTRA_FLAGS = \
-    -DCMAKE_INSTALL_LOCALSTATEDIR="/var" \
-    $(NULL)
-
 export DPKG_GENSYMBOLS_CHECK_LEVEL=4
 
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+DEB_CMAKE_EXTRA_FLAGS = \
+    -DCMAKE_INSTALL_LOCALSTATEDIR="/var" \
+    -DENABLE_TESTS=ON \
+    -DENABLE_COVERAGE=OFF \
+    $(NULL)
+
 %:
-	dh $@ --parallel --with systemd
+	dh $@
 
 override_dh_auto_configure:
 	dh_auto_configure -- $(DEB_CMAKE_EXTRA_FLAGS)
@@ -17,6 +23,12 @@ override_dh_auto_configure:
 override_dh_missing:
 	dh_missing --fail-missing
 
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
+
 # For live test logs:
 #override_dh_auto_test:
 #	ARGS=-V dh_auto_test
+
+get-orig-source:
+	uscan --noconf --force-download --rename --download-current-version --destdir=..
