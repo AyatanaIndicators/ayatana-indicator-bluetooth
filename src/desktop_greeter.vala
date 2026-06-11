@@ -14,13 +14,13 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class Greeter: Profile
+class DesktopGreeter: Profile
 {
     GLib.SimpleActionGroup action_group;
 
-    public Greeter (Bluetooth bluetooth, GLib.SimpleActionGroup action_group)
+    public DesktopGreeter (Bluetooth bluetooth, GLib.SimpleActionGroup action_group)
     {
-        base (bluetooth, "greeter");
+        base (bluetooth, "desktop_greeter");
         this.bluetooth = bluetooth;
         this.action_group = action_group;
         GLib.Action[] actions = {};

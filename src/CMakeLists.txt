@@ -56,7 +56,7 @@ vala_add(ayatana-indicator-bluetooth-service
 )
 
 vala_add(ayatana-indicator-bluetooth-service
-    greeter.vala
+    desktop_greeter.vala
         DEPENDS
         profile
         bluetooth
@@ -80,6 +80,14 @@ vala_add(ayatana-indicator-bluetooth-service
 )
 
 vala_add(ayatana-indicator-bluetooth-service
+    phone_greeter.vala
+        DEPENDS
+        profile
+        bluetooth
+        device
+)
+
+vala_add(ayatana-indicator-bluetooth-service
     profile.vala
         DEPENDS
         bluetooth
@@ -93,8 +101,9 @@ vala_add(ayatana-indicator-bluetooth-service
         profile
         device
         phone
+        phone_greeter
         desktop
-        greeter
+        desktop_greeter
         agent
 )
 
