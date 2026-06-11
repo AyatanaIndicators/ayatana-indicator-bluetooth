@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-10 23:51+0200\n"
+"POT-Creation-Date: 2026-06-11 22:33+0200\n"
 "PO-Revision-Date: 2021-11-17 14:52+0000\n"
 "Last-Translator: Phil Clifford <philip.clifford@gmail.com>\n"
 "Language-Team: Gaelic <https://hosted.weblate.org/projects/ayatana-"
@@ -28,7 +28,64 @@ msgstr ""
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
 msgstr ""
 
-#: src/bluez.vala:310
+#: src/agent.vala:45
+#, c-format
+msgid "Pair with %s?"
+msgstr ""
+
+#: src/agent.vala:78
+msgid "Yes"
+msgstr ""
+
+#: src/agent.vala:83
+msgid "No"
+msgstr ""
+
+#: src/agent.vala:114
+#, c-format
+msgid "Allow %s to connect?"
+msgstr ""
+
+#: src/agent.vala:115
+msgid "Allow the Bluetooth device to access a Bluetooth service?"
+msgstr ""
+
+#: src/agent.vala:131
+msgid "Trust and authorize"
+msgstr ""
+
+#: src/agent.vala:139
+msgid "Authorize"
+msgstr ""
+
+#: src/agent.vala:146
+msgid "Do not authorize"
+msgstr ""
+
+#: src/agent.vala:173
+#, c-format
+msgid "Are you sure you want to pair with PIN %06u?"
+msgstr ""
+
+#: src/agent.vala:183
+msgid "Are you sure you want to pair with this device?"
+msgstr ""
+
+#: src/agent.vala:192 src/agent.vala:209
+msgid "Enter PIN for this device"
+msgstr ""
+
+#: src/agent.vala:203
+#, c-format
+msgid "Enter the PIN code %s on the other device"
+msgstr ""
+
+#: src/agent.vala:220
+#, c-format
+msgid "Enter the PIN %06u on the other device"
+msgstr ""
+
+#: src/bluez.vala:314
 msgid "Unknown"
 msgstr ""
 
