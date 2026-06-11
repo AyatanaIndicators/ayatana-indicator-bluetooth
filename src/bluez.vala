@@ -55,6 +55,8 @@ public class Bluez: Bluetooth, Object
   /* maps our arbitrary unique id to a Bluetooth.Device struct for public consumption */
   private HashTable<uint,Device> id_to_device;
 
+  private BluezAgentManager agent_manager;
+
   public Bluez (KillSwitch? killswitch)
   {
     init_bluez_state_vars ();
@@ -119,6 +121,8 @@ public class Bluez: Bluetooth, Object
     try
       {
         manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/");
+        agent_manager = bus.get_proxy_sync (BLUEZ_BUSNAME, "/org/bluez");
+        agent_manager_ready ();
 
         // Find the adapters and watch for changes
         manager.interfaces_added.connect ((object_path, interfaces_and_properties) => {
@@ -321,6 +325,10 @@ public class Bluez: Bluetooth, Object
     v = device_proxy.get_cached_property ("Connected");
     var is_connected = (v != null) && v.get_boolean ();
 
+    // look up whether the device is trusted
+    v = device_proxy.get_cached_property ("Trusted");
+    var is_trusted = (v != null) && v.get_boolean ();
+
     // derive the uuid-related attributes we care about
     v = device_proxy.get_cached_property ("UUIDs");
     uint16[] uuids = {};
@@ -340,6 +348,7 @@ public class Bluez: Bluetooth, Object
                                          icon,
                                          true,
                                          is_connected,
+                                         is_trusted,
                                          supports_browsing,
                                          supports_file_transfer));
 
@@ -411,6 +420,19 @@ public class Bluez: Bluetooth, Object
       }
   }
 
+  public void set_device_trusted (uint id, bool trusted)
+  {
+    var device = id_to_device.lookup (id);
+    var path = id_to_path.lookup (id);
+    var proxy = (path != null) ? path_to_device_proxy.lookup (path) : null;
+
+    if ((device != null)
+        && (device.is_trusted != trusted))
+      {
+        proxy.trusted = trusted;
+      }
+  }
+
   public void try_set_discoverable (bool b)
   {
     if (discoverable != b)
@@ -425,9 +447,20 @@ public class Bluez: Bluetooth, Object
       }
   }
 
+  public string get_device_name (ObjectPath path)
+  {
+    var device = id_to_device.lookup(path_to_id.lookup(path));
+    return device.name;
+  }
+
   public List<unowned Device> get_devices ()
   {
     return id_to_device.get_values();
+  }
+
+  public Device get_device (ObjectPath path)
+  {
+    return id_to_device.lookup(path_to_id.lookup(path));
   }
 
   public bool supported { get; protected set; default = false; }
@@ -452,6 +485,27 @@ public class Bluez: Bluetooth, Object
                                     new Variant ("(ssv)", "org.bluez.Adapter1", "Powered", new Variant.boolean (b)),
                                     DBusCallFlags.NONE, -1);
       }
+  }
+
+  public void add_agent(string path)
+  {
+    try
+    {
+        agent_manager.register_agent (new GLib.ObjectPath(path), AyatanaCommon.utils_is_lomiri() ? "KeyboardDisplay" : "DisplayYesNo");
+    }
+    catch (GLib.Error pError)
+    {
+        warning ("Panic: Failed registering pairing agent: %s", pError.message);
+    }
+
+    try
+    {
+        agent_manager.request_default_agent (new GLib.ObjectPath(path));
+    }
+    catch (GLib.Error pError)
+    {
+        warning ("Panic: Failed getting default pairing agent: %s", pError.message);
+    }
   }
 }
 
@@ -478,4 +532,16 @@ private interface BluezDevice : DBusProxy {
 
   [DBus (name = "Disconnect")]
   public abstract void disconnect_() throws DBusError, IOError;
+
+  [DBus (name = "Trusted")]
+  public abstract bool trusted {  get; set; }
+}
+
+[DBus (name = "org.bluez.AgentManager1")]
+private interface BluezAgentManager : DBusProxy {
+  [DBus (name = "RegisterAgent")]
+  public abstract void register_agent(GLib.ObjectPath object, string capabilities) throws DBusError, IOError;
+
+  [DBus (name = "RequestDefaultAgent")]
+  public abstract void request_default_agent(GLib.ObjectPath object) throws DBusError, IOError;
 }

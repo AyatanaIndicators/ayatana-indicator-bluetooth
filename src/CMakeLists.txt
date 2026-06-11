@@ -14,6 +14,7 @@ vala_init(ayatana-indicator-bluetooth-service
     posix
     gio-2.0
     gio-unix-2.0
+    libnotify
     AyatanaCommon
   OPTIONS
     --ccode
@@ -94,6 +95,14 @@ vala_add(ayatana-indicator-bluetooth-service
         phone
         desktop
         greeter
+        agent
+)
+
+vala_add(ayatana-indicator-bluetooth-service
+      agent.vala
+          DEPENDS
+          bluetooth
+          device
 )
 
 vala_finish(ayatana-indicator-bluetooth-service

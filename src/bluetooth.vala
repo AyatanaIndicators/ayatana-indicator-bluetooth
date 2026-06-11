@@ -46,10 +46,22 @@ public interface Bluetooth: Object
   /* Get a list of the Device structs that we know about */
   public abstract List<unowned Device> get_devices ();
 
+  /* Get a Device from its DBus path */
+  public abstract Device get_device (ObjectPath path);
+
   /* Emitted when one or more of the devices is added, removed, or changed */
   public signal void devices_changed ();
 
   /* Try to connect/disconnect a particular device.
      The device_key argument comes from the Device struct */
   public abstract void set_device_connected (uint device_key, bool connected);
+
+  /* Sets whether or not a device is trusted (allowed to connect without authorization) */
+  public abstract void set_device_trusted (uint device_key, bool trusted);
+
+  public abstract string get_device_name (ObjectPath path);
+
+  public signal void agent_manager_ready ();
+
+  public abstract void add_agent (string path);
 }
