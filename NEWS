@@ -1,3 +1,8 @@
+Overview of changes in ayatana-indicator-bluetooth 26.6.1
+
+  - phone_greeter: Introduce profile that applies to bt indicator when
+    run as part of a phone's greeter.
+
 Overview of changes in ayatana-indicator-bluetooth 26.6.0
 
   - ayatana-indicator-bluetooth: add initial pairing agent.

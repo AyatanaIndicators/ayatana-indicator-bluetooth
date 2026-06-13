@@ -1,6 +1,16 @@
 2026-06-13 Mike Gabriel
 
-        * Release 26.6.0 (HEAD -> main, tag: 26.6.0)
+        * Release 26.6.1 (HEAD -> main, tag: 26.6.1)
+        * Merge branch 'sunweaver-pr/phone-greeter' (9b94224)
+
+2026-06-11 Mike Gabriel
+
+        * phone_greeter: Introduce profile that applies to bt indicator when
+          run as part of a phone's greeter (ce2286e)
+
+2026-06-13 Mike Gabriel
+
+        * Release 26.6.0 (f7a5924) (tag: 26.6.0)
 
 2026-06-13 Adam Havelka
 
