@@ -1,3 +1,15 @@
+Overview of changes in ayatana-indicator-bluetooth 26.6.0
+
+  - ayatana-indicator-bluetooth: add initial pairing agent.
+  - agent: Add support for PIN and passkeys on Lomiri * Passkey/PIN
+    display is slightly wonky right now, BlueZ doesn't call   the
+    Cancel() method once pairing is done, so you have to swipe away
+    the notification manually. But apart from that, everything else
+    works.
+  - Add desktop greeter profile.
+  - Translation updates (thanks to all contributors on
+    hosted.weblate.org).
+
 Overview of changes in ayatana-indicator-bluetooth 24.5.0
 
   - data/ayatana-indicator-bluetooth.service.in: Become part of
