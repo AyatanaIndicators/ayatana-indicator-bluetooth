@@ -1,19 +1,16 @@
 Source: ayatana-indicator-bluetooth
 Section: misc
-Priority: optional
-Maintainer: Ayatana Packagers <pkg-ayatana-devel@lists.alioth.debian.org>
-Uploaders:
- Mike Gabriel <sunweaver@debian.org>,
- Debian UBports Team <team+ubports@tracker.debian.org>,
+Maintainer: Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 Build-Depends: debhelper-compat (= 13),
                cmake,
                cmake-extras (>= 0.10),
                intltool,
                libayatana-common-dev (>= 0.9.3),
                libglib2.0-dev (>= 2.32.0),
+               libnotify-dev,
                systemd-dev [linux-any],
                valac (>= 0.20),
-Standards-Version: 4.7.0
+Standards-Version: 4.7.4
 Rules-Requires-Root: no
 Homepage: https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth
 Vcs-Git: https://salsa.debian.org/debian-ayatana-team/ayatana-indicator-bluetooth.git

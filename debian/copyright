@@ -9,18 +9,30 @@ Files: config.h.in
  src/device.vala
  src/killswitch.vala
  src/main.vala
- src/service.vala
 Copyright: 2013, Canonical Ltd.
 License: GPL-3
 
 Files: src/desktop.vala
  src/phone.vala
  src/profile.vala
+ src/service.vala
 Copyright: 2013, Canonical Ltd.
  2021, Robert Tari <robert@tari.in>
- 2021-2022, Robert Tari <robert@tari.in>
+ 2021-2023, Robert Tari <robert@tari.in>
  2022-2023, Robert Tari <robert@tari.in>
+ 2025, Robert Tari <robert@tari.in>
 License: GPL-3
+
+Files: src/desktop_greeter.vala
+ src/phone_greeter.vala
+Copyright: 2025, Robert Tari <robert@tari.in>
+License: GPL-3
+
+Files: src/agent.vala
+Copyright: 2025, Muhammad Asif
+License: GPL-3
+Comment:
+ Assuming copyright holder from Git history.
 
 Files: vapi/rfkill.vapi
 Copyright: NO-YEAR, Michael 'Mickey' Lauer <mickey@vanille-media.de>
@@ -88,7 +100,7 @@ Comment:
 
 Files: debian/*
 Copyright: 2013, Canonical Ltd.
-  2020-2024, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+  2020-2026, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 License: GPL-3 or BSD-2-clause or BSD-3-clause
 
 License: GPL-3
@@ -120,7 +132,7 @@ License: LGPL-2
  .
  You should have received a copy of the GNU Library General Public
  License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ Foundation, Inc., 31 Milk Street, # 960789, Boston, MA 02196  USA
  .
  On Debian systems, the complete text of the GNU Library General Public
  License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
