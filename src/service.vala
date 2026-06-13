@@ -78,8 +78,9 @@ public class Service: Object
 
     profiles = new HashTable<string,Profile> (str_hash, str_equal);
     profiles.insert ("phone", new Phone (bluetooth, actions));
+    profiles.insert ("phone_greeter", new PhoneGreeter (bluetooth, actions));
     profiles.insert ("desktop", new Desktop (bluetooth, actions));
-    profiles.insert ("greeter", new Greeter (bluetooth, actions));
+    profiles.insert ("desktop_greeter", new DesktopGreeter (bluetooth, actions));
   }
 
   public int run ()
