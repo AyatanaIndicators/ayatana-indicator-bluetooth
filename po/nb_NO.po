@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2025-09-17 17:01+0000\n"
+"PO-Revision-Date: 2026-06-16 23:01+0000\n"
 "Last-Translator: Ida Brenna <ida@larald.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/ayatana-"
 "indicators/bluetooth-applet/nb_NO/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 2026.7.dev0\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
@@ -30,96 +30,96 @@ msgstr "Hvorvidt man skal vise blåtannindikatoren i menyfeltet."
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr ""
+msgstr "Koble sammen med %s?"
 
 #: src/agent.vala:78
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/agent.vala:83
 msgid "No"
-msgstr ""
+msgstr "Nei"
 
 #: src/agent.vala:114
 #, c-format
 msgid "Allow %s to connect?"
-msgstr ""
+msgstr "La %s koble til?"
 
 #: src/agent.vala:115
 msgid "Allow the Bluetooth device to access a Bluetooth service?"
-msgstr ""
+msgstr "Vil du tillate blåtannenheten å få tilgang til en blåtanntjeneste?"
 
 #: src/agent.vala:131
 msgid "Trust and authorize"
-msgstr ""
+msgstr "Stol på og autoriser"
 
 #: src/agent.vala:139
 msgid "Authorize"
-msgstr ""
+msgstr "Autoriser"
 
 #: src/agent.vala:146
 msgid "Do not authorize"
-msgstr ""
+msgstr "Ikke autoriser"
 
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker å koble til med PIN %06u?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker å koble sammen med denne enheten?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr ""
+msgstr "Tast inn PIN-koden for denne enheten"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr ""
+msgstr "Tast inn PIN-koden %s på den andre enheten"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr ""
+msgstr "Tast inn PIN-koden %06u på den andre enheten"
 
 #: src/bluez.vala:314
 msgid "Unknown"
-msgstr ""
+msgstr "Ukjent"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr ""
+msgstr "Tilkobling"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "Send filer …"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Tastaturinnstillinger …"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Mus- og pekeflateinnstillinger …"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Lydinnstillinger …"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "Synlig"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Blåtannsinnstillinger …"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Blåtannsinnstillinger …"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
@@ -127,4 +127,4 @@ msgstr "Blåtann"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Blåtann-status og enhetstilkoblinger"
