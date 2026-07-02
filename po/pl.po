@@ -8,122 +8,125 @@ msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2013-01-14 21:45+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Polish <pl@li.org>\n"
+"PO-Revision-Date: 2026-07-03 10:01+0000\n"
+"Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/ayatana-"
+"indicators/bluetooth-applet/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-01-15 05:31+0000\n"
-"X-Generator: Launchpad (build 16420)\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Wskaźnik Bluetooth na pasku menu."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Określa, czy wskaźnik Bluetooth ma być wyświetlany na pasku menu."
 
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr ""
+msgstr "Sparować z %s?"
 
 #: src/agent.vala:78
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: src/agent.vala:83
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: src/agent.vala:114
 #, c-format
 msgid "Allow %s to connect?"
-msgstr ""
+msgstr "Czy zezwolić %s na połączenie?"
 
 #: src/agent.vala:115
 msgid "Allow the Bluetooth device to access a Bluetooth service?"
-msgstr ""
+msgstr "Czy zezwolić urządzeniu Bluetooth na dostęp do usługi Bluetooth?"
 
 #: src/agent.vala:131
 msgid "Trust and authorize"
-msgstr ""
+msgstr "Zaufaj i autoryzuj"
 
 #: src/agent.vala:139
 msgid "Authorize"
-msgstr ""
+msgstr "Autoryzuj"
 
 #: src/agent.vala:146
 msgid "Do not authorize"
-msgstr ""
+msgstr "Nie autoryzuj"
 
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr ""
+msgstr "Czy na pewno chcesz sparować z kodem PIN %06u?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr ""
+msgstr "Czy na pewno chcesz sparować z tym urządzeniem?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr ""
+msgstr "Wprowadź PIN dla tego urządzenia"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr ""
+msgstr "Wprowadź kod PIN %s na drugim urządzeniu"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr ""
+msgstr "Wprowadź kod PIN %06u na drugim urządzeniu"
 
 #: src/bluez.vala:314
 msgid "Unknown"
-msgstr ""
+msgstr "Nieznany"
 
 #: src/desktop.vala:114
 msgid "Connection"
-msgstr ""
+msgstr "Połączenie"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr ""
+msgstr "Wyślij pliki…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr ""
+msgstr "Ustawienia klawiatury…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr ""
+msgstr "Ustawienia myszy i panelu dotykowego…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
-msgstr ""
+msgstr "Ustawienia dźwięku…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr ""
+msgstr "Widoczny"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr ""
+msgstr "Ustawienia Bluetooth…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr ""
+msgstr "Ustawienia Bluetooth…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr ""
+msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Status Bluetooth i połączenia urządzeń"
