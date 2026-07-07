@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2026-03-10 14:09+0000\n"
+"PO-Revision-Date: 2026-07-08 04:01+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/ayatana-"
 "indicators/bluetooth-applet/id/>\n"
@@ -17,72 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Indikator Bluetooth di bilah menu."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr ""
+msgstr "Menentukan apakah indikator Bluetooth ditampilkan di bilah menu."
 
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr ""
+msgstr "Pasangkan dengan %s?"
 
 #: src/agent.vala:78
 msgid "Yes"
-msgstr ""
+msgstr "Ya"
 
 #: src/agent.vala:83
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
 #: src/agent.vala:114
 #, c-format
 msgid "Allow %s to connect?"
-msgstr ""
+msgstr "Izinkan %s terhubung?"
 
 #: src/agent.vala:115
 msgid "Allow the Bluetooth device to access a Bluetooth service?"
-msgstr ""
+msgstr "Izinkan perangkat Bluetooth mengakses layanan Bluetooth?"
 
 #: src/agent.vala:131
 msgid "Trust and authorize"
-msgstr ""
+msgstr "Percayai dan otorisasi"
 
 #: src/agent.vala:139
 msgid "Authorize"
-msgstr ""
+msgstr "Otorisasi"
 
 #: src/agent.vala:146
 msgid "Do not authorize"
-msgstr ""
+msgstr "Jangan otorisasi"
 
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin memasangkan dengan PIN %06u?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin memasangkan dengan perangkat ini?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr ""
+msgstr "Masukkan PIN untuk perangkat ini"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr ""
+msgstr "Masukkan kode PIN %s pada perangkat lain"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr ""
+msgstr "Masukkan PIN %06u pada perangkat lain"
 
 #: src/bluez.vala:314
 msgid "Unknown"
@@ -94,15 +94,15 @@ msgstr "Koneksi"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr "Mengirim file…"
+msgstr "Kirim file…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
-msgstr "Pengaturan Papan Ketik…"
+msgstr "Pengaturan Keyboard…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr "Pengaturan tetikus dan touchpad…"
+msgstr "Pengaturan Mouse dan Touchpad…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
@@ -110,7 +110,7 @@ msgstr "Pengaturan Suara…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr "Nampak"
+msgstr "Terlihat"
 
 #. settings section
 #: src/desktop.vala:247
@@ -119,7 +119,7 @@ msgstr "Pengaturan Bluetooth…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr "Pengaturan bluetooth…"
+msgstr "Pengaturan Bluetooth…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
@@ -127,4 +127,4 @@ msgstr "Bluetooth"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr ""
+msgstr "Status Bluetooth & koneksi perangkat"
