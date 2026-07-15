@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: indicator-bluetooth\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2023-09-16 20:12+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2026-07-16 08:01+0000\n"
+"Last-Translator: Libre <6n0n1m0s@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/ayatana-"
 "indicators/bluetooth-applet/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 "X-Launchpad-Export-Date: 2013-01-08 06:02+0000\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
@@ -31,59 +31,59 @@ msgstr "Mostrar o no el indicador Bluetooth en la barra de menús."
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr ""
+msgstr "¿Emparejar con %s?"
 
 #: src/agent.vala:78
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: src/agent.vala:83
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: src/agent.vala:114
 #, c-format
 msgid "Allow %s to connect?"
-msgstr ""
+msgstr "¿Conceder a %s para conectar?"
 
 #: src/agent.vala:115
 msgid "Allow the Bluetooth device to access a Bluetooth service?"
-msgstr ""
+msgstr "¿Conceder al dispositivo Bluetooth que acceda a un servicio Bluetooth?"
 
 #: src/agent.vala:131
 msgid "Trust and authorize"
-msgstr ""
+msgstr "Confiado y autorizado"
 
 #: src/agent.vala:139
 msgid "Authorize"
-msgstr ""
+msgstr "Autorizar"
 
 #: src/agent.vala:146
 msgid "Do not authorize"
-msgstr ""
+msgstr "No autorizar"
 
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr ""
+msgstr "¿Seguro que desea emparejar con el PIN %06u?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr ""
+msgstr "¿Seguro que desea emparejar con este dispositivo?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr ""
+msgstr "Introduzca el PIN para este dispositivo"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr ""
+msgstr "Introduzca el código del PIN %s en el otro dispositivo"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr ""
+msgstr "Introduzca el PIN %06u en el otro dispositivo"
 
 #: src/bluez.vala:314
 msgid "Unknown"
