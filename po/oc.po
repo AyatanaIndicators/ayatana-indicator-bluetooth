@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2026-06-13 13:24+0000\n"
+"PO-Revision-Date: 2026-08-10 09:51+0000\n"
 "Last-Translator: Quentin PAGÈS <quentinantonin@free.fr>\n"
 "Language-Team: Occitan <https://hosted.weblate.org/projects/ayatana-"
 "indicators/bluetooth-applet/oc/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
@@ -64,11 +64,11 @@ msgstr "Autorizar pas"
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr ""
+msgstr "Volètz vertadièrament vos associar amb lo còdi PIN %06u ?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr ""
+msgstr "Volètz vertadièrament vos associar amb aqueste aparelh ?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
