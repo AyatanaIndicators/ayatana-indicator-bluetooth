@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2026-06-16 23:01+0000\n"
-"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
+"PO-Revision-Date: 2026-08-21 11:51+0000\n"
+"Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ayatana-indicators/"
 "bluetooth-applet/ta/>\n"
 "Language: ta\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
-msgstr "பட்டியல் பட்டியில் ஊடலை காட்டி."
+msgstr "பட்டியல் பட்டியில் நீலப்பல்அலை குறியீடு."
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:2
 msgid "Whether or not to show the Bluetooth indicator in the menu bar."
-msgstr "பட்டியல் பட்டியில் ஊடலை குறிகாட்டியைக் காட்டலாமா இல்லையா."
+msgstr "பட்டியல் பட்டியில் நீலப்பல்அலை குறியீடைக் காட்டவா அல்லது வேண்டாமா."
 
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr "%s உடன் இணைக்கவா?"
+msgstr "%s உடன் இணைக்கவும்?"
 
 #: src/agent.vala:78
 msgid "Yes"
@@ -43,50 +43,50 @@ msgstr "இல்லை"
 #: src/agent.vala:114
 #, c-format
 msgid "Allow %s to connect?"
-msgstr "இணைக்க %s ஐ அனுமதிக்கவா?"
+msgstr "இணைக்க %s ஐ அனுமதி?"
 
 #: src/agent.vala:115
 msgid "Allow the Bluetooth device to access a Bluetooth service?"
-msgstr "ஊடலை சேவையை அணுக ஊடலை சாதனத்தை அனுமதிக்கவா?"
+msgstr "நீலப்பல்அலை சேவையை அணுக நீலப்பல்அலை சாதனத்தை அனுமதி?"
 
 #: src/agent.vala:131
 msgid "Trust and authorize"
-msgstr "நம்பிக்கை மற்றும் ஏற்பு"
+msgstr "நம்பிக்கை மற்றும் அதிகாரமளி"
 
 #: src/agent.vala:139
 msgid "Authorize"
-msgstr "அங்கீகரிக்கவும்"
+msgstr "அதிகாரமளி"
 
 #: src/agent.vala:146
 msgid "Do not authorize"
-msgstr "அங்கீகரிக்க வேண்டாம்"
+msgstr "அதிகாரம் அளிக்காதே"
 
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr "முள் %06u உடன் நிச்சயமாக இணைக்க விரும்புகிறீர்களா?"
+msgstr "தன் அடையாள எண்(த அ எ)%06u மூலம் உறுதியாக இணைக்க விரும்புகிறீர்களா?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr "இந்தச் சாதனத்துடன் நிச்சயமாக இணைக்க விரும்புகிறீர்களா?"
+msgstr "இந்தச் சாதனத்துடன் உறுதியாக இணைக்க விரும்புகிறீர்களா?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr "இந்தச் சாதனத்திற்கான பின்னை உள்ளிடவும்"
+msgstr "இந்தச் சாதனத்திற்கான தனி அடையாள எண்(த அ எ)ஐ உள்ளிடவும்"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr "மற்ற சாதனத்தில் முள் குறியீட்டை %s உள்ளிடவும்"
+msgstr "மற்ற சாதனத்தில் தன் அடையாள எண்(த அ எ) ஐ %s உள்ளிடவும்"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr "மற்ற சாதனத்தில் முள் %06u ஐ உள்ளிடவும்"
+msgstr "மற்ற சாதனத்தில் தன் அடையாள எண் (த அ எ)ஐ%06uஉள்ளிடவும்"
 
 #: src/bluez.vala:314
 msgid "Unknown"
-msgstr "தெரியவில்லை"
+msgstr "அறியாதது"
 
 #: src/desktop.vala:114
 msgid "Connection"
@@ -102,7 +102,7 @@ msgstr "விசைப்பலகை அமைப்புகள்…"
 
 #: src/desktop.vala:179
 msgid "Mouse and Touchpad Settings…"
-msgstr "மவுச் மற்றும் டச்பேட் அமைப்புகள்…"
+msgstr "சொடுக்கி மற்றும் தொடுபலகை அமைப்புகள்…"
 
 #: src/desktop.vala:186
 msgid "Sound Settings…"
@@ -110,21 +110,21 @@ msgstr "ஒலி அமைப்புகள்…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr "தெரியும்"
+msgstr "காட்சிப்படும்"
 
 #. settings section
 #: src/desktop.vala:247
 msgid "Bluetooth Settings…"
-msgstr "ஊடலை அமைப்புகள்…"
+msgstr "நீலப்பல்அலை அமைப்புகள்…"
 
 #: src/phone.vala:45
 msgid "Bluetooth settings…"
-msgstr "ஊடலை அமைப்புகள்…"
+msgstr "நீலப்பல் அலை அமைப்புகள்…"
 
 #: src/profile.vala:91 src/profile.vala:179
 msgid "Bluetooth"
-msgstr "ஊடலை"
+msgstr "நீலப்பல்அலை"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr "ஊடலை நிலை மற்றும் சாதன இணைப்புகள்"
+msgstr "நீலப்பல்அலை ன் நிலை மற்றும் சாதன இணைப்புகள்"
