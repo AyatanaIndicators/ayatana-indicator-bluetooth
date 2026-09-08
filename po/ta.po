@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-11 22:33+0200\n"
-"PO-Revision-Date: 2026-09-07 14:51+0000\n"
+"PO-Revision-Date: 2026-09-08 16:51+0000\n"
 "Last-Translator: Alagirisamy Rengaraj <radhaalagirisamy@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/ayatana-indicators/"
 "bluetooth-applet/ta/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.9.1\n"
 
 #: data/org.ayatana.indicator.bluetooth.gschema.xml:1
 msgid "Bluetooth indicator in the menu bar."
@@ -30,7 +30,7 @@ msgstr "பட்டியல் பட்டியில் நீலப்ப�
 #: src/agent.vala:45
 #, c-format
 msgid "Pair with %s?"
-msgstr "%s உடன் இணைக்கவா?"
+msgstr "%s உடன் இணை சேர்க்கவா?"
 
 #: src/agent.vala:78
 msgid "Yes"
@@ -64,25 +64,26 @@ msgstr "அதிகாரம் அளிக்காதே"
 #: src/agent.vala:173
 #, c-format
 msgid "Are you sure you want to pair with PIN %06u?"
-msgstr "தன் அடையாள எண்(த அ எ)%06u மூலம் உறுதியாக இணைக்க விரும்புகிறீர்களா?"
+msgstr ""
+"த.அ.எ (தன் அடையாள எண்)%06u மூலம் இணை சேர்க்க உறுதியாக விரும்புகிறீர்களா?"
 
 #: src/agent.vala:183
 msgid "Are you sure you want to pair with this device?"
-msgstr "இந்தச் சாதனத்துடன் உறுதியாக இணைக்க விரும்புகிறீர்களா?"
+msgstr "இந்தச் சாதனத்துடன் இணை சேர்க்க உறுதியாக விரும்புகிறீர்களா?"
 
 #: src/agent.vala:192 src/agent.vala:209
 msgid "Enter PIN for this device"
-msgstr "இந்தச் சாதனத்திற்கான தனி அடையாள எண்(த அ எ)ஐ உள்ளிடவும்"
+msgstr "இந்தச் சாதனத்தின் த.அ.எ (தனி அடையாள எண்)ஐ உள்ளிடவும்"
 
 #: src/agent.vala:203
 #, c-format
 msgid "Enter the PIN code %s on the other device"
-msgstr "மற்ற சாதனத்தில் தன் அடையாள எண்(த அ எ) ஐ %s உள்ளிடவும்"
+msgstr "மற்ற சாதனத்தில் த.அ.எ (தன் அடையாள எண்)ஐ %s உள்ளிடவும்"
 
 #: src/agent.vala:220
 #, c-format
 msgid "Enter the PIN %06u on the other device"
-msgstr "மற்ற சாதனத்தில் தன் அடையாள எண் (த அ எ)ஐ%06uஉள்ளிடவும்"
+msgstr "மற்ற சாதனத்தில் த.அ.எ (தன் அடையாள எண்)ஐ%06uஉள்ளிடவும்"
 
 #: src/bluez.vala:314
 msgid "Unknown"
@@ -94,7 +95,7 @@ msgstr "இணைப்பு"
 
 #: src/desktop.vala:167
 msgid "Send files…"
-msgstr "கோப்புகளை அனுப்பவும்…"
+msgstr "கோப்புக்களை அனுப்பு…"
 
 #: src/desktop.vala:173
 msgid "Keyboard Settings…"
@@ -110,7 +111,7 @@ msgstr "ஒலி அமைப்புகள்…"
 
 #: src/desktop.vala:234
 msgid "Visible"
-msgstr "காட்சிப்படும்"
+msgstr "காணக்கூடியது"
 
 #. settings section
 #: src/desktop.vala:247
@@ -127,4 +128,4 @@ msgstr "நீலப்பல்"
 
 #: src/profile.vala:180
 msgid "Bluetooth status & device connections"
-msgstr "நீலப்பல் நிலை மற்றும் சாதன இணைப்புகள்"
+msgstr "நீலப்பல் நிலை & சாதன இணைப்புகள்"
