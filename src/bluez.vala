@@ -328,6 +328,10 @@ public class Bluez: Bluetooth, Object
     v = device_proxy.get_cached_property ("Connected");
     var is_connected = (v != null) && v.get_boolean ();
 
+    // look up the device's Paired flag
+    v = device_proxy.get_cached_property ("Paired");
+    var is_paired = (v != null) && v.get_boolean ();
+
     // look up whether the device is trusted
     v = device_proxy.get_cached_property ("Trusted");
     var is_trusted = (v != null) && v.get_boolean ();
@@ -351,6 +355,7 @@ public class Bluez: Bluetooth, Object
                              icon,
                              true,
                              is_connected,
+                             is_paired,
                              is_trusted,
                              supports_browsing,
                              supports_file_transfer);
@@ -360,10 +365,22 @@ public class Bluez: Bluetooth, Object
     if (old_device != null && old_device.same_as (device))
       return;
 
+    var was_listed = (old_device != null) && is_listed (old_device);
     id_to_device.insert (id, device);
 
-    devices_changed ();
-    update_connected ();
+    if (was_listed || is_listed (device))
+      {
+        devices_changed ();
+        update_connected ();
+      }
+  }
+
+  // Devices that a scan only sees are not listed. They appear and
+  // vanish constantly and would rebuild the menu each time. Keep them
+  // in id_to_device: the pairing agent looks them up.
+  private static bool is_listed (Device device)
+  {
+    return device.is_paired || device.is_trusted || device.is_connected;
   }
 
   // Device1 properties that the menu uses. RSSI, TxPower,
@@ -378,6 +395,7 @@ public class Bluez: Bluetooth, Object
         case "Connected":
         case "Icon":
         case "Name":
+        case "Paired":
         case "Trusted":
         case "UUIDs":
           return true;
@@ -415,7 +433,11 @@ public class Bluez: Bluetooth, Object
     id_to_path.remove (id);
     path_to_device_proxy.remove (path);
 
-    if (id_to_device.remove (id))
+    var device = id_to_device.lookup (id);
+    var was_listed = (device != null) && is_listed (device);
+    id_to_device.remove (id);
+
+    if (was_listed)
       {
         devices_changed ();
         update_connected ();
@@ -511,7 +533,13 @@ public class Bluez: Bluetooth, Object
 
   public List<unowned Device> get_devices ()
   {
-    return id_to_device.get_values();
+    var devices = new List<unowned Device> ();
+    foreach (unowned Device device in id_to_device.get_values ())
+      {
+        if (is_listed (device))
+          devices.append (device);
+      }
+    return devices;
   }
 
   public Device get_device (ObjectPath path)
