@@ -43,7 +43,7 @@ public interface Bluetooth: Object
   public abstract bool discoverable { get; protected set; }
   public abstract void try_set_discoverable (bool discoverable);
 
-  /* Get a list of the Device structs that we know about */
+  /* Get a list of the paired, trusted or connected devices */
   public abstract List<unowned Device> get_devices ();
 
   /* Get a Device from its DBus path */
