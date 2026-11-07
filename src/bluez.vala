@@ -286,7 +286,10 @@ public class Bluez: Bluetooth, Object
         }
 
         path_to_device_proxy.insert (object_path, device_proxy);
-        device_proxy.g_properties_changed.connect(() => update_device (object_path));
+        device_proxy.g_properties_changed.connect((changed, invalidated) => {
+          if (device_change_is_relevant (changed, invalidated))
+            update_device (object_path);
+        });
       }
 
     // look up our id for this device.
@@ -341,19 +344,68 @@ public class Bluez: Bluetooth, Object
     var supports_browsing = device_supports_browsing (uuids);
     var supports_file_transfer = device_supports_file_transfer (uuids);
 
-    id_to_device.insert (id, new Device (id,
-                                         type,
-                                         name,
-                                         address,
-                                         icon,
-                                         true,
-                                         is_connected,
-                                         is_trusted,
-                                         supports_browsing,
-                                         supports_file_transfer));
+    var device = new Device (id,
+                             type,
+                             name,
+                             address,
+                             icon,
+                             true,
+                             is_connected,
+                             is_trusted,
+                             supports_browsing,
+                             supports_file_transfer);
+
+    // Skip the menu rebuild when nothing visible changed.
+    var old_device = id_to_device.lookup (id);
+    if (old_device != null && old_device.same_as (device))
+      return;
+
+    id_to_device.insert (id, device);
 
     devices_changed ();
     update_connected ();
+  }
+
+  // Device1 properties that the menu uses. RSSI, TxPower,
+  // ManufacturerData and ServiceData change on every advertisement.
+  private static bool is_menu_property (string key)
+  {
+    switch (key)
+      {
+        case "Address":
+        case "Alias":
+        case "Class":
+        case "Connected":
+        case "Icon":
+        case "Name":
+        case "Trusted":
+        case "UUIDs":
+          return true;
+
+        default:
+          return false;
+      }
+  }
+
+  private static bool device_change_is_relevant (Variant changed,
+                                                 string[] invalidated)
+  {
+    string key;
+    Variant val;
+    var iter = changed.iterator ();
+    while (iter.next ("{sv}", out key, out val))
+      {
+        if (is_menu_property (key))
+          return true;
+      }
+
+    foreach (unowned string prop in invalidated)
+      {
+        if (is_menu_property (prop))
+          return true;
+      }
+
+    return false;
   }
 
   private void device_removed (ObjectPath path)
@@ -361,9 +413,13 @@ public class Bluez: Bluetooth, Object
     var id = path_to_id.lookup (path);
     path_to_id.remove (path);
     id_to_path.remove (id);
-    id_to_device.remove (id);
+    path_to_device_proxy.remove (path);
 
-    devices_changed ();
+    if (id_to_device.remove (id))
+      {
+        devices_changed ();
+        update_connected ();
+      }
   }
 
   /* update the 'enabled' property by looking at the killswitch state

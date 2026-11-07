@@ -49,6 +49,18 @@ public class Device: Object
   public bool is_trusted { get; construct; }
   public bool supports_browsing { get; construct; }
   public bool supports_file_transfer { get; construct; }
+  public bool same_as (Device o) {
+    return device_type == o.device_type
+        && id == o.id
+        && name == o.name
+        && address == o.address
+        && icon.equal (o.icon)
+        && is_connectable == o.is_connectable
+        && is_connected == o.is_connected
+        && is_trusted == o.is_trusted
+        && supports_browsing == o.supports_browsing
+        && supports_file_transfer == o.supports_file_transfer;
+  }
   public string print() {
     return @"{id:$id, name:$name, address:$address, icon:$(icon.to_string()), device_type:$device_type, is_connectable:$is_connectable, is_connected:$is_connected, is_trusted:$is_trusted, supports_browsing:$supports_browsing, supports_file_transfer:$supports_file_transfer}";
   }
